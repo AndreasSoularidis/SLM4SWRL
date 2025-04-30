@@ -1,0 +1,54 @@
+Act as an ontology engineer. Use the following content (part of the ontology) as a guide to translate the natural language rule you are given into a SWRL rule. 
+PART OF ONTOLOGY 
+
+    ###  http://example.org/fire_rescue_ontology#House1
+:House1 rdf:type owl:NamedIndividual ,
+                 :House ;
+        :hasCoordinates :Coordinates1 ;
+        rdfs:comment "A specific house that is on fire." ;
+        rdfs:label "House 1" .
+
+
+###  http://example.org/fire_rescue_ontology#Person1
+:Person1 rdf:type owl:NamedIndividual ,
+                  :Person ;
+         :hasCoordinates :Coordinates2 ;
+         :hasHeartRate 75 ;
+         rdfs:comment "A specific individual." ;
+         rdfs:label "Person 1" .
+
+###  http://example.org/fire_rescue_ontology#SearchAndRescueTeam
+:SearchAndRescueTeam rdf:type owl:Class ;
+                     rdfs:subClassOf :Agent ;
+                     rdfs:comment "Represents a team responsible for search and rescue operations." ;
+                     rdfs:label "Search and Rescue Team" .
+
+
+###  http://example.org/fire_rescue_ontology#SpotRobotAgent
+:SpotRobotAgent rdf:type owl:Class ;
+                rdfs:subClassOf :Agent ;
+                rdfs:comment "Represents a spot robot agent." ;
+                rdfs:label "Spot Robot Agent" .
+
+###  http://example.org/fire_rescue_ontology#SearchAndRescueTeam
+:SearchAndRescueTeam rdf:type owl:Class ;
+                     rdfs:subClassOf :Agent ;
+                     rdfs:comment "Represents a team responsible for search and rescue operations." ;
+                     rdfs:label "Search and Rescue Team" .
+
+
+###  http://example.org/fire_rescue_ontology#SpotRobotAgent
+:SpotRobotAgent rdf:type owl:Class ;
+                rdfs:subClassOf :Agent ;
+                rdfs:comment "Represents a spot robot agent." ;
+                rdfs:label "Spot Robot Agent" .
+
+END OF ONTOLOGY
+
+The rule in natural language is the following: if house on fire is recognized at coordinates and person has Voice Sign 'help', then send alert to fire station, send to these coordinates a search and rescue team, send to these coordinates a flying drone agent and send to these coordinates a spot robot agent. Give only the final SWRL rule
+
+Response
+Here is the SWRL rule:
+
+`House(?h) ∧ hasFire(?h) ∧ Person(?p) ∧ hasVoiceSign(?p, "help") ∧ hasCoordinates(?h, ?c) ∧ hasCoordinates(?p, ?c) → SendAlertToFireStation(?c), SendSearchAndRescueTeam(?c), SendFlyingDroneAgent(?c), SendSpotRobotAgent(?c)`
+  

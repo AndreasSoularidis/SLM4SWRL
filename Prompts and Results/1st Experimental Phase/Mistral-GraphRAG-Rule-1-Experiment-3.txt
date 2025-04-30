@@ -1,0 +1,40 @@
+Act as an ontology engineer. Use the following content (part of the ontology) as a guide to translate the natural language rule you are given into a SWRL rule. 
+PART OF ONTOLOGY 
+
+isRecognizedAt (domain: Gas, range: Coordinates)
+hasGasLevel (domain: Gas, range: xsd:Integer)
+hasLatitude (domain: Coordinates, range: xsd:Double)
+hasLongitude (domain: Coordinates, range: xsd:Double)
+hasCoordinates (domain: House, range: Coordinates)
+hasCoordinates (domain: Location, range: Coordinates)
+hasCoordinates (domain: Person, range: Coordinates)
+isNearby (domain: Agent, range: Coordinates)
+isRecognizedAt (domain: Fire, range: Coordinates)
+isRecognizedAt (domain: Gas, range: Coordinates)
+sendTo (domain: Agent, range: Coordinates)
+isRecognizedAt (domain: Fire, range: Coordinates)
+HasFireIntensity (domain: Fire, range: xsd:Integer)
+sendAlert (domain: Alert, range: Fire Station)
+sendAlert (domain: Alert, range: Agent)
+sendAlert (domain: Alert, range: Fire Station)
+hasParticipants (domain: Mission, range: Agent)
+abortMission (domain: Agent, range: Mission)
+
+END OF ONTOLOGY
+
+The rule in natural language is the following: if gas is recognized at coordinates and fire is recognized at these coordinates and agents is nearby to these coordinates, then send an alert to these agents, and the agents must abort mission. Give only the final SWRL rule
+
+Response
+GasFireAlertAndAbortMission {
+    ?gas isRecognizedAt(?coordinates) .
+    ?fire isRecognizedAt(?coordinates) .
+    ?agent isNearby(?coordinates) .
+    ?alert is a Alert .
+    ?mission is a Mission .
+
+    Implies {
+        ?alert sendAlert(?fireStation) .
+        ?agent sendAlert(?alert) .
+        ?agent abortMission(?mission) .
+    }
+}
