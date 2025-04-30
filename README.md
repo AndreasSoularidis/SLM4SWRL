@@ -22,7 +22,7 @@ The framework allows the users to utilize LLMs (e.g., ChatGPT, Llama, Gemini, et
 
 #### Example
 Act as an ontology engineer. Use the following content (part of the ontology) as a guide to translate the natural language rule you are given into a SWRL rule. \
-PART OF ONTOLOGY \
+PART OF ONTOLOGY 
 
 isRecognizedAt (domain: Gas, range: Coordinates) \
 hasGasLevel (domain: Gas, range: xsd:Integer) \
@@ -41,9 +41,9 @@ sendAlert (domain: Alert, range: Fire Station) \
 sendAlert (domain: Alert, range: Agent) \
 sendAlert (domain: Alert, range: Fire Station) \
 hasParticipants (domain: Mission, range: Agent) \
-abortMission (domain: Agent, range: Mission) \
+abortMission (domain: Agent, range: Mission) 
 
-END OF ONTOLOGY \
+END OF ONTOLOGY 
 
 The rule in natural language is the following: if gas is recognized at coordinates and fire is recognized at these coordinates and agents is nearby to these coordinates, then send an alert to these agents, and the agents must abort mission. Give only the final SWRL rule
 
