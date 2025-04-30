@@ -1,0 +1,62 @@
+Act as an ontology engineer. Use the following content (part of the ontology) as a guide to translate the natural language rule you are given into a SWRL rule. 
+    PART OF ONTOLOGY 
+
+    ###  http://example.org/fire_rescue_ontology#isNearby
+:isNearby rdf:type owl:ObjectProperty ;
+          rdfs:domain :Agent ;
+          rdfs:range :Coordinates ;
+          rdfs:comment "Indicates that an entity is nearby specific coordinates." ;
+          rdfs:label "is Nearby" .
+
+
+###  http://example.org/fire_rescue_ontology#isRecognizedAt
+:isRecognizedAt rdf:type owl:ObjectProperty ;
+                rdfs:domain :Fire ,
+                            :Gas ;
+                rdfs:range :Coordinates ;
+                rdfs:comment "Indicates that an entity is recognized at specific coordinates." ;
+                rdfs:label "is Recognized At" .
+
+###  http://example.org/fire_rescue_ontology#isNearby
+:isNearby rdf:type owl:ObjectProperty ;
+          rdfs:domain :Agent ;
+          rdfs:range :Coordinates ;
+          rdfs:comment "Indicates that an entity is nearby specific coordinates." ;
+          rdfs:label "is Nearby" .
+
+
+###  http://example.org/fire_rescue_ontology#isRecognizedAt
+:isRecognizedAt rdf:type owl:ObjectProperty ;
+                rdfs:domain :Fire ,
+                            :Gas ,
+                            :House ;
+                rdfs:range :Coordinates ;
+                rdfs:comment "Indicates that an entity is recognized at specific coordinates." ;
+                rdfs:label "is Recognized At" .
+
+###  http://example.org/fire_rescue_ontology#FireStation1
+:FireStation1 rdf:type owl:NamedIndividual ,
+                       :FireStation ;
+              rdfs:comment "A specific fire station." ;
+              rdfs:label "Fire Station 1" .
+
+
+###  http://example.org/fire_rescue_ontology#Gas1
+:Gas1 rdf:type owl:NamedIndividual ,
+               :Gas ;
+      :hasCoordinates :Coordinates3 ;
+      :hasGasLevel 25 ;
+      rdfs:comment "A specific instance representing the presence of gas." ;
+      rdfs:label "Gas 1" .
+
+END OF ONTOLOGY
+
+The rule in natural language is the following: if gas is recognized at coordinates and fire is recognized at these coordinates and agents is nearby to these coordinates, then send an alert to these agents, and the agents must abort mission. Give only the final SWRL rule
+
+Response
+Here is the final SWRL rule:
+
+`isRecognizedAt(?x, ?y) ∧ isRecognizedAt(?z, ?y) ∧ isNearby(?w, ?y) → sendAlertTo(?w) ∧ abortMission(?w)` 
+
+Note: `?x`, `?y`, `?z`, and `?w` are variables representing instances of `Gas`, `Fire`, `Coordinates`, and `Agent` respectively.
+  

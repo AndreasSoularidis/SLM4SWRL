@@ -1,0 +1,78 @@
+Act as an ontology engineer. Use the following content (part of the ontology) as a guide to translate the natural language rule you are given into a SWRL rule. 
+
+PART OF ONTOLOGY 
+
+    ###  http://example.org/fire_rescue_ontology#House1
+:House1 rdf:type owl:NamedIndividual ,
+                 :House ;
+        :hasCoordinates :Coordinates1 ;
+        rdfs:comment "A specific house that is on fire." ;
+        rdfs:label "House 1" .
+
+
+###  http://example.org/fire_rescue_ontology#Person1
+:Person1 rdf:type owl:NamedIndividual ,
+                  :Person ;
+         :hasCoordinates :Coordinates2 ;
+         :hasHeartRate 75 ;
+         rdfs:comment "A specific individual." ;
+         rdfs:label "Person 1" .
+
+###  http://example.org/fire_rescue_ontology#SearchAndRescueTeam
+:SearchAndRescueTeam rdf:type owl:Class ;
+                     rdfs:subClassOf :Agent ;
+                     rdfs:comment "Represents a team responsible for search and rescue operations." ;
+                     rdfs:label "Search and Rescue Team" .
+
+
+###  http://example.org/fire_rescue_ontology#SpotRobotAgent
+:SpotRobotAgent rdf:type owl:Class ;
+                rdfs:subClassOf :Agent ;
+                rdfs:comment "Represents a spot robot agent." ;
+                rdfs:label "Spot Robot Agent" .
+
+###  http://example.org/fire_rescue_ontology#SearchAndRescueTeam
+:SearchAndRescueTeam rdf:type owl:Class ;
+                     rdfs:subClassOf :Agent ;
+                     rdfs:comment "Represents a team responsible for search and rescue operations." ;
+                     rdfs:label "Search and Rescue Team" .
+
+
+###  http://example.org/fire_rescue_ontology#SpotRobotAgent
+:SpotRobotAgent rdf:type owl:Class ;
+                rdfs:subClassOf :Agent ;
+                rdfs:comment "Represents a spot robot agent." ;
+                rdfs:label "Spot Robot Agent" .
+
+END OF ONTOLOGY
+
+The rule in natural language is the following: if house on fire is recognized at coordinates and person has Voice Sign 'help', then send alert to fire station, send to these coordinates a search and rescue team, send to these coordinates a flying drone agent and send to these coordinates a spot robot agent. Give only the final SWRL rule
+
+Response
+ Based on the provided ontology and the given natural language rule, here is the equivalent SWRL rule:
+
+```swrl
+?house rdf:type fire_rescue_ontology:House1 .
+?house owl:sameAs fire_rescue_ontology:House .
+?house fire_rescue_ontology:hasCoordinates ?coordinates .
+?person rdf:type fire_rescue_ontology:Person1 .
+?person owl:sameAs fire_rescue_ontology:Person .
+?person fire_rescue_ontology:hasVoiceSign ?help .
+?help swrlb1= "help" .
+
+implies {
+    ?fireStation swrlb1= "fire station" .
+    ?drone swrlb1= "flying drone agent" .
+    ?robot swrlb1= "spot robot agent" .
+
+    fire_rescue_ontology:sendAlert(?fireStation, "House is on fire at coordinates: " + STR(?coordinates)) .
+    fire_rescue_ontology:sendToCoordinates(?searchAndRescueTeam, ?coordinates) .
+    fire_rescue_ontology:sendToCoordinates(?drone, ?coordinates) .
+    fire_rescue_ontology:sendToCoordinates(?robot, ?coordinates) .
+
+    ?searchAndRescueTeam rdf:type fire_rescue_ontology:SearchAndRescueTeam .
+    ?drone rdf:type fire_rescue_ontology:SpotRobotAgent .
+    ?robot rdf:type fire_rescue_ontology:SpotRobotAgent .
+}
+```
+  

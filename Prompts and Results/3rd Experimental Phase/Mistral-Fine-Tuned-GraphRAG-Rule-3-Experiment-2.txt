@@ -1,0 +1,45 @@
+Act as an ontology engineer. Use the following content (part of the ontology) as a guide to translate the natural language rule you are given into a SWRL rule. 
+PART OF ONTOLOGY 
+
+hasCoordinates (domain: House, range: Coordinates)
+onFire (domain: House, range: xsd:Boolean)
+isRecognizedAt (domain: Fire, range: Coordinates)
+HasFireIntensity (domain: Fire, range: xsd:Integer)
+sendAlert (domain: Alert, range: Fire Station)
+hasLatitude (domain: Coordinates, range: xsd:Double)
+hasLongitude (domain: Coordinates, range: xsd:Double)
+hasCoordinates (domain: House, range: Coordinates)
+hasCoordinates (domain: Location, range: Coordinates)
+hasCoordinates (domain: Person, range: Coordinates)
+isNearby (domain: Agent, range: Coordinates)
+isRecognizedAt (domain: Fire, range: Coordinates)
+isRecognizedAt (domain: Gas, range: Coordinates)
+sendTo (domain: Agent, range: Coordinates)
+hasCoordinates (domain: Person, range: Coordinates)
+hasHeartRate (domain: Person, range: xsd:Integer)
+hasVoiceSign (domain: Person, range: xsd:String)
+isSafe (domain: Person, range: xsd:Boolean)
+sendAlert (domain: Alert, range: Agent)
+sendAlert (domain: Alert, range: Fire Station)
+sendAlert (domain: Alert, range: Fire Station)
+subClassOf (domain: Search and Rescue Team, range: Agent)
+subClassOf (domain: Flying Drone Agent, range: Agent)
+isNearby (domain: Agent, range: Coordinates)
+abortMission (domain: Agent, range: Mission)
+sendTo (domain: Agent, range: Coordinates)
+isAvailable (domain: Agent, range: xsd:Boolean)
+sendAlert (domain: Alert, range: Agent)
+subClassOf (domain: Flying Drone Agent, range: Agent)
+subClassOf (domain: Search and Rescue Team, range: Agent)
+subClassOf (domain: Spot Robot Agent, range: Agent)
+hasParticipants (domain: Mission, range: Agent)
+subClassOf (domain: Spot Robot Agent, range: Agent)
+subClassOf (domain: Flying Drone Agent, range: Agent)
+subClassOf (domain: Spot Robot Agent, range: Agent)
+
+END OF ONTOLOGY
+
+The rule in natural language is the following: if house on fire is recognized at coordinates and person has Voice Sign 'help', then send alert to fire station, send to these coordinates a search and rescue team, send to these coordinates a flying drone agent and send to these coordinates a spot robot agent. Give only the final SWRL rule
+
+Response
+Fire(?fire) ∧ House(?house) ∧ hasCoordinates(?house, ?coordinates) ∧ onFire(?house) ∧ Person(?person) ∧ hasVoiceSign(?person, 'help') → Alert(?alert) ∧ hasParticipants(?alert, ?searchAndRescueTeam) ∧ hasParticipants(?alert, ?flyingDroneAgent) ∧ hasParticipants(?alert, ?spotRobotAgent) ∧ sendAlert(?alert, ?fireStation) ∧ sendTo(?searchAndRescueTeam, ?coordinates) ∧ sendTo(?flyingDroneAgent, ?coordinates) ∧ sendTo(?spotRobotAgent, ?coordinates)
