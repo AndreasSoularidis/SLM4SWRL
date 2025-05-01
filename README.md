@@ -5,8 +5,7 @@ SLM-assisted generation of SWRL rules from natural language
 The SLM4SWRL is an SLM-based GraphRAG-enhanced framework for translating natural language (NL) rules into Semantic Web Language (SWRL) rules.
 The framework allows the users to utilize LLMs (e.g., ChatGPT, Llama, Gemini, etc.) and SLMs that runs locally via Ollama (e.g., Mistral, Llama-3.1).
 
-![framework_architecture](https://github.com/user-attachments/assets/62b84c46-eefd-4871-bf14-d79ed93940dd)
-
+![SLM4SWRL_architecture](https://github.com/user-attachments/assets/4f81bb59-c2e5-4191-b0cb-48d9412fb189)
 
 ## Research Methodology
 ### Experimental Ontology in a Graph format from the Search and Rescue (SAR) domain
