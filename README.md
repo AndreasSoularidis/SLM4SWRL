@@ -1,8 +1,8 @@
-# SLM2SWRL Framework
+# SLM4SWRL Framework
 SLM-assisted generation of SWRL rules from natural language
 
-## What is SLM2SWRL
-The SLM2SWRL is an SLM-based GraphRAG-enhanced framework for translating natural language (NL) rules into Semantic Web Language (SWRL) rules.
+## What is SLM4SWRL
+The SLM4SWRL is an SLM-based GraphRAG-enhanced framework for translating natural language (NL) rules into Semantic Web Language (SWRL) rules.
 The framework allows the users to utilize LLMs (e.g., ChatGPT, Llama, Gemini, etc.) and SLMs that runs locally via Ollama (e.g., Mistral, Llama-3.1).
 
 ![framework_architecture](https://github.com/user-attachments/assets/62b84c46-eefd-4871-bf14-d79ed93940dd)
