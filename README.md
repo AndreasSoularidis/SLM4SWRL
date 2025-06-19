@@ -81,5 +81,9 @@ python3 -m pip install -r requirements.txt
 ```
 
 ## Neo4j 
+```bash
 CALL n10s.graphconfig.init();
+```
+```bash
 CALL n10s.rdf.import.fetch("https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology.owl","RDF/XML");
+```
