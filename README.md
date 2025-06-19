@@ -79,3 +79,7 @@ source .venv/bin/activate
 ```bash
 python3 -m pip install -r requirements.txt
 ```
+
+## Neo4j 
+CALL n10s.graphconfig.init();
+CALL n10s.rdf.import.fetch("https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology.owl","RDF/XML");
