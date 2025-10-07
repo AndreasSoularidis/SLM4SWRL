@@ -7,7 +7,7 @@
       },
       {
         "role": "user",
-        "content": "PART OF ONTOLOGY\n\nisParentOf (domain: Person, range: Person)\nhasChild (domain: Person, range: Person)\n\nEND OF ONTOLOGY\n\nThe rule in natural language is the following: If a person is a parent of another person, then the first person has a child who is the second person."
+        "content": "PART OF ONTOLOGY\n\ntestOntology:isParentOf rdfs:domain testOntology:Person\ntestOntology:isParentOf rdfs:range testOntology:Person)\ntestOntology:hasChild rdfs:domain testOntology:Person\ntestOntology:hasChild rdfs:range testOntology:Person\n\nEND OF ONTOLOGY\n\nThe rule in natural language is the following: If a person is a parent of another person, then the first person has a child who is the second person."
       },
       {
         "role": "assistant",
@@ -23,7 +23,7 @@
       },
       {
         "role": "user",
-        "content": "PART OF ONTOLOGY\n\nhasParent(domain: Person, range: Person)\ndifferentFrom(domain: Person, range: Person)\nisSiblingOf(domain: Person, range: Person)\n\nEND OF ONTOLOGY\n\nThe rule in natural language is the following: If two people have the same parent, then they are siblings."
+        "content": "PART OF ONTOLOGY\n\ntestOntology:hasParent rdfs:domain testOntology:Person\ntestOntology:hasParent rdfs:range testOntology:Person)\ntestOntology:differentFrom rdfs:domain testOntology:Person\ntestOntology:differentFrom rdfs:range testOntology:Person\ntestOntology:isSiblingOf rdfs:domain testOntology:Person\ntestOntology:isSiblingOf rdfs:range testOntology:Person\n\nEND OF ONTOLOGY\n\nThe rule in natural language is the following: If two people have the same parent, then they are siblings."
       },
       {
         "role": "assistant",
@@ -39,7 +39,7 @@
       },
       {
         "role": "user",
-        "content": "PART OF ONTOLOGY\n\nhasParent(domain: Person, range: Person)\nhasBrother(domain: Person, range: Person)\nhasUncle(domain: Person, range: Person)\n\nEND OF ONTOLOGY\n\nThe rule in natural language is the following: If a person has a parent who has a brother, then that brother is the person's uncle."
+        "content": "PART OF ONTOLOGY\n\ntestOntology:hasParent rdfs:domain testOntology:Person\ntestOntology:hasParent rdfs:range testOntology:Person\ntestOntology:hasBrother rdfs:domain testOntology:Person\ntestOntology:hasBrother rdfs:range testOntology:Person\ntestOntology:hasUncle rdfs:domain testOntology:Person\ntestOntology:hasUncle rdfs:range testOntology:Person\n\nEND OF ONTOLOGY\n\nThe rule in natural language is the following: If a person has a parent who has a brother, then that brother is the person's uncle."
       },
       {
         "role": "assistant",
@@ -55,7 +55,7 @@
       },
       {
         "role": "user",
-        "content": "PART OF ONTOLOGY\n\nhasParent(domain: Person, range: Person)\nisSiblingOf(domain: Person, range: Person)\ndifferentFrom(domain: Person, range: Person)\nisFirstCousinOf(domain: Person, range: Person)\n\nEND OF ONTOLOGY\n\nThe rule in natural language is the following: If two people have parents who are siblings, then they are first cousins."
+        "content": "PART OF ONTOLOGY\n\ntestOntology:hasParent rdfs:domain testOntology:Person\ntestOntology:hasParent rdfs:range testOntology:Person)\ntestOntology:isSiblingOf rdfs:domain testOntology:Person\ntestOntology:isSiblingOf rdfs:range testOntology:Person\ntestOntology:differentFrom rdfs:domain testOntology:Person\ntestOntology:differentFrom rdfs:range testOntology:Person\ntestOntology:isFirstCousinOf rdfs:domain testOntology:Person\ntestOntology:isFirstCousinOf rdfs:range testOntology:Person\n\nEND OF ONTOLOGY\n\nThe rule in natural language is the following: If two people have parents who are siblings, then they are first cousins."
       },
       {
         "role": "assistant",
@@ -71,7 +71,7 @@
       },
       {
         "role": "user",
-        "content": "PART OF ONTOLOGY\n\nisGrandchildOf(domain: Person, range: Person)\nhasAge(domain: Person, range: xsd:Integer)\nisEligibleForInheritanceFrom(domain: Person, range: Person)\n\nEND OF ONTOLOGY\n\nThe rule in natural language is the following: If a person is a grandchild of another person and is at least 18 years old, then they are eligible for inheritance from their grandparent."
+        "content": "PART OF ONTOLOGY\n\ntestOntology:isGrandchildOf rdfs:domain testOntology:Person\ntestOntology:isGrandchildOf rdfs:range testOntology:Person)\ntestOntology:hasAge rdfs:domain testOntology:Person\ntestOntology:hasAge rdfs:range XMLSchema:Integer)\ntestOntology:isEligibleForInheritanceFrom rdfs:domain testOntology:Person\ntestOntology:isEligibleForInheritanceFrom rdfs:range testOntology:Person\n\nEND OF ONTOLOGY\n\nThe rule in natural language is the following: If a person is a grandchild of another person and is at least 18 years old, then they are eligible for inheritance from their grandparent."
       },
       {
         "role": "assistant",
@@ -87,7 +87,7 @@
       },
       {
         "role": "user",
-        "content": "PART OF ONTOLOGY\n\nisEnrolledIn(domain: Student, range: Course)\nhasParticipant(domain: Course, range: Student)\n\nEND OF ONTOLOGY\n\nThe rule in natural language is the following: If a student is enrolled in a course, then the course has that student as a participant."
+        "content": "PART OF ONTOLOGY\n\ntestOntology:isEnrolledIn rdfs:domain testOntology:Student\ntestOntology:isEnrolledIn rdfs:range testOntology:Course)\ntestOntology:hasParticipant rdfs:domain testOntology:Course\ntestOntology:hasParticipant rdfs:range testOntology:Student\n\nEND OF ONTOLOGY\n\nThe rule in natural language is the following: If a student is enrolled in a course, then the course has that student as a participant."
       },
       {
         "role": "assistant",

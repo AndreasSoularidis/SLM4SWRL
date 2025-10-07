@@ -1,3 +1,18 @@
 __pycache__/
 .venv/
 .env/
+Dataset and Notebooks/dataset_v2.json
+Dataset and Notebooks/dataset_v3.json
+FlaskTest.py
+Results/
+TrainedModels/
+data.py
+file.py
+fine_tuning_qwen.py
+qwen.py
+rules.py
+test.py
+test2.py
+transformers_rag.py
+transformers_rag_quick.py
+transformers_rag_quick_alpaca.py
