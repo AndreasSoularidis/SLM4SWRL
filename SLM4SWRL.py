@@ -9,46 +9,55 @@ from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
 from PromptTempates import CustomPromptTemplates
-
+import time
 load_dotenv()
 
-MODE = "WEB" # LOCAL
+MODE = "LOCAL" # LOCAL
 
 models = {
-  "mistral": "mistral:v0.3",
-  "mistral-instruct": "mistral-instruct-v3:latest",
-  "llama": "llama3.1:latest",
-  "llama-instruct": "llama3.1-instruct-v3:latest",
-  "openai": "ft:gpt-4o-2024-08-06:personal:recipe-ner:BMAvb5Vd"
+  "mistral": "mistral:7b",
+  "mistral-instruct": "swot/mistral-v3-instruct:new",
+  "llama": "llama3.1:8b",
+  "llama-instruct": "swot/llama3.1-instruct:new",
+  "qwen": "qwen2.5:7b",
+  "qwen-instruct": "swot/qwen2.5-instruct:lastest",
+  "openai": "ft:gpt-4o-2024-08-06:personal:recipe-ner:BMAvb5Vd",
+  "phi-large": "phi3:14b",
+  "phi-instruct": "swot/phi-3.5-mini-instruct:new",
+  "phi4-instruct": "swot/phi-4-instruct:latest",
+  "gemma": "gemma2:9b",
+  "gemma-instruct": "swot/codegemma-instruct"
 }
 
 if MODE == "LOCAL":
   llm = ChatOllama(
-    model=models["llama-instruct"],
+    model=models["gemma"],
     temperature=0.0,
   )
 else:
   llm = ChatOpenAI(model=models["openai"], temperature=0.0)
 
 retriever_llm = ChatOllama(
-  model="llama3.1:latest",
+  model="llama3.1:8b",
   temperature=0.0,
 )
 
 graph = Neo4jGraph()
+# Index creation
 enhanced_graph = Neo4jGraph(enhanced_schema=True)
 schema = enhanced_graph.get_structured_schema
 nodes = schema['node_props']
-rels = schema['rel_props']
-entities = "(n:" + "|".join(nodes) + "|".join(rels) + ")"
-graph.query(f"CREATE FULLTEXT INDEX ontology IF NOT EXISTS FOR {entities} ON EACH [n.label]")
+filtered_nodes = [node for node in nodes if node.startswith("owl")]
+entities = "(n:" + "|".join(filtered_nodes) + ")"
+graph.query(f"CREATE FULLTEXT INDEX ontology IF NOT EXISTS FOR {entities} ON EACH [n.rdfs__label]")
+
 
 class Entities(BaseModel):
   """Identifying information about entities."""
 
   names: List[str] = Field(
       ...,
-      description="The related concepts are shown in the given text with the first letter capitalised. FIND and RETURN ALL the ontology concepts such as entities and relationships that appear in the text",
+      description="FIND and RETURN ALL the ontology concepts such as entities and relationships that appear in the text",
   )
 
 def generate_full_text_query(input: str) -> str:
@@ -61,36 +70,11 @@ def generate_full_text_query(input: str) -> str:
   return full_text_query.strip()
 
 
-def structured_retriever(question: str) -> str:
-  results = ""
-  entities = entity_chain.invoke({"question": question})
-  for entity in entities.names:
-    response = graph.query(
-      """CALL db.index.fulltext.queryNodes('ontology', $query, {limit:5})
-          YIELD node,score
-          CALL(node) {
-            WITH node
-            MATCH (node)-[r]->(neighbor)
-            RETURN type(r) + ' (domain: ' + node.label + ', range: ' + neighbor.label + ')' AS output
-            UNION ALL
-            WITH node
-            MATCH (node)<-[r]-(neighbor)
-            RETURN type(r) + ' (domain: ' + neighbor.label + ', range: ' + node.label + ')' AS output
-          }
-          RETURN output LIMIT 50
-      """,
-      {"query": generate_full_text_query(entity)},
-    )
-    result = "\n".join([el['output'] for el in response])
-    results += result + "\n"
-  return results
-
-
 prompt = ChatPromptTemplate.from_messages(
   [
     (
       "system",
-      "You are an Knowledge/Ontology Engineer, your goal is to extract concepts (nouns) from the text.",
+      "You are an Knowledge/Ontology Engineer, your goal is to extract concepts (nouns) from the text."
     ),
     (
       "human",
@@ -103,23 +87,75 @@ prompt = ChatPromptTemplate.from_messages(
 
 entity_chain = prompt | retriever_llm.with_structured_output(Entities)
 
-prompt = ChatPromptTemplate.from_template(CustomPromptTemplates.ontology_template)
+def structured_retriever(question: str) -> str:
+  # results = ""
+  results_set = set()
+  entities = entity_chain.invoke({"question": question})
+  for entity in entities.names:
+    response = graph.query(
+      """ CALL db.index.fulltext.queryNodes('ontology', $query, {limit:5})
+          YIELD node,score
+          CALL(node) {
+            WITH node
+            MATCH (node)-[r]->(neighbor)
+            RETURN  
+              ':' + CASE 
+                WHEN node.uri CONTAINS '#' THEN split(node.uri, '#')[-1]
+                ELSE split(node.uri, '/')[-1]
+              END + '  ' + 
+              ':' + replace(type(r), '__', ':') + '  ' + 
+              ':' + CASE 
+                WHEN neighbor.uri CONTAINS '#' THEN split(neighbor.uri, '#')[-1]
+                ELSE split(neighbor.uri, '/')[-1]
+              END AS output
+            UNION ALL
+            WITH node
+            MATCH (node)<-[r]-(neighbor)
+            RETURN 
+              ':' + CASE 
+                WHEN neighbor.uri CONTAINS '#' THEN split(neighbor.uri, '#')[-1]
+                ELSE split(neighbor.uri, '/')[-1]
+              END + '  ' + 
+              ':' + replace(type(r), '__', ':') + '  ' +
+              ':' + CASE 
+                WHEN node.uri CONTAINS '#' THEN split(node.uri, '#')[-1]
+                ELSE split(node.uri, '/')[-1]
+              END AS output
+          }
+          RETURN output, score
+      """,
+      {"query": generate_full_text_query(entity)},
+    )
+    for el in response:
+      results_set.add(el['output']) 
+
+  result_list = sorted(list(results_set))
+  results = "\n".join(result_list)
+  return results
+
+
+# print(structured_retriever("If a mission is related to a specific incident and that incident has a priority level of 'high', then the mission should also be assigned as a 'high' priority."))
+
+prompt = ChatPromptTemplate.from_template(CustomPromptTemplates.RAG_template)
 
 chain = (
   RunnableParallel({
-      "context": structured_retriever,
-      "question": RunnablePassthrough(),
+    "context": structured_retriever,
+    "question": RunnablePassthrough(),
   })
   | prompt
   | llm
   | StrOutputParser()
 )
 
-rules = CustomPromptTemplates.rules_in_nl()
+rules = CustomPromptTemplates.pd_rules_in_nl(0,10)
 
-for rule in rules:
-  print(f"Natural Language rule: {rule}")
-  print(f"SWRL rule:")
+for index, rule in enumerate(rules):
+  print(f"Rule {index+1}")
+  print(f"Natural Language: {rule}")
+  print(f"\nSWRL rule:")
   for chunk in chain.invoke(rule):
     print(chunk, end="", flush=True)
-  print()
+  print("\n")
+  print("Waiting 10 seconds...")
+  time.sleep(10)
