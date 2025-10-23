@@ -110,7 +110,7 @@ class CustomPromptTemplates:
 
   
   @staticmethod
-  def rules_in_nl(start=0, end=10):
+  def sar_rules_in_nl(start=0, end=10):
     sar_rules = [
       "If a mission is related to a specific incident and that incident has a priority level of 'high', then the mission should also be assigned as a 'high' priority.",
       "If an incident is identified and a vulnerable object is also identified, then it can be inferred that the vulnerable object is involved in that incident.",

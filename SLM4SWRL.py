@@ -1,15 +1,23 @@
 from dotenv import load_dotenv
 from langchain_neo4j import Neo4jGraph
-from langchain_ollama import ChatOllama
+from langchain_ollama import ChatOllama, OllamaLLM
 from pydantic import BaseModel, Field
 from typing import List
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_neo4j.vectorstores.neo4j_vector import remove_lucene_chars
 from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
+from langchain_community.document_loaders import DirectoryLoader, TextLoader
 from langchain_openai import ChatOpenAI
 from PromptTempates import CustomPromptTemplates
 import time
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import Chroma
+import os
+from rdflib import Graph
+from rdflib.plugins.sparql import prepareQuery
+
 load_dotenv()
 
 MODE = "LOCAL" # LOCAL
@@ -30,9 +38,10 @@ models = {
 }
 
 if MODE == "LOCAL":
-  llm = ChatOllama(
-    model=models["gemma"],
+  llm = OllamaLLM(
+    model=models["llama"],
     temperature=0.0,
+    base_url="http://localhost:52625"
   )
 else:
   llm = ChatOpenAI(model=models["openai"], temperature=0.0)
@@ -40,7 +49,38 @@ else:
 retriever_llm = ChatOllama(
   model="llama3.1:8b",
   temperature=0.0,
+  base_url="http://localhost:52625"
 )
+
+def get_txt_loader(folder_name):
+  # Use forward slashes and turn off silent_errors to see what's wrong
+  text_loader = DirectoryLoader(
+      f"./{folder_name}", 
+      glob="**/*.txt",  # Changed from **\\*.txt
+      loader_cls=TextLoader, 
+      show_progress=True, 
+      silent_errors=False,  # Changed from True
+      loader_kwargs={'encoding': 'utf-8'}  # Added encoding
+  )
+  docs = text_loader.load()
+  
+  # Add debugging
+  if not docs:
+      print(f"No documents loaded from {folder_name}")
+      print(f"Check if folder exists: {os.path.exists(f'./{folder_name}')}")
+  
+  return docs
+
+def format_docs(docs):
+  return "\n".join(doc.page_content for doc in docs)
+
+docs = get_txt_loader("./ontologies/PD_ontology")
+
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+splits = text_splitter.split_documents(docs)
+
+vectorstore = Chroma.from_documents(documents=splits, embedding=OpenAIEmbeddings())
+retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 5})
 
 graph = Neo4jGraph()
 # Index creation
@@ -57,7 +97,7 @@ class Entities(BaseModel):
 
   names: List[str] = Field(
       ...,
-      description="FIND and RETURN ALL the ontology concepts such as entities and relationships that appear in the text",
+      description="List of ontology concept names found in the text. Only use ontology terms. No explanations."
   )
 
 def generate_full_text_query(input: str) -> str:
@@ -66,7 +106,6 @@ def generate_full_text_query(input: str) -> str:
   for word in words[:-1]:
     full_text_query += f" {word} AND"
   full_text_query += f" {words[-1]}"
-  
   return full_text_query.strip()
 
 
@@ -74,23 +113,27 @@ prompt = ChatPromptTemplate.from_messages(
   [
     (
       "system",
-      "You are an Knowledge/Ontology Engineer, your goal is to extract concepts (nouns) from the text."
+      "You are an expert Knowledge/Ontology Engineer. "
+      "Your task is to extract nouns or short phrases that appear in the input text "
+      "and are present in the provided ontology. "
+      "Output only the list of concept names, no explanations, no reasoning, no OWL or RDF, no text other than the list. "
+      "Each concept must exactly match or be semantically equivalent to an ontology label."
     ),
     (
       "human",
-      "Use the given format to extract concepts (nouns) from the following "
-      "input: {question}",
+      "Ontology:\n{context}\n\n"
+      "Text:\n{question}\n\n"
     ),
   ]
 )
 
-
 entity_chain = prompt | retriever_llm.with_structured_output(Entities)
 
 def structured_retriever(question: str) -> str:
-  # results = ""
+  relevant_docs = retriever.invoke(question) 
   results_set = set()
-  entities = entity_chain.invoke({"question": question})
+  entities = entity_chain.invoke({"context": relevant_docs, "question": question, })
+  print(f"Entities found: {entities}")
   for entity in entities.names:
     response = graph.query(
       """ CALL db.index.fulltext.queryNodes('ontology', $query, {limit:5})
@@ -124,7 +167,7 @@ def structured_retriever(question: str) -> str:
           }
           RETURN output, score
       """,
-      {"query": generate_full_text_query(entity)},
+      {"query": entity},
     )
     for el in response:
       results_set.add(el['output']) 
@@ -157,5 +200,5 @@ for index, rule in enumerate(rules):
   for chunk in chain.invoke(rule):
     print(chunk, end="", flush=True)
   print("\n")
-  print("Waiting 10 seconds...")
-  time.sleep(10)
+  time.sleep(5)
+
