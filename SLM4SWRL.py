@@ -9,6 +9,7 @@ from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
 from PromptTempates import CustomPromptTemplates
+from ontology_analyzer import OntologyAnalyzer
 import time
 load_dotenv()
 
@@ -31,7 +32,7 @@ models = {
 
 if MODE == "LOCAL":
   llm = ChatOllama(
-    model=models["gemma"],
+    model=models["llama"],
     temperature=0.0,
   )
 else:
@@ -74,26 +75,37 @@ prompt = ChatPromptTemplate.from_messages(
   [
     (
       "system",
-      "You are an Knowledge/Ontology Engineer, your goal is to extract concepts (nouns) from the text."
+      "You are an expert Knowledge/Ontology Engineer. "
+      "Your task is to extract nouns or short phrases that appear in the input text "
+      "and are present in the context. "
+      "Output only the list of concept names, no explanations, no reasoning, no OWL or RDF, no text other than the list. "
+      "Each concept must exactly match or be semantically equivalent to an ontology label."
     ),
     (
       "human",
-      "Use the given format to extract concepts (nouns) from the following "
-      "input: {question}",
+      "Context:\n{context}\n\n"
+      "Text:\n{question}\n\n"
     ),
   ]
 )
 
+onto_analyzer = OntologyAnalyzer("./ontologies/Wear4PDmoveOnto.ttl")
+
+onto_classes = ", ".join(onto_analyzer.get_classes())
+
+print(onto_classes)
 
 entity_chain = prompt | retriever_llm.with_structured_output(Entities)
+
+
 
 def structured_retriever(question: str) -> str:
   # results = ""
   results_set = set()
-  entities = entity_chain.invoke({"question": question})
+  entities = entity_chain.invoke({"question": question, "context": onto_classes})
   for entity in entities.names:
     response = graph.query(
-      """ CALL db.index.fulltext.queryNodes('ontology', $query, {limit:5})
+      """ CALL db.index.fulltext.queryNodes('ontology', $query, {limit:3})
           YIELD node,score
           CALL(node) {
             WITH node
@@ -148,7 +160,7 @@ chain = (
   | StrOutputParser()
 )
 
-rules = CustomPromptTemplates.pd_rules_in_nl(0,10)
+rules = CustomPromptTemplates.pd_rules_in_nl(0, 10)
 
 for index, rule in enumerate(rules):
   print(f"Rule {index+1}")
