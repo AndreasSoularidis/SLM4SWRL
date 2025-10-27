@@ -1,152 +1,177 @@
-<owl:Class rdf:about="http://schema.org/Person"/>
+###  http://schema.org/Person
+schema:Person rdf:type owl:Class .
 
-<owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#AlertingNotification">
-    <rdfs:subClassOf rdf:resource="https://saref.etsi.org/core/ActuatingFunction"/>
-    <rdfs:comment>Alerting Notification Function for event</rdfs:comment>
-    <rdfs:label>Alerting Notification Function</rdfs:label>
-</owl:Class>
 
-<owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#DailyDosagePlan">
-    <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#MedicalPrescription"/>
-    <rdfs:subClassOf>
-        <owl:Restriction>
-            <owl:onProperty rdf:resource="http://w3id.org/Wear4PDmove/onto#hasDosageTime"/>
-            <owl:someValuesFrom rdf:resource="http://w3id.org/Wear4PDmove/onto#DosageTime"/>
-        </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:comment>Daily dosage plan for patient (4 times one day)</rdfs:comment>
-    <rdfs:label>Daily Dosage Plan</rdfs:label>
-</owl:Class>
+###  http://w3id.org/Wear4PDmove/onto#AlertingNotification
+onto:AlertingNotification rdf:type owl:Class ;
+                          rdfs:subClassOf core:ActuatingFunction ;
+                          rdfs:comment "Alerting Notification Function for event" ;
+                          rdfs:label "Alerting Notification Function" .
 
-<owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#Diagnosis">
-    <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord"/>
-    <rdfs:comment>diagnosis of disease of a patient in one appointment</rdfs:comment>
-    <rdfs:label>Diagnosis</rdfs:label>
-</owl:Class>
 
-<owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#DosageTime">
-    <rdfs:subClassOf rdf:resource="https://saref.etsi.org/core/Time"/>
-    <rdfs:comment>Dosage time on datetime</rdfs:comment>
-    <rdfs:label>Dosage Time (time in one day)</rdfs:label>
-</owl:Class>
+###  http://w3id.org/Wear4PDmove/onto#DailyDosagePlan
+onto:DailyDosagePlan rdf:type owl:Class ;
+                     rdfs:subClassOf onto:MedicalPrescription ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty onto:hasDosageTime ;
+                                       owl:someValuesFrom onto:DosageTime
+                                     ] ;
+                     rdfs:comment "Daily dosage plan for patient (4 times one day)" ;
+                     rdfs:label "Daily Dosage Plan" .
 
-<owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#MedicalPrescription">
-    <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord"/>
-    <rdfs:comment>Medical Prescription for Patient</rdfs:comment>
-    <rdfs:label>Medical Prescription</rdfs:label>
-</owl:Class>
 
-<owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#NotifyDoctor">
-    <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#AlertingNotification"/>
-    <rdfs:comment>Notify doctor for event (alert notification)</rdfs:comment>
-    <rdfs:label>Notify Doctor</rdfs:label>
-</owl:Class>
+###  http://w3id.org/Wear4PDmove/onto#Diagnosis
+onto:Diagnosis rdf:type owl:Class ;
+               rdfs:subClassOf onto:PersonalHealthRecord ;
+               rdfs:comment "diagnosis of disease of a patient in one appointment" ;
+               rdfs:label "Diagnosis" .
 
-<owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#NotifyNurse">
-    <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#AlertingNotification"/>
-</owl:Class>
 
-<owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#NotifyRelatives">
-    <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#AlertingNotification"/>
-</owl:Class>
+###  http://w3id.org/Wear4PDmove/onto#DosageTime
+onto:DosageTime rdf:type owl:Class ;
+                rdfs:subClassOf core:Time ;
+                rdfs:comment "Dosage time on datetime" ;
+                rdfs:label "Dosage Time (time in one day)" .
 
-<owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#PD_Patient">
-    <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#Patient"/>
-    <rdfs:subClassOf>
-        <owl:Restriction>
-            <owl:onProperty rdf:resource="http://w3id.org/Wear4PDmove/onto#hasPersonalHealthRecord"/>
-            <owl:someValuesFrom rdf:resource="http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord"/>
-        </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:comment>PD patient</rdfs:comment>
-    <rdfs:label>PD Patient</rdfs:label>
-</owl:Class>
 
-<owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#PDpatientFalllingEventObservation">
-    <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#RecognizedEvent"/>
-    <rdfs:comment>Falling event observation for PD Patient</rdfs:comment>
-    <rdfs:label>PD patient Fallling Event Observation</rdfs:label>
-</owl:Class>
+###  http://w3id.org/Wear4PDmove/onto#MedicalPrescription
+onto:MedicalPrescription rdf:type owl:Class ;
+                         rdfs:subClassOf onto:PersonalHealthRecord ;
+                         rdfs:comment "Medical Prescription for Patient" ;
+                         rdfs:label "Medical Prescription" .
 
-<owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#PDpatientMissingDoseEventObservation">
-    <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#RecognizedEvent"/>
-    <rdfs:comment>Missing dose event observation for PD Patient</rdfs:comment>
-    <rdfs:label>PD patient Missing Dose Event Observation</rdfs:label>
-</owl:Class>
 
-<owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#Patient">
-    <rdfs:subClassOf rdf:resource="http://schema.org/Person"/>
-    <rdfs:comment>Any kind of patient</rdfs:comment>
-    <rdfs:label>Patient</rdfs:label>
-</owl:Class>
+###  http://w3id.org/Wear4PDmove/onto#NotifyDoctor
+onto:NotifyDoctor rdf:type owl:Class ;
+                  rdfs:subClassOf onto:AlertingNotification ;
+                  rdfs:comment "Notify doctor for event (alert notification)" ;
+                  rdfs:label "Notify Doctor" .
 
-<owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord">
-    <rdfs:comment>Personal Health Record of a patient</rdfs:comment>
-    <rdfs:label>Personal Health Record</rdfs:label>
-</owl:Class>
 
-<owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#RecognizedEvent">
-    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
-    <rdfs:comment>An observation of a recognized event for a PD Patient</rdfs:comment>
-    <rdfs:label>PD patient recognized event observation</rdfs:label>
-</owl:Class>
+###  http://w3id.org/Wear4PDmove/onto#NotifyNurse
+onto:NotifyNurse rdf:type owl:Class ;
+                 rdfs:subClassOf onto:AlertingNotification .
 
-<owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#SketchingActivity">
-    <rdfs:subClassOf rdf:resource="http://www.case.edu/MDO#ActivitiesofDailyLiving"/>
-    <rdfs:subClassOf>
-        <owl:Restriction>
-            <owl:onProperty rdf:resource="https://saref.etsi.org/core/isMeasuredByDevice"/>
-            <owl:someValuesFrom rdf:resource="http://w3id.org/Wear4PDmove/onto#SmartWatch"/>
-        </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:comment xml:lang="en">An activity followed by the patient during his free time, using his hands (sketching).</rdfs:comment>
-    <rdfs:label xml:lang="en">Sketching Activity</rdfs:label>
-</owl:Class>
 
-<owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#SmartWatch">
-    <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4wear/OnBodyWearable"/>
-    <rdfs:comment xml:lang="en">An off-the-shelf smart watch with sensors able to measure movement</rdfs:comment>
-    <rdfs:label xml:lang="en">Smart Watch</rdfs:label>
-</owl:Class>
+###  http://w3id.org/Wear4PDmove/onto#NotifyRelatives
+onto:NotifyRelatives rdf:type owl:Class ;
+                     rdfs:subClassOf onto:AlertingNotification .
 
-<owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#WalkingActivity">
-    <rdfs:subClassOf rdf:resource="http://www.case.edu/MDO#ActivitiesofDailyLiving"/>
-    <rdfs:subClassOf>
-        <owl:Restriction>
-            <owl:onProperty rdf:resource="https://saref.etsi.org/core/isMeasuredByDevice"/>
-            <owl:someValuesFrom rdf:resource="http://w3id.org/Wear4PDmove/onto#SmartWatch"/>
-        </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:comment xml:lang="en">An activity followed by the patient during his free time, using his hands (walking).</rdfs:comment>
-    <rdfs:label xml:lang="en">Walking Activity</rdfs:label>
-</owl:Class>
 
-<owl:Class rdf:about="http://www.case.edu/MDO#ActivitiesofDailyLiving"/>
+###  http://w3id.org/Wear4PDmove/onto#PD_Patient
+onto:PD_Patient rdf:type owl:Class ;
+                rdfs:subClassOf onto:Patient ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty onto:hasPersonalHealthRecord ;
+                                  owl:someValuesFrom onto:PersonalHealthRecord
+                                ] ;
+                rdfs:comment "PD patient" ;
+                rdfs:label "PD Patient" .
 
-<owl:Class rdf:about="http://www.case.edu/MDO#Tremor">
-    <rdfs:comment xml:lang="en">symptom of PD, usually observed at patient&apos;s hands</rdfs:comment>
-    <rdfs:label xml:lang="en">Tremor</rdfs:label>
-</owl:Class>
 
-<owl:Class rdf:about="http://www.case.edu/PMDO#BradykinesiaofUpperLimb">
-    <rdfs:comment xml:lang="en">symptom of PD, usually observed at patient&apos;s legs</rdfs:comment>
-    <rdfs:label xml:lang="en">Bradykinesia of Upper Limb</rdfs:label>
-</owl:Class>
+###  http://w3id.org/Wear4PDmove/onto#PDpatientFalllingEventObservation
+onto:PDpatientFalllingEventObservation rdf:type owl:Class ;
+                                       rdfs:subClassOf onto:RecognizedEvent ;
+                                       rdfs:comment "Falling event observation for PD Patient" ;
+                                       rdfs:label "PD patient Fallling Event Observation" .
 
-<rdf:Description rdf:about="http://www.w3.org/ns/sosa/FeatureOfInterest">
-    <owl:equivalentClass rdf:resource="https://saref.etsi.org/core/FeatureOfInterest"/>
-</rdf:Description>
 
-<owl:Class rdf:about="https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/Accelerometer"/>
+###  http://w3id.org/Wear4PDmove/onto#PDpatientMissingDoseEventObservation
+onto:PDpatientMissingDoseEventObservation rdf:type owl:Class ;
+                                          rdfs:subClassOf onto:RecognizedEvent ;
+                                          rdfs:comment "Missing dose event observation for PD Patient" ;
+                                          rdfs:label "PD patient Missing Dose Event Observation" .
 
-<owl:Class rdf:about="https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/WearableAcceleration">
-    <rdfs:label xml:lang="en">Wearable Acceleration</rdfs:label>
-</owl:Class>
 
-<owl:Class rdf:about="https://saref.etsi.org/core/ActuatingFunction"/>
+###  http://w3id.org/Wear4PDmove/onto#Patient
+onto:Patient rdf:type owl:Class ;
+             rdfs:subClassOf schema:Person ;
+             rdfs:comment "Any kind of patient" ;
+             rdfs:label "Patient" .
 
-<owl:Class rdf:about="https://saref.etsi.org/core/FeatureOfInterest"/>
 
-<owl:Class rdf:about="https://saref.etsi.org/core/Time"/>
+###  http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord
+onto:PersonalHealthRecord rdf:type owl:Class ;
+                          rdfs:comment "Personal Health Record of a patient" ;
+                          rdfs:label "Personal Health Record" .
 
-<owl:Class rdf:about="https://saref.etsi.org/saref4wear/OnBodyWearable"/>
+
+###  http://w3id.org/Wear4PDmove/onto#RecognizedEvent
+onto:RecognizedEvent rdf:type owl:Class ;
+                     rdfs:subClassOf sosa:Observation ;
+                     rdfs:comment "An observation of a recognized event for a PD Patient" ;
+                     rdfs:label "PD patient recognized event observation" .
+
+
+###  http://w3id.org/Wear4PDmove/onto#SketchingActivity
+onto:SketchingActivity rdf:type owl:Class ;
+                       rdfs:subClassOf <http://www.case.edu/MDO#ActivitiesofDailyLiving> ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty core:isMeasuredByDevice ;
+                                         owl:someValuesFrom onto:SmartWatch
+                                       ] ;
+                       rdfs:comment "An activity followed by the patient during his free time, using his hands (sketching)."@en ;
+                       rdfs:label "Sketching Activity"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#SmartWatch
+onto:SmartWatch rdf:type owl:Class ;
+                rdfs:subClassOf <https://saref.etsi.org/saref4wear/OnBodyWearable> ;
+                rdfs:comment "An off-the-shelf smart watch with sensors able to measure movement"@en ;
+                rdfs:label "Smart Watch"@en .
+
+
+###  http://w3id.org/Wear4PDmove/onto#WalkingActivity
+onto:WalkingActivity rdf:type owl:Class ;
+                     rdfs:subClassOf <http://www.case.edu/MDO#ActivitiesofDailyLiving> ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty core:isMeasuredByDevice ;
+                                       owl:someValuesFrom onto:SmartWatch
+                                     ] ;
+                     rdfs:comment "An activity followed by the patient during his free time, using his hands (walking)."@en ;
+                     rdfs:label "Walking Activity"@en .
+
+
+###  http://www.case.edu/MDO#ActivitiesofDailyLiving
+<http://www.case.edu/MDO#ActivitiesofDailyLiving> rdf:type owl:Class .
+
+
+###  http://www.case.edu/MDO#Tremor
+<http://www.case.edu/MDO#Tremor> rdf:type owl:Class ;
+                                 rdfs:comment "symptom of PD, usually observed at patient's hands"@en ;
+                                 rdfs:label "Tremor"@en .
+
+
+###  http://www.case.edu/PMDO#BradykinesiaofUpperLimb
+<http://www.case.edu/PMDO#BradykinesiaofUpperLimb> rdf:type owl:Class ;
+                                                   rdfs:comment "symptom of PD, usually observed at patient's legs"@en ;
+                                                   rdfs:label "Bradykinesia of Upper Limb"@en .
+
+
+###  http://www.w3.org/ns/sosa/FeatureOfInterest
+sosa:FeatureOfInterest owl:equivalentClass core:FeatureOfInterest .
+
+
+###  https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/Accelerometer
+dahcc:Accelerometer rdf:type owl:Class .
+
+
+###  https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/WearableAcceleration
+dahcc:WearableAcceleration rdf:type owl:Class ;
+                           rdfs:label "Wearable Acceleration"@en .
+
+
+###  https://saref.etsi.org/core/ActuatingFunction
+core:ActuatingFunction rdf:type owl:Class .
+
+
+###  https://saref.etsi.org/core/FeatureOfInterest
+core:FeatureOfInterest rdf:type owl:Class .
+
+
+###  https://saref.etsi.org/core/Time
+core:Time rdf:type owl:Class .
+
+
+###  https://saref.etsi.org/saref4wear/OnBodyWearable
+<https://saref.etsi.org/saref4wear/OnBodyWearable> rdf:type owl:Class .

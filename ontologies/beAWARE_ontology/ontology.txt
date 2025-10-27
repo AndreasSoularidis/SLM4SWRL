@@ -1,370 +1,431 @@
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Agriculture
+beAWARE_ontology:Agriculture rdf:type owl:Class ;
+                             rdfs:subClassOf beAWARE_ontology:EcologicalAsset ;
+                             rdfs:label "Agriculture" ;
+                             skos:definition "Agricultural used spaces." ;
+                             skos:example "Field and acre." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Agriculture">
-<rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#EcologicalAsset"/>
-<rdfs:label>Agriculture</rdfs:label>
-<skos:definition>Agricultural used spaces.</skos:definition>
-<skos:example>Field and acre.</skos:example>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Animal">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#LivingBeing"/>
-  <rdfs:label>Animal</rdfs:label>
-  <skos:definition>Represents animals in danger during a natural disaster.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Animal
+beAWARE_ontology:Animal rdf:type owl:Class ;
+                        rdfs:subClassOf beAWARE_ontology:LivingBeing ;
+                        rdfs:label "Animal" ;
+                        skos:definition "Represents animals in danger during a natural disaster." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Asset">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#VulnerableObject"/>
-  <owl:disjointWith rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#LivingBeing"/>
-  <rdfs:label>Asset</rdfs:label>
-  <skos:definition>Any non-living item of interest.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#AudioItem">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#MediaItem"/>
-  <rdfs:label>Audio Item</rdfs:label>
-  <skos:definition>Represents an audio recording.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Asset
+beAWARE_ontology:Asset rdf:type owl:Class ;
+                       rdfs:subClassOf beAWARE_ontology:VulnerableObject ;
+                       owl:disjointWith beAWARE_ontology:LivingBeing ;
+                       rdfs:label "Asset" ;
+                       skos:definition "Any non-living item of interest." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Bridge">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Structure"/>
-  <rdfs:label>Bridge</rdfs:label>
-  <skos:definition>Represents bridges.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Building">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Structure"/>
-  <rdfs:label>Building</rdfs:label>
-  <skos:definition>A structure with walls and a roof.</skos:definition>
-  <skos:example>A house or factory.</skos:example>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#AudioItem
+beAWARE_ontology:AudioItem rdf:type owl:Class ;
+                           rdfs:subClassOf beAWARE_ontology:MediaItem ;
+                           rdfs:label "Audio Item" ;
+                           skos:definition "Represents an audio recording." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Car">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Vehicle"/>
-  <rdfs:label>Car</rdfs:label>
-  <skos:definition>Represents any type of car.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#ClimateParameter">
-  <rdfs:label>Climate Parameter</rdfs:label>
-  <skos:definition>Represents the actual manifestation of a climate parameter measurement.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Bridge
+beAWARE_ontology:Bridge rdf:type owl:Class ;
+                        rdfs:subClassOf beAWARE_ontology:Structure ;
+                        rdfs:label "Bridge" ;
+                        skos:definition "Represents bridges." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#ClimateParameterType">
-  <rdfs:label>Climate Parameter Type</rdfs:label>
-  <skos:definition>Represents various types of climate-related parameters.</skos:definition>
-  <skos:example>Temperature, humidity, etc.</skos:example>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Communication">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Infrastructure"/>
-  <rdfs:label>Communication</rdfs:label>
-  <skos:definition>Represents any type of (tele)communication infrastructure.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Building
+beAWARE_ontology:Building rdf:type owl:Class ;
+                          rdfs:subClassOf beAWARE_ontology:Structure ;
+                          rdfs:label "Building" ;
+                          skos:definition "A structure with walls and a roof." ;
+                          skos:example "A house or factory." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#DataAnalysis">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Task"/>
-  <rdfs:label>Data Analysis</rdfs:label>
-  <skos:definition>A type of a task involving data analysis.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Dataset">
-  <rdfs:label>Dataset</rdfs:label>
-  <skos:definition>Represents the dataset produced by some task.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Car
+beAWARE_ontology:Car rdf:type owl:Class ;
+                     rdfs:subClassOf beAWARE_ontology:Vehicle ;
+                     rdfs:label "Car" ;
+                     skos:definition "Represents any type of car." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Detection">
-  <rdfs:label>Detection</rdfs:label>
-  <skos:definition>Represents detections in a dataset.</skos:definition>
-  <skos:example>A person trapped in the flood.</skos:example>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Dunes">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#EcologicalAsset"/>
-  <rdfs:label>Dunes</rdfs:label>
-  <skos:definition>Represents dunes.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#ClimateParameter
+beAWARE_ontology:ClimateParameter rdf:type owl:Class ;
+                                  rdfs:label "Climate Parameter" ;
+                                  skos:definition "Represents the actual manifestation of a climate parameter measurement." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#EcologicalAsset">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Asset"/>
-  <rdfs:label>Ecological Asset</rdfs:label>
-  <skos:definition>Ecological assets of various types.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#EducationalFacility">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Infrastructure"/>
-  <rdfs:label>Educational Facility</rdfs:label>
-  <skos:definition>Represents any type of educational facility.</skos:definition>
-  <skos:example>School or University.</skos:example>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#ClimateParameterType
+beAWARE_ontology:ClimateParameterType rdf:type owl:Class ;
+                                      rdfs:label "Climate Parameter Type" ;
+                                      skos:definition "Represents various types of climate-related parameters." ;
+                                      skos:example "Temperature, humidity, etc." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#ElectricEnergySupply">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Energy"/>
-  <rdfs:label>Electric Energy Supply</rdfs:label>
-  <skos:definition>Represents electric energy supply infrastructure.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Energy">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Infrastructure"/>
-  <rdfs:label>Energy</rdfs:label>
-  <skos:definition>Represents any type of energy-generating infrastructure.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Communication
+beAWARE_ontology:Communication rdf:type owl:Class ;
+                               rdfs:subClassOf beAWARE_ontology:Infrastructure ;
+                               rdfs:label "Communication" ;
+                               skos:definition "Represents any type of (tele)communication infrastructure." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#FireDepartment">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Infrastructure"/>
-  <rdfs:label>Fire Department</rdfs:label>
-  <skos:definition>Represents fire departments.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#GarbageCollection">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Infrastructure"/>
-  <rdfs:label>Garbage Collection</rdfs:label>
-  <skos:definition>Represents garbage collection infrastructure and services.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#DataAnalysis
+beAWARE_ontology:DataAnalysis rdf:type owl:Class ;
+                              rdfs:subClassOf beAWARE_ontology:Task ;
+                              rdfs:label "Data Analysis" ;
+                              skos:definition "A type of a task involving data analysis." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Hospital">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Infrastructure"/>
-  <rdfs:label>Hospital</rdfs:label>
-  <skos:definition>Represents hospitals.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Human">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#LivingBeing"/>
-  <rdfs:label>Human</rdfs:label>
-  <skos:definition>Represents human beings in danger.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Dataset
+beAWARE_ontology:Dataset rdf:type owl:Class ;
+                         rdfs:label "Dataset" ;
+                         skos:definition "Represents the dataset produced by some task." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#ImageAnalysis">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#DataAnalysis"/>
-  <rdfs:label>Image Analysis</rdfs:label>
-  <skos:definition>The task of analyzing images.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#ImageItem">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#MediaItem"/>
-  <rdfs:label>Image Item</rdfs:label>
-  <skos:definition>Represents a captured image.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Detection
+beAWARE_ontology:Detection rdf:type owl:Class ;
+                           rdfs:label "Detection" ;
+                           skos:definition "Represents detections in a dataset." ;
+                           skos:example "A person trapped in the flood." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Impact">
-  <rdfs:label>Impact</rdfs:label>
-  <skos:definition>Represents the impact of natural disasters and incidents.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#ImpactType">
-  <rdfs:label>Impact Type</rdfs:label>
-  <skos:definition>Represents the various types of impacts.</skos:definition>
-  <skos:example>Injuries, damage to properties etc.</skos:example>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Dunes
+beAWARE_ontology:Dunes rdf:type owl:Class ;
+                       rdfs:subClassOf beAWARE_ontology:EcologicalAsset ;
+                       rdfs:label "Dunes" ;
+                       skos:definition "Represents dunes." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Incident">
-  <rdfs:label>Incident</rdfs:label>
-  <skos:definition>Represents the various incidents taking place during a natural disaster.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#IncidentReport">
-  <rdfs:label>Incident Report</rdfs:label>
-  <skos:definition>Represents an incident report submitted to the PSAP.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#EcologicalAsset
+beAWARE_ontology:EcologicalAsset rdf:type owl:Class ;
+                                 rdfs:subClassOf beAWARE_ontology:Asset ;
+                                 rdfs:label "Ecological Asset" ;
+                                 skos:definition "Ecological assets of various types." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#IncidentType">
-  <rdfs:label>Incident Type</rdfs:label>
-  <skos:definition>Represents the various types of incidents.</skos:definition>
-  <skos:example>Floods, blocked streets etc.</skos:example>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Infrastructure">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Asset"/>
-  <rdfs:label>Infrastructure</rdfs:label>
-  <skos:definition>Represents critical infrastructure that is in danger during a natural disaster.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#EducationalFacility
+beAWARE_ontology:EducationalFacility rdf:type owl:Class ;
+                                     rdfs:subClassOf beAWARE_ontology:Infrastructure ;
+                                     rdfs:label "Educational Facility" ;
+                                     skos:definition "Represents any type of educational facility." ;
+                                     skos:example "School or University." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Levee">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Structure"/>
-  <rdfs:label>Levee</rdfs:label>
-  <skos:definition>An embankment for preventing flooding.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Livestock">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Animal"/>
-  <rdfs:label>Livestock</rdfs:label>
-  <skos:definition>Represents domestic animals.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#ElectricEnergySupply
+beAWARE_ontology:ElectricEnergySupply rdf:type owl:Class ;
+                                      rdfs:subClassOf beAWARE_ontology:Energy ;
+                                      rdfs:label "Electric Energy Supply" ;
+                                      skos:definition "Represents electric energy supply infrastructure." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#LivingBeing">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#VulnerableObject"/>
-  <rdfs:label>Living Being</rdfs:label>
-  <skos:definition>Any living being that is in danger during a natural disaster.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Location">
-  <rdfs:label>Location</rdfs:label>
-  <skos:definition>Represents a location (point or area), indicated by latitude, longitude, and radius.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Energy
+beAWARE_ontology:Energy rdf:type owl:Class ;
+                        rdfs:subClassOf beAWARE_ontology:Infrastructure ;
+                        rdfs:label "Energy" ;
+                        skos:definition "Represents any type of energy-generating infrastructure." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#MediaItem">
-  <rdfs:label>Media Item</rdfs:label>
-  <skos:definition>Represents a generic media item. Subclasses include specific types of media items.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Mission">
-  <rdfs:label>Mission</rdfs:label>
-  <skos:definition>Represents a mission assigned to a rescue unit during a crisis.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#FireDepartment
+beAWARE_ontology:FireDepartment rdf:type owl:Class ;
+                                rdfs:subClassOf beAWARE_ontology:Infrastructure ;
+                                rdfs:label "Fire Department" ;
+                                skos:definition "Represents fire departments." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Monument">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Structure"/>
-  <rdfs:label>Monument</rdfs:label>
-  <skos:definition>A structure or building that is built to honour a special person or event.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#NaturalDisaster">
-  <rdfs:label>Natural Disaster</rdfs:label>
-  <skos:definition>Represents the actual manifestation of a natural disaster type. An instance of a natural disaster has specific climate conditions with specific values (e.g. temperature = 45) plus some other properties (e.g. start/end time).</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#GarbageCollection
+beAWARE_ontology:GarbageCollection rdf:type owl:Class ;
+                                   rdfs:subClassOf beAWARE_ontology:Infrastructure ;
+                                   rdfs:label "Garbage Collection" ;
+                                   skos:definition "Represents garbage collection infrastructure and services." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#NaturalDisasterType">
-  <rdfs:label>Natural Disaster Type</rdfs:label>
-  <skos:definition>Represents the various types of disasters.</skos:definition>
-  <skos:example>Floods, forest fires, storms or earthquakes etc.</skos:example>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#NaturalHabitat">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#EcologicalAsset"/>
-  <rdfs:label>Natural Habitat</rdfs:label>
-  <skos:definition>Represents natural habitats.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Hospital
+beAWARE_ontology:Hospital rdf:type owl:Class ;
+                          rdfs:subClassOf beAWARE_ontology:Infrastructure ;
+                          rdfs:label "Hospital" ;
+                          skos:definition "Represents hospitals." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Plant">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#EcologicalAsset"/>
-  <rdfs:label>Plant</rdfs:label>
-  <skos:definition>Represents the fauna.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Police">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Infrastructure"/>
-  <rdfs:label>Police</rdfs:label>
-  <skos:definition>Represents law enforcement infrastructure and services.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Human
+beAWARE_ontology:Human rdf:type owl:Class ;
+                       rdfs:subClassOf beAWARE_ontology:LivingBeing ;
+                       rdfs:label "Human" ;
+                       skos:definition "Represents human beings in danger." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Property">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Asset"/>
-  <rdfs:label>Property</rdfs:label>
-  <skos:definition>Represents any type of private property.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#PublicTransportation">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Transportation"/>
-  <rdfs:label>Public Transportation</rdfs:label>
-  <skos:definition>Represents public transportation services and infrastructure.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#ImageAnalysis
+beAWARE_ontology:ImageAnalysis rdf:type owl:Class ;
+                               rdfs:subClassOf beAWARE_ontology:DataAnalysis ;
+                               rdfs:label "Image Analysis" ;
+                               skos:definition "The task of analyzing images." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Responder">
-  <rdfs:label>Responder</rdfs:label>
-  <skos:definition>Represents a first responder unit.</skos:definition>
-  <skos:example>A firefighter, police officer or emergency medical physician.</skos:example>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#River">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#EcologicalAsset"/>
-  <rdfs:label>River</rdfs:label>
-  <skos:definition>Represents rivers.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#ImageItem
+beAWARE_ontology:ImageItem rdf:type owl:Class ;
+                           rdfs:subClassOf beAWARE_ontology:MediaItem ;
+                           rdfs:label "Image Item" ;
+                           skos:definition "Represents a captured image." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Sensor">
-  <rdfs:label>Sensor</rdfs:label>
-  <skos:definition>A Sensor is an instrument that observes a property or phenomenon with the goal of producing an estimate of the value of a parameter.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Sewer">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Infrastructure"/>
-  <rdfs:label>Sewer</rdfs:label>
-  <skos:definition>Represents sewage infrastructure.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Impact
+beAWARE_ontology:Impact rdf:type owl:Class ;
+                        rdfs:label "Impact" ;
+                        skos:definition "Represents the impact of natural disasters and incidents." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Square">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Structure"/>
-  <rdfs:label>Square</rdfs:label>
-  <skos:definition>Represents squares in danger during an environmental crisis.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Street">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Transportation"/>
-  <rdfs:label>Street</rdfs:label>
-  <skos:definition>Represents the road network infrastructure.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#ImpactType
+beAWARE_ontology:ImpactType rdf:type owl:Class ;
+                            rdfs:label "Impact Type" ;
+                            skos:definition "Represents the various types of impacts." ;
+                            skos:example "Injuries, damage to properties etc." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Structure">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Asset"/>
-  <rdfs:label>Structure</rdfs:label>
-  <skos:definition>Represents various structures and buildings.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Subway">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#PublicTransportation"/>
-  <rdfs:label>Subway</rdfs:label>
-  <skos:definition>Represents subway infrastructure.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Incident
+beAWARE_ontology:Incident rdf:type owl:Class ;
+                          rdfs:label "Incident" ;
+                          skos:definition "Represents the various incidents taking place during a natural disaster." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Task">
-  <rdfs:label>Task</rdfs:label>
-  <skos:definition>A task that has to do with analyzing or processing items.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#TextAnalysis">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#DataAnalysis"/>
-  <rdfs:label>Text Analysis</rdfs:label>
-  <skos:definition>The task of analyzing textual corpora.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#IncidentReport
+beAWARE_ontology:IncidentReport rdf:type owl:Class ;
+                                rdfs:label "Incident Report" ;
+                                skos:definition "Represents an incident report submitted to the PSAP." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#TextItem">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#MediaItem"/>
-  <rdfs:label>Text Item</rdfs:label>
-  <skos:definition>Represents a piece of text.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Transportation">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Infrastructure"/>
-  <rdfs:label>Transportation</rdfs:label>
-  <skos:definition>Represents transportation services and infrastructure.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#IncidentType
+beAWARE_ontology:IncidentType rdf:type owl:Class ;
+                              rdfs:label "Incident Type" ;
+                              skos:definition "Represents the various types of incidents." ;
+                              skos:example "Floods, blocked streets etc." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Vehicle">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Property"/>
-  <rdfs:label>Vehicle</rdfs:label>
-  <skos:definition>Represents any type of vehicle.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#VideoAnalysis">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#DataAnalysis"/>
-  <rdfs:label>Video Analysis</rdfs:label>
-  <skos:definition>The task of analyzing videos.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Infrastructure
+beAWARE_ontology:Infrastructure rdf:type owl:Class ;
+                                rdfs:subClassOf beAWARE_ontology:Asset ;
+                                rdfs:label "Infrastructure" ;
+                                skos:definition "Represents critical infrastructure that is in danger during a natural disaster." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#VideoItem">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#MediaItem"/>
-  <rdfs:label>Video Item</rdfs:label>
-  <skos:definition>Represents a video recording.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#VulnerableObject">
-  <rdfs:label>Vulnerable Object</rdfs:label>
-  <skos:definition>Any living being or object that needs to be protected from hazards.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Levee
+beAWARE_ontology:Levee rdf:type owl:Class ;
+                       rdfs:subClassOf beAWARE_ontology:Structure ;
+                       rdfs:label "Levee" ;
+                       skos:definition "An embankment for preventing flooding." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Wall">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Structure"/>
-  <rdfs:label>Wall</rdfs:label>
-  <skos:definition>A vertical structure often made of stone or brick that divides or surrounds something.</skos:definition>
-</owl:Class>
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#WaterSupply">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Infrastructure"/>
-  <rdfs:label>Water Supply</rdfs:label>
-  <skos:definition>Represents water supply and sanitation infrastructure.</skos:definition>
-</owl:Class>
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Livestock
+beAWARE_ontology:Livestock rdf:type owl:Class ;
+                           rdfs:subClassOf beAWARE_ontology:Animal ;
+                           rdfs:label "Livestock" ;
+                           skos:definition "Represents domestic animals." .
 
-<owl:Class rdf:about="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Wildlife">
-  <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Animal"/>
-  <rdfs:label>Wildlife</rdfs:label>
-  <skos:definition>Represents wild animals.</skos:definition>
-</owl:Class>
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#LivingBeing
+beAWARE_ontology:LivingBeing rdf:type owl:Class ;
+                             rdfs:subClassOf beAWARE_ontology:VulnerableObject ;
+                             rdfs:label "Living Being" ;
+                             skos:definition "Any living being that is in danger during a natural disaster." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Location
+beAWARE_ontology:Location rdf:type owl:Class ;
+                          rdfs:label "Location" ;
+                          skos:definition "Represents a location (point or area), indicated by latitude, longitude, and radius." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#MediaItem
+beAWARE_ontology:MediaItem rdf:type owl:Class ;
+                           rdfs:label "Media Item" ;
+                           skos:definition "Represents a generic media item. Subclasses include specific types of media items." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Mission
+beAWARE_ontology:Mission rdf:type owl:Class ;
+                         rdfs:label "Mission" ;
+                         skos:definition "Represents a mission assigned to a rescue unit during a crisis." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Monument
+beAWARE_ontology:Monument rdf:type owl:Class ;
+                          rdfs:subClassOf beAWARE_ontology:Structure ;
+                          rdfs:label "Monument" ;
+                          skos:definition "A structure or building that is built to honour a special person or event." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#NaturalDisaster
+beAWARE_ontology:NaturalDisaster rdf:type owl:Class ;
+                                 rdfs:label "Natural Disaster" ;
+                                 skos:definition "Represents the actual manifestation of a natural disaster type. An instance of a natural disaster has specific climate conditions with specific values (e.g. temperature = 45) plus some other properties (e.g. start/end time)." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#NaturalDisasterType
+beAWARE_ontology:NaturalDisasterType rdf:type owl:Class ;
+                                     rdfs:label "Natural Disaster Type" ;
+                                     skos:definition "Represents the various types of disasters." ;
+                                     skos:example "Floods, forest fires, storms or earthquakes etc." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#NaturalHabitat
+beAWARE_ontology:NaturalHabitat rdf:type owl:Class ;
+                                rdfs:subClassOf beAWARE_ontology:EcologicalAsset ;
+                                rdfs:label "Natural Habitat" ;
+                                skos:definition "Represents natural habitats." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Plant
+beAWARE_ontology:Plant rdf:type owl:Class ;
+                       rdfs:subClassOf beAWARE_ontology:EcologicalAsset ;
+                       rdfs:label "Plant" ;
+                       skos:definition "Represents the fauna." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Police
+beAWARE_ontology:Police rdf:type owl:Class ;
+                        rdfs:subClassOf beAWARE_ontology:Infrastructure ;
+                        rdfs:label "Police" ;
+                        skos:definition "Represents law enforcement infrastructure and services." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Property
+beAWARE_ontology:Property rdf:type owl:Class ;
+                          rdfs:subClassOf beAWARE_ontology:Asset ;
+                          rdfs:label "Property" ;
+                          skos:definition "Represents any type of private property." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#PublicTransportation
+beAWARE_ontology:PublicTransportation rdf:type owl:Class ;
+                                      rdfs:subClassOf beAWARE_ontology:Transportation ;
+                                      rdfs:label "Public Transportation" ;
+                                      skos:definition "Represents public transportation services and infrastructure." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Responder
+beAWARE_ontology:Responder rdf:type owl:Class ;
+                           rdfs:label "Responder" ;
+                           skos:definition "Represents a first responder unit." ;
+                           skos:example "A firefighter, police officer or emergency medical physician." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#River
+beAWARE_ontology:River rdf:type owl:Class ;
+                       rdfs:subClassOf beAWARE_ontology:EcologicalAsset ;
+                       rdfs:label "River" ;
+                       skos:definition "Represents rivers." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Sensor
+beAWARE_ontology:Sensor rdf:type owl:Class ;
+                        rdfs:label "Sensor" ;
+                        skos:definition "A Sensor is an instrument that observes a property or phenomenon with the goal of producing an estimate of the value of a parameter." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Sewer
+beAWARE_ontology:Sewer rdf:type owl:Class ;
+                       rdfs:subClassOf beAWARE_ontology:Infrastructure ;
+                       rdfs:label "Sewer" ;
+                       skos:definition "Represents sewage infrastructure." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Square
+beAWARE_ontology:Square rdf:type owl:Class ;
+                        rdfs:subClassOf beAWARE_ontology:Structure ;
+                        rdfs:label "Square" ;
+                        skos:definition "Represents squares in danger during an environmental crisis." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Street
+beAWARE_ontology:Street rdf:type owl:Class ;
+                        rdfs:subClassOf beAWARE_ontology:Transportation ;
+                        rdfs:label "Street" ;
+                        skos:definition "Represents the road network infrastructure." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Structure
+beAWARE_ontology:Structure rdf:type owl:Class ;
+                           rdfs:subClassOf beAWARE_ontology:Asset ;
+                           rdfs:label "Structure" ;
+                           skos:definition "Represents various structures and buildings." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Subway
+beAWARE_ontology:Subway rdf:type owl:Class ;
+                        rdfs:subClassOf beAWARE_ontology:PublicTransportation ;
+                        rdfs:label "Subway" ;
+                        skos:definition "Represents subway infrastructure." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Task
+beAWARE_ontology:Task rdf:type owl:Class ;
+                      rdfs:label "Task" ;
+                      skos:definition "A task that has to do with analyzing or processing items." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#TextAnalysis
+beAWARE_ontology:TextAnalysis rdf:type owl:Class ;
+                              rdfs:subClassOf beAWARE_ontology:DataAnalysis ;
+                              rdfs:label "Text Analysis" ;
+                              skos:definition "The task of analyzing textual corpora." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#TextItem
+beAWARE_ontology:TextItem rdf:type owl:Class ;
+                          rdfs:subClassOf beAWARE_ontology:MediaItem ;
+                          rdfs:label "Text Item" ;
+                          skos:definition "Represents a piece of text." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Transportation
+beAWARE_ontology:Transportation rdf:type owl:Class ;
+                                rdfs:subClassOf beAWARE_ontology:Infrastructure ;
+                                rdfs:label "Transportation" ;
+                                skos:definition "Represents transportation services and infrastructure." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Vehicle
+beAWARE_ontology:Vehicle rdf:type owl:Class ;
+                         rdfs:subClassOf beAWARE_ontology:Property ;
+                         rdfs:label "Vehicle" ;
+                         skos:definition "Represents any type of vehicle." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#VideoAnalysis
+beAWARE_ontology:VideoAnalysis rdf:type owl:Class ;
+                               rdfs:subClassOf beAWARE_ontology:DataAnalysis ;
+                               rdfs:label "Video Analysis" ;
+                               skos:definition "The task of analyzing videos." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#VideoItem
+beAWARE_ontology:VideoItem rdf:type owl:Class ;
+                           rdfs:subClassOf beAWARE_ontology:MediaItem ;
+                           rdfs:label "Video Item" ;
+                           skos:definition "Represents a video recording." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#VulnerableObject
+beAWARE_ontology:VulnerableObject rdf:type owl:Class ;
+                                  rdfs:label "Vulnerable Object" ;
+                                  skos:definition "Any living being or object that needs to be protected from hazards." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Wall
+beAWARE_ontology:Wall rdf:type owl:Class ;
+                      rdfs:subClassOf beAWARE_ontology:Structure ;
+                      rdfs:label "Wall" ;
+                      skos:definition "A vertical structure often made of stone or brick that divides or surrounds something." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#WaterSupply
+beAWARE_ontology:WaterSupply rdf:type owl:Class ;
+                             rdfs:subClassOf beAWARE_ontology:Infrastructure ;
+                             rdfs:label "Water Supply" ;
+                             skos:definition "Represents water supply and sanitation infrastructure." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Wildlife
+beAWARE_ontology:Wildlife rdf:type owl:Class ;
+                          rdfs:subClassOf beAWARE_ontology:Animal ;
+                          rdfs:label "Wildlife" ;
+                          skos:definition "Represents wild animals." .

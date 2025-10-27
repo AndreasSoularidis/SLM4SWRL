@@ -15,7 +15,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
 import os
-from rdflib import Graph
+import re
 from rdflib.plugins.sparql import prepareQuery
 
 load_dotenv()
@@ -34,22 +34,22 @@ models = {
   "phi-instruct": "swot/phi-3.5-mini-instruct:new",
   "phi4-instruct": "swot/phi-4-instruct:latest",
   "gemma": "gemma2:9b",
-  "gemma-instruct": "swot/codegemma-instruct"
+  "gemma-instruct": "swot/codegemma-instruct",
+  "qwen3": "qwen3:8b"
 }
 
 if MODE == "LOCAL":
   llm = OllamaLLM(
     model=models["llama"],
-    temperature=0.0,
-    base_url="http://localhost:52625"
+    temperature=0.0
   )
 else:
   llm = ChatOpenAI(model=models["openai"], temperature=0.0)
 
 retriever_llm = ChatOllama(
-  model="llama3.1:8b",
-  temperature=0.0,
-  base_url="http://localhost:52625"
+  model="qwen3:8b",
+  temperature=0.6,
+  reasoning=False
 )
 
 def get_txt_loader(folder_name):
@@ -127,6 +127,9 @@ prompt = ChatPromptTemplate.from_messages(
   ]
 )
 
+def breakCamelCaseEntities(entity: str) -> str:
+  return re.sub(r'(?<!^)(?=[A-Z])', ' ', entity)
+
 entity_chain = prompt | retriever_llm.with_structured_output(Entities)
 
 def structured_retriever(question: str) -> str:
@@ -136,7 +139,7 @@ def structured_retriever(question: str) -> str:
   print(f"Entities found: {entities}")
   for entity in entities.names:
     response = graph.query(
-      """ CALL db.index.fulltext.queryNodes('ontology', $query, {limit:5})
+      """ CALL db.index.fulltext.queryNodes('ontology', $query, {limit:4})
           YIELD node,score
           CALL(node) {
             WITH node
@@ -167,7 +170,7 @@ def structured_retriever(question: str) -> str:
           }
           RETURN output, score
       """,
-      {"query": entity},
+      {"query": breakCamelCaseEntities(entity)},
     )
     for el in response:
       results_set.add(el['output']) 
