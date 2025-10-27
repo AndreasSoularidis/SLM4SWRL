@@ -11,6 +11,7 @@ from langchain_openai import ChatOpenAI
 from PromptTempates import CustomPromptTemplates
 from ontology_analyzer import OntologyAnalyzer
 import time
+import re
 load_dotenv()
 
 MODE = "LOCAL" # LOCAL
@@ -61,16 +62,6 @@ class Entities(BaseModel):
       description="FIND and RETURN ALL the ontology concepts such as entities and relationships that appear in the text",
   )
 
-def generate_full_text_query(input: str) -> str:
-  full_text_query = ""
-  words = [el for el in remove_lucene_chars(input).split() if el]
-  for word in words[:-1]:
-    full_text_query += f" {word} AND"
-  full_text_query += f" {words[-1]}"
-  
-  return full_text_query.strip()
-
-
 prompt = ChatPromptTemplate.from_messages(
   [
     (
@@ -89,15 +80,15 @@ prompt = ChatPromptTemplate.from_messages(
   ]
 )
 
-onto_analyzer = OntologyAnalyzer("./ontologies/Wear4PDmoveOnto.ttl")
+onto_analyzer = OntologyAnalyzer("./ontologies/beAWARE.ttl")
 
 onto_classes = ", ".join(onto_analyzer.get_classes())
 
-print(onto_classes)
 
 entity_chain = prompt | retriever_llm.with_structured_output(Entities)
 
-
+def breakCamelCaseEntities(entity: str) -> str:
+  return re.sub(r'(?<!^)(?=[A-Z])', ' ', entity)
 
 def structured_retriever(question: str) -> str:
   # results = ""
@@ -105,7 +96,7 @@ def structured_retriever(question: str) -> str:
   entities = entity_chain.invoke({"question": question, "context": onto_classes})
   for entity in entities.names:
     response = graph.query(
-      """ CALL db.index.fulltext.queryNodes('ontology', $query, {limit:3})
+      """ CALL db.index.fulltext.queryNodes('ontology', $query, {limit:4})
           YIELD node,score
           CALL(node) {
             WITH node
@@ -136,7 +127,7 @@ def structured_retriever(question: str) -> str:
           }
           RETURN output, score
       """,
-      {"query": generate_full_text_query(entity)},
+      {"query": breakCamelCaseEntities(entity)},
     )
     for el in response:
       results_set.add(el['output']) 
@@ -160,7 +151,7 @@ chain = (
   | StrOutputParser()
 )
 
-rules = CustomPromptTemplates.pd_rules_in_nl(0, 10)
+rules = CustomPromptTemplates.rules_in_nl(0, 10)
 
 for index, rule in enumerate(rules):
   print(f"Rule {index+1}")
