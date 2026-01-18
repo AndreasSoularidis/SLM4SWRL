@@ -106,6 +106,13 @@ sosa:hasFeatureOfInterest rdfs:domain onto:Patient ;
                           rdfs:label "hasFeatureOfInterest"@en .
 
 
+###  http://www.w3.org/ns/sosa/observedProperty
+sosa:observedProperty rdfs:domain sosa:Observation ;
+                      rdfs:range <http://www.case.edu/MDO#Tremor> ,
+                                 <http://www.case.edu/PMDO#BradykinesiaofUpperLimb> ;
+                      rdfs:label "observedProperty"@en .
+
+
 ###  https://saref.etsi.org/core/hasTime
 core:hasTime rdf:type owl:ObjectProperty .
 
@@ -497,9 +504,6 @@ core:Time rdf:type owl:Class .
 #################################################################
 
 sosa:madeBySensor rdfs:label "madeBySensor"@en .
-
-
-sosa:observedProperty rdfs:label "observedProperty"@en .
 
 
 sosa:observes rdfs:label "observes"@en .

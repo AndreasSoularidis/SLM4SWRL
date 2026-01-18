@@ -4,13 +4,11 @@ from langchain_ollama import ChatOllama
 from pydantic import BaseModel, Field
 from typing import List
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_neo4j.vectorstores.neo4j_vector import remove_lucene_chars
 from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
 from PromptTempates import CustomPromptTemplates
 from ontology_analyzer import OntologyAnalyzer
-import time
 import re
 load_dotenv()
 
@@ -20,7 +18,7 @@ models = {
   "mistral": "mistral:7b",
   "mistral-instruct": "swot/mistral-v3-instruct:new",
   "llama": "llama3.1:8b",
-  "llama-instruct": "swot/llama3.1-instruct:new",
+  "llama-instruct": "llama/swrl",
   "qwen": "qwen2.5:7b",
   "qwen-instruct": "swot/qwen2.5-instruct:lastest",
   "openai": "ft:gpt-4o-2024-08-06:personal:recipe-ner:BMAvb5Vd",
@@ -33,7 +31,7 @@ models = {
 
 if MODE == "LOCAL":
   llm = ChatOllama(
-    model=models["llama"],
+    model=models["llama-instruct"],
     temperature=0.0,
   )
 else:
@@ -42,6 +40,7 @@ else:
 retriever_llm = ChatOllama(
   model="llama3.1:8b",
   temperature=0.0,
+  reasoning=False
 )
 
 graph = Neo4jGraph()
@@ -67,8 +66,7 @@ prompt = ChatPromptTemplate.from_messages(
     (
       "system",
       "You are an expert Knowledge/Ontology Engineer. "
-      "Your task is to extract nouns or short phrases that appear in the input text "
-      "and are present in the context. "
+      "Your task is to extract nouns or short phrases that appear in the input text and are present in the context. "
       "Output only the list of concept names, no explanations, no reasoning, no OWL or RDF, no text other than the list. "
       "Each concept must exactly match or be semantically equivalent to an ontology label."
     ),
@@ -83,7 +81,6 @@ prompt = ChatPromptTemplate.from_messages(
 onto_analyzer = OntologyAnalyzer("./ontologies/beAWARE.ttl")
 
 onto_classes = ", ".join(onto_analyzer.get_classes())
-
 
 entity_chain = prompt | retriever_llm.with_structured_output(Entities)
 
@@ -139,7 +136,9 @@ def structured_retriever(question: str) -> str:
 
 # print(structured_retriever("If a mission is related to a specific incident and that incident has a priority level of 'high', then the mission should also be assigned as a 'high' priority."))
 
-prompt = ChatPromptTemplate.from_template(CustomPromptTemplates.RAG_template)
+templates = CustomPromptTemplates()
+
+prompt = ChatPromptTemplate.from_template(templates.get_prompt("graph"))
 
 chain = (
   RunnableParallel({
@@ -151,14 +150,12 @@ chain = (
   | StrOutputParser()
 )
 
-rules = CustomPromptTemplates.rules_in_nl(0, 10)
-
-for index, rule in enumerate(rules):
-  print(f"Rule {index+1}")
-  print(f"Natural Language: {rule}")
-  print(f"\nSWRL rule:")
-  for chunk in chain.invoke(rule):
-    print(chunk, end="", flush=True)
-  print("\n")
-  print("Waiting 10 seconds...")
-  time.sleep(10)
+rules = CustomPromptTemplates.sar_rules_in_nl(0, 10)
+for _ in range(3):
+  for index, rule in enumerate(rules):
+    print(f"Rule {index+1}")
+    print(f"Natural Language: {rule}")
+    print(f"\nSWRL rule:")
+    for chunk in chain.invoke(rule):
+      print(chunk, end="", flush=True)
+    print("\n")
