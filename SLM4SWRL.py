@@ -18,7 +18,7 @@ models = {
   "mistral": "mistral:7b",
   "mistral-instruct": "swot/mistral-v3-instruct:new",
   "llama": "llama3.1:8b",
-  "llama-instruct": "llama3.1-SWRL",
+  "llama-instruct": "llama-SWRL-ext",
   "qwen": "qwen2.5:7b",
   "qwen-instruct": "swot/qwen2.5-instruct:lastest",
   "openai": "ft:gpt-4o-2024-08-06:personal:recipe-ner:BMAvb5Vd",
@@ -31,7 +31,7 @@ models = {
 
 if MODE == "LOCAL":
   llm = ChatOllama(
-    model=models["llama-instruct"],
+    model=models["llama"],
     temperature=0.0,
   )
 else:
@@ -103,7 +103,7 @@ def structured_retriever(question: str) -> str:
                 WHEN node.uri CONTAINS '#' THEN split(node.uri, '#')[-1]
                 ELSE split(node.uri, '/')[-1]
               END + '  ' + 
-              ':' + replace(type(r), '__', ':') + '  ' + 
+              replace(type(r), '__', ':') + '  ' + 
               ':' + CASE 
                 WHEN neighbor.uri CONTAINS '#' THEN split(neighbor.uri, '#')[-1] + ' .'
                 ELSE split(neighbor.uri, '/')[-1] + ' .'
@@ -116,7 +116,7 @@ def structured_retriever(question: str) -> str:
                 WHEN neighbor.uri CONTAINS '#' THEN split(neighbor.uri, '#')[-1]
                 ELSE split(neighbor.uri, '/')[-1]
               END + '  ' + 
-              ':' + replace(type(r), '__', ':') + '  ' +
+              replace(type(r), '__', ':') + '  ' +
               ':' + CASE 
                 WHEN node.uri CONTAINS '#' THEN split(node.uri, '#')[-1] + ' .'
                 ELSE split(node.uri, '/')[-1] + ' .'
@@ -136,9 +136,8 @@ def structured_retriever(question: str) -> str:
 
 # print(structured_retriever("If a mission is related to a specific incident and that incident has a priority level of 'high', then the mission should also be assigned as a 'high' priority."))
 
-templates = CustomPromptTemplates()
 
-prompt = ChatPromptTemplate.from_template(templates.get_prompt("graph"))
+prompt = ChatPromptTemplate.from_template(CustomPromptTemplates.prompt)
 
 chain = (
   RunnableParallel({
@@ -151,7 +150,7 @@ chain = (
 )
 
 rules = CustomPromptTemplates.sar_rules_in_nl(0, 10)
-for _ in range(3):
+for _ in range(1):
   for index, rule in enumerate(rules):
     print(f"Rule {index+1}")
     print(f"Natural Language: {rule}")
