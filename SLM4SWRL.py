@@ -18,7 +18,7 @@ models = {
   "mistral": "mistral:7b",
   "mistral-instruct": "swot/mistral-v3-instruct:new",
   "llama": "llama3.1:8b",
-  "llama-instruct": "llama/swrl",
+  "llama-instruct": "llama3.1-SWRL",
   "qwen": "qwen2.5:7b",
   "qwen-instruct": "swot/qwen2.5-instruct:lastest",
   "openai": "ft:gpt-4o-2024-08-06:personal:recipe-ner:BMAvb5Vd",
@@ -82,7 +82,7 @@ onto_analyzer = OntologyAnalyzer("./ontologies/beAWARE.ttl")
 
 onto_classes = ", ".join(onto_analyzer.get_classes())
 
-entity_chain = prompt | retriever_llm.with_structured_output(Entities)
+entity_chain = prompt | retriever_llm.with_structured_output(Entities, method="json_schema")
 
 def breakCamelCaseEntities(entity: str) -> str:
   return re.sub(r'(?<!^)(?=[A-Z])', ' ', entity)
@@ -105,8 +105,8 @@ def structured_retriever(question: str) -> str:
               END + '  ' + 
               ':' + replace(type(r), '__', ':') + '  ' + 
               ':' + CASE 
-                WHEN neighbor.uri CONTAINS '#' THEN split(neighbor.uri, '#')[-1]
-                ELSE split(neighbor.uri, '/')[-1]
+                WHEN neighbor.uri CONTAINS '#' THEN split(neighbor.uri, '#')[-1] + ' .'
+                ELSE split(neighbor.uri, '/')[-1] + ' .'
               END AS output
             UNION ALL
             WITH node
@@ -118,8 +118,8 @@ def structured_retriever(question: str) -> str:
               END + '  ' + 
               ':' + replace(type(r), '__', ':') + '  ' +
               ':' + CASE 
-                WHEN node.uri CONTAINS '#' THEN split(node.uri, '#')[-1]
-                ELSE split(node.uri, '/')[-1]
+                WHEN node.uri CONTAINS '#' THEN split(node.uri, '#')[-1] + ' .'
+                ELSE split(node.uri, '/')[-1] + ' .'
               END AS output
           }
           RETURN output, score
