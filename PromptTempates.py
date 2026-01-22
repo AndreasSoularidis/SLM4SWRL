@@ -60,6 +60,8 @@ class CustomPromptTemplates:
   """
   
   prompt = """
+  Below is an instruction that describes a task, paired with an input that provides further context.
+  ### Instruction:
   Act as an ontology engineer. Use the following content (examples, part of the ontology, and common mistakes) as a guide to translate the natural language rule you are given into a SWRL rule. 
   EXAMPLES
     Example 1
@@ -78,6 +80,7 @@ class CustomPromptTemplates:
     Rule in natural language: if a researcher has published more than 10 papers in a Top-Tier conference, then the researcher is a prominent researcher and has a high citation impact.
     SWRL rule: Researcher(?r) ^ hasPublished(?r, ?c) ^ Conference(?c) ^ topTierConference(?c) ^ swrlb:greaterThan(count(?c), 10) -> ProminentResearcher(?r) ^ hasHighCitationImpact(?r, true)
   END OF EXAMPLES
+  ### Input:
   PART OF ONTOLOGY 
 
     {context}
@@ -96,6 +99,7 @@ class CustomPromptTemplates:
 
   The rule in natural language is the following: {question}
   Give only the final SWRL rule
+  ### Response:
   """
   
 

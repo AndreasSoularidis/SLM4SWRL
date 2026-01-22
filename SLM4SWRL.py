@@ -18,7 +18,7 @@ models = {
   "mistral": "mistral:7b",
   "mistral-instruct": "swot/mistral-v3-instruct:new",
   "llama": "llama3.1:8b",
-  "llama-instruct": "llama-SWRL-ext",
+  "llama-instruct": "llama3.1-SWRL-4",
   "qwen": "qwen2.5:7b",
   "qwen-instruct": "swot/qwen2.5-instruct:lastest",
   "openai": "ft:gpt-4o-2024-08-06:personal:recipe-ner:BMAvb5Vd",
@@ -31,7 +31,7 @@ models = {
 
 if MODE == "LOCAL":
   llm = ChatOllama(
-    model=models["llama"],
+    model=models["llama-instruct"],
     temperature=0.0,
   )
 else:
