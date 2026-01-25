@@ -84,6 +84,11 @@ python3 -m pip install -r requirements.txt
 ```bash
 CALL n10s.graphconfig.init();
 ```
+
+```
+CREATE CONSTRAINT n10s_unique_uri FOR (r:Resource) REQUIRE r.uri IS UNIQUE;
+```
+
 ```bash
 CALL n10s.rdf.import.fetch("https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology.owl","RDF/XML");
 ```
