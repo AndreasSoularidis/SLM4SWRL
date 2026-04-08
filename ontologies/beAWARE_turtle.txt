@@ -1172,14 +1172,6 @@ beAWARE_ontology:Wildlife rdf:type owl:Class ;
 
 
 #################################################################
-#    Individuals
-#################################################################
-
-###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#person_1
-beAWARE_ontology:person_1 rdf:type owl:NamedIndividual .
-
-
-#################################################################
 #    Annotations
 #################################################################
 

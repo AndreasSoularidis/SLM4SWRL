@@ -1,0 +1,1896 @@
+Prefix: : <https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#>
+Prefix: beAWARE_ontology: <https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#>
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: skos: <http://www.w3.org/2004/02/skos/core#>
+Prefix: terms: <http://purl.org/dc/terms/>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+Ontology: <https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology>
+
+Import: <http://www.w3.org/2004/02/skos/core>
+
+Annotations: 
+    owl:versionInfo 1.0
+
+AnnotationProperty: owl:versionInfo  
+AnnotationProperty: rdfs:comment
+AnnotationProperty: rdfs:isDefinedBy
+AnnotationProperty: rdfs:label
+AnnotationProperty: rdfs:seeAlso
+AnnotationProperty: skos:definition
+AnnotationProperty: skos:example
+AnnotationProperty: skos:note
+Datatype: rdf:PlainLiteral
+Datatype: xsd:anyURI
+Datatype: xsd:date
+Datatype: xsd:dateTime
+Datatype: xsd:decimal
+Datatype: xsd:float
+Datatype: xsd:int
+Datatype: xsd:string
+
+ObjectProperty: beAWARE_ontology:causedByDisaster
+
+    Annotations: 
+        rdfs:label "caused by disaster",
+        skos:definition "Indicates which disaster type is responsible for this impact type."
+    
+    Domain: 
+        beAWARE_ontology:ImpactType
+    
+    Range: 
+        beAWARE_ontology:NaturalDisasterType
+    
+    InverseOf: 
+        beAWARE_ontology:causesDisasterImpact
+    
+    
+ObjectProperty: beAWARE_ontology:causedByIncident
+
+    Annotations: 
+        rdfs:label "caused by incident",
+        skos:definition "Indicates which incident type has caused this impact type."
+    
+    Domain: 
+        beAWARE_ontology:ImpactType
+    
+    Range: 
+        beAWARE_ontology:IncidentType
+    
+    InverseOf: 
+        beAWARE_ontology:causesIncidentImpact
+    
+    
+ObjectProperty: beAWARE_ontology:causesDisasterImpact
+
+    Annotations: 
+        rdfs:label "causes disaster impact",
+        skos:definition "Indicates which impact type is caused by this natural disaster type."
+    
+    Domain: 
+        beAWARE_ontology:NaturalDisasterType
+    
+    Range: 
+        beAWARE_ontology:ImpactType
+    
+    InverseOf: 
+        beAWARE_ontology:causedByDisaster
+    
+    
+ObjectProperty: beAWARE_ontology:causesIncidentImpact
+
+    Annotations: 
+        rdfs:label "causes incident impact",
+        skos:definition "Indicates which impact type is caused by this type of incident."
+    
+    Domain: 
+        beAWARE_ontology:IncidentType
+    
+    Range: 
+        beAWARE_ontology:ImpactType
+    
+    InverseOf: 
+        beAWARE_ontology:causedByIncident
+    
+    
+ObjectProperty: beAWARE_ontology:characterizedByParameterType
+
+    Annotations: 
+        rdfs:label "characterized by parameter type",
+        skos:definition "Associates a natural disaster type with a climate parameter type."
+    
+    Domain: 
+        beAWARE_ontology:NaturalDisasterType
+    
+    Range: 
+        beAWARE_ontology:ClimateParameterType
+    
+    InverseOf: 
+        beAWARE_ontology:characterizesDisasterType
+    
+    
+ObjectProperty: beAWARE_ontology:characterizesDisasterType
+
+    Annotations: 
+        rdfs:label "characterizes disaster type",
+        skos:definition "Associates a climate parameter type with a natural disaster type."
+    
+    Domain: 
+        beAWARE_ontology:ClimateParameterType
+    
+    Range: 
+        beAWARE_ontology:NaturalDisasterType
+    
+    InverseOf: 
+        beAWARE_ontology:characterizedByParameterType
+    
+    
+ObjectProperty: beAWARE_ontology:containedInDataset
+
+    Annotations: 
+        rdfs:label "contained in dataset",
+        skos:definition "Indicates the dataset this detection object is contained in."
+    
+    Domain: 
+        beAWARE_ontology:Detection
+    
+    Range: 
+        beAWARE_ontology:Dataset
+    
+    InverseOf: 
+        beAWARE_ontology:containsDetection
+    
+    
+ObjectProperty: beAWARE_ontology:containsDetection
+
+    Annotations: 
+        rdfs:label "contains detection",
+        skos:definition "A dataset may contain multiple detections."
+    
+    Domain: 
+        beAWARE_ontology:Dataset
+    
+    Range: 
+        beAWARE_ontology:Detection
+    
+    InverseOf: 
+        beAWARE_ontology:containedInDataset
+    
+    
+ObjectProperty: beAWARE_ontology:derivedFrom
+
+    Annotations: 
+        rdfs:label "derived from",
+        skos:definition "Represents the fact that an incident may lead to other incidents."
+    
+    Characteristics: 
+        Transitive
+    
+    Domain: 
+        beAWARE_ontology:Incident
+    
+    Range: 
+        beAWARE_ontology:Incident
+    
+    
+ObjectProperty: beAWARE_ontology:detectsIncident
+
+    Annotations: 
+        rdfs:label "detects incident",
+        skos:definition "Indicates which incidents were detected by a specific detection activity.",
+        skos:example "A flooding incident, a blocked road etc."
+    
+    Domain: 
+        beAWARE_ontology:Detection
+    
+    Range: 
+        beAWARE_ontology:Incident
+    
+    InverseOf: 
+        beAWARE_ontology:incidentDetectedBy
+    
+    
+ObjectProperty: beAWARE_ontology:detectsParticipant
+
+    Annotations: 
+        rdfs:label "detects participant",
+        skos:definition "Indicates which participants were detected by a specific detection activity.",
+        skos:example "Humans in danger, submerged cars etc."
+    
+    Domain: 
+        beAWARE_ontology:Detection
+    
+    Range: 
+        beAWARE_ontology:VulnerableObject
+    
+    InverseOf: 
+        beAWARE_ontology:participantDetectedBy
+    
+    
+ObjectProperty: beAWARE_ontology:hasClimateParameterMeasurement
+
+    Annotations: 
+        rdfs:label "has disaster climate parameter",
+        skos:definition "Associates a natural disaster occurrence to a climate parameter measurement."
+    
+    Domain: 
+        beAWARE_ontology:NaturalDisaster
+    
+    Range: 
+        beAWARE_ontology:ClimateParameter
+    
+    InverseOf: 
+        beAWARE_ontology:relatesToNaturalDisaster
+    
+    
+ObjectProperty: beAWARE_ontology:hasClimateParameterOccurrence
+
+    Annotations: 
+        rdfs:label "has climate parameter occurrence",
+        skos:definition "Assigns a climate parameter type to a specific climate parameter."
+    
+    Domain: 
+        beAWARE_ontology:ClimateParameterType
+    
+    Range: 
+        beAWARE_ontology:ClimateParameter
+    
+    InverseOf: 
+        beAWARE_ontology:isOfClimateParameterType
+    
+    
+ObjectProperty: beAWARE_ontology:hasDisasterLocation
+
+    Annotations: 
+        rdfs:label "has disaster location",
+        skos:definition "Represents the location where a natural disaster takes place."
+    
+    Domain: 
+        beAWARE_ontology:NaturalDisaster
+    
+    Range: 
+        beAWARE_ontology:Location
+    
+    InverseOf: 
+        beAWARE_ontology:isLocationOfDisaster
+    
+    
+ObjectProperty: beAWARE_ontology:hasDisasterOccurrence
+
+    Annotations: 
+        rdfs:label "has disaster occurrence",
+        skos:definition "Links a natural disaster type to a natural disaster."
+    
+    Domain: 
+        beAWARE_ontology:NaturalDisasterType
+    
+    Range: 
+        beAWARE_ontology:NaturalDisaster
+    
+    InverseOf: 
+        beAWARE_ontology:isOfDisasterType
+    
+    
+ObjectProperty: beAWARE_ontology:hasImpactOccurrence
+
+    Annotations: 
+        rdfs:label "has impact occurrence",
+        skos:definition "Links an impact type to a specific impact pccurrence."
+    
+    Domain: 
+        beAWARE_ontology:ImpactType
+    
+    Range: 
+        beAWARE_ontology:Impact
+    
+    InverseOf: 
+        beAWARE_ontology:isOfImpactType
+    
+    
+ObjectProperty: beAWARE_ontology:hasImpactOn
+
+    Annotations: 
+        rdfs:label "has impact on",
+        skos:definition "Indicates which vulnerable object is impacted by the specific impact occurrence."
+    
+    Domain: 
+        beAWARE_ontology:Impact
+    
+    Range: 
+        beAWARE_ontology:VulnerableObject
+    
+    InverseOf: 
+        beAWARE_ontology:isImpactedBy
+    
+    
+ObjectProperty: beAWARE_ontology:hasIncidentClimateParameter
+
+    Annotations: 
+        rdfs:label "has incident climate parameter",
+        skos:definition "Associates an incident to a climate parameter measurement."
+    
+    Domain: 
+        beAWARE_ontology:Incident
+    
+    Range: 
+        beAWARE_ontology:ClimateParameter
+    
+    InverseOf: 
+        beAWARE_ontology:isClimateParameterOfIncident
+    
+    
+ObjectProperty: beAWARE_ontology:hasIncidentImpact
+
+    Annotations: 
+        rdfs:label "has incident impact",
+        skos:definition "Indicates the impact of the specific incident."
+    
+    Domain: 
+        beAWARE_ontology:Incident
+    
+    Range: 
+        beAWARE_ontology:Impact
+    
+    InverseOf: 
+        beAWARE_ontology:isImpactOfIncident
+    
+    
+ObjectProperty: beAWARE_ontology:hasIncidentLocation
+
+    Annotations: 
+        rdfs:label "has incident location",
+        skos:definition "Represents the location where an incident occurs."
+    
+    Domain: 
+        beAWARE_ontology:Incident
+    
+    Range: 
+        beAWARE_ontology:Location
+    
+    InverseOf: 
+        beAWARE_ontology:isLocationOfIncident
+    
+    
+ObjectProperty: beAWARE_ontology:hasIncidentOccurrence
+
+    Annotations: 
+        rdfs:label "has incident occurrence",
+        skos:definition "Links an incident type to an incident."
+    
+    Domain: 
+        beAWARE_ontology:IncidentType
+    
+    Range: 
+        beAWARE_ontology:Incident
+    
+    InverseOf: 
+        beAWARE_ontology:isOfIncidentType
+    
+    
+ObjectProperty: beAWARE_ontology:hasMeasurementLocation
+
+    Annotations: 
+        rdfs:label "has measurement location",
+        skos:definition "Represents the location where a climate parameter measurement was taken."
+    
+    Domain: 
+        beAWARE_ontology:ClimateParameter
+    
+    Range: 
+        beAWARE_ontology:Location
+    
+    InverseOf: 
+        beAWARE_ontology:isLocationOfMeasurement
+    
+    
+ObjectProperty: beAWARE_ontology:hasMediaLocation
+
+    Annotations: 
+        rdfs:label "has media location",
+        skos:definition "Represents the location where a media item was captured."
+    
+    Domain: 
+        beAWARE_ontology:MediaItem
+    
+    Range: 
+        beAWARE_ontology:Location
+    
+    InverseOf: 
+        beAWARE_ontology:isLocationOfMediaItem
+    
+    
+ObjectProperty: beAWARE_ontology:hasReportLocation
+
+    Annotations: 
+        rdfs:label "has report location",
+        skos:definition "Indicates the location of the incident report."
+    
+    Domain: 
+        beAWARE_ontology:IncidentReport
+    
+    Range: 
+        beAWARE_ontology:Location
+    
+    InverseOf: 
+        beAWARE_ontology:isLocationOfReport
+    
+    
+ObjectProperty: beAWARE_ontology:hasResponderLocation
+
+    Annotations: 
+        rdfs:label "has responder location",
+        skos:definition "Represents the location where a rescue unit is at."
+    
+    Domain: 
+        beAWARE_ontology:Responder
+    
+    Range: 
+        beAWARE_ontology:Location
+    
+    InverseOf: 
+        beAWARE_ontology:isLocationOfResponder
+    
+    
+ObjectProperty: beAWARE_ontology:incidentDetectedBy
+
+    Annotations: 
+        rdfs:label "incident detected by",
+        skos:definition "Indicates the detection activity that detected this incident."
+    
+    Domain: 
+        beAWARE_ontology:Incident
+    
+    Range: 
+        beAWARE_ontology:Detection
+    
+    InverseOf: 
+        beAWARE_ontology:detectsIncident
+    
+    
+ObjectProperty: beAWARE_ontology:involvedInDataset
+
+    Annotations: 
+        rdfs:label "involved in dataset",
+        skos:definition "Indicates the dataset this incident is involved in."
+    
+    Domain: 
+        beAWARE_ontology:Incident
+    
+    Range: 
+        beAWARE_ontology:Dataset
+    
+    InverseOf: 
+        beAWARE_ontology:involvesIncident
+    
+    
+ObjectProperty: beAWARE_ontology:involvedInIncident
+
+    Annotations: 
+        rdfs:label "involved in incident",
+        skos:definition "Indicates the incident a vulnerable object is involved in."
+    
+    Domain: 
+        beAWARE_ontology:VulnerableObject
+    
+    Range: 
+        beAWARE_ontology:Incident
+    
+    InverseOf: 
+        beAWARE_ontology:involvesParticipant
+    
+    
+ObjectProperty: beAWARE_ontology:involvesIncident
+
+    Annotations: 
+        rdfs:label "involves incident",
+        skos:definition "Certain analysis components recognize the major incident (e.g. fire, flood, etc.) portrayed in a media item."
+    
+    Domain: 
+        beAWARE_ontology:Dataset
+    
+    Range: 
+        beAWARE_ontology:Incident
+    
+    InverseOf: 
+        beAWARE_ontology:involvedInDataset
+    
+    
+ObjectProperty: beAWARE_ontology:involvesParticipant
+
+    Annotations: 
+        rdfs:label "involves participant",
+        skos:definition "Indicates the vulnerable objects involved in an incident."
+    
+    Domain: 
+        beAWARE_ontology:Incident
+    
+    Range: 
+        beAWARE_ontology:VulnerableObject
+    
+    InverseOf: 
+        beAWARE_ontology:involvedInIncident
+    
+    
+ObjectProperty: beAWARE_ontology:isAssignedMission
+
+    Annotations: 
+        rdfs:label "is assigned mission",
+        skos:definition "Indicates the mission assignment of a rescue unit."
+    
+    Domain: 
+        beAWARE_ontology:Responder
+    
+    Range: 
+        beAWARE_ontology:Mission
+    
+    InverseOf: 
+        beAWARE_ontology:isAssignedToResponder
+    
+    
+ObjectProperty: beAWARE_ontology:isAssignedToResponder
+
+    Annotations: 
+        rdfs:label "is assigned to responder",
+        skos:definition "Links a mission to a rescue unit."
+    
+    Domain: 
+        beAWARE_ontology:Mission
+    
+    Range: 
+        beAWARE_ontology:Responder
+    
+    InverseOf: 
+        beAWARE_ontology:isAssignedMission
+    
+    
+ObjectProperty: beAWARE_ontology:isClimateParameterOfIncident
+
+    Annotations: 
+        rdfs:label "is climate parameter of incident",
+        skos:definition "Links a climate parameter measurement to an incident."
+    
+    Domain: 
+        beAWARE_ontology:ClimateParameter
+    
+    Range: 
+        beAWARE_ontology:Incident
+    
+    InverseOf: 
+        beAWARE_ontology:hasIncidentClimateParameter
+    
+    
+ObjectProperty: beAWARE_ontology:isImpactOfIncident
+
+    Annotations: 
+        rdfs:label "is impact of incident",
+        skos:definition "Links an impact to an incident."
+    
+    Domain: 
+        beAWARE_ontology:Impact
+    
+    Range: 
+        beAWARE_ontology:Incident
+    
+    InverseOf: 
+        beAWARE_ontology:hasIncidentImpact
+    
+    
+ObjectProperty: beAWARE_ontology:isImpactedBy
+
+    Annotations: 
+        rdfs:label "is impacted by",
+        skos:definition "Links an affected object to an impact."
+    
+    Domain: 
+        beAWARE_ontology:VulnerableObject
+    
+    Range: 
+        beAWARE_ontology:Impact
+    
+    InverseOf: 
+        beAWARE_ontology:hasImpactOn
+    
+    
+ObjectProperty: beAWARE_ontology:isLocationOfDisaster
+
+    Annotations: 
+        rdfs:label "is location of disaster",
+        skos:definition "Links a location to a natural disaster occurrence."
+    
+    Domain: 
+        beAWARE_ontology:Location
+    
+    Range: 
+        beAWARE_ontology:NaturalDisaster
+    
+    InverseOf: 
+        beAWARE_ontology:hasDisasterLocation
+    
+    
+ObjectProperty: beAWARE_ontology:isLocationOfIncident
+
+    Annotations: 
+        rdfs:label "is location of incident",
+        skos:definition "Links a location to an incident occurrence."
+    
+    Domain: 
+        beAWARE_ontology:Location
+    
+    Range: 
+        beAWARE_ontology:Incident
+    
+    InverseOf: 
+        beAWARE_ontology:hasIncidentLocation
+    
+    
+ObjectProperty: beAWARE_ontology:isLocationOfMeasurement
+
+    Annotations: 
+        rdfs:label "is location of measurement",
+        skos:definition "Links a location to a climate parameter measurement."
+    
+    Domain: 
+        beAWARE_ontology:Location
+    
+    Range: 
+        beAWARE_ontology:ClimateParameter
+    
+    InverseOf: 
+        beAWARE_ontology:hasMeasurementLocation
+    
+    
+ObjectProperty: beAWARE_ontology:isLocationOfMediaItem
+
+    Annotations: 
+        rdfs:label "is location of media item",
+        skos:definition "Links a location to a media item."
+    
+    Domain: 
+        beAWARE_ontology:Location
+    
+    Range: 
+        beAWARE_ontology:MediaItem
+    
+    InverseOf: 
+        beAWARE_ontology:hasMediaLocation
+    
+    
+ObjectProperty: beAWARE_ontology:isLocationOfReport
+
+    Annotations: 
+        rdfs:label "is location of report",
+        skos:definition "Links an incident report to a location."
+    
+    Domain: 
+        beAWARE_ontology:Location
+    
+    Range: 
+        beAWARE_ontology:IncidentReport
+    
+    InverseOf: 
+        beAWARE_ontology:hasReportLocation
+    
+    
+ObjectProperty: beAWARE_ontology:isLocationOfResponder
+
+    Annotations: 
+        rdfs:label "is location of responder",
+        skos:definition "Links a location to a rescue unit."
+    
+    Domain: 
+        beAWARE_ontology:Location
+    
+    Range: 
+        beAWARE_ontology:Responder
+    
+    InverseOf: 
+        beAWARE_ontology:hasResponderLocation
+    
+    
+ObjectProperty: beAWARE_ontology:isOfClimateParameterType
+
+    Annotations: 
+        rdfs:label "is of climate parameter type",
+        skos:definition "Associates a climate parameter with a respective type."
+    
+    Domain: 
+        beAWARE_ontology:ClimateParameter
+    
+    Range: 
+        beAWARE_ontology:ClimateParameterType
+    
+    InverseOf: 
+        beAWARE_ontology:hasClimateParameterOccurrence
+    
+    
+ObjectProperty: beAWARE_ontology:isOfDisasterType
+
+    Annotations: 
+        rdfs:label "is of disaster type",
+        skos:definition "Links a natural disaster to a natural disaster type."
+    
+    Domain: 
+        beAWARE_ontology:NaturalDisaster
+    
+    Range: 
+        beAWARE_ontology:NaturalDisasterType
+    
+    InverseOf: 
+        beAWARE_ontology:hasDisasterOccurrence
+    
+    
+ObjectProperty: beAWARE_ontology:isOfImpactType
+
+    Annotations: 
+        rdfs:label "is of impact type",
+        skos:definition "Links an impact to an impact type."
+    
+    Domain: 
+        beAWARE_ontology:Impact
+    
+    Range: 
+        beAWARE_ontology:ImpactType
+    
+    InverseOf: 
+        beAWARE_ontology:hasImpactOccurrence
+    
+    
+ObjectProperty: beAWARE_ontology:isOfIncidentType
+
+    Annotations: 
+        rdfs:label "is of incident type",
+        skos:definition "Links an incident to an incident type."
+    
+    Domain: 
+        beAWARE_ontology:Incident
+    
+    Range: 
+        beAWARE_ontology:IncidentType
+    
+    InverseOf: 
+        beAWARE_ontology:hasIncidentOccurrence
+    
+    
+ObjectProperty: beAWARE_ontology:isResultOf
+
+    Annotations: 
+        rdfs:label "is result of",
+        skos:definition "Represents the fact that a natural disaster can be the result of other natural disasters."
+    
+    Characteristics: 
+        Transitive
+    
+    Domain: 
+        beAWARE_ontology:NaturalDisasterType
+    
+    Range: 
+        beAWARE_ontology:NaturalDisasterType
+    
+    InverseOf: 
+        beAWARE_ontology:leadsTo
+    
+    
+ObjectProperty: beAWARE_ontology:leadsTo
+
+    Annotations: 
+        rdfs:label "leads to",
+        skos:definition "Represents the fact that a natural disaster can lead to other natural disasters."
+    
+    Characteristics: 
+        Transitive
+    
+    Domain: 
+        beAWARE_ontology:NaturalDisasterType
+    
+    Range: 
+        beAWARE_ontology:NaturalDisasterType
+    
+    InverseOf: 
+        beAWARE_ontology:isResultOf
+    
+    
+ObjectProperty: beAWARE_ontology:observes
+
+    Annotations: 
+        rdfs:label "observes",
+        skos:definition "The sensor observes a specific parameter."
+    
+    Domain: 
+        beAWARE_ontology:Sensor
+    
+    Range: 
+        beAWARE_ontology:ClimateParameter
+    
+    
+ObjectProperty: beAWARE_ontology:participantDetectedBy
+
+    Annotations: 
+        rdfs:label "participant detected by",
+        skos:definition "Indicates which detection activity detected the participants."
+    
+    Domain: 
+        beAWARE_ontology:VulnerableObject
+    
+    Range: 
+        beAWARE_ontology:Detection
+    
+    InverseOf: 
+        beAWARE_ontology:detectsParticipant
+    
+    
+ObjectProperty: beAWARE_ontology:producedByTask
+
+    Annotations: 
+        rdfs:label "produced by task",
+        skos:definition "Indicates the task a dataset was produced from."
+    
+    Domain: 
+        beAWARE_ontology:Dataset
+    
+    Range: 
+        beAWARE_ontology:Task
+    
+    InverseOf: 
+        beAWARE_ontology:taskProducesDataset
+    
+    
+ObjectProperty: beAWARE_ontology:relatesTo
+
+    Annotations: 
+        rdfs:label "relates to",
+        skos:definition "Associates media items."
+    
+    Characteristics: 
+        Symmetric
+    
+    Domain: 
+        beAWARE_ontology:MediaItem
+    
+    Range: 
+        beAWARE_ontology:MediaItem
+    
+    
+ObjectProperty: beAWARE_ontology:relatesToIncident
+
+    Annotations: 
+        rdfs:label "relates to incident",
+        skos:definition "Associates a mission to an incident occurrence."
+    
+    Domain: 
+        beAWARE_ontology:Mission
+    
+    Range: 
+        beAWARE_ontology:Incident
+    
+    InverseOf: 
+        beAWARE_ontology:relatesToMission
+    
+    
+ObjectProperty: beAWARE_ontology:relatesToMediaItem
+
+    Annotations: 
+        rdfs:label "relates to media item",
+        skos:definition "Associates a task to a media item."
+    
+    Domain: 
+        beAWARE_ontology:Task
+    
+    Range: 
+        beAWARE_ontology:MediaItem
+    
+    InverseOf: 
+        beAWARE_ontology:relatesToTask
+    
+    
+ObjectProperty: beAWARE_ontology:relatesToMission
+
+    Annotations: 
+        rdfs:label "relates to mission",
+        skos:definition "Associates an incident occurrence to a mission."
+    
+    Domain: 
+        beAWARE_ontology:Incident
+    
+    Range: 
+        beAWARE_ontology:Mission
+    
+    InverseOf: 
+        beAWARE_ontology:relatesToIncident
+    
+    
+ObjectProperty: beAWARE_ontology:relatesToNaturalDisaster
+
+    Annotations: 
+        rdfs:label "relates to natural disaster",
+        skos:definition "Associates a climate parameter measurement to a natural disaster occurrence."
+    
+    Domain: 
+        beAWARE_ontology:ClimateParameter
+    
+    Range: 
+        beAWARE_ontology:NaturalDisaster
+    
+    InverseOf: 
+        beAWARE_ontology:hasClimateParameterMeasurement
+    
+    
+ObjectProperty: beAWARE_ontology:relatesToTask
+
+    Annotations: 
+        rdfs:label "relates to task",
+        skos:definition "Associates a media item to a task."
+    
+    Domain: 
+        beAWARE_ontology:MediaItem
+    
+    Range: 
+        beAWARE_ontology:Task
+    
+    InverseOf: 
+        beAWARE_ontology:relatesToMediaItem
+    
+    
+ObjectProperty: beAWARE_ontology:sensorProducesDataset
+
+    Annotations: 
+        rdfs:label "sensor produces dataset",
+        skos:definition "Indicates the dataset(s) produced by this sensor."
+    
+    Domain: 
+        beAWARE_ontology:Sensor
+    
+    Range: 
+        beAWARE_ontology:Dataset
+    
+    
+ObjectProperty: beAWARE_ontology:taskProducesDataset
+
+    Annotations: 
+        rdfs:label "task produces dataset",
+        skos:definition "Indicates the dataset produced by this task."
+    
+    Domain: 
+        beAWARE_ontology:Task
+    
+    Range: 
+        beAWARE_ontology:Dataset
+    
+    InverseOf: 
+        beAWARE_ontology:producedByTask
+    
+    
+DataProperty: beAWARE_ontology:belongsToCollection
+
+    Annotations: 
+        rdfs:label "belongs to collection",
+        skos:definition "Links a media item to one or more collections."
+    
+    Domain: 
+        beAWARE_ontology:MediaItem
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: beAWARE_ontology:hasAnalyzedMediaSource
+
+    Annotations: 
+        rdfs:label "has analyzed media source",
+        skos:definition "Links a media item to a URI pointing to the analysed item.",
+        skos:example "Processed image or video source."
+    
+    Domain: 
+        beAWARE_ontology:MediaItem
+    
+    Range: 
+        xsd:anyURI
+    
+    
+DataProperty: beAWARE_ontology:hasDatasetResultsSource
+
+    Annotations: 
+        rdfs:label "has dataset results source",
+        skos:definition "Points to a URI with the dataset source."
+    
+    Domain: 
+        beAWARE_ontology:Dataset
+    
+    Range: 
+        xsd:anyURI
+    
+    
+DataProperty: beAWARE_ontology:hasDetectionConfidence
+
+    Annotations: 
+        rdfs:label "has detection confidence",
+        skos:definition "Represents the confidence score of a particular detection.",
+        skos:example "An image analysis algorithm detects a trapped car in the flood with 80% confidence."
+    
+    Domain: 
+        beAWARE_ontology:Detection
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: beAWARE_ontology:hasDetectionEnd
+
+    Annotations: 
+        rdfs:label "has detection end",
+        skos:definition "Indicates the end of the detection."
+    
+    Domain: 
+        beAWARE_ontology:Detection
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: beAWARE_ontology:hasDetectionRisk
+
+    Annotations: 
+        rdfs:label "has detection risk",
+        skos:definition "Indicates the risk level of the detection."
+    
+    Domain: 
+        beAWARE_ontology:Detection
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: beAWARE_ontology:hasDetectionStart
+
+    Annotations: 
+        rdfs:label "has detection start",
+        skos:definition "Indicates the start of the detection."
+    
+    Domain: 
+        beAWARE_ontology:Detection
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: beAWARE_ontology:hasDetectionTimestamp
+
+    Annotations: 
+        rdfs:label "has detection timestamp",
+        skos:definition "Represents the timestamp of the detection."
+    
+    Domain: 
+        beAWARE_ontology:Detection
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: beAWARE_ontology:hasDisasterEnd
+
+    Annotations: 
+        rdfs:label "has disaster end",
+        skos:definition "Indicates the end of the disaster."
+    
+    Domain: 
+        beAWARE_ontology:NaturalDisaster
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: beAWARE_ontology:hasDisasterStart
+
+    Annotations: 
+        rdfs:label "has disaster start",
+        skos:definition "Indicates the start of the disaster."
+    
+    Domain: 
+        beAWARE_ontology:NaturalDisaster
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: beAWARE_ontology:hasIncidentPriority
+
+    Annotations: 
+        rdfs:label "has incident priority",
+        skos:definition "Indicates the priority of the incident.",
+        skos:example "Incidents involving humans in danger are of high priority."
+    
+    Domain: 
+        beAWARE_ontology:Incident
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: beAWARE_ontology:hasIncidentSeverity
+
+    Annotations: 
+        rdfs:label "has incident severity",
+        skos:definition "Indicates the severity of the incident.",
+        skos:example "Incidents involving injured or dead people are of high severity."
+    
+    Domain: 
+        beAWARE_ontology:Incident
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: beAWARE_ontology:hasMeasurementTimestamp
+
+    Annotations: 
+        rdfs:label "has measurement timestamp",
+        skos:definition "Indicates the timestamp of a climate parameter measurement."
+    
+    Domain: 
+        beAWARE_ontology:ClimateParameter
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: beAWARE_ontology:hasMediaItemTimestamp
+
+    Annotations: 
+        rdfs:label "has media item timestamp",
+        skos:definition "Indicates the timestamp when a media item was created."
+    
+    Domain: 
+        beAWARE_ontology:MediaItem
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: beAWARE_ontology:hasMissionEnd
+
+    Annotations: 
+        rdfs:label "has mission end",
+        skos:definition "Indicates the end of the rescue mission."
+    
+    Domain: 
+        beAWARE_ontology:Mission
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: beAWARE_ontology:hasMissionPriority
+
+    Annotations: 
+        rdfs:label "has mission priority",
+        skos:definition "Indicates the priority of the rescue mission."
+    
+    Domain: 
+        beAWARE_ontology:Mission
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: beAWARE_ontology:hasMissionStart
+
+    Annotations: 
+        rdfs:label "has mission start",
+        skos:definition "Indicates the start of the rescue mission."
+    
+    Domain: 
+        beAWARE_ontology:Mission
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: beAWARE_ontology:hasMissionStatus
+
+    Annotations: 
+        rdfs:label "has mission status",
+        skos:definition "Indicates the current status of the rescue mission."
+    
+    Domain: 
+        beAWARE_ontology:Mission
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: beAWARE_ontology:hasRadius
+
+    Annotations: 
+        rdfs:label "has radius",
+        skos:definition "Indicates the radius around a location. It’s used for representing areas and not points."
+    
+    Domain: 
+        beAWARE_ontology:Location
+    
+    Range: 
+        xsd:int
+    
+    
+DataProperty: beAWARE_ontology:hasRawMediaSource
+
+    Annotations: 
+        rdfs:label "has raw media source",
+        skos:definition "Links a media item to a URI pointing to the raw unprocessed item."
+    
+    Domain: 
+        beAWARE_ontology:MediaItem
+    
+    Range: 
+        xsd:anyURI
+    
+    
+DataProperty: beAWARE_ontology:hasReportID
+
+    Annotations: 
+        rdfs:label "has report ID",
+        skos:definition "Assigns and ID to an incident report."
+    
+    Domain: 
+        beAWARE_ontology:IncidentReport
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: beAWARE_ontology:hasUnit
+
+    Annotations: 
+        rdfs:label "has unit",
+        rdfs:seeAlso <https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasValue>,
+        skos:definition "Indicates the measurement unit of a climate parameter. Should be used together with property hasValue.",
+        skos:example "Celsius for temperature measurements."
+    
+    Domain: 
+        beAWARE_ontology:ClimateParameter
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: beAWARE_ontology:hasValue
+
+    Annotations: 
+        rdfs:label "has value",
+        rdfs:seeAlso <https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasUnit>,
+        skos:definition "Indicates the measurement value of a climate parameter. Should be used together with property hasUnit."
+    
+    Domain: 
+        beAWARE_ontology:ClimateParameter
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: beAWARE_ontology:lat
+
+    Annotations: 
+        rdfs:label "has latitude",
+        skos:definition "Geographic latitude coordinates of a location."
+    
+    Domain: 
+        beAWARE_ontology:Location
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: beAWARE_ontology:long
+
+    Annotations: 
+        rdfs:label "has longitude",
+        skos:definition "Geographic longitude coordinates of a location."
+    
+    Domain: 
+        beAWARE_ontology:Location
+    
+    Range: 
+        xsd:float
+    
+    
+Class: beAWARE_ontology:Agriculture
+
+    Annotations: 
+        rdfs:label "Agriculture",
+        skos:definition "Agricultural used spaces.",
+        skos:example "Field and acre."
+    
+    SubClassOf: 
+        beAWARE_ontology:EcologicalAsset
+    
+    
+Class: beAWARE_ontology:Animal
+
+    Annotations: 
+        rdfs:label "Animal",
+        skos:definition "Represents animals in danger during a natural disaster."
+    
+    SubClassOf: 
+        beAWARE_ontology:LivingBeing
+    
+    
+Class: beAWARE_ontology:Asset
+
+    Annotations: 
+        rdfs:label "Asset",
+        skos:definition "Any non-living item of interest."
+    
+    SubClassOf: 
+        beAWARE_ontology:VulnerableObject
+    
+    DisjointWith: 
+        beAWARE_ontology:LivingBeing
+    
+    
+Class: beAWARE_ontology:AudioItem
+
+    Annotations: 
+        rdfs:label "Audio Item",
+        skos:definition "Represents an audio recording."
+    
+    SubClassOf: 
+        beAWARE_ontology:MediaItem
+    
+    
+Class: beAWARE_ontology:Bridge
+
+    Annotations: 
+        rdfs:label "Bridge",
+        skos:definition "Represents bridges."
+    
+    SubClassOf: 
+        beAWARE_ontology:Structure
+    
+    
+Class: beAWARE_ontology:Building
+
+    Annotations: 
+        rdfs:label "Building",
+        skos:definition "A structure with walls and a roof.",
+        skos:example "A house or factory."
+    
+    SubClassOf: 
+        beAWARE_ontology:Structure
+    
+    
+Class: beAWARE_ontology:Car
+
+    Annotations: 
+        rdfs:label "Car",
+        skos:definition "Represents any type of car."
+    
+    SubClassOf: 
+        beAWARE_ontology:Vehicle
+    
+    
+Class: beAWARE_ontology:ClimateParameter
+
+    Annotations: 
+        rdfs:label "Climate Parameter",
+        skos:definition "Represents the actual manifestation of a climate parameter measurement."
+    
+    
+Class: beAWARE_ontology:ClimateParameterType
+
+    Annotations: 
+        rdfs:label "Climate Parameter Type",
+        skos:definition "Represents various types of climate-related parameters.",
+        skos:example "Temperature, humidity, etc."
+    
+    
+Class: beAWARE_ontology:Communication
+
+    Annotations: 
+        rdfs:label "Communication",
+        skos:definition "Represents any type of (tele)communication infrastructure."
+    
+    SubClassOf: 
+        beAWARE_ontology:Infrastructure
+    
+    
+Class: beAWARE_ontology:DataAnalysis
+
+    Annotations: 
+        rdfs:label "Data Analysis",
+        skos:definition "A type of a task involving data analysis."
+    
+    SubClassOf: 
+        beAWARE_ontology:Task
+    
+    
+Class: beAWARE_ontology:Dataset
+
+    Annotations: 
+        rdfs:label "Dataset",
+        skos:definition "Represents the dataset produced by some task."
+    
+    
+Class: beAWARE_ontology:Detection
+
+    Annotations: 
+        rdfs:label "Detection",
+        skos:definition "Represents detections in a dataset.",
+        skos:example "A person trapped in the flood."
+    
+    
+Class: beAWARE_ontology:Dunes
+
+    Annotations: 
+        rdfs:label "Dunes",
+        skos:definition "Represents dunes."
+    
+    SubClassOf: 
+        beAWARE_ontology:EcologicalAsset
+    
+    
+Class: beAWARE_ontology:EcologicalAsset
+
+    Annotations: 
+        rdfs:label "Ecological Asset",
+        skos:definition "Ecological assets of various types."
+    
+    SubClassOf: 
+        beAWARE_ontology:Asset
+    
+    
+Class: beAWARE_ontology:EducationalFacility
+
+    Annotations: 
+        rdfs:label "Educational Facility",
+        skos:definition "Represents any type of educational facility.",
+        skos:example "School or University."
+    
+    SubClassOf: 
+        beAWARE_ontology:Infrastructure
+    
+    
+Class: beAWARE_ontology:ElectricEnergySupply
+
+    Annotations: 
+        rdfs:label "Electric Energy Supply",
+        skos:definition "Represents electric energy supply infrastructure."
+    
+    SubClassOf: 
+        beAWARE_ontology:Energy
+    
+    
+Class: beAWARE_ontology:Energy
+
+    Annotations: 
+        rdfs:label "Energy",
+        skos:definition "Represents any type of energy-generating infrastructure."
+    
+    SubClassOf: 
+        beAWARE_ontology:Infrastructure
+    
+    
+Class: beAWARE_ontology:FireDepartment
+
+    Annotations: 
+        rdfs:label "Fire Department",
+        skos:definition "Represents fire departments."
+    
+    SubClassOf: 
+        beAWARE_ontology:Infrastructure
+    
+    
+Class: beAWARE_ontology:GarbageCollection
+
+    Annotations: 
+        rdfs:label "Garbage Collection",
+        skos:definition "Represents garbage collection infrastructure and services."
+    
+    SubClassOf: 
+        beAWARE_ontology:Infrastructure
+    
+    
+Class: beAWARE_ontology:Hospital
+
+    Annotations: 
+        rdfs:label "Hospital",
+        skos:definition "Represents hospitals."
+    
+    SubClassOf: 
+        beAWARE_ontology:Infrastructure
+    
+    
+Class: beAWARE_ontology:Human
+
+    Annotations: 
+        rdfs:label "Human",
+        skos:definition "Represents human beings in danger."
+    
+    SubClassOf: 
+        beAWARE_ontology:LivingBeing
+    
+    
+Class: beAWARE_ontology:ImageAnalysis
+
+    Annotations: 
+        rdfs:label "Image Analysis",
+        skos:definition "The task of analyzing images."
+    
+    SubClassOf: 
+        beAWARE_ontology:DataAnalysis
+    
+    
+Class: beAWARE_ontology:ImageItem
+
+    Annotations: 
+        rdfs:label "Image Item",
+        skos:definition "Represents a captured image."
+    
+    SubClassOf: 
+        beAWARE_ontology:MediaItem
+    
+    
+Class: beAWARE_ontology:Impact
+
+    Annotations: 
+        rdfs:label "Impact",
+        skos:definition "Represents the impact of natural disasters and incidents."
+    
+    
+Class: beAWARE_ontology:ImpactType
+
+    Annotations: 
+        rdfs:label "Impact Type",
+        skos:definition "Represents the various types of impacts.",
+        skos:example "Injuries, damage to properties etc."
+    
+    
+Class: beAWARE_ontology:Incident
+
+    Annotations: 
+        rdfs:label "Incident",
+        skos:definition "Represents the various incidents taking place during a natural disaster."
+    
+    
+Class: beAWARE_ontology:IncidentReport
+
+    Annotations: 
+        rdfs:label "Incident Report",
+        skos:definition "Represents an incident report submitted to the PSAP."
+    
+    
+Class: beAWARE_ontology:IncidentType
+
+    Annotations: 
+        rdfs:label "Incident Type",
+        skos:definition "Represents the various types of incidents.",
+        skos:example "Floods, blocked streets etc."
+    
+    
+Class: beAWARE_ontology:Infrastructure
+
+    Annotations: 
+        rdfs:label "Infrastructure",
+        skos:definition "Represents critical infrastructure that is in danger during a natural disaster."
+    
+    SubClassOf: 
+        beAWARE_ontology:Asset
+    
+    
+Class: beAWARE_ontology:Levee
+
+    Annotations: 
+        rdfs:label "Levee",
+        skos:definition "An embankment for preventing flooding."
+    
+    SubClassOf: 
+        beAWARE_ontology:Structure
+    
+    
+Class: beAWARE_ontology:Livestock
+
+    Annotations: 
+        rdfs:label "Livestock",
+        skos:definition "Represents domestic animals."
+    
+    SubClassOf: 
+        beAWARE_ontology:Animal
+    
+    
+Class: beAWARE_ontology:LivingBeing
+
+    Annotations: 
+        rdfs:label "Living Being",
+        skos:definition "Any living being that is in danger during a natural disaster."
+    
+    SubClassOf: 
+        beAWARE_ontology:VulnerableObject
+    
+    DisjointWith: 
+        beAWARE_ontology:Asset
+    
+    
+Class: beAWARE_ontology:Location
+
+    Annotations: 
+        rdfs:label "Location",
+        skos:definition "Represents a location (point or area), indicated by latitude, longitude, and radius."
+    
+    
+Class: beAWARE_ontology:MediaItem
+
+    Annotations: 
+        rdfs:label "Media Item",
+        skos:definition "Represents a generic media item. Subclasses include specific types of media items."
+    
+    
+Class: beAWARE_ontology:Mission
+
+    Annotations: 
+        rdfs:label "Mission",
+        skos:definition "Represents a mission assigned to a rescue unit during a crisis."
+    
+    
+Class: beAWARE_ontology:Monument
+
+    Annotations: 
+        rdfs:label "Monument",
+        skos:definition "A structure or building that is built to honour a special person or event."
+    
+    SubClassOf: 
+        beAWARE_ontology:Structure
+    
+    
+Class: beAWARE_ontology:NaturalDisaster
+
+    Annotations: 
+        rdfs:label "Natural Disaster",
+        skos:definition "Represents the actual manifestation of a natural disaster type. An instance of a natural disaster has specific climate conditions with specific values (e.g. temperature = 45) plus some other properties (e.g. start/end time)."
+    
+    
+Class: beAWARE_ontology:NaturalDisasterType
+
+    Annotations: 
+        rdfs:label "Natural Disaster Type",
+        skos:definition "Represents the various types of disasters.",
+        skos:example "Floods, forest fires, storms or earthquakes etc."
+    
+    
+Class: beAWARE_ontology:NaturalHabitat
+
+    Annotations: 
+        rdfs:label "Natural Habitat",
+        skos:definition "Represents natural habitats."
+    
+    SubClassOf: 
+        beAWARE_ontology:EcologicalAsset
+    
+    
+Class: beAWARE_ontology:Plant
+
+    Annotations: 
+        rdfs:label "Plant",
+        skos:definition "Represents the fauna."
+    
+    SubClassOf: 
+        beAWARE_ontology:EcologicalAsset
+    
+    
+Class: beAWARE_ontology:Police
+
+    Annotations: 
+        rdfs:label "Police",
+        skos:definition "Represents law enforcement infrastructure and services."
+    
+    SubClassOf: 
+        beAWARE_ontology:Infrastructure
+    
+    
+Class: beAWARE_ontology:Property
+
+    Annotations: 
+        rdfs:label "Property",
+        skos:definition "Represents any type of private property."
+    
+    SubClassOf: 
+        beAWARE_ontology:Asset
+    
+    
+Class: beAWARE_ontology:PublicTransportation
+
+    Annotations: 
+        rdfs:label "Public Transportation",
+        skos:definition "Represents public transportation services and infrastructure."
+    
+    SubClassOf: 
+        beAWARE_ontology:Transportation
+    
+    
+Class: beAWARE_ontology:Responder
+
+    Annotations: 
+        rdfs:label "Responder",
+        skos:definition "Represents a first responder unit.",
+        skos:example "A firefighter, police officer or emergency medical physician."
+    
+    
+Class: beAWARE_ontology:River
+
+    Annotations: 
+        rdfs:label "River",
+        skos:definition "Represents rivers."
+    
+    SubClassOf: 
+        beAWARE_ontology:EcologicalAsset
+    
+    
+Class: beAWARE_ontology:Sensor
+
+    Annotations: 
+        rdfs:label "Sensor",
+        skos:definition "A Sensor is an instrument that observes a property or phenomenon with the goal of producing an estimate of the value of a parameter."
+    
+    
+Class: beAWARE_ontology:Sewer
+
+    Annotations: 
+        rdfs:label "Sewer",
+        skos:definition "Represents sewage infrastructure."
+    
+    SubClassOf: 
+        beAWARE_ontology:Infrastructure
+    
+    
+Class: beAWARE_ontology:Square
+
+    Annotations: 
+        rdfs:label "Square",
+        skos:definition "Represents squares in danger during an environmental crisis."
+    
+    SubClassOf: 
+        beAWARE_ontology:Structure
+    
+    
+Class: beAWARE_ontology:Street
+
+    Annotations: 
+        rdfs:label "Street",
+        skos:definition "Represents the road network infrastructure."
+    
+    SubClassOf: 
+        beAWARE_ontology:Transportation
+    
+    
+Class: beAWARE_ontology:Structure
+
+    Annotations: 
+        rdfs:label "Structure",
+        skos:definition "Represents various structures and buildings."
+    
+    SubClassOf: 
+        beAWARE_ontology:Asset
+    
+    
+Class: beAWARE_ontology:Subway
+
+    Annotations: 
+        rdfs:label "Subway",
+        skos:definition "Represents subway infrastructure."
+    
+    SubClassOf: 
+        beAWARE_ontology:PublicTransportation
+    
+    
+Class: beAWARE_ontology:Task
+
+    Annotations: 
+        rdfs:label "Task",
+        skos:definition "A task that has to do with analyzing or processing items."
+    
+    
+Class: beAWARE_ontology:TextAnalysis
+
+    Annotations: 
+        rdfs:label "Text Analysis",
+        skos:definition "The task of analyzing textual corpora."
+    
+    SubClassOf: 
+        beAWARE_ontology:DataAnalysis
+    
+    
+Class: beAWARE_ontology:TextItem
+
+    Annotations: 
+        rdfs:label "Text Item",
+        skos:definition "Represents a piece of text."
+    
+    SubClassOf: 
+        beAWARE_ontology:MediaItem
+    
+    
+Class: beAWARE_ontology:Transportation
+
+    Annotations: 
+        rdfs:label "Transportation",
+        skos:definition "Represents transportation services and infrastructure."
+    
+    SubClassOf: 
+        beAWARE_ontology:Infrastructure
+    
+    
+Class: beAWARE_ontology:Vehicle
+
+    Annotations: 
+        rdfs:label "Vehicle",
+        skos:definition "Represents any type of vehicle."
+    
+    SubClassOf: 
+        beAWARE_ontology:Property
+    
+    
+Class: beAWARE_ontology:VideoAnalysis
+
+    Annotations: 
+        rdfs:label "Video Analysis",
+        skos:definition "The task of analyzing videos."
+    
+    SubClassOf: 
+        beAWARE_ontology:DataAnalysis
+    
+    
+Class: beAWARE_ontology:VideoItem
+
+    Annotations: 
+        rdfs:label "Video Item",
+        skos:definition "Represents a video recording."
+    
+    SubClassOf: 
+        beAWARE_ontology:MediaItem
+    
+    
+Class: beAWARE_ontology:VulnerableObject
+
+    Annotations: 
+        rdfs:label "Vulnerable Object",
+        skos:definition "Any living being or object that needs to be protected from hazards."
+    
+    
+Class: beAWARE_ontology:Wall
+
+    Annotations: 
+        rdfs:label "Wall",
+        skos:definition "A vertical structure often made of stone or brick that divides or surrounds something."
+    
+    SubClassOf: 
+        beAWARE_ontology:Structure
+    
+    
+Class: beAWARE_ontology:WaterSupply
+
+    Annotations: 
+        rdfs:label "Water Supply",
+        skos:definition "Represents water supply and sanitation infrastructure."
+    
+    SubClassOf: 
+        beAWARE_ontology:Infrastructure
+    
+    
+Class: beAWARE_ontology:Wildlife
+
+    Annotations: 
+        rdfs:label "Wildlife",
+        skos:definition "Represents wild animals."
+    
+    SubClassOf: 
+        beAWARE_ontology:Animal
+    
+    
+Individual: beAWARE_ontology:person_1
+
+    
+DisjointClasses: 
+    beAWARE_ontology:AudioItem,beAWARE_ontology:ImageItem,beAWARE_ontology:TextItem,beAWARE_ontology:VideoItem
+
+DisjointClasses: 
+    beAWARE_ontology:ImageAnalysis,beAWARE_ontology:TextAnalysis,beAWARE_ontology:VideoAnalysis

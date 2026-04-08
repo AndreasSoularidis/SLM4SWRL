@@ -16,9 +16,9 @@ MODE = "LOCAL" # LOCAL
 
 models = {
   "mistral": "mistral:7b",
-  "mistral-instruct": "swot/mistral-v3-instruct:new",
+  "mistral-instruct": "mistral-SWRL-3:latest",
   "llama": "llama3.1:8b",
-  "llama-instruct": "llama-SWRL-ext",
+  "llama-instruct": "llama3.1-SWRL-3:latest",
   "qwen": "qwen2.5:7b",
   "qwen-instruct": "swot/qwen2.5-instruct:lastest",
   "openai": "ft:gpt-4o-2024-08-06:personal:recipe-ner:BMAvb5Vd",
@@ -78,7 +78,7 @@ prompt = ChatPromptTemplate.from_messages(
   ]
 )
 
-onto_analyzer = OntologyAnalyzer("./ontologies/beAWARE.ttl")
+onto_analyzer = OntologyAnalyzer("./ontologies/Wear4PDmoveOnto.ttl")
 
 onto_classes = ", ".join(onto_analyzer.get_classes())
 
@@ -149,8 +149,8 @@ chain = (
   | StrOutputParser()
 )
 
-rules = CustomPromptTemplates.sar_rules_in_nl(0, 10)
-for _ in range(1):
+rules = CustomPromptTemplates.pd_rules_in_nl(0, 10)
+for _ in range(3):
   for index, rule in enumerate(rules):
     print(f"Rule {index+1}")
     print(f"Natural Language: {rule}")

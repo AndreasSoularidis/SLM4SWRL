@@ -1,0 +1,745 @@
+Prefix: : <http://w3id.org/Wear4PDmove/onto#>
+Prefix: core: <https://saref.etsi.org/core/>
+Prefix: dahcc: <https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/>
+Prefix: foaf: <http://xmlns.com/foaf/0.1/>
+Prefix: onto: <http://w3id.org/Wear4PDmove/onto#>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: pmdo: <http://www.case.edu/PMDO>
+Prefix: prov: <http://www.w3.org/ns/prov#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: schema: <http://schema.org/>
+Prefix: skos: <http://www.w3.org/2004/02/skos/core#>
+Prefix: sosa: <http://www.w3.org/ns/sosa/>
+Prefix: swrl: <http://www.w3.org/2003/11/swrl#>
+Prefix: swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#>
+Prefix: swrlb: <http://www.w3.org/2003/11/swrlb#>
+Prefix: terms: <http://purl.org/dc/terms/>
+Prefix: vann: <http://purl.org/vocab/vann/>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+
+Ontology: <http://w3id.org/Wear4PDmove/onto>
+<http://w3id.org/Wear4PDmove/onto/1.0.0>
+Import: <http://www.case.edu/PMDO>
+Import: <http://www.w3.org/ns/sosa/>
+Import: <https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/>
+
+Annotations: 
+    terms:contributor "Nikolaos Zafeiropoulos",
+    terms:contributor "Pavlos Bitilis",
+    terms:created "05-05-2023",
+    terms:creator "Konstantinos Kotis",
+    terms:description "Wear4PDmove: an ontology for knowledge-based personalized health monitoring of PD patients",
+    terms:license "CC0",
+    rdfs:comment "The designed Wear4PDmoveOnto aims to semantically integrate heterogeneous data such as dynamic/stream data  (collected from wearables) and static/historic data (stored in health databases), in order to represent personal health knowledge in the form of a KG, supporting health apps’ reasoning capabilities for high-level events recognition (e.g., ‘missing dose’ or  ‘patient fall’ event).",
+    rdfs:label "Wear4PDmoveOnto"@en,
+    owl:versionInfo "v1.0.0"
+
+AnnotationProperty: core:hasTimestamp
+
+    Annotations: 
+        rdfs:label "dose time"
+    
+    
+AnnotationProperty: owl:versionInfo
+
+    
+AnnotationProperty: rdfs:comment
+
+    
+AnnotationProperty: rdfs:label
+
+    
+AnnotationProperty: swrla:isRuleEnabled
+
+    
+AnnotationProperty: terms:contributor
+
+    
+AnnotationProperty: terms:created
+
+    
+AnnotationProperty: terms:creator
+
+    
+AnnotationProperty: terms:description
+
+    
+AnnotationProperty: terms:license
+
+    
+Datatype: rdf:PlainLiteral
+
+    
+Datatype: xsd:boolean
+
+    
+Datatype: xsd:dateTime
+
+    
+Datatype: xsd:decimal
+
+    
+Datatype: xsd:int
+
+    
+Datatype: xsd:integer
+
+    
+Datatype: xsd:string
+
+    
+ObjectProperty: core:hasTime
+
+    
+ObjectProperty: core:isMeasuredByDevice
+
+    Annotations: 
+        rdfs:label "is Measured By Device"@en
+    
+    
+ObjectProperty: onto:consistsOf
+
+    Annotations: 
+        rdfs:label "consists of"@en
+    
+    Domain: 
+        onto:PersonalHealthRecord
+    
+    Range: 
+        sosa:Observation
+    
+    
+ObjectProperty: onto:hasDosageTime
+
+    Annotations: 
+        rdfs:comment "the dosing time of a patient"@en,
+        rdfs:label "has Dosage Time"@en
+    
+    SubPropertyOf: 
+        core:hasTime
+    
+    Domain: 
+        onto:DailyDosagePlan
+    
+    Range: 
+        onto:DosageTime
+    
+    
+ObjectProperty: onto:hasPersonalHealthRecord
+
+    Annotations: 
+        rdfs:comment "patient has a health record"@en,
+        rdfs:label "has Personal Health Record"@en
+    
+    Domain: 
+        onto:Patient
+    
+    Range: 
+        onto:PersonalHealthRecord
+    
+    InverseOf: 
+        onto:recordBelongsToPatient
+    
+    
+ObjectProperty: onto:isPerformedBy
+
+    Annotations: 
+        rdfs:label "is Performed By"
+    
+    InverseOf: 
+        onto:performs
+    
+    
+ObjectProperty: onto:performs
+
+    Annotations: 
+        rdfs:comment "human (patient) performs an action (ADL)",
+        rdfs:label "performs"
+    
+    Domain: 
+        onto:Patient
+    
+    Range: 
+        <http://www.case.edu/MDO#ActivitiesofDailyLiving>
+    
+    InverseOf: 
+        onto:isPerformedBy
+    
+    
+ObjectProperty: onto:recordBelongsToPatient
+
+    Annotations: 
+        rdfs:label "record Belongs To Patient"@en
+    
+    InverseOf: 
+        onto:hasPersonalHealthRecord
+    
+    
+ObjectProperty: sosa:hasFeatureOfInterest
+
+    Annotations: 
+        rdfs:label "hasFeatureOfInterest"@en
+    
+    Domain: 
+        onto:Patient
+    
+    Range: 
+        onto:RecognizedEvent
+    
+    
+DataProperty: dahcc:hasAxis
+
+    Annotations: 
+        rdfs:label "has Axis"@en
+    
+    
+DataProperty: onto:ReceiveDose
+
+    Domain: 
+        onto:Patient
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: onto:ageOfPatient
+
+    Annotations: 
+        rdfs:comment "the age of a patient"@en,
+        rdfs:label "age of patient"@en
+    
+    Domain: 
+        onto:Patient
+    
+    Range: 
+        xsd:integer
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:bodyMassIndex
+
+    Annotations: 
+        rdfs:label "body mass index"@en
+    
+    Domain: 
+        schema:Person
+    
+    Range: 
+        xsd:decimal
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:diseaseDuration
+
+    Annotations: 
+        rdfs:label "disease duration"@en
+    
+    Range: 
+        xsd:integer
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:hasAkinesia
+
+    Annotations: 
+        rdfs:label "has Akinesia"@en
+    
+    Domain: 
+        schema:Person
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:hasAnxiety
+
+    Annotations: 
+        rdfs:label "has Anxiety"@en
+    
+    Domain: 
+        schema:Person
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:hasBradykinisiaOfUpperLimp
+
+    Annotations: 
+        rdfs:label "has bradykinisia of upper limp"@en
+    
+    Domain: 
+        schema:Person
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:hasDepression
+
+    Annotations: 
+        rdfs:label "has depression"@en
+    
+    Domain: 
+        schema:Person
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:hasDysphagia
+
+    Annotations: 
+        rdfs:label "has dysphagia"@en
+    
+    Domain: 
+        schema:Person
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:hasEndTime
+
+    Domain: 
+        sosa:Observation
+    
+    Range: 
+        xsd:dateTime
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:hasFatigue
+
+    Annotations: 
+        rdfs:label "has fatigue"@en
+    
+    Domain: 
+        schema:Person
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:hasFreezingOfGait
+
+    Annotations: 
+        rdfs:label "has freezing of gait"@en
+    
+    Domain: 
+        schema:Person
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:hasFrequency
+
+    Domain: 
+        onto:DailyDosagePlan,
+        sosa:Observation
+    
+    Range: 
+        xsd:int
+    
+    
+DataProperty: onto:hasPosturalInstability
+
+    Annotations: 
+        rdfs:label "has postural instability"@en
+    
+    Domain: 
+        schema:Person
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:hasRigidity
+
+    Annotations: 
+        rdfs:label "has rigidity"@en
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:hasSleepDisturbances
+
+    Annotations: 
+        rdfs:label "has sleep disturbances"@en
+    
+    Domain: 
+        schema:Person
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:hasStartTime
+
+    Domain: 
+        sosa:Observation
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: onto:hasSubstance
+
+    Domain: 
+        onto:MedicalPrescription
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: onto:hasTremor
+
+    Annotations: 
+        rdfs:label "has tremor"@en
+    
+    Domain: 
+        schema:Person
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:heartRate
+
+    Annotations: 
+        rdfs:label "heart rate"@en
+    
+    Domain: 
+        schema:Person
+    
+    Range: 
+        xsd:decimal
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:levelHoehnYahrStage
+
+    Annotations: 
+        rdfs:label "level Hoehn Yahr stage"@en
+    
+    Range: 
+        xsd:integer
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:obsAfterDosing
+
+    Annotations: 
+        rdfs:comment "Check if observation is taken 30 min after the last dosage of dosage plan",
+        rdfs:label "observation after dosing"@en
+    
+    Domain: 
+        sosa:Observation
+    
+    Range: 
+        xsd:boolean
+    
+    
+DataProperty: onto:scoreUPDRS
+
+    Annotations: 
+        rdfs:label "score UPDRS"@en
+    
+    Range: 
+        xsd:decimal
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: onto:sendNotification
+
+    Annotations: 
+        rdfs:label "send notification"@en
+    
+    Domain: 
+        onto:AlertingNotification
+    
+    Range: 
+        xsd:boolean
+    
+    
+DataProperty: owl:topDataProperty
+
+    
+DataProperty: sosa:resultTime
+
+    Annotations: 
+        rdfs:label "result time"@en
+    
+    Domain: 
+        sosa:Observation
+    
+    
+Class: <http://www.case.edu/MDO#ActivitiesofDailyLiving>
+
+    
+Class: <http://www.case.edu/MDO#Tremor>
+
+    Annotations: 
+        rdfs:comment "symptom of PD, usually observed at patient's hands"@en,
+        rdfs:label "Tremor"@en
+    
+    
+Class: <http://www.case.edu/PMDO#BradykinesiaofUpperLimb>
+
+    Annotations: 
+        rdfs:comment "symptom of PD, usually observed at patient's legs"@en,
+        rdfs:label "Bradykinesia of Upper Limb"@en
+    
+    
+Class: <https://saref.etsi.org/saref4wear/OnBodyWearable>
+
+    
+Class: core:ActuatingFunction
+
+    
+Class: core:FeatureOfInterest
+
+    EquivalentTo: 
+        sosa:FeatureOfInterest
+    
+    
+Class: core:Time
+
+    
+Class: dahcc:Accelerometer
+
+    
+Class: dahcc:WearableAcceleration
+
+    Annotations: 
+        rdfs:label "Wearable Acceleration"@en
+    
+    
+Class: onto:AlertingNotification
+
+    Annotations: 
+        rdfs:comment "Alerting Notification Function for event",
+        rdfs:label "Alerting Notification Function"
+    
+    SubClassOf: 
+        core:ActuatingFunction
+    
+    
+Class: onto:DailyDosagePlan
+
+    Annotations: 
+        rdfs:comment "Daily dosage plan for patient (4 times one day)",
+        rdfs:label "Daily Dosage Plan"
+    
+    SubClassOf: 
+        onto:MedicalPrescription,
+        onto:hasDosageTime some onto:DosageTime
+    
+    
+Class: onto:Diagnosis
+
+    Annotations: 
+        rdfs:comment "diagnosis of disease of a patient in one appointment",
+        rdfs:label "Diagnosis"
+    
+    SubClassOf: 
+        onto:PersonalHealthRecord
+    
+    
+Class: onto:DosageTime
+
+    Annotations: 
+        rdfs:comment "Dosage time on datetime",
+        rdfs:label "Dosage Time (time in one day)"
+    
+    SubClassOf: 
+        core:Time
+    
+    
+Class: onto:MedicalPrescription
+
+    Annotations: 
+        rdfs:comment "Medical Prescription for Patient",
+        rdfs:label "Medical Prescription"
+    
+    SubClassOf: 
+        onto:PersonalHealthRecord
+    
+    
+Class: onto:NotifyDoctor
+
+    Annotations: 
+        rdfs:comment "Notify doctor for event (alert notification)",
+        rdfs:label "Notify Doctor"
+    
+    SubClassOf: 
+        onto:AlertingNotification
+    
+    
+Class: onto:NotifyNurse
+
+    SubClassOf: 
+        onto:AlertingNotification
+    
+    
+Class: onto:NotifyRelatives
+
+    SubClassOf: 
+        onto:AlertingNotification
+    
+    
+Class: onto:PD_Patient
+
+    Annotations: 
+        rdfs:comment "PD patient",
+        rdfs:label "PD Patient"
+    
+    SubClassOf: 
+        onto:Patient,
+        onto:hasPersonalHealthRecord some onto:PersonalHealthRecord
+    
+    
+Class: onto:PDpatientFalllingEventObservation
+
+    Annotations: 
+        rdfs:comment "Falling event observation for PD Patient",
+        rdfs:label "PD patient Fallling Event Observation"
+    
+    SubClassOf: 
+        onto:RecognizedEvent
+    
+    
+Class: onto:PDpatientMissingDoseEventObservation
+
+    Annotations: 
+        rdfs:comment "Missing dose event observation for PD Patient",
+        rdfs:label "PD patient Missing Dose Event Observation"
+    
+    SubClassOf: 
+        onto:RecognizedEvent
+    
+    
+Class: onto:Patient
+
+    Annotations: 
+        rdfs:comment "Any kind of patient",
+        rdfs:label "Patient"
+    
+    SubClassOf: 
+        schema:Person
+    
+    
+Class: onto:PersonalHealthRecord
+
+    Annotations: 
+        rdfs:comment "Personal Health Record of a patient",
+        rdfs:label "Personal Health Record"
+    
+    
+Class: onto:RecognizedEvent
+
+    Annotations: 
+        rdfs:comment "An observation of a recognized event for a PD Patient",
+        rdfs:label "PD patient recognized event observation"
+    
+    SubClassOf: 
+        sosa:Observation
+    
+    
+Class: onto:SketchingActivity
+
+    Annotations: 
+        rdfs:comment "An activity followed by the patient during his free time, using his hands (sketching)."@en,
+        rdfs:label "Sketching Activity"@en
+    
+    SubClassOf: 
+        <http://www.case.edu/MDO#ActivitiesofDailyLiving>,
+        core:isMeasuredByDevice some onto:SmartWatch
+    
+    
+Class: onto:SmartWatch
+
+    Annotations: 
+        rdfs:comment "An off-the-shelf smart watch with sensors able to measure movement"@en,
+        rdfs:label "Smart Watch"@en
+    
+    SubClassOf: 
+        <https://saref.etsi.org/saref4wear/OnBodyWearable>
+    
+    
+Class: onto:WalkingActivity
+
+    Annotations: 
+        rdfs:comment "An activity followed by the patient during his free time, using his hands (walking)."@en,
+        rdfs:label "Walking Activity"@en
+    
+    SubClassOf: 
+        <http://www.case.edu/MDO#ActivitiesofDailyLiving>,
+        core:isMeasuredByDevice some onto:SmartWatch
+    
+    
+Class: schema:Person
+
+    
+Class: sosa:FeatureOfInterest
+
+    EquivalentTo: 
+        core:FeatureOfInterest
+    
+    
+Class: sosa:Observation
+
+    

@@ -1,0 +1,747 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://w3id.org/Wear4PDmove/onto#"
+     xml:base="http://w3id.org/Wear4PDmove/onto"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:core="https://saref.etsi.org/core/"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:onto="http://w3id.org/Wear4PDmove/onto#"
+     xmlns:pmdo="http://www.case.edu/PMDO"
+     xmlns:prov="http://www.w3.org/ns/prov#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:sosa="http://www.w3.org/ns/sosa/"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:dahcc="https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:schema="http://schema.org/">
+    <owl:Ontology rdf:about="http://w3id.org/Wear4PDmove/onto">
+        <owl:versionIRI rdf:resource="http://w3id.org/Wear4PDmove/onto/1.0.0"/>
+        <owl:imports rdf:resource="http://www.case.edu/PMDO"/>
+        <owl:imports rdf:resource="http://www.w3.org/ns/sosa/"/>
+        <owl:imports rdf:resource="https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/"/>
+        <terms:contributor>Nikolaos Zafeiropoulos</terms:contributor>
+        <terms:contributor>Pavlos Bitilis</terms:contributor>
+        <terms:created>05-05-2023</terms:created>
+        <terms:creator>Konstantinos Kotis</terms:creator>
+        <terms:description>Wear4PDmove: an ontology for knowledge-based personalized health monitoring of PD patients</terms:description>
+        <terms:license>CC0</terms:license>
+        <rdfs:comment>The designed Wear4PDmoveOnto aims to semantically integrate heterogeneous data such as dynamic/stream data  (collected from wearables) and static/historic data (stored in health databases), in order to represent personal health knowledge in the form of a KG, supporting health apps’ reasoning capabilities for high-level events recognition (e.g., ‘missing dose’ or  ‘patient fall’ event).</rdfs:comment>
+        <rdfs:label xml:lang="en">Wear4PDmoveOnto</rdfs:label>
+        <owl:versionInfo>v1.0.0</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/contributor -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor"/>
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- https://saref.etsi.org/core/hasTimestamp -->
+
+    <owl:AnnotationProperty rdf:about="https://saref.etsi.org/core/hasTimestamp">
+        <rdfs:label>dose time</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#consistsOf -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/Wear4PDmove/onto#consistsOf">
+        <rdfs:domain rdf:resource="http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <rdfs:label xml:lang="en">consists of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#hasDosageTime -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/Wear4PDmove/onto#hasDosageTime">
+        <rdfs:subPropertyOf rdf:resource="https://saref.etsi.org/core/hasTime"/>
+        <rdfs:domain rdf:resource="http://w3id.org/Wear4PDmove/onto#DailyDosagePlan"/>
+        <rdfs:range rdf:resource="http://w3id.org/Wear4PDmove/onto#DosageTime"/>
+        <rdfs:comment xml:lang="en">the dosing time of a patient</rdfs:comment>
+        <rdfs:label xml:lang="en">has Dosage Time</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#hasPersonalHealthRecord -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/Wear4PDmove/onto#hasPersonalHealthRecord">
+        <owl:inverseOf rdf:resource="http://w3id.org/Wear4PDmove/onto#recordBelongsToPatient"/>
+        <rdfs:domain rdf:resource="http://w3id.org/Wear4PDmove/onto#Patient"/>
+        <rdfs:range rdf:resource="http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord"/>
+        <rdfs:comment xml:lang="en">patient has a health record</rdfs:comment>
+        <rdfs:label xml:lang="en">has Personal Health Record</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#isPerformedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/Wear4PDmove/onto#isPerformedBy">
+        <owl:inverseOf rdf:resource="http://w3id.org/Wear4PDmove/onto#performs"/>
+        <rdfs:label>is Performed By</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#performs -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/Wear4PDmove/onto#performs">
+        <rdfs:domain rdf:resource="http://w3id.org/Wear4PDmove/onto#Patient"/>
+        <rdfs:range rdf:resource="http://www.case.edu/MDO#ActivitiesofDailyLiving"/>
+        <rdfs:comment>human (patient) performs an action (ADL)</rdfs:comment>
+        <rdfs:label>performs</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#recordBelongsToPatient -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/Wear4PDmove/onto#recordBelongsToPatient">
+        <rdfs:label xml:lang="en">record Belongs To Patient</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/ns/sosa/hasFeatureOfInterest -->
+
+    <rdf:Description rdf:about="http://www.w3.org/ns/sosa/hasFeatureOfInterest">
+        <rdfs:domain rdf:resource="http://w3id.org/Wear4PDmove/onto#Patient"/>
+        <rdfs:range rdf:resource="http://w3id.org/Wear4PDmove/onto#RecognizedEvent"/>
+        <rdfs:label xml:lang="en">hasFeatureOfInterest</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- https://saref.etsi.org/core/hasTime -->
+
+    <owl:ObjectProperty rdf:about="https://saref.etsi.org/core/hasTime"/>
+    
+
+
+    <!-- https://saref.etsi.org/core/isMeasuredByDevice -->
+
+    <owl:ObjectProperty rdf:about="https://saref.etsi.org/core/isMeasuredByDevice">
+        <rdfs:label xml:lang="en">is Measured By Device</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#ReceiveDose -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#ReceiveDose">
+        <rdfs:domain rdf:resource="http://w3id.org/Wear4PDmove/onto#Patient"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#ageOfPatient -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#ageOfPatient">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://w3id.org/Wear4PDmove/onto#Patient"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">the age of a patient</rdfs:comment>
+        <rdfs:label xml:lang="en">age of patient</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#bodyMassIndex -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#bodyMassIndex">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://schema.org/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:label xml:lang="en">body mass index</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#diseaseDuration -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#diseaseDuration">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="en">disease duration</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#hasAkinesia -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#hasAkinesia">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://schema.org/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">has Akinesia</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#hasAnxiety -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#hasAnxiety">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://schema.org/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">has Anxiety</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#hasBradykinisiaOfUpperLimp -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#hasBradykinisiaOfUpperLimp">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://schema.org/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">has bradykinisia of upper limp</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#hasDepression -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#hasDepression">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://schema.org/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">has depression</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#hasDysphagia -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#hasDysphagia">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://schema.org/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">has dysphagia</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#hasEndTime -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#hasEndTime">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#hasFatigue -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#hasFatigue">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://schema.org/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">has fatigue</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#hasFreezingOfGait -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#hasFreezingOfGait">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://schema.org/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">has freezing of gait</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#hasFrequency -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#hasFrequency">
+        <rdfs:domain rdf:resource="http://w3id.org/Wear4PDmove/onto#DailyDosagePlan"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#hasPosturalInstability -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#hasPosturalInstability">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://schema.org/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">has postural instability</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#hasRigidity -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#hasRigidity">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">has rigidity</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#hasSleepDisturbances -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#hasSleepDisturbances">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://schema.org/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">has sleep disturbances</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#hasStartTime -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#hasStartTime">
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#hasSubstance -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#hasSubstance">
+        <rdfs:domain rdf:resource="http://w3id.org/Wear4PDmove/onto#MedicalPrescription"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#hasTremor -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#hasTremor">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://schema.org/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">has tremor</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#heartRate -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#heartRate">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://schema.org/Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:label xml:lang="en">heart rate</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#levelHoehnYahrStage -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#levelHoehnYahrStage">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="en">level Hoehn Yahr stage</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#obsAfterDosing -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#obsAfterDosing">
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>Check if observation is taken 30 min after the last dosage of dosage plan</rdfs:comment>
+        <rdfs:label xml:lang="en">observation after dosing</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#scoreUPDRS -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#scoreUPDRS">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:label xml:lang="en">score UPDRS</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#sendNotification -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/Wear4PDmove/onto#sendNotification">
+        <rdfs:domain rdf:resource="http://w3id.org/Wear4PDmove/onto#AlertingNotification"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">send notification</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/ns/sosa/resultTime -->
+
+    <rdf:Description rdf:about="http://www.w3.org/ns/sosa/resultTime">
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <rdfs:label xml:lang="en">result time</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/hasAxis -->
+
+    <owl:DatatypeProperty rdf:about="https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/hasAxis">
+        <rdfs:label xml:lang="en">has Axis</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://schema.org/Person -->
+
+    <owl:Class rdf:about="http://schema.org/Person"/>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#AlertingNotification -->
+
+    <owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#AlertingNotification">
+        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/core/ActuatingFunction"/>
+        <rdfs:comment>Alerting Notification Function for event</rdfs:comment>
+        <rdfs:label>Alerting Notification Function</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#DailyDosagePlan -->
+
+    <owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#DailyDosagePlan">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#MedicalPrescription"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/Wear4PDmove/onto#hasDosageTime"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/Wear4PDmove/onto#DosageTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Daily dosage plan for patient (4 times one day)</rdfs:comment>
+        <rdfs:label>Daily Dosage Plan</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#Diagnosis -->
+
+    <owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#Diagnosis">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord"/>
+        <rdfs:comment>diagnosis of disease of a patient in one appointment</rdfs:comment>
+        <rdfs:label>Diagnosis</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#DosageTime -->
+
+    <owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#DosageTime">
+        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/core/Time"/>
+        <rdfs:comment>Dosage time on datetime</rdfs:comment>
+        <rdfs:label>Dosage Time (time in one day)</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#MedicalPrescription -->
+
+    <owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#MedicalPrescription">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord"/>
+        <rdfs:comment>Medical Prescription for Patient</rdfs:comment>
+        <rdfs:label>Medical Prescription</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#NotifyDoctor -->
+
+    <owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#NotifyDoctor">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#AlertingNotification"/>
+        <rdfs:comment>Notify doctor for event (alert notification)</rdfs:comment>
+        <rdfs:label>Notify Doctor</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#NotifyNurse -->
+
+    <owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#NotifyNurse">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#AlertingNotification"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#NotifyRelatives -->
+
+    <owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#NotifyRelatives">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#AlertingNotification"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#PD_Patient -->
+
+    <owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#PD_Patient">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#Patient"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/Wear4PDmove/onto#hasPersonalHealthRecord"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>PD patient</rdfs:comment>
+        <rdfs:label>PD Patient</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#PDpatientFalllingEventObservation -->
+
+    <owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#PDpatientFalllingEventObservation">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#RecognizedEvent"/>
+        <rdfs:comment>Falling event observation for PD Patient</rdfs:comment>
+        <rdfs:label>PD patient Fallling Event Observation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#PDpatientMissingDoseEventObservation -->
+
+    <owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#PDpatientMissingDoseEventObservation">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/Wear4PDmove/onto#RecognizedEvent"/>
+        <rdfs:comment>Missing dose event observation for PD Patient</rdfs:comment>
+        <rdfs:label>PD patient Missing Dose Event Observation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#Patient -->
+
+    <owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#Patient">
+        <rdfs:subClassOf rdf:resource="http://schema.org/Person"/>
+        <rdfs:comment>Any kind of patient</rdfs:comment>
+        <rdfs:label>Patient</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord -->
+
+    <owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord">
+        <rdfs:comment>Personal Health Record of a patient</rdfs:comment>
+        <rdfs:label>Personal Health Record</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#RecognizedEvent -->
+
+    <owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#RecognizedEvent">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <rdfs:comment>An observation of a recognized event for a PD Patient</rdfs:comment>
+        <rdfs:label>PD patient recognized event observation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#SketchingActivity -->
+
+    <owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#SketchingActivity">
+        <rdfs:subClassOf rdf:resource="http://www.case.edu/MDO#ActivitiesofDailyLiving"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://saref.etsi.org/core/isMeasuredByDevice"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/Wear4PDmove/onto#SmartWatch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">An activity followed by the patient during his free time, using his hands (sketching).</rdfs:comment>
+        <rdfs:label xml:lang="en">Sketching Activity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#SmartWatch -->
+
+    <owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#SmartWatch">
+        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4wear/OnBodyWearable"/>
+        <rdfs:comment xml:lang="en">An off-the-shelf smart watch with sensors able to measure movement</rdfs:comment>
+        <rdfs:label xml:lang="en">Smart Watch</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/Wear4PDmove/onto#WalkingActivity -->
+
+    <owl:Class rdf:about="http://w3id.org/Wear4PDmove/onto#WalkingActivity">
+        <rdfs:subClassOf rdf:resource="http://www.case.edu/MDO#ActivitiesofDailyLiving"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://saref.etsi.org/core/isMeasuredByDevice"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/Wear4PDmove/onto#SmartWatch"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">An activity followed by the patient during his free time, using his hands (walking).</rdfs:comment>
+        <rdfs:label xml:lang="en">Walking Activity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.case.edu/MDO#ActivitiesofDailyLiving -->
+
+    <owl:Class rdf:about="http://www.case.edu/MDO#ActivitiesofDailyLiving"/>
+    
+
+
+    <!-- http://www.case.edu/MDO#Tremor -->
+
+    <owl:Class rdf:about="http://www.case.edu/MDO#Tremor">
+        <rdfs:comment xml:lang="en">symptom of PD, usually observed at patient&apos;s hands</rdfs:comment>
+        <rdfs:label xml:lang="en">Tremor</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.case.edu/PMDO#BradykinesiaofUpperLimb -->
+
+    <owl:Class rdf:about="http://www.case.edu/PMDO#BradykinesiaofUpperLimb">
+        <rdfs:comment xml:lang="en">symptom of PD, usually observed at patient&apos;s legs</rdfs:comment>
+        <rdfs:label xml:lang="en">Bradykinesia of Upper Limb</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/sosa/FeatureOfInterest -->
+
+    <rdf:Description rdf:about="http://www.w3.org/ns/sosa/FeatureOfInterest">
+        <owl:equivalentClass rdf:resource="https://saref.etsi.org/core/FeatureOfInterest"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/Accelerometer -->
+
+    <owl:Class rdf:about="https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/Accelerometer"/>
+    
+
+
+    <!-- https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/WearableAcceleration -->
+
+    <owl:Class rdf:about="https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/WearableAcceleration">
+        <rdfs:label xml:lang="en">Wearable Acceleration</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://saref.etsi.org/core/ActuatingFunction -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/core/ActuatingFunction"/>
+    
+
+
+    <!-- https://saref.etsi.org/core/FeatureOfInterest -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/core/FeatureOfInterest"/>
+    
+
+
+    <!-- https://saref.etsi.org/core/Time -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/core/Time"/>
+    
+
+
+    <!-- https://saref.etsi.org/saref4wear/OnBodyWearable -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/saref4wear/OnBodyWearable"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.w3.org/ns/sosa/madeBySensor">
+        <rdfs:label xml:lang="en">madeBySensor</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.w3.org/ns/sosa/observedProperty">
+        <rdfs:label xml:lang="en">observedProperty</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.w3.org/ns/sosa/observes">
+        <rdfs:label xml:lang="en">observes</rdfs:label>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
