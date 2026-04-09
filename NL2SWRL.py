@@ -5,7 +5,7 @@ from langchain_community.vectorstores import Chroma
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
-from PromptTempates import CustomPromptTemplates
+from prompt_templates import CustomPromptTemplates
 from FileLoaders import FileLoader
 from langchain_ollama import ChatOllama
 
