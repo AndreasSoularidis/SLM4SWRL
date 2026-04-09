@@ -1,39 +1,82 @@
+"""
+Example: Using SWRL Translator with Factory Pattern
+"""
 from dotenv import load_dotenv
-from SLM4SWRL import SLM4SWRL
-from graph_rag import GraphRAG
+from langchain_openai import OpenAIEmbeddings
+from swrl_translation_factory import SWRLTranslatorFactory
+from config import TranslatorConfig
+from embeddings_rag import EmbeddingsRAG
+from graph_rag import GraphRAG, RAGEngineInterface
 from neo4j_connector import Neo4jConnector
 from ontology_analyzer import OntologyAnalyzer
 import json
-import os
 
 load_dotenv()
 
-NEO4J_URI = os.getenv("NEO4J_URI")
-NEO4J_USER = os.getenv("NEO4J_USER")
-NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
 
-with open("./rules_in_natural_language.json", "r") as file:
-  rules_in_nl = json.load(file)
+def setup_rag_engine(config: TranslatorConfig) -> RAGEngineInterface:
+  """Setup the appropriate RAG engine based on configuration"""
+  
+  if config.translator_type == "embeddings":
+      return EmbeddingsRAG(
+          documents=config.rag_data_path,
+          embeddings_model=OpenAIEmbeddings(),
+          chunk_size=config.chunk_size,
+          chunk_overlap=config.chunk_overlap,
+          search_type=config.search_type,
+          k=config.k
+      )
+  elif config.translator_type == "graph":
+      neo4j_conn = Neo4jConnector(
+          uri=config.neo4j_uri,
+          username=config.neo4j_user,
+          password=config.neo4j_password
+      )
+      return GraphRAG(
+          model_name=config.model_name,
+          temperature=config.temperature,
+          neo4j_connector=neo4j_conn
+      )
+  else:
+    raise ValueError(f"Unknown translator type: {config.translator_type}")
 
-rules = rules_in_nl["PARKINSON"]
 
-ontology_analyzer = OntologyAnalyzer("./ontologies/Wear4PDmoveOnto_turtle.txt")
-rag_engine = GraphRAG(
-  model_name="llama",
-  temperature=0.0, 
-  neo4j_connector=Neo4jConnector(uri=NEO4J_URI, username=NEO4J_USER, password=NEO4J_PASSWORD)
-)
+def main():
+  config = TranslatorConfig()  # Uses defaults + env vars
+  
+  print(f"Using {config.translator_type} translator with {config.model_name}")
+  
+  # Load rules
+  with open(config.rules_file, "r") as file:
+    rules_in_nl = json.load(file)
+  rules = rules_in_nl[config.rules_category]
+  
+  # Setup RAG engine
+  rag_engine = setup_rag_engine(config)
+  
+  # Setup ontology analyzer (only if needed)
+  ontology_analyzer = None
+  if config.translator_type == "graph" and config.ontology_path:
+    ontology_analyzer = OntologyAnalyzer(config.ontology_path)
+  
+  # Create translator using factory
+  translator = SWRLTranslatorFactory.create(
+    translator_type=config.translator_type,
+    model_name=config.model_name,
+    temperature=config.temperature,
+    rag_engine=rag_engine,
+    mode=config.mode,
+    ontology_analyzer=ontology_analyzer
+  )
+  
+  # Generate SWRL rules
+  for index, rule in enumerate(rules, 1):
+    print(f"\nRule {index}:")
+    print(f"Natural Language: {rule}\n")
+    print("SWRL rule:")
+    translator.generate_swrl(rule)
+    print("\n" + "="*80)
 
-app = SLM4SWRL(
-  model_name="llama",
-  temperature=0.0,
-  ontology_analyser=ontology_analyzer,
-  rag_engine=rag_engine,
-  mode="LOCAL")
 
-
-for rule in rules:
-  print(f"Natural Language: {rule}")
-  print(f"\nSWRL rule:")
-  app.generate_swrl(rule)
-  print("\n")
+if __name__ == "__main__":
+  main()

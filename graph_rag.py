@@ -14,7 +14,12 @@ class Entities(BaseModel):
       description="FIND and RETURN ALL the ontology concepts such as entities and relationships that appear in the text",
   )
 
-class GraphRAG:
+class RAGEngineInterface:
+  @staticmethod
+  def get_entities(self, question: str, onto_classes: str = None) -> str:
+    pass
+
+class GraphRAG(RAGEngineInterface):
   def __init__(self,
                model_name: str,
                temperature: float, 
@@ -46,7 +51,7 @@ class GraphRAG:
     return re.sub(r'(?<!^)(?=[A-Z])', ' ', entity)
 
 
-  def get_entities(self, question: str, onto_classes: str) -> list:
+  def get_entities(self, question: str, onto_classes: str) -> str:
     results_set = set()
     entities = self.extract_entities_from_text(question, onto_classes)
     for entity in entities.names:
