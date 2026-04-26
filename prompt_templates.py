@@ -12,7 +12,7 @@ class CustomPromptTemplates:
   """
 
   prompt = """
-  Act as an ontology engineer. Use the following content (examples, part of the ontology, and common mistakes) as a guide to translate the natural language rule you are given into a SWRL rule. 
+  Act as an ontology engineer. Use the following content (examples, part of the ontology, and a list of guidelines) as a guide to translate the natural language rule you are given into a SWRL rule. 
   EXAMPLES
     Example 1
     Rule in natural language: If a person has a sibling who is a man, then the person has a brother.
