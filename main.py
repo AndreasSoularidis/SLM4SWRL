@@ -19,7 +19,7 @@ def setup_rag_engine(config: TranslatorConfig) -> RAGEngineInterface:
   
   if config.rag_type == "embeddings":
       return EmbeddingsRAG(
-          documents=config.rag_data_path,
+          documents=config.ontology_path,
           embeddings_model=OpenAIEmbeddings(),
           chunk_size=config.chunk_size,
           chunk_overlap=config.chunk_overlap,
