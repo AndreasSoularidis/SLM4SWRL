@@ -17,7 +17,7 @@ load_dotenv()
 def setup_rag_engine(config: TranslatorConfig) -> RAGEngineInterface:
   """Setup the appropriate RAG engine based on configuration"""
   
-  if config.translator_type == "embeddings":
+  if config.rag_type == "embeddings":
       return EmbeddingsRAG(
           documents=config.rag_data_path,
           embeddings_model=OpenAIEmbeddings(),
@@ -26,7 +26,7 @@ def setup_rag_engine(config: TranslatorConfig) -> RAGEngineInterface:
           search_type=config.search_type,
           k=config.k
       )
-  elif config.translator_type == "graph":
+  elif config.rag_type == "graph":
       neo4j_conn = Neo4jConnector(
           uri=config.neo4j_uri,
           username=config.neo4j_user,
@@ -38,13 +38,13 @@ def setup_rag_engine(config: TranslatorConfig) -> RAGEngineInterface:
           neo4j_connector=neo4j_conn
       )
   else:
-    raise ValueError(f"Unknown translator type: {config.translator_type}")
+    raise ValueError(f"Unknown translator type: {config.rag_type}")
 
 
 def main():
-  config = TranslatorConfig()  # Uses defaults + env vars
+  config = TranslatorConfig()
   
-  print(f"Using {config.translator_type} translator with {config.model_name}")
+  print(f"Using {config.rag_type} translator with {config.model_name}")
   
   # Load rules
   with open(config.rules_file, "r") as file:
@@ -56,12 +56,12 @@ def main():
   
   # Setup ontology analyzer (only if needed)
   ontology_analyzer = None
-  if config.translator_type == "graph" and config.ontology_path:
+  if config.rag_type == "graph" and config.ontology_path:
     ontology_analyzer = OntologyAnalyzer(config.ontology_path)
   
   # Create translator using factory
   translator = SWRLTranslatorFactory.create(
-    translator_type=config.translator_type,
+    translator_type=config.rag_type,
     model_name=config.model_name,
     temperature=config.temperature,
     rag_engine=rag_engine,
