@@ -1,3 +1,4 @@
+from langchain.schema import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
 from FileLoaders import FileLoader
@@ -21,9 +22,12 @@ class EmbeddingsRAG(RAGEngineInterface):
 
 
   def create_vectorstore(self):
-    docs = FileLoader.get_txt_loader(self.documents)
+    # docs = FileLoader.get_txt_loader(self.documents)
+    with open(self.documents, "r", encoding="utf-8") as f:
+      docs = f.read()
 
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=self.chunk_size, chunk_overlap=self.chunk_overlap)
+    docs = [Document(page_content=docs, metadata={"source": self.documents})]
     splits = text_splitter.split_documents(docs)
 
     vectorstore = Chroma.from_documents(documents=splits, embedding=self.embeddings_model)
