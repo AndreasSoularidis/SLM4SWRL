@@ -26,10 +26,24 @@ class EmbeddingsRAG(RAGEngineInterface):
     with open(self.documents, "r", encoding="utf-8") as f:
       docs = f.read()
 
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=self.chunk_size, chunk_overlap=self.chunk_overlap)
+    text_splitter = RecursiveCharacterTextSplitter(
+      # separators=[
+      #   # Manchester Syntax: whitespace-only lines before block keywords
+      #   r"\n[ \t]*\n[ \t]*\n(?=(?:ObjectProperty|Class|DataProperty|AnnotationProperty|Individual|Datatype):)",
+      #   # RDF/XML: whitespace-only lines before a <!-- comment --> that precedes a block
+      #   r"\n[ \t]*\n[ \t]*\n[ \t]*(?=<!--)",
+      #   r"\n\n",
+      #   r"\n",
+      #   r" ",
+      #   r""
+      # ],
+      # is_separator_regex=True,
+      # keep_separator="start",
+      chunk_size=self.chunk_size,
+      chunk_overlap=self.chunk_overlap
+    )
     docs = [Document(page_content=docs, metadata={"source": self.documents})]
     splits = text_splitter.split_documents(docs)
-
     vectorstore = Chroma.from_documents(documents=splits, embedding=self.embeddings_model)
     return vectorstore
   
