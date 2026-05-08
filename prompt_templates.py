@@ -24,6 +24,10 @@ class CustomPromptTemplates:
 
     Example 3
     Rule in natural language:  if a person has age greater than 17, then the person is an adult and has id card.
+    SWRL rule: Person(?p) ^ hasAge(?p, ?age) ^ Age(?age) ^ swrlb:greaterThan(?age, 17) ^ IdCard(?id) -> Adult(?p) ^ hasIdCard(?p, ?id)
+
+    Example 4
+    Rule in natural language: if a publication has two different authors, then those authors have cooperated with each other.
     SWRL rule: Publication(?p) ^ Author(?y) ^ Author(?z) ^ hasAuthor(?p, ?y) ^ hasAuthor(?p, ?z) ^ differentFrom(?y, ?z) -> cooperatedWith(?y, ?z)
 
     Example 5
