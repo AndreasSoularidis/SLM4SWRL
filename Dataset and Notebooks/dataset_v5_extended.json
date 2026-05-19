@@ -1991,11 +1991,11 @@
       },
       {
         "role": "user",
-        "content": "PART OF ONTOLOGY\n\n:Mammal rdfs:subClassOf :Animal\n:Bird rdfs:subClassOf :Animal\n:isAquatic rdfs:domain :Animal\n:isAquatic rdfs:range xsd:boolean\n:canFly rdfs:domain :Animal\n:canFly rdfs:range xsd:boolean\n:hasWingSpan rdfs:domain :Bird\n:hasWingSpan rdfs:range xsd:double\n:Penguin rdfs:subClassOf :Bird\n\nEND OF ONTOLOGY\n\nThe rule in natural language is the following: If an animal is a bird but not a penguin, then it can fly."
+        "content": "PART OF ONTOLOGY\n\n:Mammal rdfs:subClassOf :Animal\n:Bird rdfs:subClassOf :Animal\n:isAquatic rdfs:domain :Animal\n:isAquatic rdfs:range xsd:boolean\n:canFly rdfs:domain :Animal\n:canFly rdfs:range xsd:boolean\n:hasWingSpan rdfs:domain :Bird\n:hasWingSpan rdfs:range xsd:double\n:Penguin rdfs:subClassOf :Bird\nisPenguin rdfs:domain :Bird\nisPenguin rdfs:range xsd:boolean\n\nEND OF ONTOLOGY\n\nThe rule in natural language is the following: If an animal is a bird but not a penguin, then it can fly."
       },
       {
         "role": "assistant",
-        "content": "Bird(?b) ∧ swrlb:booleanNot(Penguin(?b)) -> canFly(?b, true)"
+        "content": "Bird(?b) ∧ isPenguin(?b, false) -> canFly(?b, true)"
       }
     ]
   },
