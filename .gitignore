@@ -2,6 +2,8 @@ __pycache__/
 .venv/
 .env/
 ./helpers
+.env
+config.yaml
 Dataset and Notebooks/dataset_v2.json
 Dataset and Notebooks/dataset_v3.json
 FlaskTest.py
