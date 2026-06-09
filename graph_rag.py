@@ -1,7 +1,8 @@
 import re
 from typing import List
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_ollama import ChatOllama
+from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
 from model_provider import ModelProvider
 from neo4j_connector import Neo4jConnector
@@ -23,10 +24,13 @@ class GraphRAG(RAGEngineInterface):
   def __init__(self,
                model_name: str,
                temperature: float, 
-               neo4j_connector: Neo4jConnector,):
+               neo4j_connector: Neo4jConnector,
+               mode: str = "LOCAL"):
     self.neo4j_connector = neo4j_connector
-    self.retriever_llm = ChatOllama(model=ModelProvider().get_model(model_name), temperature=temperature, reasoning=False)
-  
+    if mode == "LOCAL":
+      self.retriever_llm = ChatOllama(model=ModelProvider().get_model(model_name), temperature=temperature, reasoning=False)
+    else:
+      self.retriever_llm = ChatOpenAI(model=ModelProvider().get_model(model_name), temperature=temperature)
 
   def extract_entities_from_text(self, question: str, onto_classes: str):
     system_prompt = CustomPromptTemplates().retreiver_system
