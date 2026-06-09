@@ -1,7 +1,6 @@
-from langchain.schema import Document
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_core.documents import Document
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
-from FileLoaders import FileLoader
 from graph_rag import RAGEngineInterface
 
 class EmbeddingsRAG(RAGEngineInterface):
@@ -27,18 +26,18 @@ class EmbeddingsRAG(RAGEngineInterface):
       docs = f.read()
 
     text_splitter = RecursiveCharacterTextSplitter(
-      # separators=[
-      #   # Manchester Syntax: whitespace-only lines before block keywords
-      #   r"\n[ \t]*\n[ \t]*\n(?=(?:ObjectProperty|Class|DataProperty|AnnotationProperty|Individual|Datatype):)",
-      #   # RDF/XML: whitespace-only lines before a <!-- comment --> that precedes a block
-      #   r"\n[ \t]*\n[ \t]*\n[ \t]*(?=<!--)",
-      #   r"\n\n",
-      #   r"\n",
-      #   r" ",
-      #   r""
-      # ],
-      # is_separator_regex=True,
-      # keep_separator="start",
+      separators=[
+        # Manchester Syntax: whitespace-only lines before block keywords
+        r"\n[ \t]*\n[ \t]*\n(?=(?:ObjectProperty|Class|DataProperty|AnnotationProperty|Individual|Datatype):)",
+        # RDF/XML: whitespace-only lines before a <!-- comment --> that precedes a block
+        r"\n[ \t]*\n[ \t]*\n[ \t]*(?=<!--)",
+        r"\n\n",
+        r"\n",
+        r" ",
+        r""
+      ],
+      is_separator_regex=True,
+      keep_separator="start",
       chunk_size=self.chunk_size,
       chunk_overlap=self.chunk_overlap
     )
