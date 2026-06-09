@@ -35,7 +35,8 @@ def setup_rag_engine(config: TranslatorConfig) -> RAGEngineInterface:
       return GraphRAG(
           model_name=config.model_name,
           temperature=config.temperature,
-          neo4j_connector=neo4j_conn
+          neo4j_connector=neo4j_conn,
+          mode=config.mode
       )
   else:
     raise ValueError(f"Unknown translator type: {config.rag_type}")
@@ -70,12 +71,13 @@ def main():
   )
   
   # Generate SWRL rules
-  for index, rule in enumerate(rules, 1):
-    print(f"\nRule {index}:")
-    print(f"Natural Language: {rule}\n")
-    print("SWRL rule:")
-    translator.generate_swrl(rule)
-    print("\n" + "="*80)
+  for _ in range(4):  # Run multiple times to test consistency
+    for index, rule in enumerate(rules, 1):
+      print(f"\nRule {index}:")
+      print(f"Natural Language: {rule}\n")
+      print("SWRL rule:")
+      translator.generate_swrl(rule)
+      print("\n" + "="*80)
 
 
 if __name__ == "__main__":
