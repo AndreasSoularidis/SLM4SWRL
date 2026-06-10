@@ -1,3 +1,4 @@
+import compat  # noqa: F401 - must be first to patch langchain_community before ragas imports
 from datasets import Dataset
 from dotenv import load_dotenv
 import openai
@@ -11,6 +12,11 @@ import json
 import re
 
 path = './results/Updated-Phase2-SAR-ministral_14b.jsonl'
+i = 0
+ground_truths = [
+  """Detection(?d) ^ Incident(?i) ^ detectsIncident(?d, ?i) ^ hasDetectionRisk(?d, ?dr) ^ swrlb:greaterThan(?dr, 0.8) ^ hasDetectionConfidence(?d, ?dc) ^ swrlb:lessThan(?dc, 0.5) ^ Mission(?m) ^ Responder(?r) -> hasIncidentPriority(?i, "request verification"^^rdf:PlainLiteral) ^ isAssignedMission(?r, ?m)""",
+  "Detection(?d) ^ Incident(?i) ^ detectsIncident(?d, ?i) ^ detectsParticipant(?d, ?vo) ^ VulnerableObject(?vo) ^ Impact(?imp) ^ hasIncidentImpact(?i, ?imp) -> isImpactedBy(?vo, ?imp)"
+]
 
 with open(path, "r", encoding="utf-8") as f:
   for line in f:
@@ -42,23 +48,21 @@ with open(path, "r", encoding="utf-8") as f:
     data_sample_k5 = {
       "question": [nl_rule],
       "answer": [swrl_rule],
-      "retrieved_contexts": [
-      [
-        ontology_context.join(",")
-      ]
-      ],
-      "ground_truth": ["""Detection(?d) ^ Incident(?i) ^ detectsIncident(?d, ?i) ^ hasDetectionRisk(?d, ?dr) ^ swrlb:greaterThan(?dr, 0.8) ^ hasDetectionConfidence(?d, ?dc) ^ swrlb:lessThan(?dc, 0.5) ^ Mission(?m) ^ Responder(?r) -> hasIncidentPriority(?i, "request verification"^^rdf:PlainLiteral) ^ isAssignedMission(?r, ?m)"""]
+      "retrieved_contexts": [[ontology_context]], 
+      "ground_truth": [ground_truths[i]]
     }
     client = openai.AsyncOpenAI()
-    llm = llm_factory("gpt-4o-mini", client=client)
+    llm = llm_factory("gpt-4o", client=client)
     dataset = Dataset.from_dict(data_sample_k5)
 
     score = evaluate(dataset, metrics=[ContextRecall(), Faithfulness(), FactualCorrectness()], llm=llm)
     
-
+    system = "Act as an ontology engineer. Use the following content (examples, part of the ontology, and a list of guidelines) as a guide to translate the natural language rule you are given into a SWRL rule."
     print("NL RULE:  ", nl_rule)
     print("SWRL RULE:", swrl_rule)
     print("ONTOLOGY: ", ontology_context)
     print("RAGAS EVAL: ", score)
     print("---")
-    break
+    i += 1
+    if i == 2:
+      break
