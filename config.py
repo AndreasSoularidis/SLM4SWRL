@@ -12,7 +12,7 @@ load_dotenv()
 @dataclass
 class TranslatorConfig:
   """Configuration for SWRL translation"""
-  with open('C:\\Andreas\\Projects\\SLM4SWRL\\config.yaml', 'r', encoding='utf-8') as f:
+  with open('./config.yaml', 'r', encoding='utf-8') as f:
     config = yaml.safe_load(f)
   
   domain: str = config['domain']  # or "SAR"
