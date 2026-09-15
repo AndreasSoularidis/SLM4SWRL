@@ -9,10 +9,13 @@ import yaml
 load_dotenv()
 
 
+_CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'config', 'config.yaml')
+
+
 @dataclass
 class TranslatorConfig:
   """Configuration for SWRL translation"""
-  with open('./config.yaml', 'r', encoding='utf-8') as f:
+  with open(_CONFIG_PATH, 'r', encoding='utf-8') as f:
     config = yaml.safe_load(f)
   
   domain: str = config['domain']  # or "SAR"
@@ -37,7 +40,7 @@ class TranslatorConfig:
   neo4j_password: Optional[str] = None
   
   # Rules configuration
-  rules_file: str = "./rules_in_natural_language.json"
+  rules_file: str = config['rules'] 
   rules_category: str = None
   
   def __post_init__(self, config=config):

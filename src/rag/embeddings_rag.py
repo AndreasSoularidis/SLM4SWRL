@@ -1,7 +1,7 @@
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
-from graph_rag import RAGEngineInterface
+from rag.graph_rag import RAGEngineInterface
 
 class EmbeddingsRAG(RAGEngineInterface):
   def __init__(self, 

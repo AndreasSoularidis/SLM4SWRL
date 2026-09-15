@@ -1,17 +1,18 @@
-"""
-Example: Using SWRL Translator with Factory Pattern
-"""
 from dotenv import load_dotenv
 from langchain_openai import OpenAIEmbeddings
-from swrl_translation_factory import SWRLTranslatorFactory
-from config import TranslatorConfig
-from embeddings_rag import EmbeddingsRAG
-from graph_rag import GraphRAG, RAGEngineInterface
-from neo4j_connector import Neo4jConnector
-from ontology_analyzer import OntologyAnalyzer
+from translators.swrl_translation_factory import SWRLTranslatorFactory
+from utils.config import TranslatorConfig
+from rag.embeddings_rag import EmbeddingsRAG
+from rag.graph_rag import GraphRAG, RAGEngineInterface
+from infrastructure.neo4j_connector import Neo4jConnector
+from utils.ontology_analyzer import OntologyAnalyzer
 import json
+import os
 
-load_dotenv()
+# Load environment variables from the correct location
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+env_path = os.path.join(PROJECT_ROOT, 'data', 'config', '.env')
+load_dotenv(env_path)
 
 
 def setup_rag_engine(config: TranslatorConfig) -> RAGEngineInterface:

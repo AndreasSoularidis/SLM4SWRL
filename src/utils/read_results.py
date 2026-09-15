@@ -1,4 +1,4 @@
-import compat  # noqa: F401 - must be first to patch langchain_community before ragas imports
+import src.utils.compat as compat  # noqa: F401 - must be first to patch langchain_community before ragas imports
 from datasets import Dataset
 from dotenv import load_dotenv
 import openai
