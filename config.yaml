@@ -1,0 +1,14 @@
+model:
+  name: "ministral"
+  temperature: 0.0
+  mode: "LOCAL"  # "LOCAL" or "API"
+
+rag:
+  ontology_path: "./ontologies/Wear4PDmoveOnto_manchester.txt"
+  type: "embeddings"  # embeddings or graph
+  chunk_size: 1000
+  chunk_overlap: 0
+  search_type: "similarity"
+  k: 7
+
+domain: "PARKINSON"  # or "SAR" PARKINSON
