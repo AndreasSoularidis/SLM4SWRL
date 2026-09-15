@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 from langchain_ollama import ChatOllama
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
-from graph_rag import RAGEngineInterface
-from model_provider import ModelProvider
+from rag.graph_rag import RAGEngineInterface
+from utils.model_provider import ModelProvider
 load_dotenv()
 
 

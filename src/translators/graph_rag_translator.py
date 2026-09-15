@@ -1,7 +1,7 @@
-from graph_rag import RAGEngineInterface
-from prompt_templates import CustomPromptTemplates
-from ontology_analyzer import OntologyAnalyzer
-from swrl_translator import SWRLTranslator
+from rag.graph_rag import RAGEngineInterface
+from utils.prompt_templates import CustomPromptTemplates
+from utils.ontology_analyzer import OntologyAnalyzer
+from translators.swrl_translator import SWRLTranslator
 
 
 class GraphRAGTranslator(SWRLTranslator):

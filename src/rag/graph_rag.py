@@ -4,9 +4,9 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_ollama import ChatOllama
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
-from model_provider import ModelProvider
-from neo4j_connector import Neo4jConnector
-from prompt_templates import CustomPromptTemplates
+from utils.model_provider import ModelProvider
+from infrastructure.neo4j_connector import Neo4jConnector
+from utils.prompt_templates import CustomPromptTemplates
 
 class Entities(BaseModel):
   """Identifying information about entities."""

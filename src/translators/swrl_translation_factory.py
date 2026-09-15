@@ -1,8 +1,8 @@
-from graph_rag import RAGEngineInterface
-from ontology_analyzer import OntologyAnalyzer
-from swrl_translator import SWRLTranslator
-from embeddings_rag_translator import EmbeddingsRAGTranslator
-from graph_rag_translator import GraphRAGTranslator
+from rag.graph_rag import RAGEngineInterface
+from utils.ontology_analyzer import OntologyAnalyzer
+from translators.swrl_translator import SWRLTranslator
+from translators.embeddings_rag_translator import EmbeddingsRAGTranslator
+from translators.graph_rag_translator import GraphRAGTranslator
 from typing import Optional
 
 class SWRLTranslatorFactory:

@@ -1,5 +1,5 @@
-from prompt_templates import CustomPromptTemplates
-from swrl_translator import SWRLTranslator
+from utils.prompt_templates import CustomPromptTemplates
+from translators.swrl_translator import SWRLTranslator
 
 
 class EmbeddingsRAGTranslator(SWRLTranslator):
