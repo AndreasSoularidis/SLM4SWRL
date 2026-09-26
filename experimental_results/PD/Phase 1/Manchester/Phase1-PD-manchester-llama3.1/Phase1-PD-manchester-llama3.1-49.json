@@ -1,0 +1,119 @@
+{
+  "inputs": {
+    "messages": [
+      [
+        {
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "HumanMessage"
+          ],
+          "kwargs": {
+            "content": "\n  Act as an ontology engineer. Use the following content (examples, part of the ontology, and a list of guidelines) as a guide to translate the natural language rule you are given into a SWRL rule. \n  EXAMPLES\n    Example 1\n    Rule in natural language: If a person has a sibling who is a man, then the person has a brother.\n    SWRL rule: Person(?p) ^ hasSibling(?p, ?s) ^ Person(?s) ^ IsMan(?s, true) -> hasBrother(?p, ?s)\n\n    Example 2\n    Rule in natural language: if a person has a phone number that starts with '+', then the person has an international phone number.\n    SWRL rule: Person(?p) ^ hasPhoneNumber(?p, ?number) ^ swrlb:startsWith(?number, \"+\") -> hasInternationalPhoneNumber(?p, true)\n\n    Example 3\n    Rule in natural language:  if a person has age greater than 17, then the person is an adult and has id card.\n    SWRL rule: Person(?p) ^ hasAge(?p, ?age) ^ Age(?age) ^ swrlb:greaterThan(?age, 17) ^ IdCard(?id) -> Adult(?p) ^ hasIdCard(?p, ?id)\n\n    Example 4\n    Rule in natural language: if a publication has two different authors, then those authors have cooperated with each other.\n    SWRL rule: Publication(?p) ^ Author(?y) ^ Author(?z) ^ hasAuthor(?p, ?y) ^ hasAuthor(?p, ?z) ^ differentFrom(?y, ?z) -> cooperatedWith(?y, ?z)\n\n    Example 5\n    Rule in natural language: if a researcher has published more than 10 papers in a Top-Tier conference, then the researcher is a prominent researcher and has a high citation impact.\n    SWRL rule: Researcher(?r) ^ hasPublished(?r, ?c) ^ Conference(?c) ^ topTierConference(?c) ^ swrlb:greaterThan(count(?c), 10) -> ProminentResearcher(?r) ^ hasHighCitationImpact(?r, true)\n  END OF EXAMPLES\n  PART OF ONTOLOGY \n    Annotations: \n        rdfs:comment \"Missing dose event observation for PD Patient\",\n        rdfs:label \"PD patient Missing Dose Event Observation\"\n    \n    SubClassOf: \n        onto:RecognizedEvent\n    \n    \nClass: onto:Patient\n\n    Annotations: \n        rdfs:comment \"Any kind of patient\",\n        rdfs:label \"Patient\"\n    \n    SubClassOf: \n        schema:Person\n    \n    \nClass: onto:PersonalHealthRecord\n\n    Annotations: \n        rdfs:comment \"Personal Health Record of a patient\",\n        rdfs:label \"Personal Health Record\"\n    \n    \nClass: onto:RecognizedEvent\n\n    Annotations: \n        rdfs:comment \"An observation of a recognized event for a PD Patient\",\n        rdfs:label \"PD patient recognized event observation\"\n    \n    SubClassOf: \n        sosa:Observation\n    \n    \nClass: onto:SketchingActivity\nAnnotations: \n        rdfs:comment \"Notify doctor for event (alert notification)\",\n        rdfs:label \"Notify Doctor\"\n    \n    SubClassOf: \n        onto:AlertingNotification\n    \n    \nClass: onto:NotifyNurse\n\n    SubClassOf: \n        onto:AlertingNotification\n    \n    \nClass: onto:NotifyRelatives\n\n    SubClassOf: \n        onto:AlertingNotification\n    \n    \nClass: onto:PD_Patient\n\n    Annotations: \n        rdfs:comment \"PD patient\",\n        rdfs:label \"PD Patient\"\n    \n    SubClassOf: \n        onto:Patient,\n        onto:hasPersonalHealthRecord some onto:PersonalHealthRecord\n    \n    \nClass: onto:PDpatientFalllingEventObservation\n\n    Annotations: \n        rdfs:comment \"Falling event observation for PD Patient\",\n        rdfs:label \"PD patient Fallling Event Observation\"\n    \n    SubClassOf: \n        onto:RecognizedEvent\n    \n    \nClass: onto:PDpatientMissingDoseEventObservation\nAnnotations: \n        rdfs:comment \"symptom of PD, usually observed at patient's legs\"@en,\n        rdfs:label \"Bradykinesia of Upper Limb\"@en\n    \n    \nClass: <https://saref.etsi.org/saref4wear/OnBodyWearable>\n\n    \nClass: core:ActuatingFunction\n\n    \nClass: core:FeatureOfInterest\n\n    EquivalentTo: \n        sosa:FeatureOfInterest\n    \n    \nClass: core:Time\n\n    \nClass: dahcc:Accelerometer\n\n    \nClass: dahcc:WearableAcceleration\n\n    Annotations: \n        rdfs:label \"Wearable Acceleration\"@en\n    \n    \nClass: onto:AlertingNotification\n\n    Annotations: \n        rdfs:comment \"Alerting Notification Function for event\",\n        rdfs:label \"Alerting Notification Function\"\n    \n    SubClassOf: \n        core:ActuatingFunction\n    \n    \nClass: onto:DailyDosagePlan\nAnnotations: \n        rdfs:label \"score UPDRS\"@en\n    \n    Range: \n        xsd:decimal\n    \n    SubPropertyOf: \n        owl:topDataProperty\n    \n    \nDataProperty: onto:sendNotification\n\n    Annotations: \n        rdfs:label \"send notification\"@en\n    \n    Domain: \n        onto:AlertingNotification\n    \n    Range: \n        xsd:boolean\n    \n    \nDataProperty: owl:topDataProperty\n\n    \nDataProperty: sosa:resultTime\n\n    Annotations: \n        rdfs:label \"result time\"@en\n    \n    Domain: \n        sosa:Observation\n    \n    \nClass: <http://www.case.edu/MDO#ActivitiesofDailyLiving>\n\n    \nClass: <http://www.case.edu/MDO#Tremor>\n\n    Annotations: \n        rdfs:comment \"symptom of PD, usually observed at patient's hands\"@en,\n        rdfs:label \"Tremor\"@en\n    \n    \nClass: <http://www.case.edu/PMDO#BradykinesiaofUpperLimb>\nAnnotations: \n        rdfs:comment \"Daily dosage plan for patient (4 times one day)\",\n        rdfs:label \"Daily Dosage Plan\"\n    \n    SubClassOf: \n        onto:MedicalPrescription,\n        onto:hasDosageTime some onto:DosageTime\n    \n    \nClass: onto:Diagnosis\n\n    Annotations: \n        rdfs:comment \"diagnosis of disease of a patient in one appointment\",\n        rdfs:label \"Diagnosis\"\n    \n    SubClassOf: \n        onto:PersonalHealthRecord\n    \n    \nClass: onto:DosageTime\n\n    Annotations: \n        rdfs:comment \"Dosage time on datetime\",\n        rdfs:label \"Dosage Time (time in one day)\"\n    \n    SubClassOf: \n        core:Time\n    \n    \nClass: onto:MedicalPrescription\n\n    Annotations: \n        rdfs:comment \"Medical Prescription for Patient\",\n        rdfs:label \"Medical Prescription\"\n    \n    SubClassOf: \n        onto:PersonalHealthRecord\n    \n    \nClass: onto:NotifyDoctor\nAnnotations: \n    terms:contributor \"Nikolaos Zafeiropoulos\",\n    terms:contributor \"Pavlos Bitilis\",\n    terms:created \"05-05-2023\",\n    terms:creator \"Konstantinos Kotis\",\n    terms:description \"Wear4PDmove: an ontology for knowledge-based personalized health monitoring of PD patients\",\n    terms:license \"CC0\",\n    rdfs:comment \"The designed Wear4PDmoveOnto aims to semantically integrate heterogeneous data such as dynamic/stream data  (collected from wearables) and static/historic data (stored in health databases), in order to represent personal health knowledge in the form of a KG, supporting health apps’ reasoning capabilities for high-level events recognition (e.g., ‘missing dose’ or  ‘patient fall’ event).\",\n    rdfs:label \"Wear4PDmoveOnto\"@en,\n    owl:versionInfo \"v1.0.0\"\n\nAnnotationProperty: core:hasTimestamp\n\n    Annotations: \n        rdfs:label \"dose time\"\n    \n    \nAnnotationProperty: owl:versionInfo\n\n    \nAnnotationProperty: rdfs:comment\nAnnotations: \n        rdfs:comment \"the dosing time of a patient\"@en,\n        rdfs:label \"has Dosage Time\"@en\n    \n    SubPropertyOf: \n        core:hasTime\n    \n    Domain: \n        onto:DailyDosagePlan\n    \n    Range: \n        onto:DosageTime\n    \n    \nObjectProperty: onto:hasPersonalHealthRecord\n\n    Annotations: \n        rdfs:comment \"patient has a health record\"@en,\n        rdfs:label \"has Personal Health Record\"@en\n    \n    Domain: \n        onto:Patient\n    \n    Range: \n        onto:PersonalHealthRecord\n    \n    InverseOf: \n        onto:recordBelongsToPatient\n    \n    \nObjectProperty: onto:isPerformedBy\n\n    Annotations: \n        rdfs:label \"is Performed By\"\n    \n    InverseOf: \n        onto:performs\n    \n    \nObjectProperty: onto:performs\n  END OF ONTOLOGY\n  \n  COMMON GUIDELINES\n\n  Please try to implement the following guidelines:\n  1: Variables e.g., (?something) used in Conclusions must be present in Conditions. So create as many variables as needed in Conditions. \n  2: Each atom must have exactly one variable if it represents class.\n  3: Each atom must have exactly two variables if it represents object property.\n  4: Each concept must be represented by a class and must be present in Conditions.\n\n  END OF COMMON GUIDELINES\n\n  The rule in natural language is the following: If a missing dosing event has been observed for a patient with Parkinson disease more than 2 times, then send notification to the doctor for action.\n  Give only the final SWRL rule\n  ",
+            "type": "human"
+          },
+          "lc": 1,
+          "type": "constructor"
+        }
+      ]
+    ]
+  },
+  "outputs": {
+    "generations": [
+      [
+        {
+          "generation_info": {
+            "created_at": "2026-05-11T18:39:39.9333235Z",
+            "done": true,
+            "done_reason": "stop",
+            "eval_count": 97,
+            "eval_duration": 9563419600,
+            "load_duration": 110559700,
+            "message": {
+              "content": "",
+              "images": null,
+              "role": "assistant",
+              "tool_calls": null
+            },
+            "model": "llama3.1:8b",
+            "prompt_eval_count": 2099,
+            "prompt_eval_duration": 80781257800,
+            "total_duration": 90511668700
+          },
+          "message": {
+            "id": [
+              "langchain",
+              "schema",
+              "messages",
+              "AIMessage"
+            ],
+            "kwargs": {
+              "content": "SWRL rule:\nMissingDoseEventObservation(?o) ^ hasPatient(?o, ?p) ^ PD_Patient(?p) ^ swrlb:greaterThan(count(?o), 2) -> sendNotification(?n, true)\n\nNote: I assumed that the notification is sent to the doctor for action, and used a variable ?n for the notification. If you want to use a specific object property or class for the notification, please let me know.",
+              "id": "run--019e1855-140e-7220-b884-2e436ae08f25-0",
+              "invalid_tool_calls": [],
+              "response_metadata": {
+                "created_at": "2026-05-11T18:39:39.9333235Z",
+                "done": true,
+                "done_reason": "stop",
+                "eval_count": 97,
+                "eval_duration": 9563419600,
+                "load_duration": 110559700,
+                "message": {
+                  "id": [
+                    "ollama",
+                    "_types",
+                    "Message"
+                  ],
+                  "lc": 1,
+                  "repr": "Message(role='assistant', content='', images=None, tool_calls=None)",
+                  "type": "not_implemented"
+                },
+                "model": "llama3.1:8b",
+                "prompt_eval_count": 2099,
+                "prompt_eval_duration": 80781257800,
+                "total_duration": 90511668700
+              },
+              "tool_calls": [],
+              "type": "ai",
+              "usage_metadata": {
+                "input_tokens": 2099,
+                "output_tokens": 97,
+                "total_tokens": 2196
+              }
+            },
+            "lc": 1,
+            "type": "constructor"
+          },
+          "text": "SWRL rule:\nMissingDoseEventObservation(?o) ^ hasPatient(?o, ?p) ^ PD_Patient(?p) ^ swrlb:greaterThan(count(?o), 2) -> sendNotification(?n, true)\n\nNote: I assumed that the notification is sent to the doctor for action, and used a variable ?n for the notification. If you want to use a specific object property or class for the notification, please let me know.",
+          "type": "ChatGeneration"
+        }
+      ]
+    ],
+    "llm_output": null,
+    "run": null,
+    "type": "LLMResult"
+  },
+  "metadata": {
+    "ls_model_name": "llama3.1:8b",
+    "ls_model_type": "chat",
+    "ls_provider": "ollama",
+    "ls_run_depth": 1,
+    "ls_temperature": 0,
+    "revision_id": "3ec4949-dirty"
+  },
+  "langsmith": {
+    "organization": {
+      "name": "Personal",
+      "id": "dddfdd98-7034-429c-ae34-81262387c9b0"
+    },
+    "workspace": {
+      "name": "Personal",
+      "id": "1da9662e-2f17-5b78-a525-2d13842bf0d3"
+    },
+    "tracing_project": {
+      "id": "08ed77e8-127c-4e17-8778-e750c35545b3",
+      "name": "Updated-Phase1-PD-manchester-1000-llama3.1:8b-k7"
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "inputs": {
+    "messages": [
+      [
+        {
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "HumanMessage"
+          ],
+          "kwargs": {
+            "content": "\n  Act as an ontology engineer. Use the following content (examples, part of the ontology, and a list of guidelines) as a guide to translate the natural language rule you are given into a SWRL rule. \n  EXAMPLES\n    Example 1\n    Rule in natural language: If a person has a sibling who is a man, then the person has a brother.\n    SWRL rule: Person(?p) ^ hasSibling(?p, ?s) ^ Person(?s) ^ IsMan(?s, true) -> hasBrother(?p, ?s)\n\n    Example 2\n    Rule in natural language: if a person has a phone number that starts with '+', then the person has an international phone number.\n    SWRL rule: Person(?p) ^ hasPhoneNumber(?p, ?number) ^ swrlb:startsWith(?number, \"+\") -> hasInternationalPhoneNumber(?p, true)\n\n    Example 3\n    Rule in natural language:  if a person has age greater than 17, then the person is an adult and has id card.\n    SWRL rule: Person(?p) ^ hasAge(?p, ?age) ^ Age(?age) ^ swrlb:greaterThan(?age, 17) ^ IdCard(?id) -> Adult(?p) ^ hasIdCard(?p, ?id)\n\n    Example 4\n    Rule in natural language: if a publication has two different authors, then those authors have cooperated with each other.\n    SWRL rule: Publication(?p) ^ Author(?y) ^ Author(?z) ^ hasAuthor(?p, ?y) ^ hasAuthor(?p, ?z) ^ differentFrom(?y, ?z) -> cooperatedWith(?y, ?z)\n\n    Example 5\n    Rule in natural language: if a researcher has published more than 10 papers in a Top-Tier conference, then the researcher is a prominent researcher and has a high citation impact.\n    SWRL rule: Researcher(?r) ^ hasPublished(?r, ?c) ^ Conference(?c) ^ topTierConference(?c) ^ swrlb:greaterThan(count(?c), 10) -> ProminentResearcher(?r) ^ hasHighCitationImpact(?r, true)\n  END OF EXAMPLES\n  PART OF ONTOLOGY \n    ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentSeverity\nbeAWARE_ontology:hasIncidentSeverity rdf:type owl:DatatypeProperty ;\n                                     rdfs:domain beAWARE_ontology:Incident ;\n                                     rdfs:range xsd:string ;\n                                     rdfs:label \"has incident severity\" ;\n                                     skos:definition \"Indicates the severity of the incident.\" ;\n                                     skos:example \"Incidents involving injured or dead people are of high severity.\" .\n###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#detectsIncident\nbeAWARE_ontology:detectsIncident rdf:type owl:ObjectProperty ;\n                                 owl:inverseOf beAWARE_ontology:incidentDetectedBy ;\n                                 rdfs:domain beAWARE_ontology:Detection ;\n                                 rdfs:range beAWARE_ontology:Incident ;\n                                 rdfs:label \"detects incident\" ;\n                                 skos:definition \"Indicates which incidents were detected by a specific detection activity.\" ;\n                                 skos:example \"A flooding incident, a blocked road etc.\" .\n###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentPriority\nbeAWARE_ontology:hasIncidentPriority rdf:type owl:DatatypeProperty ;\n                                     rdfs:domain beAWARE_ontology:Incident ;\n                                     rdfs:range xsd:string ;\n                                     rdfs:label \"has incident priority\" ;\n                                     skos:definition \"Indicates the priority of the incident.\" ;\n                                     skos:example \"Incidents involving humans in danger are of high priority.\" .\n###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasDetectionEnd\nbeAWARE_ontology:hasDetectionEnd rdf:type owl:DatatypeProperty ;\n                                 rdfs:domain beAWARE_ontology:Detection ;\n                                 rdfs:range xsd:dateTime ;\n                                 rdfs:label \"has detection end\" ;\n                                 skos:definition \"Indicates the end of the detection.\" .\n\n\n###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasDetectionRisk\nbeAWARE_ontology:hasDetectionRisk rdf:type owl:DatatypeProperty ;\n                                  rdfs:domain beAWARE_ontology:Detection ;\n                                  rdfs:range xsd:float ;\n                                  rdfs:label \"has detection risk\" ;\n                                  skos:definition \"Indicates the risk level of the detection.\" .\n###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#incidentDetectedBy\nbeAWARE_ontology:incidentDetectedBy rdf:type owl:ObjectProperty ;\n                                    rdfs:domain beAWARE_ontology:Incident ;\n                                    rdfs:range beAWARE_ontology:Detection ;\n                                    rdfs:label \"incident detected by\" ;\n                                    skos:definition \"Indicates the detection activity that detected this incident.\" .\n###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasDetectionStart\nbeAWARE_ontology:hasDetectionStart rdf:type owl:DatatypeProperty ;\n                                   rdfs:domain beAWARE_ontology:Detection ;\n                                   rdfs:range xsd:dateTime ;\n                                   rdfs:label \"has detection start\" ;\n                                   skos:definition \"Indicates the start of the detection.\" .\n\n\n###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasDetectionTimestamp\nbeAWARE_ontology:hasDetectionTimestamp rdf:type owl:DatatypeProperty ;\n                                       rdfs:domain beAWARE_ontology:Detection ;\n                                       rdfs:range xsd:dateTime ;\n                                       rdfs:label \"has detection timestamp\" ;\n                                       skos:definition \"Represents the timestamp of the detection.\" .\n###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvesIncident\nbeAWARE_ontology:involvesIncident rdf:type owl:ObjectProperty ;\n                                  rdfs:domain beAWARE_ontology:Dataset ;\n                                  rdfs:range beAWARE_ontology:Incident ;\n                                  rdfs:label \"involves incident\" ;\n                                  skos:definition \"Certain analysis components recognize the major incident (e.g. fire, flood, etc.) portrayed in a media item.\" .\n  END OF ONTOLOGY\n  \n  COMMON GUIDELINES\n\n  Please try to implement the following guidelines:\n  1: Variables e.g., (?something) used in Conclusions must be present in Conditions. So create as many variables as needed in Conditions. \n  2: Each atom must have exactly one variable if it represents class.\n  3: Each atom must have exactly two variables if it represents object property.\n  4: Each concept must be represented by a class and must be present in Conditions.\n\n  END OF COMMON GUIDELINES\n\n  The rule in natural language is the following: If a detection has a start time and an end time, and its total duration is calculated to be greater than 60 minutes, then the severity of the incident is 'high'.\n  Give only the final SWRL rule\n  ",
+            "type": "human"
+          },
+          "lc": 1,
+          "type": "constructor"
+        }
+      ]
+    ]
+  },
+  "outputs": {
+    "generations": [
+      [
+        {
+          "generation_info": {
+            "created_at": "2026-05-19T14:50:39.3064526Z",
+            "done": true,
+            "done_reason": "stop",
+            "eval_count": 278,
+            "eval_duration": 26456352300,
+            "load_duration": 24993900,
+            "message": {
+              "content": "",
+              "images": null,
+              "role": "assistant",
+              "tool_calls": null
+            },
+            "model": "mistral:7b",
+            "prompt_eval_count": 2027,
+            "prompt_eval_duration": 82319532400,
+            "total_duration": 109616055700
+          },
+          "message": {
+            "id": [
+              "langchain",
+              "schema",
+              "messages",
+              "AIMessage"
+            ],
+            "kwargs": {
+              "content": " Based on the examples and guidelines provided, here's the SWRL rule for the given natural language rule:\n\nRule in natural language: If a detection has a start time and an end time, and its total duration is calculated to be greater than 60 minutes, then the severity of the incident is 'high'.\n\nSWRL rule: Detection(?d) ^ hasDetectionStart(?d, ?startTime) ^ hasDetectionEnd(?d, ?endTime) ^ swrlb:greaterThan(duration(?d), 60minutes) -> beAWARE_ontology:hasIncidentSeverity(?d, \"high\")\n\nExplanation:\n- Detection(?d): The detection that we are considering.\n- hasDetectionStart(?d, ?startTime): The start time of the detection.\n- hasDetectionEnd(?d, ?endTime): The end time of the detection.\n- duration(?d): A custom function to calculate the difference between the end and start times of a detection (not part of the provided ontology).\n- beAWARE_ontology:hasIncidentSeverity(?d, \"high\"): The severity of the incident associated with the given detection.",
+              "id": "run--019e40b5-ff18-7ad2-bb80-f96d5d4d36dd-0",
+              "invalid_tool_calls": [],
+              "response_metadata": {
+                "created_at": "2026-05-19T14:50:39.3064526Z",
+                "done": true,
+                "done_reason": "stop",
+                "eval_count": 278,
+                "eval_duration": 26456352300,
+                "load_duration": 24993900,
+                "message": {
+                  "id": [
+                    "ollama",
+                    "_types",
+                    "Message"
+                  ],
+                  "lc": 1,
+                  "repr": "Message(role='assistant', content='', images=None, tool_calls=None)",
+                  "type": "not_implemented"
+                },
+                "model": "mistral:7b",
+                "prompt_eval_count": 2027,
+                "prompt_eval_duration": 82319532400,
+                "total_duration": 109616055700
+              },
+              "tool_calls": [],
+              "type": "ai",
+              "usage_metadata": {
+                "input_tokens": 2027,
+                "output_tokens": 278,
+                "total_tokens": 2305
+              }
+            },
+            "lc": 1,
+            "type": "constructor"
+          },
+          "text": " Based on the examples and guidelines provided, here's the SWRL rule for the given natural language rule:\n\nRule in natural language: If a detection has a start time and an end time, and its total duration is calculated to be greater than 60 minutes, then the severity of the incident is 'high'.\n\nSWRL rule: Detection(?d) ^ hasDetectionStart(?d, ?startTime) ^ hasDetectionEnd(?d, ?endTime) ^ swrlb:greaterThan(duration(?d), 60minutes) -> beAWARE_ontology:hasIncidentSeverity(?d, \"high\")\n\nExplanation:\n- Detection(?d): The detection that we are considering.\n- hasDetectionStart(?d, ?startTime): The start time of the detection.\n- hasDetectionEnd(?d, ?endTime): The end time of the detection.\n- duration(?d): A custom function to calculate the difference between the end and start times of a detection (not part of the provided ontology).\n- beAWARE_ontology:hasIncidentSeverity(?d, \"high\"): The severity of the incident associated with the given detection.",
+          "type": "ChatGeneration"
+        }
+      ]
+    ],
+    "llm_output": null,
+    "run": null,
+    "type": "LLMResult"
+  },
+  "metadata": {
+    "ls_model_name": "mistral:7b",
+    "ls_model_type": "chat",
+    "ls_provider": "ollama",
+    "ls_run_depth": 1,
+    "ls_temperature": 0,
+    "revision_id": "3ec4949-dirty"
+  },
+  "langsmith": {
+    "organization": {
+      "name": "Personal",
+      "id": "dddfdd98-7034-429c-ae34-81262387c9b0"
+    },
+    "workspace": {
+      "name": "Personal",
+      "id": "1da9662e-2f17-5b78-a525-2d13842bf0d3"
+    },
+    "tracing_project": {
+      "id": "8206a6fd-6737-42c3-9313-8a3fc603b061",
+      "name": "Updated-Phase1-SAR-ttl-1000-mistral:7b-k7"
+    }
+  }
+}

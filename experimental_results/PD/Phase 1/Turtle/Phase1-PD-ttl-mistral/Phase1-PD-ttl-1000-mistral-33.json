@@ -1,0 +1,119 @@
+{
+  "inputs": {
+    "messages": [
+      [
+        {
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "HumanMessage"
+          ],
+          "kwargs": {
+            "content": "\n  Act as an ontology engineer. Use the following content (examples, part of the ontology, and a list of guidelines) as a guide to translate the natural language rule you are given into a SWRL rule. \n  EXAMPLES\n    Example 1\n    Rule in natural language: If a person has a sibling who is a man, then the person has a brother.\n    SWRL rule: Person(?p) ^ hasSibling(?p, ?s) ^ Person(?s) ^ IsMan(?s, true) -> hasBrother(?p, ?s)\n\n    Example 2\n    Rule in natural language: if a person has a phone number that starts with '+', then the person has an international phone number.\n    SWRL rule: Person(?p) ^ hasPhoneNumber(?p, ?number) ^ swrlb:startsWith(?number, \"+\") -> hasInternationalPhoneNumber(?p, true)\n\n    Example 3\n    Rule in natural language:  if a person has age greater than 17, then the person is an adult and has id card.\n    SWRL rule: Person(?p) ^ hasAge(?p, ?age) ^ Age(?age) ^ swrlb:greaterThan(?age, 17) ^ IdCard(?id) -> Adult(?p) ^ hasIdCard(?p, ?id)\n\n    Example 4\n    Rule in natural language: if a publication has two different authors, then those authors have cooperated with each other.\n    SWRL rule: Publication(?p) ^ Author(?y) ^ Author(?z) ^ hasAuthor(?p, ?y) ^ hasAuthor(?p, ?z) ^ differentFrom(?y, ?z) -> cooperatedWith(?y, ?z)\n\n    Example 5\n    Rule in natural language: if a researcher has published more than 10 papers in a Top-Tier conference, then the researcher is a prominent researcher and has a high citation impact.\n    SWRL rule: Researcher(?r) ^ hasPublished(?r, ?c) ^ Conference(?c) ^ topTierConference(?c) ^ swrlb:greaterThan(count(?c), 10) -> ProminentResearcher(?r) ^ hasHighCitationImpact(?r, true)\n  END OF EXAMPLES\n  PART OF ONTOLOGY \n    ###  http://www.case.edu/MDO#ActivitiesofDailyLiving\n<http://www.case.edu/MDO#ActivitiesofDailyLiving> rdf:type owl:Class .\n\n\n###  http://www.case.edu/MDO#Tremor\n<http://www.case.edu/MDO#Tremor> rdf:type owl:Class ;\n                                 rdfs:comment \"symptom of PD, usually observed at patient's hands\"@en ;\n                                 rdfs:label \"Tremor\"@en .\n\n\n###  http://www.case.edu/PMDO#BradykinesiaofUpperLimb\n<http://www.case.edu/PMDO#BradykinesiaofUpperLimb> rdf:type owl:Class ;\n                                                   rdfs:comment \"symptom of PD, usually observed at patient's legs\"@en ;\n                                                   rdfs:label \"Bradykinesia of Upper Limb\"@en .\n\n\n###  http://www.w3.org/ns/sosa/FeatureOfInterest\nsosa:FeatureOfInterest owl:equivalentClass core:FeatureOfInterest .\n\n\n###  https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/Accelerometer\ndahcc:Accelerometer rdf:type owl:Class .\n###  http://w3id.org/Wear4PDmove/onto#hasAnxiety\nonto:hasAnxiety rdf:type owl:DatatypeProperty ;\n                rdfs:subPropertyOf owl:topDataProperty ;\n                rdfs:domain schema:Person ;\n                rdfs:range xsd:boolean ;\n                rdfs:label \"has Anxiety\"@en .\n\n\n###  http://w3id.org/Wear4PDmove/onto#hasBradykinisiaOfUpperLimp\nonto:hasBradykinisiaOfUpperLimp rdf:type owl:DatatypeProperty ;\n                                rdfs:subPropertyOf owl:topDataProperty ;\n                                rdfs:domain schema:Person ;\n                                rdfs:range xsd:boolean ;\n                                rdfs:label \"has bradykinisia of upper limp\"@en .\n\n\n###  http://w3id.org/Wear4PDmove/onto#hasDepression\nonto:hasDepression rdf:type owl:DatatypeProperty ;\n                   rdfs:subPropertyOf owl:topDataProperty ;\n                   rdfs:domain schema:Person ;\n                   rdfs:range xsd:boolean ;\n                   rdfs:label \"has depression\"@en .\n###  http://w3id.org/Wear4PDmove/onto#PD_Patient\nonto:PD_Patient rdf:type owl:Class ;\n                rdfs:subClassOf onto:Patient ,\n                                [ rdf:type owl:Restriction ;\n                                  owl:onProperty onto:hasPersonalHealthRecord ;\n                                  owl:someValuesFrom onto:PersonalHealthRecord\n                                ] ;\n                rdfs:comment \"PD patient\" ;\n                rdfs:label \"PD Patient\" .\n\n\n###  http://w3id.org/Wear4PDmove/onto#PDpatientFalllingEventObservation\nonto:PDpatientFalllingEventObservation rdf:type owl:Class ;\n                                       rdfs:subClassOf onto:RecognizedEvent ;\n                                       rdfs:comment \"Falling event observation for PD Patient\" ;\n                                       rdfs:label \"PD patient Fallling Event Observation\" .\n###  http://w3id.org/Wear4PDmove/onto#RecognizedEvent\nonto:RecognizedEvent rdf:type owl:Class ;\n                     rdfs:subClassOf sosa:Observation ;\n                     rdfs:comment \"An observation of a recognized event for a PD Patient\" ;\n                     rdfs:label \"PD patient recognized event observation\" .\n\n\n###  http://w3id.org/Wear4PDmove/onto#SketchingActivity\nonto:SketchingActivity rdf:type owl:Class ;\n                       rdfs:subClassOf <http://www.case.edu/MDO#ActivitiesofDailyLiving> ,\n                                       [ rdf:type owl:Restriction ;\n                                         owl:onProperty core:isMeasuredByDevice ;\n                                         owl:someValuesFrom onto:SmartWatch\n                                       ] ;\n                       rdfs:comment \"An activity followed by the patient during his free time, using his hands (sketching).\"@en ;\n                       rdfs:label \"Sketching Activity\"@en .\n###  http://w3id.org/Wear4PDmove/onto#PDpatientMissingDoseEventObservation\nonto:PDpatientMissingDoseEventObservation rdf:type owl:Class ;\n                                          rdfs:subClassOf onto:RecognizedEvent ;\n                                          rdfs:comment \"Missing dose event observation for PD Patient\" ;\n                                          rdfs:label \"PD patient Missing Dose Event Observation\" .\n\n\n###  http://w3id.org/Wear4PDmove/onto#Patient\nonto:Patient rdf:type owl:Class ;\n             rdfs:subClassOf schema:Person ;\n             rdfs:comment \"Any kind of patient\" ;\n             rdfs:label \"Patient\" .\n\n\n###  http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord\nonto:PersonalHealthRecord rdf:type owl:Class ;\n                          rdfs:comment \"Personal Health Record of a patient\" ;\n                          rdfs:label \"Personal Health Record\" .\n###  http://w3id.org/Wear4PDmove/onto#Diagnosis\nonto:Diagnosis rdf:type owl:Class ;\n               rdfs:subClassOf onto:PersonalHealthRecord ;\n               rdfs:comment \"diagnosis of disease of a patient in one appointment\" ;\n               rdfs:label \"Diagnosis\" .\n\n\n###  http://w3id.org/Wear4PDmove/onto#DosageTime\nonto:DosageTime rdf:type owl:Class ;\n                rdfs:subClassOf core:Time ;\n                rdfs:comment \"Dosage time on datetime\" ;\n                rdfs:label \"Dosage Time (time in one day)\" .\n\n\n###  http://w3id.org/Wear4PDmove/onto#MedicalPrescription\nonto:MedicalPrescription rdf:type owl:Class ;\n                         rdfs:subClassOf onto:PersonalHealthRecord ;\n                         rdfs:comment \"Medical Prescription for Patient\" ;\n                         rdfs:label \"Medical Prescription\" .\n###  http://w3id.org/Wear4PDmove/onto#hasSubstance\nonto:hasSubstance rdf:type owl:DatatypeProperty ;\n                  rdfs:domain onto:MedicalPrescription ;\n                  rdfs:range xsd:string .\n\n\n###  http://w3id.org/Wear4PDmove/onto#hasTremor\nonto:hasTremor rdf:type owl:DatatypeProperty ;\n               rdfs:subPropertyOf owl:topDataProperty ;\n               rdfs:domain schema:Person ;\n               rdfs:range xsd:boolean ;\n               rdfs:label \"has tremor\"@en .\n\n\n###  http://w3id.org/Wear4PDmove/onto#heartRate\nonto:heartRate rdf:type owl:DatatypeProperty ;\n               rdfs:subPropertyOf owl:topDataProperty ;\n               rdfs:domain schema:Person ;\n               rdfs:range xsd:decimal ;\n               rdfs:label \"heart rate\"@en .\n  END OF ONTOLOGY\n  \n  COMMON GUIDELINES\n\n  Please try to implement the following guidelines:\n  1: Variables e.g., (?something) used in Conclusions must be present in Conditions. So create as many variables as needed in Conditions. \n  2: Each atom must have exactly one variable if it represents class.\n  3: Each atom must have exactly two variables if it represents object property.\n  4: Each concept must be represented by a class and must be present in Conditions.\n\n  END OF COMMON GUIDELINES\n\n  The rule in natural language is the following: If a patient has tremor and bradykinesia of upper limp, then that patient should be classified as a patient with Parkinson disease.\n  Give only the final SWRL rule\n  ",
+            "type": "human"
+          },
+          "lc": 1,
+          "type": "constructor"
+        }
+      ]
+    ]
+  },
+  "outputs": {
+    "generations": [
+      [
+        {
+          "generation_info": {
+            "created_at": "2026-05-16T10:14:22.8408282Z",
+            "done": true,
+            "done_reason": "stop",
+            "eval_count": 224,
+            "eval_duration": 22062113400,
+            "load_duration": 19196100,
+            "message": {
+              "content": "",
+              "images": null,
+              "role": "assistant",
+              "tool_calls": null
+            },
+            "model": "mistral:7b",
+            "prompt_eval_count": 2711,
+            "prompt_eval_duration": 99936070300,
+            "total_duration": 122131709700
+          },
+          "message": {
+            "id": [
+              "langchain",
+              "schema",
+              "messages",
+              "AIMessage"
+            ],
+            "kwargs": {
+              "content": " Based on the provided examples, ontology, and common guidelines, the SWRL rule for the given natural language rule is:\n\n```\nPerson(?p) ^ hasTremor(?p, true) ^ hasBradykinesiaOfUpperLimb(?p, true) -> PD_Patient(?p)\n```\n\nExplanation:\n- `Person(?p)` is a concept representing the class of persons.\n- `hasTremor(?p, true)` and `hasBradykinesiaOfUpperLimb(?p, true)` are object properties that indicate whether a person has tremor or bradykinesia of upper limb, respectively. They both have one variable (`?p`) representing the class Person.\n- `PD_Patient(?p)` is a concept representing the class of Parkinson's disease patients. It is the conclusion of the rule and has one variable (`?p`) that should be present in the conditions as well.",
+              "id": "run--019e3045-ca64-7091-bfdd-e51a18a870c9-0",
+              "invalid_tool_calls": [],
+              "response_metadata": {
+                "created_at": "2026-05-16T10:14:22.8408282Z",
+                "done": true,
+                "done_reason": "stop",
+                "eval_count": 224,
+                "eval_duration": 22062113400,
+                "load_duration": 19196100,
+                "message": {
+                  "id": [
+                    "ollama",
+                    "_types",
+                    "Message"
+                  ],
+                  "lc": 1,
+                  "repr": "Message(role='assistant', content='', images=None, tool_calls=None)",
+                  "type": "not_implemented"
+                },
+                "model": "mistral:7b",
+                "prompt_eval_count": 2711,
+                "prompt_eval_duration": 99936070300,
+                "total_duration": 122131709700
+              },
+              "tool_calls": [],
+              "type": "ai",
+              "usage_metadata": {
+                "input_tokens": 2711,
+                "output_tokens": 224,
+                "total_tokens": 2935
+              }
+            },
+            "lc": 1,
+            "type": "constructor"
+          },
+          "text": " Based on the provided examples, ontology, and common guidelines, the SWRL rule for the given natural language rule is:\n\n```\nPerson(?p) ^ hasTremor(?p, true) ^ hasBradykinesiaOfUpperLimb(?p, true) -> PD_Patient(?p)\n```\n\nExplanation:\n- `Person(?p)` is a concept representing the class of persons.\n- `hasTremor(?p, true)` and `hasBradykinesiaOfUpperLimb(?p, true)` are object properties that indicate whether a person has tremor or bradykinesia of upper limb, respectively. They both have one variable (`?p`) representing the class Person.\n- `PD_Patient(?p)` is a concept representing the class of Parkinson's disease patients. It is the conclusion of the rule and has one variable (`?p`) that should be present in the conditions as well.",
+          "type": "ChatGeneration"
+        }
+      ]
+    ],
+    "llm_output": null,
+    "run": null,
+    "type": "LLMResult"
+  },
+  "metadata": {
+    "ls_model_name": "mistral:7b",
+    "ls_model_type": "chat",
+    "ls_provider": "ollama",
+    "ls_run_depth": 1,
+    "ls_temperature": 0,
+    "revision_id": "3ec4949-dirty"
+  },
+  "langsmith": {
+    "organization": {
+      "name": "Personal",
+      "id": "dddfdd98-7034-429c-ae34-81262387c9b0"
+    },
+    "workspace": {
+      "name": "Personal",
+      "id": "1da9662e-2f17-5b78-a525-2d13842bf0d3"
+    },
+    "tracing_project": {
+      "id": "6d576e26-70a1-4f39-b842-62c27f2f0c8c",
+      "name": "Updated-Phase1-PD-ttl-1000-mistral:7b-k7"
+    }
+  }
+}

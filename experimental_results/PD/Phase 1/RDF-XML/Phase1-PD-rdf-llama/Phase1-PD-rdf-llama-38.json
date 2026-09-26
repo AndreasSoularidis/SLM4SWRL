@@ -1,0 +1,119 @@
+{
+  "inputs": {
+    "messages": [
+      [
+        {
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "HumanMessage"
+          ],
+          "kwargs": {
+            "content": "\n  Act as an ontology engineer. Use the following content (examples, part of the ontology, and a list of guidelines) as a guide to translate the natural language rule you are given into a SWRL rule. \n  EXAMPLES\n    Example 1\n    Rule in natural language: If a person has a sibling who is a man, then the person has a brother.\n    SWRL rule: Person(?p) ^ hasSibling(?p, ?s) ^ Person(?s) ^ IsMan(?s, true) -> hasBrother(?p, ?s)\n\n    Example 2\n    Rule in natural language: if a person has a phone number that starts with '+', then the person has an international phone number.\n    SWRL rule: Person(?p) ^ hasPhoneNumber(?p, ?number) ^ swrlb:startsWith(?number, \"+\") -> hasInternationalPhoneNumber(?p, true)\n\n    Example 3\n    Rule in natural language:  if a person has age greater than 17, then the person is an adult and has id card.\n    SWRL rule: Person(?p) ^ hasAge(?p, ?age) ^ Age(?age) ^ swrlb:greaterThan(?age, 17) ^ IdCard(?id) -> Adult(?p) ^ hasIdCard(?p, ?id)\n\n    Example 4\n    Rule in natural language: if a publication has two different authors, then those authors have cooperated with each other.\n    SWRL rule: Publication(?p) ^ Author(?y) ^ Author(?z) ^ hasAuthor(?p, ?y) ^ hasAuthor(?p, ?z) ^ differentFrom(?y, ?z) -> cooperatedWith(?y, ?z)\n\n    Example 5\n    Rule in natural language: if a researcher has published more than 10 papers in a Top-Tier conference, then the researcher is a prominent researcher and has a high citation impact.\n    SWRL rule: Researcher(?r) ^ hasPublished(?r, ?c) ^ Conference(?c) ^ topTierConference(?c) ^ swrlb:greaterThan(count(?c), 10) -> ProminentResearcher(?r) ^ hasHighCitationImpact(?r, true)\n  END OF EXAMPLES\n  PART OF ONTOLOGY \n    <owl:Class rdf:about=\"http://www.case.edu/MDO#Tremor\">\n        <rdfs:comment xml:lang=\"en\">symptom of PD, usually observed at patient&apos;s hands</rdfs:comment>\n        <rdfs:label xml:lang=\"en\">Tremor</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://www.case.edu/PMDO#BradykinesiaofUpperLimb -->\n\n    <owl:Class rdf:about=\"http://www.case.edu/PMDO#BradykinesiaofUpperLimb\">\n        <rdfs:comment xml:lang=\"en\">symptom of PD, usually observed at patient&apos;s legs</rdfs:comment>\n        <rdfs:label xml:lang=\"en\">Bradykinesia of Upper Limb</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://www.w3.org/ns/sosa/FeatureOfInterest -->\n\n    <rdf:Description rdf:about=\"http://www.w3.org/ns/sosa/FeatureOfInterest\">\n        <owl:equivalentClass rdf:resource=\"https://saref.etsi.org/core/FeatureOfInterest\"/>\n    </rdf:Description>\n    \n\n\n    <!-- https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/Accelerometer -->\n<owl:DatatypeProperty rdf:about=\"http://w3id.org/Wear4PDmove/onto#hasBradykinisiaOfUpperLimp\">\n        <rdfs:subPropertyOf rdf:resource=\"http://www.w3.org/2002/07/owl#topDataProperty\"/>\n        <rdfs:domain rdf:resource=\"http://schema.org/Person\"/>\n        <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#boolean\"/>\n        <rdfs:label xml:lang=\"en\">has bradykinisia of upper limp</rdfs:label>\n    </owl:DatatypeProperty>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#hasDepression -->\n\n    <owl:DatatypeProperty rdf:about=\"http://w3id.org/Wear4PDmove/onto#hasDepression\">\n        <rdfs:subPropertyOf rdf:resource=\"http://www.w3.org/2002/07/owl#topDataProperty\"/>\n        <rdfs:domain rdf:resource=\"http://schema.org/Person\"/>\n        <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#boolean\"/>\n        <rdfs:label xml:lang=\"en\">has depression</rdfs:label>\n    </owl:DatatypeProperty>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#hasDysphagia -->\n<owl:DatatypeProperty rdf:about=\"http://w3id.org/Wear4PDmove/onto#hasAkinesia\">\n        <rdfs:subPropertyOf rdf:resource=\"http://www.w3.org/2002/07/owl#topDataProperty\"/>\n        <rdfs:domain rdf:resource=\"http://schema.org/Person\"/>\n        <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#boolean\"/>\n        <rdfs:label xml:lang=\"en\">has Akinesia</rdfs:label>\n    </owl:DatatypeProperty>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#hasAnxiety -->\n\n    <owl:DatatypeProperty rdf:about=\"http://w3id.org/Wear4PDmove/onto#hasAnxiety\">\n        <rdfs:subPropertyOf rdf:resource=\"http://www.w3.org/2002/07/owl#topDataProperty\"/>\n        <rdfs:domain rdf:resource=\"http://schema.org/Person\"/>\n        <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#boolean\"/>\n        <rdfs:label xml:lang=\"en\">has Anxiety</rdfs:label>\n    </owl:DatatypeProperty>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#hasBradykinisiaOfUpperLimp -->\n<owl:DatatypeProperty rdf:about=\"http://w3id.org/Wear4PDmove/onto#hasTremor\">\n        <rdfs:subPropertyOf rdf:resource=\"http://www.w3.org/2002/07/owl#topDataProperty\"/>\n        <rdfs:domain rdf:resource=\"http://schema.org/Person\"/>\n        <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#boolean\"/>\n        <rdfs:label xml:lang=\"en\">has tremor</rdfs:label>\n    </owl:DatatypeProperty>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#heartRate -->\n\n    <owl:DatatypeProperty rdf:about=\"http://w3id.org/Wear4PDmove/onto#heartRate\">\n        <rdfs:subPropertyOf rdf:resource=\"http://www.w3.org/2002/07/owl#topDataProperty\"/>\n        <rdfs:domain rdf:resource=\"http://schema.org/Person\"/>\n        <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#decimal\"/>\n        <rdfs:label xml:lang=\"en\">heart rate</rdfs:label>\n    </owl:DatatypeProperty>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#levelHoehnYahrStage -->\n<owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#WalkingActivity\">\n        <rdfs:subClassOf rdf:resource=\"http://www.case.edu/MDO#ActivitiesofDailyLiving\"/>\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"https://saref.etsi.org/core/isMeasuredByDevice\"/>\n                <owl:someValuesFrom rdf:resource=\"http://w3id.org/Wear4PDmove/onto#SmartWatch\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n        <rdfs:comment xml:lang=\"en\">An activity followed by the patient during his free time, using his hands (walking).</rdfs:comment>\n        <rdfs:label xml:lang=\"en\">Walking Activity</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://www.case.edu/MDO#ActivitiesofDailyLiving -->\n\n    <owl:Class rdf:about=\"http://www.case.edu/MDO#ActivitiesofDailyLiving\"/>\n    \n\n\n    <!-- http://www.case.edu/MDO#Tremor -->\n<owl:DatatypeProperty rdf:about=\"http://w3id.org/Wear4PDmove/onto#hasStartTime\">\n        <rdfs:domain rdf:resource=\"http://www.w3.org/ns/sosa/Observation\"/>\n        <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#dateTime\"/>\n    </owl:DatatypeProperty>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#hasSubstance -->\n\n    <owl:DatatypeProperty rdf:about=\"http://w3id.org/Wear4PDmove/onto#hasSubstance\">\n        <rdfs:domain rdf:resource=\"http://w3id.org/Wear4PDmove/onto#MedicalPrescription\"/>\n        <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#string\"/>\n    </owl:DatatypeProperty>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#hasTremor -->\n<owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#MedicalPrescription\">\n        <rdfs:subClassOf rdf:resource=\"http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord\"/>\n        <rdfs:comment>Medical Prescription for Patient</rdfs:comment>\n        <rdfs:label>Medical Prescription</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#NotifyDoctor -->\n\n    <owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#NotifyDoctor\">\n        <rdfs:subClassOf rdf:resource=\"http://w3id.org/Wear4PDmove/onto#AlertingNotification\"/>\n        <rdfs:comment>Notify doctor for event (alert notification)</rdfs:comment>\n        <rdfs:label>Notify Doctor</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#NotifyNurse -->\n\n    <owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#NotifyNurse\">\n        <rdfs:subClassOf rdf:resource=\"http://w3id.org/Wear4PDmove/onto#AlertingNotification\"/>\n    </owl:Class>\n  END OF ONTOLOGY\n  \n  COMMON GUIDELINES\n\n  Please try to implement the following guidelines:\n  1: Variables e.g., (?something) used in Conclusions must be present in Conditions. So create as many variables as needed in Conditions. \n  2: Each atom must have exactly one variable if it represents class.\n  3: Each atom must have exactly two variables if it represents object property.\n  4: Each concept must be represented by a class and must be present in Conditions.\n\n  END OF COMMON GUIDELINES\n\n  The rule in natural language is the following: If a person is monitored and the low-level events of tremor and  bradykinesia of the upper limb are identified, and this person has a medical prescription that contains Dopamine, then it is most likely to be a patient with Parkinson disease.\n  Give only the final SWRL rule\n  ",
+            "type": "human"
+          },
+          "lc": 1,
+          "type": "constructor"
+        }
+      ]
+    ]
+  },
+  "outputs": {
+    "generations": [
+      [
+        {
+          "generation_info": {
+            "created_at": "2026-05-09T12:03:04.4462Z",
+            "done": true,
+            "done_reason": "stop",
+            "eval_count": 132,
+            "eval_duration": 14231237100,
+            "load_duration": 111265100,
+            "message": {
+              "content": "",
+              "images": null,
+              "role": "assistant",
+              "tool_calls": null
+            },
+            "model": "llama3.1:8b",
+            "prompt_eval_count": 2630,
+            "prompt_eval_duration": 125234898200,
+            "total_duration": 139657056500
+          },
+          "message": {
+            "id": [
+              "langchain",
+              "schema",
+              "messages",
+              "AIMessage"
+            ],
+            "kwargs": {
+              "content": "Here is the final SWRL rule:\n\nPerson(?p) ^ Monitored(?p, true) ^ IdentifiedLowLevelEvent(?e1) ^ IdentifiedLowLevelEvent(?e2) ^ hasTremor(?e1, true) ^ hasBradykinisiaOfUpperLimp(?e2, true) ^ MedicalPrescription(?m) ^ hasSubstance(?m, \"Dopamine\") -> ParkinsonDisease(?p)\n\nNote: I assumed that the classes and properties used in this rule are defined in the provided ontology. If not, please let me know and I'll be happy to help with defining them as well.",
+              "id": "run--019e0c9c-84fa-7b33-9440-8b8429152b35-0",
+              "invalid_tool_calls": [],
+              "response_metadata": {
+                "created_at": "2026-05-09T12:03:04.4462Z",
+                "done": true,
+                "done_reason": "stop",
+                "eval_count": 132,
+                "eval_duration": 14231237100,
+                "load_duration": 111265100,
+                "message": {
+                  "id": [
+                    "ollama",
+                    "_types",
+                    "Message"
+                  ],
+                  "lc": 1,
+                  "repr": "Message(role='assistant', content='', images=None, tool_calls=None)",
+                  "type": "not_implemented"
+                },
+                "model": "llama3.1:8b",
+                "prompt_eval_count": 2630,
+                "prompt_eval_duration": 125234898200,
+                "total_duration": 139657056500
+              },
+              "tool_calls": [],
+              "type": "ai",
+              "usage_metadata": {
+                "input_tokens": 2630,
+                "output_tokens": 132,
+                "total_tokens": 2762
+              }
+            },
+            "lc": 1,
+            "type": "constructor"
+          },
+          "text": "Here is the final SWRL rule:\n\nPerson(?p) ^ Monitored(?p, true) ^ IdentifiedLowLevelEvent(?e1) ^ IdentifiedLowLevelEvent(?e2) ^ hasTremor(?e1, true) ^ hasBradykinisiaOfUpperLimp(?e2, true) ^ MedicalPrescription(?m) ^ hasSubstance(?m, \"Dopamine\") -> ParkinsonDisease(?p)\n\nNote: I assumed that the classes and properties used in this rule are defined in the provided ontology. If not, please let me know and I'll be happy to help with defining them as well.",
+          "type": "ChatGeneration"
+        }
+      ]
+    ],
+    "llm_output": null,
+    "run": null,
+    "type": "LLMResult"
+  },
+  "metadata": {
+    "ls_model_name": "llama3.1:8b",
+    "ls_model_type": "chat",
+    "ls_provider": "ollama",
+    "ls_run_depth": 1,
+    "ls_temperature": 0,
+    "revision_id": "3ec4949-dirty"
+  },
+  "langsmith": {
+    "organization": {
+      "name": "Personal",
+      "id": "dddfdd98-7034-429c-ae34-81262387c9b0"
+    },
+    "workspace": {
+      "name": "Personal",
+      "id": "1da9662e-2f17-5b78-a525-2d13842bf0d3"
+    },
+    "tracing_project": {
+      "id": "c4d9c5a0-9003-4fb7-82fa-9ea70b946a72",
+      "name": "Updated-Phase1-PD-rdf-1000-llama3.1:8b-k7"
+    }
+  }
+}

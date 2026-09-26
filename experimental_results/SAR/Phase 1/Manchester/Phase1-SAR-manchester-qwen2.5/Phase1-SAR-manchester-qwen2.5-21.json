@@ -1,0 +1,119 @@
+{
+  "inputs": {
+    "messages": [
+      [
+        {
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "HumanMessage"
+          ],
+          "kwargs": {
+            "content": "\n  Act as an ontology engineer. Use the following content (examples, part of the ontology, and a list of guidelines) as a guide to translate the natural language rule you are given into a SWRL rule. \n  EXAMPLES\n    Example 1\n    Rule in natural language: If a person has a sibling who is a man, then the person has a brother.\n    SWRL rule: Person(?p) ^ hasSibling(?p, ?s) ^ Person(?s) ^ IsMan(?s, true) -> hasBrother(?p, ?s)\n\n    Example 2\n    Rule in natural language: if a person has a phone number that starts with '+', then the person has an international phone number.\n    SWRL rule: Person(?p) ^ hasPhoneNumber(?p, ?number) ^ swrlb:startsWith(?number, \"+\") -> hasInternationalPhoneNumber(?p, true)\n\n    Example 3\n    Rule in natural language:  if a person has age greater than 17, then the person is an adult and has id card.\n    SWRL rule: Person(?p) ^ hasAge(?p, ?age) ^ Age(?age) ^ swrlb:greaterThan(?age, 17) ^ IdCard(?id) -> Adult(?p) ^ hasIdCard(?p, ?id)\n\n    Example 4\n    Rule in natural language: if a publication has two different authors, then those authors have cooperated with each other.\n    SWRL rule: Publication(?p) ^ Author(?y) ^ Author(?z) ^ hasAuthor(?p, ?y) ^ hasAuthor(?p, ?z) ^ differentFrom(?y, ?z) -> cooperatedWith(?y, ?z)\n\n    Example 5\n    Rule in natural language: if a researcher has published more than 10 papers in a Top-Tier conference, then the researcher is a prominent researcher and has a high citation impact.\n    SWRL rule: Researcher(?r) ^ hasPublished(?r, ?c) ^ Conference(?c) ^ topTierConference(?c) ^ swrlb:greaterThan(count(?c), 10) -> ProminentResearcher(?r) ^ hasHighCitationImpact(?r, true)\n  END OF EXAMPLES\n  PART OF ONTOLOGY \n    ObjectProperty: beAWARE_ontology:relatesToMission\n\n    Annotations: \n        rdfs:label \"relates to mission\",\n        skos:definition \"Associates an incident occurrence to a mission.\"\n    \n    Domain: \n        beAWARE_ontology:Incident\n    \n    Range: \n        beAWARE_ontology:Mission\n    \n    InverseOf: \n        beAWARE_ontology:relatesToIncident\n    \n    \nObjectProperty: beAWARE_ontology:relatesToNaturalDisaster\n\n    Annotations: \n        rdfs:label \"relates to natural disaster\",\n        skos:definition \"Associates a climate parameter measurement to a natural disaster occurrence.\"\n    \n    Domain: \n        beAWARE_ontology:ClimateParameter\n    \n    Range: \n        beAWARE_ontology:NaturalDisaster\n    \n    InverseOf: \n        beAWARE_ontology:hasClimateParameterMeasurement\nObjectProperty: beAWARE_ontology:relatesToIncident\n\n    Annotations: \n        rdfs:label \"relates to incident\",\n        skos:definition \"Associates a mission to an incident occurrence.\"\n    \n    Domain: \n        beAWARE_ontology:Mission\n    \n    Range: \n        beAWARE_ontology:Incident\n    \n    InverseOf: \n        beAWARE_ontology:relatesToMission\n    \n    \nObjectProperty: beAWARE_ontology:relatesToMediaItem\n\n    Annotations: \n        rdfs:label \"relates to media item\",\n        skos:definition \"Associates a task to a media item.\"\n    \n    Domain: \n        beAWARE_ontology:Task\n    \n    Range: \n        beAWARE_ontology:MediaItem\n    \n    InverseOf: \n        beAWARE_ontology:relatesToTask\nObjectProperty: beAWARE_ontology:isAssignedToResponder\n\n    Annotations: \n        rdfs:label \"is assigned to responder\",\n        skos:definition \"Links a mission to a rescue unit.\"\n    \n    Domain: \n        beAWARE_ontology:Mission\n    \n    Range: \n        beAWARE_ontology:Responder\n    \n    InverseOf: \n        beAWARE_ontology:isAssignedMission\n    \n    \nObjectProperty: beAWARE_ontology:isClimateParameterOfIncident\n\n    Annotations: \n        rdfs:label \"is climate parameter of incident\",\n        skos:definition \"Links a climate parameter measurement to an incident.\"\n    \n    Domain: \n        beAWARE_ontology:ClimateParameter\n    \n    Range: \n        beAWARE_ontology:Incident\n    \n    InverseOf: \n        beAWARE_ontology:hasIncidentClimateParameter\nDataProperty: beAWARE_ontology:hasMissionEnd\n\n    Annotations: \n        rdfs:label \"has mission end\",\n        skos:definition \"Indicates the end of the rescue mission.\"\n    \n    Domain: \n        beAWARE_ontology:Mission\n    \n    Range: \n        xsd:dateTime\n    \n    \nDataProperty: beAWARE_ontology:hasMissionPriority\n\n    Annotations: \n        rdfs:label \"has mission priority\",\n        skos:definition \"Indicates the priority of the rescue mission.\"\n    \n    Domain: \n        beAWARE_ontology:Mission\n    \n    Range: \n        xsd:string\n    \n    \nDataProperty: beAWARE_ontology:hasMissionStart\n\n    Annotations: \n        rdfs:label \"has mission start\",\n        skos:definition \"Indicates the start of the rescue mission.\"\n    \n    Domain: \n        beAWARE_ontology:Mission\n    \n    Range: \n        xsd:dateTime\nDataProperty: beAWARE_ontology:hasMissionStatus\n\n    Annotations: \n        rdfs:label \"has mission status\",\n        skos:definition \"Indicates the current status of the rescue mission.\"\n    \n    Domain: \n        beAWARE_ontology:Mission\n    \n    Range: \n        xsd:string\n    \n    \nDataProperty: beAWARE_ontology:hasRadius\n\n    Annotations: \n        rdfs:label \"has radius\",\n        skos:definition \"Indicates the radius around a location. It’s used for representing areas and not points.\"\n    \n    Domain: \n        beAWARE_ontology:Location\n    \n    Range: \n        xsd:int\n    \n    \nDataProperty: beAWARE_ontology:hasRawMediaSource\n\n    Annotations: \n        rdfs:label \"has raw media source\",\n        skos:definition \"Links a media item to a URI pointing to the raw unprocessed item.\"\n    \n    Domain: \n        beAWARE_ontology:MediaItem\n    \n    Range: \n        xsd:anyURI\nDataProperty: beAWARE_ontology:hasIncidentSeverity\n\n    Annotations: \n        rdfs:label \"has incident severity\",\n        skos:definition \"Indicates the severity of the incident.\",\n        skos:example \"Incidents involving injured or dead people are of high severity.\"\n    \n    Domain: \n        beAWARE_ontology:Incident\n    \n    Range: \n        xsd:string\n    \n    \nDataProperty: beAWARE_ontology:hasMeasurementTimestamp\n\n    Annotations: \n        rdfs:label \"has measurement timestamp\",\n        skos:definition \"Indicates the timestamp of a climate parameter measurement.\"\n    \n    Domain: \n        beAWARE_ontology:ClimateParameter\n    \n    Range: \n        xsd:dateTime\n    \n    \nDataProperty: beAWARE_ontology:hasMediaItemTimestamp\n\n    Annotations: \n        rdfs:label \"has media item timestamp\",\n        skos:definition \"Indicates the timestamp when a media item was created.\"\n    \n    Domain: \n        beAWARE_ontology:MediaItem\n    \n    Range: \n        xsd:dateTime\nClass: beAWARE_ontology:Impact\n\n    Annotations: \n        rdfs:label \"Impact\",\n        skos:definition \"Represents the impact of natural disasters and incidents.\"\n    \n    \nClass: beAWARE_ontology:ImpactType\n\n    Annotations: \n        rdfs:label \"Impact Type\",\n        skos:definition \"Represents the various types of impacts.\",\n        skos:example \"Injuries, damage to properties etc.\"\n    \n    \nClass: beAWARE_ontology:Incident\n\n    Annotations: \n        rdfs:label \"Incident\",\n        skos:definition \"Represents the various incidents taking place during a natural disaster.\"\n    \n    \nClass: beAWARE_ontology:IncidentReport\n\n    Annotations: \n        rdfs:label \"Incident Report\",\n        skos:definition \"Represents an incident report submitted to the PSAP.\"\n    \n    \nClass: beAWARE_ontology:IncidentType\n\n    Annotations: \n        rdfs:label \"Incident Type\",\n        skos:definition \"Represents the various types of incidents.\",\n        skos:example \"Floods, blocked streets etc.\"\n  END OF ONTOLOGY\n  \n  COMMON GUIDELINES\n\n  Please try to implement the following guidelines:\n  1: Variables e.g., (?something) used in Conclusions must be present in Conditions. So create as many variables as needed in Conditions. \n  2: Each atom must have exactly one variable if it represents class.\n  3: Each atom must have exactly two variables if it represents object property.\n  4: Each concept must be represented by a class and must be present in Conditions.\n\n  END OF COMMON GUIDELINES\n\n  The rule in natural language is the following: If a mission is related to a specific incident and that incident has a priority level of 'high', then the mission should also be assigned as a 'high' priority.\n  Give only the final SWRL rule\n  ",
+            "type": "human"
+          },
+          "lc": 1,
+          "type": "constructor"
+        }
+      ]
+    ]
+  },
+  "outputs": {
+    "generations": [
+      [
+        {
+          "generation_info": {
+            "created_at": "2026-05-12T17:40:06.8617053Z",
+            "done": true,
+            "done_reason": "stop",
+            "eval_count": 83,
+            "eval_duration": 8448777500,
+            "load_duration": 90945700,
+            "message": {
+              "content": "",
+              "images": null,
+              "role": "assistant",
+              "tool_calls": null
+            },
+            "model": "qwen2.5:7b",
+            "prompt_eval_count": 2104,
+            "prompt_eval_duration": 72277623800,
+            "total_duration": 80897803000
+          },
+          "message": {
+            "id": [
+              "langchain",
+              "schema",
+              "messages",
+              "AIMessage"
+            ],
+            "kwargs": {
+              "content": "```swrl\nbeAWARE_ontology:Mission(?m) ^ beAWARE_ontology:relatesToIncident(?m, ?i) ^ beAWARE_ontology:hasMissionPriority(?m, ?priority) ^ beAWARE_ontology:hasIncidentSeverity(?i, 'high') -> beAWARE_ontology:hasMissionPriority(?m, 'high')\n```",
+              "id": "run--019e1d45-104a-7550-8379-43eb6800b4d7-0",
+              "invalid_tool_calls": [],
+              "response_metadata": {
+                "created_at": "2026-05-12T17:40:06.8617053Z",
+                "done": true,
+                "done_reason": "stop",
+                "eval_count": 83,
+                "eval_duration": 8448777500,
+                "load_duration": 90945700,
+                "message": {
+                  "id": [
+                    "ollama",
+                    "_types",
+                    "Message"
+                  ],
+                  "lc": 1,
+                  "repr": "Message(role='assistant', content='', images=None, tool_calls=None)",
+                  "type": "not_implemented"
+                },
+                "model": "qwen2.5:7b",
+                "prompt_eval_count": 2104,
+                "prompt_eval_duration": 72277623800,
+                "total_duration": 80897803000
+              },
+              "tool_calls": [],
+              "type": "ai",
+              "usage_metadata": {
+                "input_tokens": 2104,
+                "output_tokens": 83,
+                "total_tokens": 2187
+              }
+            },
+            "lc": 1,
+            "type": "constructor"
+          },
+          "text": "```swrl\nbeAWARE_ontology:Mission(?m) ^ beAWARE_ontology:relatesToIncident(?m, ?i) ^ beAWARE_ontology:hasMissionPriority(?m, ?priority) ^ beAWARE_ontology:hasIncidentSeverity(?i, 'high') -> beAWARE_ontology:hasMissionPriority(?m, 'high')\n```",
+          "type": "ChatGeneration"
+        }
+      ]
+    ],
+    "llm_output": null,
+    "run": null,
+    "type": "LLMResult"
+  },
+  "metadata": {
+    "ls_model_name": "qwen2.5:7b",
+    "ls_model_type": "chat",
+    "ls_provider": "ollama",
+    "ls_run_depth": 1,
+    "ls_temperature": 0,
+    "revision_id": "3ec4949-dirty"
+  },
+  "langsmith": {
+    "organization": {
+      "name": "Personal",
+      "id": "dddfdd98-7034-429c-ae34-81262387c9b0"
+    },
+    "workspace": {
+      "name": "Personal",
+      "id": "1da9662e-2f17-5b78-a525-2d13842bf0d3"
+    },
+    "tracing_project": {
+      "id": "81de4925-3e61-4233-b9a8-fe39a64aa75f",
+      "name": "Updated-Phase1-SAR-manchester-1000-qwen2.5:7b-k7-test"
+    }
+  }
+}

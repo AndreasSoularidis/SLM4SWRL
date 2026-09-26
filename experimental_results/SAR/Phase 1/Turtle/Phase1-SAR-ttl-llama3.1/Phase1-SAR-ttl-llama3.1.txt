@@ -1,0 +1,1678 @@
+Rule in Natural Language:
+  If a responder is assigned to a mission, and that mission is related to an incident and the location of the incident is known, then the location of responder is the same with the location of the incident.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+Responder(?r) ^ hasAssignedMission(?r, ?m) ^ Mission(?m) ^ relatesToIncident(?m, ?i) ^ Incident(?i) ^ hasIncidentLocation(?i, ?l) ^ Location(?l) ^ beAWARE_ontology:hasResponderLocation(?r, ?lr) -> beAWARE_ontology:isLocationOfResponder(?lr, ?r)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasResponderLocation
+beAWARE_ontology:hasResponderLocation rdf:type owl:ObjectProperty ;
+                                      owl:inverseOf beAWARE_ontology:isLocationOfResponder ;
+                                      rdfs:domain beAWARE_ontology:Responder ;
+                                      rdfs:range beAWARE_ontology:Location ;
+                                      rdfs:label "has responder location" ;
+                                      skos:definition "Represents the location where a rescue unit is at." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfResponder
+beAWARE_ontology:isLocationOfResponder rdf:type owl:ObjectProperty ;
+                                       rdfs:domain beAWARE_ontology:Location ;
+                                       rdfs:range beAWARE_ontology:Responder ;
+                                       rdfs:label "is location of responder" ;
+                                       skos:definition "Links a location to a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfIncident
+beAWARE_ontology:isLocationOfIncident rdf:type owl:ObjectProperty ;
+                                      rdfs:domain beAWARE_ontology:Location ;
+                                      rdfs:range beAWARE_ontology:Incident ;
+                                      rdfs:label "is location of incident" ;
+                                      skos:definition "Links a location to an incident occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isAssignedToResponder
+beAWARE_ontology:isAssignedToResponder rdf:type owl:ObjectProperty ;
+                                       rdfs:domain beAWARE_ontology:Mission ;
+                                       rdfs:range beAWARE_ontology:Responder ;
+                                       rdfs:label "is assigned to responder" ;
+                                       skos:definition "Links a mission to a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentLocation
+beAWARE_ontology:hasIncidentLocation rdf:type owl:ObjectProperty ;
+                                     owl:inverseOf beAWARE_ontology:isLocationOfIncident ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range beAWARE_ontology:Location ;
+                                     rdfs:label "has incident location" ;
+                                     skos:definition "Represents the location where an incident occurs." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isAssignedMission
+beAWARE_ontology:isAssignedMission rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isAssignedToResponder ;
+                                   rdfs:domain beAWARE_ontology:Responder ;
+                                   rdfs:range beAWARE_ontology:Mission ;
+                                   rdfs:label "is assigned mission" ;
+                                   skos:definition "Indicates the mission assignment of a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToIncident
+beAWARE_ontology:relatesToIncident rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:relatesToMission ;
+                                   rdfs:domain beAWARE_ontology:Mission ;
+                                   rdfs:range beAWARE_ontology:Incident ;
+                                   rdfs:label "relates to incident" ;
+                                   skos:definition "Associates a mission to an incident occurrence." .Rule in Natural Language:
+  If a detection has a start time and an end time, and its total duration is calculated to be greater than 60 minutes, then the severity of the incident is 'high'.
+SWRL Rule:
+ SWRL rule:
+Detection(?d) ^ hasDetectionStart(?d, ?start) ^ hasDetectionEnd(?d, ?end) ^ swrlb:greaterThan(swrlb:add(?end, -?start), 60) -> beAWARE_ontology:hasIncidentSeverity(?i, "high")
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentSeverity
+beAWARE_ontology:hasIncidentSeverity rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident severity" ;
+                                     skos:definition "Indicates the severity of the incident." ;
+                                     skos:example "Incidents involving injured or dead people are of high severity." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#detectsIncident
+beAWARE_ontology:detectsIncident rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf beAWARE_ontology:incidentDetectedBy ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range beAWARE_ontology:Incident ;
+                                 rdfs:label "detects incident" ;
+                                 skos:definition "Indicates which incidents were detected by a specific detection activity." ;
+                                 skos:example "A flooding incident, a blocked road etc." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasDetectionEnd
+beAWARE_ontology:hasDetectionEnd rdf:type owl:DatatypeProperty ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range xsd:dateTime ;
+                                 rdfs:label "has detection end" ;
+                                 skos:definition "Indicates the end of the detection." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasDetectionRisk
+beAWARE_ontology:hasDetectionRisk rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain beAWARE_ontology:Detection ;
+                                  rdfs:range xsd:float ;
+                                  rdfs:label "has detection risk" ;
+                                  skos:definition "Indicates the risk level of the detection." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentPriority
+beAWARE_ontology:hasIncidentPriority rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident priority" ;
+                                     skos:definition "Indicates the priority of the incident." ;
+                                     skos:example "Incidents involving humans in danger are of high priority." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#incidentDetectedBy
+beAWARE_ontology:incidentDetectedBy rdf:type owl:ObjectProperty ;
+                                    rdfs:domain beAWARE_ontology:Incident ;
+                                    rdfs:range beAWARE_ontology:Detection ;
+                                    rdfs:label "incident detected by" ;
+                                    skos:definition "Indicates the detection activity that detected this incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasDetectionStart
+beAWARE_ontology:hasDetectionStart rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain beAWARE_ontology:Detection ;
+                                   rdfs:range xsd:dateTime ;
+                                   rdfs:label "has detection start" ;
+                                   skos:definition "Indicates the start of the detection." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasDetectionTimestamp
+beAWARE_ontology:hasDetectionTimestamp rdf:type owl:DatatypeProperty ;
+                                       rdfs:domain beAWARE_ontology:Detection ;
+                                       rdfs:range xsd:dateTime ;
+                                       rdfs:label "has detection timestamp" ;
+                                       skos:definition "Represents the timestamp of the detection." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentImpact
+beAWARE_ontology:hasIncidentImpact rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isImpactOfIncident ;
+                                   rdfs:domain beAWARE_ontology:Incident ;
+                                   rdfs:range beAWARE_ontology:Impact ;
+                                   rdfs:label "has incident impact" ;
+                                   skos:definition "Indicates the impact of the specific incident." .Rule in Natural Language:
+  If an incident has an impact, and that impact affects a vulnerable object, then the incident's severity level is classified as 'high'.
+SWRL Rule:
+ Person(?i) ^ Incident(?i) ^ hasImpact(?i, ?impact) ^ Impact(?impact) ^ hasImpactOn(?impact, ?vulnerableObject) ^ VulnerableObject(?vulnerableObject) -> hasIncidentSeverity(?i, "high")
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentImpact
+beAWARE_ontology:hasIncidentImpact rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isImpactOfIncident ;
+                                   rdfs:domain beAWARE_ontology:Incident ;
+                                   rdfs:range beAWARE_ontology:Impact ;
+                                   rdfs:label "has incident impact" ;
+                                   skos:definition "Indicates the impact of the specific incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentSeverity
+beAWARE_ontology:hasIncidentSeverity rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident severity" ;
+                                     skos:definition "Indicates the severity of the incident." ;
+                                     skos:example "Incidents involving injured or dead people are of high severity." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#causesIncidentImpact
+beAWARE_ontology:causesIncidentImpact rdf:type owl:ObjectProperty ;
+                                      rdfs:domain beAWARE_ontology:IncidentType ;
+                                      rdfs:range beAWARE_ontology:ImpactType ;
+                                      rdfs:label "causes incident impact" ;
+                                      skos:definition "Indicates which impact type is caused by this type of incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentPriority
+beAWARE_ontology:hasIncidentPriority rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident priority" ;
+                                     skos:definition "Indicates the priority of the incident." ;
+                                     skos:example "Incidents involving humans in danger are of high priority." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasImpactOn
+beAWARE_ontology:hasImpactOn rdf:type owl:ObjectProperty ;
+                             owl:inverseOf beAWARE_ontology:isImpactedBy ;
+                             rdfs:domain beAWARE_ontology:Impact ;
+                             rdfs:range beAWARE_ontology:VulnerableObject ;
+                             rdfs:label "has impact on" ;
+                             skos:definition "Indicates which vulnerable object is impacted by the specific impact occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvedInIncident
+beAWARE_ontology:involvedInIncident rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf beAWARE_ontology:involvesParticipant ;
+                                    rdfs:domain beAWARE_ontology:VulnerableObject ;
+                                    rdfs:range beAWARE_ontology:Incident ;
+                                    rdfs:label "involved in incident" ;
+                                    skos:definition "Indicates the incident a vulnerable object is involved in." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#causedByIncident
+beAWARE_ontology:causedByIncident rdf:type owl:ObjectProperty ;
+                                  owl:inverseOf beAWARE_ontology:causesIncidentImpact ;
+                                  rdfs:domain beAWARE_ontology:ImpactType ;
+                                  rdfs:range beAWARE_ontology:IncidentType ;
+                                  rdfs:label "caused by incident" ;
+                                  skos:definition "Indicates which incident type has caused this impact type." .Rule in Natural Language:
+  If an incident has an impact, and that impact affects a vulnerable object, then the incident's severity level is classified as 'high'.
+SWRL Rule:
+ Person(?i) ^ Incident(?i) ^ hasImpact(?i, ?impact) ^ Impact(?impact) ^ hasImpactOn(?impact, ?vulnerableObject) ^ VulnerableObject(?vulnerableObject) -> hasIncidentSeverity(?i, "high")
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentImpact
+beAWARE_ontology:hasIncidentImpact rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isImpactOfIncident ;
+                                   rdfs:domain beAWARE_ontology:Incident ;
+                                   rdfs:range beAWARE_ontology:Impact ;
+                                   rdfs:label "has incident impact" ;
+                                   skos:definition "Indicates the impact of the specific incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentSeverity
+beAWARE_ontology:hasIncidentSeverity rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident severity" ;
+                                     skos:definition "Indicates the severity of the incident." ;
+                                     skos:example "Incidents involving injured or dead people are of high severity." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#causesIncidentImpact
+beAWARE_ontology:causesIncidentImpact rdf:type owl:ObjectProperty ;
+                                      rdfs:domain beAWARE_ontology:IncidentType ;
+                                      rdfs:range beAWARE_ontology:ImpactType ;
+                                      rdfs:label "causes incident impact" ;
+                                      skos:definition "Indicates which impact type is caused by this type of incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentPriority
+beAWARE_ontology:hasIncidentPriority rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident priority" ;
+                                     skos:definition "Indicates the priority of the incident." ;
+                                     skos:example "Incidents involving humans in danger are of high priority." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasImpactOn
+beAWARE_ontology:hasImpactOn rdf:type owl:ObjectProperty ;
+                             owl:inverseOf beAWARE_ontology:isImpactedBy ;
+                             rdfs:domain beAWARE_ontology:Impact ;
+                             rdfs:range beAWARE_ontology:VulnerableObject ;
+                             rdfs:label "has impact on" ;
+                             skos:definition "Indicates which vulnerable object is impacted by the specific impact occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvedInIncident
+beAWARE_ontology:involvedInIncident rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf beAWARE_ontology:involvesParticipant ;
+                                    rdfs:domain beAWARE_ontology:VulnerableObject ;
+                                    rdfs:range beAWARE_ontology:Incident ;
+                                    rdfs:label "involved in incident" ;
+                                    skos:definition "Indicates the incident a vulnerable object is involved in." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#causedByIncident
+beAWARE_ontology:causedByIncident rdf:type owl:ObjectProperty ;
+                                  owl:inverseOf beAWARE_ontology:causesIncidentImpact ;
+                                  rdfs:domain beAWARE_ontology:ImpactType ;
+                                  rdfs:range beAWARE_ontology:IncidentType ;
+                                  rdfs:label "caused by incident" ;
+                                  skos:definition "Indicates which incident type has caused this impact type." .Rule in Natural Language:
+  If an incident is detected and the confidence of this detection is greater than 0.9 and vulnerable objects are also detected, then the priority of the incident is set to 'high' and the detected vulnerable objects are involved in this incident.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+`Detection(?d) ^ hasConfidence(?d, ?c) ^ swrlb:greaterThan(?c, 0.9) ^ Detection(?v) ^ hasVulnerableObject(?v, ?o) ^ Incident(?i) ^ beAWARE_ontology:detectsIncident(?d, ?i) ^ beAWARE_ontology:detectsIncident(?v, ?i) -> beAWARE_ontology:hasIncidentPriority(?i, "high") ^ beAWARE_ontology:involvedInIncident(?o, ?i)`
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentPriority
+beAWARE_ontology:hasIncidentPriority rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident priority" ;
+                                     skos:definition "Indicates the priority of the incident." ;
+                                     skos:example "Incidents involving humans in danger are of high priority." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#detectsIncident
+beAWARE_ontology:detectsIncident rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf beAWARE_ontology:incidentDetectedBy ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range beAWARE_ontology:Incident ;
+                                 rdfs:label "detects incident" ;
+                                 skos:definition "Indicates which incidents were detected by a specific detection activity." ;
+                                 skos:example "A flooding incident, a blocked road etc." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#incidentDetectedBy
+beAWARE_ontology:incidentDetectedBy rdf:type owl:ObjectProperty ;
+                                    rdfs:domain beAWARE_ontology:Incident ;
+                                    rdfs:range beAWARE_ontology:Detection ;
+                                    rdfs:label "incident detected by" ;
+                                    skos:definition "Indicates the detection activity that detected this incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvedInIncident
+beAWARE_ontology:involvedInIncident rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf beAWARE_ontology:involvesParticipant ;
+                                    rdfs:domain beAWARE_ontology:VulnerableObject ;
+                                    rdfs:range beAWARE_ontology:Incident ;
+                                    rdfs:label "involved in incident" ;
+                                    skos:definition "Indicates the incident a vulnerable object is involved in." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvesIncident
+beAWARE_ontology:involvesIncident rdf:type owl:ObjectProperty ;
+                                  rdfs:domain beAWARE_ontology:Dataset ;
+                                  rdfs:range beAWARE_ontology:Incident ;
+                                  rdfs:label "involves incident" ;
+                                  skos:definition "Certain analysis components recognize the major incident (e.g. fire, flood, etc.) portrayed in a media item." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentSeverity
+beAWARE_ontology:hasIncidentSeverity rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident severity" ;
+                                     skos:definition "Indicates the severity of the incident." ;
+                                     skos:example "Incidents involving injured or dead people are of high severity." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentImpact
+beAWARE_ontology:hasIncidentImpact rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isImpactOfIncident ;
+                                   rdfs:domain beAWARE_ontology:Incident ;
+                                   rdfs:range beAWARE_ontology:Impact ;
+                                   rdfs:label "has incident impact" ;
+                                   skos:definition "Indicates the impact of the specific incident." .Rule in Natural Language:
+  If a mission is related to a specific incident and that incident has a priority level of 'high', then the mission should also be assigned as a 'high' priority.
+SWRL Rule:
+ Person(?m) ^ relatesToIncident(?m, ?i) ^ Incident(?i) ^ hasIncidentPriority(?i, "high") -> isAssignedMission(?m, "high")
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentPriority
+beAWARE_ontology:hasIncidentPriority rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident priority" ;
+                                     skos:definition "Indicates the priority of the incident." ;
+                                     skos:example "Incidents involving humans in danger are of high priority." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToIncident
+beAWARE_ontology:relatesToIncident rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:relatesToMission ;
+                                   rdfs:domain beAWARE_ontology:Mission ;
+                                   rdfs:range beAWARE_ontology:Incident ;
+                                   rdfs:label "relates to incident" ;
+                                   skos:definition "Associates a mission to an incident occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasMissionPriority
+beAWARE_ontology:hasMissionPriority rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain beAWARE_ontology:Mission ;
+                                    rdfs:range xsd:string ;
+                                    rdfs:label "has mission priority" ;
+                                    skos:definition "Indicates the priority of the rescue mission." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasMissionStart
+beAWARE_ontology:hasMissionStart rdf:type owl:DatatypeProperty ;
+                                 rdfs:domain beAWARE_ontology:Mission ;
+                                 rdfs:range xsd:dateTime ;
+                                 rdfs:label "has mission start" ;
+                                 skos:definition "Indicates the start of the rescue mission." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToMission
+beAWARE_ontology:relatesToMission rdf:type owl:ObjectProperty ;
+                                  rdfs:domain beAWARE_ontology:Incident ;
+                                  rdfs:range beAWARE_ontology:Mission ;
+                                  rdfs:label "relates to mission" ;
+                                  skos:definition "Associates an incident occurrence to a mission." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isAssignedMission
+beAWARE_ontology:isAssignedMission rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isAssignedToResponder ;
+                                   rdfs:domain beAWARE_ontology:Responder ;
+                                   rdfs:range beAWARE_ontology:Mission ;
+                                   rdfs:label "is assigned mission" ;
+                                   skos:definition "Indicates the mission assignment of a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentSeverity
+beAWARE_ontology:hasIncidentSeverity rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident severity" ;
+                                     skos:definition "Indicates the severity of the incident." ;
+                                     skos:example "Incidents involving injured or dead people are of high severity." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentImpact
+beAWARE_ontology:hasIncidentImpact rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isImpactOfIncident ;
+                                   rdfs:domain beAWARE_ontology:Incident ;
+                                   rdfs:range beAWARE_ontology:Impact ;
+                                   rdfs:label "has incident impact" ;
+                                   skos:definition "Indicates the impact of the specific incident." .Rule in Natural Language:
+  If a responder is assigned to a mission, and that mission is related to an incident and the location of the incident is known, then the location of responder is the same with the location of the incident.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+Responder(?r) ^ hasAssignedMission(?r, ?m) ^ Mission(?m) ^ relatesToIncident(?m, ?i) ^ Incident(?i) ^ hasIncidentLocation(?i, ?l) ^ Location(?l) ^ beAWARE_ontology:hasResponderLocation(?r, ?lr) -> beAWARE_ontology:isLocationOfResponder(?lr, ?r)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasResponderLocation
+beAWARE_ontology:hasResponderLocation rdf:type owl:ObjectProperty ;
+                                      owl:inverseOf beAWARE_ontology:isLocationOfResponder ;
+                                      rdfs:domain beAWARE_ontology:Responder ;
+                                      rdfs:range beAWARE_ontology:Location ;
+                                      rdfs:label "has responder location" ;
+                                      skos:definition "Represents the location where a rescue unit is at." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfResponder
+beAWARE_ontology:isLocationOfResponder rdf:type owl:ObjectProperty ;
+                                       rdfs:domain beAWARE_ontology:Location ;
+                                       rdfs:range beAWARE_ontology:Responder ;
+                                       rdfs:label "is location of responder" ;
+                                       skos:definition "Links a location to a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfIncident
+beAWARE_ontology:isLocationOfIncident rdf:type owl:ObjectProperty ;
+                                      rdfs:domain beAWARE_ontology:Location ;
+                                      rdfs:range beAWARE_ontology:Incident ;
+                                      rdfs:label "is location of incident" ;
+                                      skos:definition "Links a location to an incident occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isAssignedToResponder
+beAWARE_ontology:isAssignedToResponder rdf:type owl:ObjectProperty ;
+                                       rdfs:domain beAWARE_ontology:Mission ;
+                                       rdfs:range beAWARE_ontology:Responder ;
+                                       rdfs:label "is assigned to responder" ;
+                                       skos:definition "Links a mission to a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentLocation
+beAWARE_ontology:hasIncidentLocation rdf:type owl:ObjectProperty ;
+                                     owl:inverseOf beAWARE_ontology:isLocationOfIncident ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range beAWARE_ontology:Location ;
+                                     rdfs:label "has incident location" ;
+                                     skos:definition "Represents the location where an incident occurs." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isAssignedMission
+beAWARE_ontology:isAssignedMission rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isAssignedToResponder ;
+                                   rdfs:domain beAWARE_ontology:Responder ;
+                                   rdfs:range beAWARE_ontology:Mission ;
+                                   rdfs:label "is assigned mission" ;
+                                   skos:definition "Indicates the mission assignment of a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToIncident
+beAWARE_ontology:relatesToIncident rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:relatesToMission ;
+                                   rdfs:domain beAWARE_ontology:Mission ;
+                                   rdfs:range beAWARE_ontology:Incident ;
+                                   rdfs:label "relates to incident" ;
+                                   skos:definition "Associates a mission to an incident occurrence." .Rule in Natural Language:
+  If an incident is identified and a vulnerable object is also identified, then it can be inferred that the vulnerable object is involved in that incident.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+Incident(?i) ^ Identified(?i, true) ^ VulnerableObject(?v) ^ Identified(?v, true) -> involvedInIncident(?v, ?i)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvedInIncident
+beAWARE_ontology:involvedInIncident rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf beAWARE_ontology:involvesParticipant ;
+                                    rdfs:domain beAWARE_ontology:VulnerableObject ;
+                                    rdfs:range beAWARE_ontology:Incident ;
+                                    rdfs:label "involved in incident" ;
+                                    skos:definition "Indicates the incident a vulnerable object is involved in." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvesIncident
+beAWARE_ontology:involvesIncident rdf:type owl:ObjectProperty ;
+                                  rdfs:domain beAWARE_ontology:Dataset ;
+                                  rdfs:range beAWARE_ontology:Incident ;
+                                  rdfs:label "involves incident" ;
+                                  skos:definition "Certain analysis components recognize the major incident (e.g. fire, flood, etc.) portrayed in a media item." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#detectsIncident
+beAWARE_ontology:detectsIncident rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf beAWARE_ontology:incidentDetectedBy ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range beAWARE_ontology:Incident ;
+                                 rdfs:label "detects incident" ;
+                                 skos:definition "Indicates which incidents were detected by a specific detection activity." ;
+                                 skos:example "A flooding incident, a blocked road etc." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvesParticipant
+beAWARE_ontology:involvesParticipant rdf:type owl:ObjectProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range beAWARE_ontology:VulnerableObject ;
+                                     rdfs:label "involves participant" ;
+                                     skos:definition "Indicates the vulnerable objects involved in an incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#incidentDetectedBy
+beAWARE_ontology:incidentDetectedBy rdf:type owl:ObjectProperty ;
+                                    rdfs:domain beAWARE_ontology:Incident ;
+                                    rdfs:range beAWARE_ontology:Detection ;
+                                    rdfs:label "incident detected by" ;
+                                    skos:definition "Indicates the detection activity that detected this incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#VulnerableObject
+beAWARE_ontology:VulnerableObject rdf:type owl:Class ;
+                                  rdfs:label "Vulnerable Object" ;
+                                  skos:definition "Any living being or object that needs to be protected from hazards." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Wall
+beAWARE_ontology:Wall rdf:type owl:Class ;
+                      rdfs:subClassOf beAWARE_ontology:Structure ;
+                      rdfs:label "Wall" ;
+                      skos:definition "A vertical structure often made of stone or brick that divides or surrounds something." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#causedByIncident
+beAWARE_ontology:causedByIncident rdf:type owl:ObjectProperty ;
+                                  owl:inverseOf beAWARE_ontology:causesIncidentImpact ;
+                                  rdfs:domain beAWARE_ontology:ImpactType ;
+                                  rdfs:range beAWARE_ontology:IncidentType ;
+                                  rdfs:label "caused by incident" ;
+                                  skos:definition "Indicates which incident type has caused this impact type." .Rule in Natural Language:
+  If a vulnerable object and an incident are detected, and this incident has an impact, then the vulnerable object is impacted by that impact.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+VulnerableObject(?v) ^ Incident(?i) ^ Detection(?d) ^ involvedInIncident(?d, ?i) ^ hasImpactOn(?i, ?imp) -> isImpactedBy(?v, ?imp)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentImpact
+beAWARE_ontology:hasIncidentImpact rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isImpactOfIncident ;
+                                   rdfs:domain beAWARE_ontology:Incident ;
+                                   rdfs:range beAWARE_ontology:Impact ;
+                                   rdfs:label "has incident impact" ;
+                                   skos:definition "Indicates the impact of the specific incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasImpactOn
+beAWARE_ontology:hasImpactOn rdf:type owl:ObjectProperty ;
+                             owl:inverseOf beAWARE_ontology:isImpactedBy ;
+                             rdfs:domain beAWARE_ontology:Impact ;
+                             rdfs:range beAWARE_ontology:VulnerableObject ;
+                             rdfs:label "has impact on" ;
+                             skos:definition "Indicates which vulnerable object is impacted by the specific impact occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#causesIncidentImpact
+beAWARE_ontology:causesIncidentImpact rdf:type owl:ObjectProperty ;
+                                      rdfs:domain beAWARE_ontology:IncidentType ;
+                                      rdfs:range beAWARE_ontology:ImpactType ;
+                                      rdfs:label "causes incident impact" ;
+                                      skos:definition "Indicates which impact type is caused by this type of incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvedInIncident
+beAWARE_ontology:involvedInIncident rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf beAWARE_ontology:involvesParticipant ;
+                                    rdfs:domain beAWARE_ontology:VulnerableObject ;
+                                    rdfs:range beAWARE_ontology:Incident ;
+                                    rdfs:label "involved in incident" ;
+                                    skos:definition "Indicates the incident a vulnerable object is involved in." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isImpactOfIncident
+beAWARE_ontology:isImpactOfIncident rdf:type owl:ObjectProperty ;
+                                    rdfs:domain beAWARE_ontology:Impact ;
+                                    rdfs:range beAWARE_ontology:Incident ;
+                                    rdfs:label "is impact of incident" ;
+                                    skos:definition "Links an impact to an incident." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isImpactedBy
+beAWARE_ontology:isImpactedBy rdf:type owl:ObjectProperty ;
+                              rdfs:domain beAWARE_ontology:VulnerableObject ;
+                              rdfs:range beAWARE_ontology:Impact ;
+                              rdfs:label "is impacted by" ;
+                              skos:definition "Links an affected object to an impact." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#causedByIncident
+beAWARE_ontology:causedByIncident rdf:type owl:ObjectProperty ;
+                                  owl:inverseOf beAWARE_ontology:causesIncidentImpact ;
+                                  rdfs:domain beAWARE_ontology:ImpactType ;
+                                  rdfs:range beAWARE_ontology:IncidentType ;
+                                  rdfs:label "caused by incident" ;
+                                  skos:definition "Indicates which incident type has caused this impact type." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#detectsIncident
+beAWARE_ontology:detectsIncident rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf beAWARE_ontology:incidentDetectedBy ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range beAWARE_ontology:Incident ;
+                                 rdfs:label "detects incident" ;
+                                 skos:definition "Indicates which incidents were detected by a specific detection activity." ;
+                                 skos:example "A flooding incident, a blocked road etc." .Rule in Natural Language:
+  If a mission is related to a specific incident and that incident has a priority level of 'high', then the mission should also be assigned as a 'high' priority.
+SWRL Rule:
+ Person(?m) ^ relatesToIncident(?m, ?i) ^ Incident(?i) ^ hasIncidentPriority(?i, "high") -> isAssignedMission(?m, "high")
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentPriority
+beAWARE_ontology:hasIncidentPriority rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident priority" ;
+                                     skos:definition "Indicates the priority of the incident." ;
+                                     skos:example "Incidents involving humans in danger are of high priority." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToIncident
+beAWARE_ontology:relatesToIncident rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:relatesToMission ;
+                                   rdfs:domain beAWARE_ontology:Mission ;
+                                   rdfs:range beAWARE_ontology:Incident ;
+                                   rdfs:label "relates to incident" ;
+                                   skos:definition "Associates a mission to an incident occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasMissionPriority
+beAWARE_ontology:hasMissionPriority rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain beAWARE_ontology:Mission ;
+                                    rdfs:range xsd:string ;
+                                    rdfs:label "has mission priority" ;
+                                    skos:definition "Indicates the priority of the rescue mission." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasMissionStart
+beAWARE_ontology:hasMissionStart rdf:type owl:DatatypeProperty ;
+                                 rdfs:domain beAWARE_ontology:Mission ;
+                                 rdfs:range xsd:dateTime ;
+                                 rdfs:label "has mission start" ;
+                                 skos:definition "Indicates the start of the rescue mission." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToMission
+beAWARE_ontology:relatesToMission rdf:type owl:ObjectProperty ;
+                                  rdfs:domain beAWARE_ontology:Incident ;
+                                  rdfs:range beAWARE_ontology:Mission ;
+                                  rdfs:label "relates to mission" ;
+                                  skos:definition "Associates an incident occurrence to a mission." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isAssignedMission
+beAWARE_ontology:isAssignedMission rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isAssignedToResponder ;
+                                   rdfs:domain beAWARE_ontology:Responder ;
+                                   rdfs:range beAWARE_ontology:Mission ;
+                                   rdfs:label "is assigned mission" ;
+                                   skos:definition "Indicates the mission assignment of a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentSeverity
+beAWARE_ontology:hasIncidentSeverity rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident severity" ;
+                                     skos:definition "Indicates the severity of the incident." ;
+                                     skos:example "Incidents involving injured or dead people are of high severity." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentImpact
+beAWARE_ontology:hasIncidentImpact rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isImpactOfIncident ;
+                                   rdfs:domain beAWARE_ontology:Incident ;
+                                   rdfs:range beAWARE_ontology:Impact ;
+                                   rdfs:label "has incident impact" ;
+                                   skos:definition "Indicates the impact of the specific incident." .Rule in Natural Language:
+  If a detection has a start time and an end time, and its total duration is calculated to be greater than 60 minutes, then the severity of the incident is 'high'.
+SWRL Rule:
+ SWRL rule:
+Detection(?d) ^ hasDetectionStart(?d, ?start) ^ hasDetectionEnd(?d, ?end) ^ swrlb:greaterThan(swrlb:add(?end, -?start), 60) -> beAWARE_ontology:hasIncidentSeverity(?i, "high")
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentSeverity
+beAWARE_ontology:hasIncidentSeverity rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident severity" ;
+                                     skos:definition "Indicates the severity of the incident." ;
+                                     skos:example "Incidents involving injured or dead people are of high severity." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#detectsIncident
+beAWARE_ontology:detectsIncident rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf beAWARE_ontology:incidentDetectedBy ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range beAWARE_ontology:Incident ;
+                                 rdfs:label "detects incident" ;
+                                 skos:definition "Indicates which incidents were detected by a specific detection activity." ;
+                                 skos:example "A flooding incident, a blocked road etc." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasDetectionEnd
+beAWARE_ontology:hasDetectionEnd rdf:type owl:DatatypeProperty ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range xsd:dateTime ;
+                                 rdfs:label "has detection end" ;
+                                 skos:definition "Indicates the end of the detection." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasDetectionRisk
+beAWARE_ontology:hasDetectionRisk rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain beAWARE_ontology:Detection ;
+                                  rdfs:range xsd:float ;
+                                  rdfs:label "has detection risk" ;
+                                  skos:definition "Indicates the risk level of the detection." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentPriority
+beAWARE_ontology:hasIncidentPriority rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident priority" ;
+                                     skos:definition "Indicates the priority of the incident." ;
+                                     skos:example "Incidents involving humans in danger are of high priority." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#incidentDetectedBy
+beAWARE_ontology:incidentDetectedBy rdf:type owl:ObjectProperty ;
+                                    rdfs:domain beAWARE_ontology:Incident ;
+                                    rdfs:range beAWARE_ontology:Detection ;
+                                    rdfs:label "incident detected by" ;
+                                    skos:definition "Indicates the detection activity that detected this incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasDetectionStart
+beAWARE_ontology:hasDetectionStart rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain beAWARE_ontology:Detection ;
+                                   rdfs:range xsd:dateTime ;
+                                   rdfs:label "has detection start" ;
+                                   skos:definition "Indicates the start of the detection." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasDetectionTimestamp
+beAWARE_ontology:hasDetectionTimestamp rdf:type owl:DatatypeProperty ;
+                                       rdfs:domain beAWARE_ontology:Detection ;
+                                       rdfs:range xsd:dateTime ;
+                                       rdfs:label "has detection timestamp" ;
+                                       skos:definition "Represents the timestamp of the detection." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentImpact
+beAWARE_ontology:hasIncidentImpact rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isImpactOfIncident ;
+                                   rdfs:domain beAWARE_ontology:Incident ;
+                                   rdfs:range beAWARE_ontology:Impact ;
+                                   rdfs:label "has incident impact" ;
+                                   skos:definition "Indicates the impact of the specific incident." .Rule in Natural Language:
+  If a measurement of a climate parameter is taken at a specific location, and an incident occurs at that same location, then that measurement can be associated with that incident.
+SWRL Rule:
+ Person(?p) ^ hasMeasurementLocation(?c, ?l) ^ Incident(?i) ^ isLocationOfIncident(?i, ?l) -> hasClimateParameterOccurrence(?c, ?i)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isClimateParameterOfIncident
+beAWARE_ontology:isClimateParameterOfIncident rdf:type owl:ObjectProperty ;
+                                              rdfs:domain beAWARE_ontology:ClimateParameter ;
+                                              rdfs:range beAWARE_ontology:Incident ;
+                                              rdfs:label "is climate parameter of incident" ;
+                                              skos:definition "Links a climate parameter measurement to an incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentClimateParameter
+beAWARE_ontology:hasIncidentClimateParameter rdf:type owl:ObjectProperty ;
+                                             owl:inverseOf beAWARE_ontology:isClimateParameterOfIncident ;
+                                             rdfs:domain beAWARE_ontology:Incident ;
+                                             rdfs:range beAWARE_ontology:ClimateParameter ;
+                                             rdfs:label "has incident climate parameter" ;
+                                             skos:definition "Associates an incident to a climate parameter measurement." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasMeasurementLocation
+beAWARE_ontology:hasMeasurementLocation rdf:type owl:ObjectProperty ;
+                                        owl:inverseOf beAWARE_ontology:isLocationOfMeasurement ;
+                                        rdfs:domain beAWARE_ontology:ClimateParameter ;
+                                        rdfs:range beAWARE_ontology:Location ;
+                                        rdfs:label "has measurement location" ;
+                                        skos:definition "Represents the location where a climate parameter measurement was taken." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasClimateParameterMeasurement
+beAWARE_ontology:hasClimateParameterMeasurement rdf:type owl:ObjectProperty ;
+                                                owl:inverseOf beAWARE_ontology:relatesToNaturalDisaster ;
+                                                rdfs:domain beAWARE_ontology:NaturalDisaster ;
+                                                rdfs:range beAWARE_ontology:ClimateParameter ;
+                                                rdfs:label "has disaster climate parameter" ;
+                                                skos:definition "Associates a natural disaster occurrence to a climate parameter measurement." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfMeasurement
+beAWARE_ontology:isLocationOfMeasurement rdf:type owl:ObjectProperty ;
+                                         rdfs:domain beAWARE_ontology:Location ;
+                                         rdfs:range beAWARE_ontology:ClimateParameter ;
+                                         rdfs:label "is location of measurement" ;
+                                         skos:definition "Links a location to a climate parameter measurement." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfIncident
+beAWARE_ontology:isLocationOfIncident rdf:type owl:ObjectProperty ;
+                                      rdfs:domain beAWARE_ontology:Location ;
+                                      rdfs:range beAWARE_ontology:Incident ;
+                                      rdfs:label "is location of incident" ;
+                                      skos:definition "Links a location to an incident occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasClimateParameterOccurrence
+beAWARE_ontology:hasClimateParameterOccurrence rdf:type owl:ObjectProperty ;
+                                               owl:inverseOf beAWARE_ontology:isOfClimateParameterType ;
+                                               rdfs:domain beAWARE_ontology:ClimateParameterType ;
+                                               rdfs:range beAWARE_ontology:ClimateParameter ;
+                                               rdfs:label "has climate parameter occurrence" ;
+                                               skos:definition "Assigns a climate parameter type to a specific climate parameter." .Rule in Natural Language:
+  If an incident is involved within a dataset, and that dataset was produced by a task and that task is related with a media item, then the location of incident is the same with the location of media item.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+Dataset(?d) ^ beAWARE_ontology:involvesIncident(?d, ?i) ^ Task(?t) ^ beAWARE_ontology:hasProduced(?t, ?d) ^ MediaItem(?m) ^ beAWARE_ontology:relatesToMediaItem(?t, ?m) ^ Location(?l1) ^ beAWARE_ontology:isLocationOfIncident(?i, ?l1) ^ Location(?l2) ^ beAWARE_ontology:hasMediaLocation(?m, ?l2) -> beAWARE_ontology:isLocationOfIncident(?i, ?l2)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfIncident
+beAWARE_ontology:isLocationOfIncident rdf:type owl:ObjectProperty ;
+                                      rdfs:domain beAWARE_ontology:Location ;
+                                      rdfs:range beAWARE_ontology:Incident ;
+                                      rdfs:label "is location of incident" ;
+                                      skos:definition "Links a location to an incident occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfMediaItem
+beAWARE_ontology:isLocationOfMediaItem rdf:type owl:ObjectProperty ;
+                                       rdfs:domain beAWARE_ontology:Location ;
+                                       rdfs:range beAWARE_ontology:MediaItem ;
+                                       rdfs:label "is location of media item" ;
+                                       skos:definition "Links a location to a media item." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentLocation
+beAWARE_ontology:hasIncidentLocation rdf:type owl:ObjectProperty ;
+                                     owl:inverseOf beAWARE_ontology:isLocationOfIncident ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range beAWARE_ontology:Location ;
+                                     rdfs:label "has incident location" ;
+                                     skos:definition "Represents the location where an incident occurs." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvesIncident
+beAWARE_ontology:involvesIncident rdf:type owl:ObjectProperty ;
+                                  rdfs:domain beAWARE_ontology:Dataset ;
+                                  rdfs:range beAWARE_ontology:Incident ;
+                                  rdfs:label "involves incident" ;
+                                  skos:definition "Certain analysis components recognize the major incident (e.g. fire, flood, etc.) portrayed in a media item." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasMediaLocation
+beAWARE_ontology:hasMediaLocation rdf:type owl:ObjectProperty ;
+                                  owl:inverseOf beAWARE_ontology:isLocationOfMediaItem ;
+                                  rdfs:domain beAWARE_ontology:MediaItem ;
+                                  rdfs:range beAWARE_ontology:Location ;
+                                  rdfs:label "has media location" ;
+                                  skos:definition "Represents the location where a media item was captured." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToMediaItem
+beAWARE_ontology:relatesToMediaItem rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf beAWARE_ontology:relatesToTask ;
+                                    rdfs:domain beAWARE_ontology:Task ;
+                                    rdfs:range beAWARE_ontology:MediaItem ;
+                                    rdfs:label "relates to media item" ;
+                                    skos:definition "Associates a task to a media item." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToIncident
+beAWARE_ontology:relatesToIncident rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:relatesToMission ;
+                                   rdfs:domain beAWARE_ontology:Mission ;
+                                   rdfs:range beAWARE_ontology:Incident ;
+                                   rdfs:label "relates to incident" ;
+                                   skos:definition "Associates a mission to an incident occurrence." .Rule in Natural Language:
+  If an incident is detected and the confidence of this detection is greater than 0.9 and vulnerable objects are also detected, then the priority of the incident is set to 'high' and the detected vulnerable objects are involved in this incident.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+`Detection(?d) ^ hasConfidence(?d, ?c) ^ swrlb:greaterThan(?c, 0.9) ^ Detection(?v) ^ hasVulnerableObject(?v, ?o) ^ Incident(?i) ^ beAWARE_ontology:detectsIncident(?d, ?i) ^ beAWARE_ontology:detectsIncident(?v, ?i) -> beAWARE_ontology:hasIncidentPriority(?i, "high") ^ beAWARE_ontology:involvedInIncident(?o, ?i)`
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentPriority
+beAWARE_ontology:hasIncidentPriority rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident priority" ;
+                                     skos:definition "Indicates the priority of the incident." ;
+                                     skos:example "Incidents involving humans in danger are of high priority." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#detectsIncident
+beAWARE_ontology:detectsIncident rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf beAWARE_ontology:incidentDetectedBy ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range beAWARE_ontology:Incident ;
+                                 rdfs:label "detects incident" ;
+                                 skos:definition "Indicates which incidents were detected by a specific detection activity." ;
+                                 skos:example "A flooding incident, a blocked road etc." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#incidentDetectedBy
+beAWARE_ontology:incidentDetectedBy rdf:type owl:ObjectProperty ;
+                                    rdfs:domain beAWARE_ontology:Incident ;
+                                    rdfs:range beAWARE_ontology:Detection ;
+                                    rdfs:label "incident detected by" ;
+                                    skos:definition "Indicates the detection activity that detected this incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvedInIncident
+beAWARE_ontology:involvedInIncident rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf beAWARE_ontology:involvesParticipant ;
+                                    rdfs:domain beAWARE_ontology:VulnerableObject ;
+                                    rdfs:range beAWARE_ontology:Incident ;
+                                    rdfs:label "involved in incident" ;
+                                    skos:definition "Indicates the incident a vulnerable object is involved in." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvesIncident
+beAWARE_ontology:involvesIncident rdf:type owl:ObjectProperty ;
+                                  rdfs:domain beAWARE_ontology:Dataset ;
+                                  rdfs:range beAWARE_ontology:Incident ;
+                                  rdfs:label "involves incident" ;
+                                  skos:definition "Certain analysis components recognize the major incident (e.g. fire, flood, etc.) portrayed in a media item." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentSeverity
+beAWARE_ontology:hasIncidentSeverity rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident severity" ;
+                                     skos:definition "Indicates the severity of the incident." ;
+                                     skos:example "Incidents involving injured or dead people are of high severity." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentImpact
+beAWARE_ontology:hasIncidentImpact rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isImpactOfIncident ;
+                                   rdfs:domain beAWARE_ontology:Incident ;
+                                   rdfs:range beAWARE_ontology:Impact ;
+                                   rdfs:label "has incident impact" ;
+                                   skos:definition "Indicates the impact of the specific incident." .Rule in Natural Language:
+  If a vulnerable object and an incident are detected, and this incident has an impact, then the vulnerable object is impacted by that impact.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+VulnerableObject(?v) ^ Incident(?i) ^ Detection(?d) ^ involvedInIncident(?d, ?i) ^ hasImpactOn(?i, ?imp) -> isImpactedBy(?v, ?imp)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentImpact
+beAWARE_ontology:hasIncidentImpact rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isImpactOfIncident ;
+                                   rdfs:domain beAWARE_ontology:Incident ;
+                                   rdfs:range beAWARE_ontology:Impact ;
+                                   rdfs:label "has incident impact" ;
+                                   skos:definition "Indicates the impact of the specific incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasImpactOn
+beAWARE_ontology:hasImpactOn rdf:type owl:ObjectProperty ;
+                             owl:inverseOf beAWARE_ontology:isImpactedBy ;
+                             rdfs:domain beAWARE_ontology:Impact ;
+                             rdfs:range beAWARE_ontology:VulnerableObject ;
+                             rdfs:label "has impact on" ;
+                             skos:definition "Indicates which vulnerable object is impacted by the specific impact occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#causesIncidentImpact
+beAWARE_ontology:causesIncidentImpact rdf:type owl:ObjectProperty ;
+                                      rdfs:domain beAWARE_ontology:IncidentType ;
+                                      rdfs:range beAWARE_ontology:ImpactType ;
+                                      rdfs:label "causes incident impact" ;
+                                      skos:definition "Indicates which impact type is caused by this type of incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvedInIncident
+beAWARE_ontology:involvedInIncident rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf beAWARE_ontology:involvesParticipant ;
+                                    rdfs:domain beAWARE_ontology:VulnerableObject ;
+                                    rdfs:range beAWARE_ontology:Incident ;
+                                    rdfs:label "involved in incident" ;
+                                    skos:definition "Indicates the incident a vulnerable object is involved in." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isImpactOfIncident
+beAWARE_ontology:isImpactOfIncident rdf:type owl:ObjectProperty ;
+                                    rdfs:domain beAWARE_ontology:Impact ;
+                                    rdfs:range beAWARE_ontology:Incident ;
+                                    rdfs:label "is impact of incident" ;
+                                    skos:definition "Links an impact to an incident." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isImpactedBy
+beAWARE_ontology:isImpactedBy rdf:type owl:ObjectProperty ;
+                              rdfs:domain beAWARE_ontology:VulnerableObject ;
+                              rdfs:range beAWARE_ontology:Impact ;
+                              rdfs:label "is impacted by" ;
+                              skos:definition "Links an affected object to an impact." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#causedByIncident
+beAWARE_ontology:causedByIncident rdf:type owl:ObjectProperty ;
+                                  owl:inverseOf beAWARE_ontology:causesIncidentImpact ;
+                                  rdfs:domain beAWARE_ontology:ImpactType ;
+                                  rdfs:range beAWARE_ontology:IncidentType ;
+                                  rdfs:label "caused by incident" ;
+                                  skos:definition "Indicates which incident type has caused this impact type." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#detectsIncident
+beAWARE_ontology:detectsIncident rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf beAWARE_ontology:incidentDetectedBy ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range beAWARE_ontology:Incident ;
+                                 rdfs:label "detects incident" ;
+                                 skos:definition "Indicates which incidents were detected by a specific detection activity." ;
+                                 skos:example "A flooding incident, a blocked road etc." .Rule in Natural Language:
+  If an incident is detected and the risk of the detection is greater than 0.8 and the confidence of the detection is less than 0.5, then the incident has priority 'Requires Verification' and a responder is assigned to identification mission.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+Incident(?i) ^ Detection(?d) ^ beAWARE_ontology:detectsIncident(?d, ?i) ^ swrlb:greaterThan(beAWARE_ontology:hasRisk(?d), 0.8) ^ swrlb:lessThan(beAWARE_ontology:hasConfidence(?d), 0.5) -> beAWARE_ontology:hasIncidentPriority(?i, "Requires Verification") ^ beAWARE_ontology:isAssignedMission(?m, ?r)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentPriority
+beAWARE_ontology:hasIncidentPriority rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident priority" ;
+                                     skos:definition "Indicates the priority of the incident." ;
+                                     skos:example "Incidents involving humans in danger are of high priority." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#detectsIncident
+beAWARE_ontology:detectsIncident rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf beAWARE_ontology:incidentDetectedBy ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range beAWARE_ontology:Incident ;
+                                 rdfs:label "detects incident" ;
+                                 skos:definition "Indicates which incidents were detected by a specific detection activity." ;
+                                 skos:example "A flooding incident, a blocked road etc." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#incidentDetectedBy
+beAWARE_ontology:incidentDetectedBy rdf:type owl:ObjectProperty ;
+                                    rdfs:domain beAWARE_ontology:Incident ;
+                                    rdfs:range beAWARE_ontology:Detection ;
+                                    rdfs:label "incident detected by" ;
+                                    skos:definition "Indicates the detection activity that detected this incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToIncident
+beAWARE_ontology:relatesToIncident rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:relatesToMission ;
+                                   rdfs:domain beAWARE_ontology:Mission ;
+                                   rdfs:range beAWARE_ontology:Incident ;
+                                   rdfs:label "relates to incident" ;
+                                   skos:definition "Associates a mission to an incident occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isAssignedMission
+beAWARE_ontology:isAssignedMission rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isAssignedToResponder ;
+                                   rdfs:domain beAWARE_ontology:Responder ;
+                                   rdfs:range beAWARE_ontology:Mission ;
+                                   rdfs:label "is assigned mission" ;
+                                   skos:definition "Indicates the mission assignment of a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isAssignedToResponder
+beAWARE_ontology:isAssignedToResponder rdf:type owl:ObjectProperty ;
+                                       rdfs:domain beAWARE_ontology:Mission ;
+                                       rdfs:range beAWARE_ontology:Responder ;
+                                       rdfs:label "is assigned to responder" ;
+                                       skos:definition "Links a mission to a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvesIncident
+beAWARE_ontology:involvesIncident rdf:type owl:ObjectProperty ;
+                                  rdfs:domain beAWARE_ontology:Dataset ;
+                                  rdfs:range beAWARE_ontology:Incident ;
+                                  rdfs:label "involves incident" ;
+                                  skos:definition "Certain analysis components recognize the major incident (e.g. fire, flood, etc.) portrayed in a media item." .Rule in Natural Language:
+  If an incident is detected and the risk of the detection is greater than 0.8 and the confidence of the detection is less than 0.5, then the incident has priority 'Requires Verification' and a responder is assigned to identification mission.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+Incident(?i) ^ Detection(?d) ^ beAWARE_ontology:detectsIncident(?d, ?i) ^ swrlb:greaterThan(beAWARE_ontology:hasRisk(?d), 0.8) ^ swrlb:lessThan(beAWARE_ontology:hasConfidence(?d), 0.5) -> beAWARE_ontology:hasIncidentPriority(?i, "Requires Verification") ^ beAWARE_ontology:isAssignedMission(?m, ?r)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentPriority
+beAWARE_ontology:hasIncidentPriority rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident priority" ;
+                                     skos:definition "Indicates the priority of the incident." ;
+                                     skos:example "Incidents involving humans in danger are of high priority." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#detectsIncident
+beAWARE_ontology:detectsIncident rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf beAWARE_ontology:incidentDetectedBy ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range beAWARE_ontology:Incident ;
+                                 rdfs:label "detects incident" ;
+                                 skos:definition "Indicates which incidents were detected by a specific detection activity." ;
+                                 skos:example "A flooding incident, a blocked road etc." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#incidentDetectedBy
+beAWARE_ontology:incidentDetectedBy rdf:type owl:ObjectProperty ;
+                                    rdfs:domain beAWARE_ontology:Incident ;
+                                    rdfs:range beAWARE_ontology:Detection ;
+                                    rdfs:label "incident detected by" ;
+                                    skos:definition "Indicates the detection activity that detected this incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToIncident
+beAWARE_ontology:relatesToIncident rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:relatesToMission ;
+                                   rdfs:domain beAWARE_ontology:Mission ;
+                                   rdfs:range beAWARE_ontology:Incident ;
+                                   rdfs:label "relates to incident" ;
+                                   skos:definition "Associates a mission to an incident occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isAssignedMission
+beAWARE_ontology:isAssignedMission rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isAssignedToResponder ;
+                                   rdfs:domain beAWARE_ontology:Responder ;
+                                   rdfs:range beAWARE_ontology:Mission ;
+                                   rdfs:label "is assigned mission" ;
+                                   skos:definition "Indicates the mission assignment of a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isAssignedToResponder
+beAWARE_ontology:isAssignedToResponder rdf:type owl:ObjectProperty ;
+                                       rdfs:domain beAWARE_ontology:Mission ;
+                                       rdfs:range beAWARE_ontology:Responder ;
+                                       rdfs:label "is assigned to responder" ;
+                                       skos:definition "Links a mission to a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvesIncident
+beAWARE_ontology:involvesIncident rdf:type owl:ObjectProperty ;
+                                  rdfs:domain beAWARE_ontology:Dataset ;
+                                  rdfs:range beAWARE_ontology:Incident ;
+                                  rdfs:label "involves incident" ;
+                                  skos:definition "Certain analysis components recognize the major incident (e.g. fire, flood, etc.) portrayed in a media item." .Rule in Natural Language:
+  If an incident is identified and a vulnerable object is also identified, then it can be inferred that the vulnerable object is involved in that incident.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+Incident(?i) ^ Identified(?i, true) ^ VulnerableObject(?v) ^ Identified(?v, true) -> involvedInIncident(?v, ?i)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvedInIncident
+beAWARE_ontology:involvedInIncident rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf beAWARE_ontology:involvesParticipant ;
+                                    rdfs:domain beAWARE_ontology:VulnerableObject ;
+                                    rdfs:range beAWARE_ontology:Incident ;
+                                    rdfs:label "involved in incident" ;
+                                    skos:definition "Indicates the incident a vulnerable object is involved in." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvesIncident
+beAWARE_ontology:involvesIncident rdf:type owl:ObjectProperty ;
+                                  rdfs:domain beAWARE_ontology:Dataset ;
+                                  rdfs:range beAWARE_ontology:Incident ;
+                                  rdfs:label "involves incident" ;
+                                  skos:definition "Certain analysis components recognize the major incident (e.g. fire, flood, etc.) portrayed in a media item." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#detectsIncident
+beAWARE_ontology:detectsIncident rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf beAWARE_ontology:incidentDetectedBy ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range beAWARE_ontology:Incident ;
+                                 rdfs:label "detects incident" ;
+                                 skos:definition "Indicates which incidents were detected by a specific detection activity." ;
+                                 skos:example "A flooding incident, a blocked road etc." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvesParticipant
+beAWARE_ontology:involvesParticipant rdf:type owl:ObjectProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range beAWARE_ontology:VulnerableObject ;
+                                     rdfs:label "involves participant" ;
+                                     skos:definition "Indicates the vulnerable objects involved in an incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#incidentDetectedBy
+beAWARE_ontology:incidentDetectedBy rdf:type owl:ObjectProperty ;
+                                    rdfs:domain beAWARE_ontology:Incident ;
+                                    rdfs:range beAWARE_ontology:Detection ;
+                                    rdfs:label "incident detected by" ;
+                                    skos:definition "Indicates the detection activity that detected this incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#VulnerableObject
+beAWARE_ontology:VulnerableObject rdf:type owl:Class ;
+                                  rdfs:label "Vulnerable Object" ;
+                                  skos:definition "Any living being or object that needs to be protected from hazards." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Wall
+beAWARE_ontology:Wall rdf:type owl:Class ;
+                      rdfs:subClassOf beAWARE_ontology:Structure ;
+                      rdfs:label "Wall" ;
+                      skos:definition "A vertical structure often made of stone or brick that divides or surrounds something." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#causedByIncident
+beAWARE_ontology:causedByIncident rdf:type owl:ObjectProperty ;
+                                  owl:inverseOf beAWARE_ontology:causesIncidentImpact ;
+                                  rdfs:domain beAWARE_ontology:ImpactType ;
+                                  rdfs:range beAWARE_ontology:IncidentType ;
+                                  rdfs:label "caused by incident" ;
+                                  skos:definition "Indicates which incident type has caused this impact type." .Rule in Natural Language:
+  If a mission is related to a specific incident and that incident has a priority level of 'high', then the mission should also be assigned as a 'high' priority.
+SWRL Rule:
+ Person(?m) ^ relatesToIncident(?m, ?i) ^ Incident(?i) ^ hasIncidentPriority(?i, "high") -> isAssignedMission(?m, "high")
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentPriority
+beAWARE_ontology:hasIncidentPriority rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident priority" ;
+                                     skos:definition "Indicates the priority of the incident." ;
+                                     skos:example "Incidents involving humans in danger are of high priority." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToIncident
+beAWARE_ontology:relatesToIncident rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:relatesToMission ;
+                                   rdfs:domain beAWARE_ontology:Mission ;
+                                   rdfs:range beAWARE_ontology:Incident ;
+                                   rdfs:label "relates to incident" ;
+                                   skos:definition "Associates a mission to an incident occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasMissionPriority
+beAWARE_ontology:hasMissionPriority rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain beAWARE_ontology:Mission ;
+                                    rdfs:range xsd:string ;
+                                    rdfs:label "has mission priority" ;
+                                    skos:definition "Indicates the priority of the rescue mission." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasMissionStart
+beAWARE_ontology:hasMissionStart rdf:type owl:DatatypeProperty ;
+                                 rdfs:domain beAWARE_ontology:Mission ;
+                                 rdfs:range xsd:dateTime ;
+                                 rdfs:label "has mission start" ;
+                                 skos:definition "Indicates the start of the rescue mission." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToMission
+beAWARE_ontology:relatesToMission rdf:type owl:ObjectProperty ;
+                                  rdfs:domain beAWARE_ontology:Incident ;
+                                  rdfs:range beAWARE_ontology:Mission ;
+                                  rdfs:label "relates to mission" ;
+                                  skos:definition "Associates an incident occurrence to a mission." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isAssignedMission
+beAWARE_ontology:isAssignedMission rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isAssignedToResponder ;
+                                   rdfs:domain beAWARE_ontology:Responder ;
+                                   rdfs:range beAWARE_ontology:Mission ;
+                                   rdfs:label "is assigned mission" ;
+                                   skos:definition "Indicates the mission assignment of a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentSeverity
+beAWARE_ontology:hasIncidentSeverity rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident severity" ;
+                                     skos:definition "Indicates the severity of the incident." ;
+                                     skos:example "Incidents involving injured or dead people are of high severity." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentImpact
+beAWARE_ontology:hasIncidentImpact rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isImpactOfIncident ;
+                                   rdfs:domain beAWARE_ontology:Incident ;
+                                   rdfs:range beAWARE_ontology:Impact ;
+                                   rdfs:label "has incident impact" ;
+                                   skos:definition "Indicates the impact of the specific incident." .Rule in Natural Language:
+  If a vulnerable object and an incident are detected, and this incident has an impact, then the vulnerable object is impacted by that impact.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+VulnerableObject(?v) ^ Incident(?i) ^ Detection(?d) ^ involvedInIncident(?d, ?i) ^ hasImpactOn(?i, ?imp) -> isImpactedBy(?v, ?imp)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentImpact
+beAWARE_ontology:hasIncidentImpact rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isImpactOfIncident ;
+                                   rdfs:domain beAWARE_ontology:Incident ;
+                                   rdfs:range beAWARE_ontology:Impact ;
+                                   rdfs:label "has incident impact" ;
+                                   skos:definition "Indicates the impact of the specific incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasImpactOn
+beAWARE_ontology:hasImpactOn rdf:type owl:ObjectProperty ;
+                             owl:inverseOf beAWARE_ontology:isImpactedBy ;
+                             rdfs:domain beAWARE_ontology:Impact ;
+                             rdfs:range beAWARE_ontology:VulnerableObject ;
+                             rdfs:label "has impact on" ;
+                             skos:definition "Indicates which vulnerable object is impacted by the specific impact occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#causesIncidentImpact
+beAWARE_ontology:causesIncidentImpact rdf:type owl:ObjectProperty ;
+                                      rdfs:domain beAWARE_ontology:IncidentType ;
+                                      rdfs:range beAWARE_ontology:ImpactType ;
+                                      rdfs:label "causes incident impact" ;
+                                      skos:definition "Indicates which impact type is caused by this type of incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvedInIncident
+beAWARE_ontology:involvedInIncident rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf beAWARE_ontology:involvesParticipant ;
+                                    rdfs:domain beAWARE_ontology:VulnerableObject ;
+                                    rdfs:range beAWARE_ontology:Incident ;
+                                    rdfs:label "involved in incident" ;
+                                    skos:definition "Indicates the incident a vulnerable object is involved in." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isImpactOfIncident
+beAWARE_ontology:isImpactOfIncident rdf:type owl:ObjectProperty ;
+                                    rdfs:domain beAWARE_ontology:Impact ;
+                                    rdfs:range beAWARE_ontology:Incident ;
+                                    rdfs:label "is impact of incident" ;
+                                    skos:definition "Links an impact to an incident." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isImpactedBy
+beAWARE_ontology:isImpactedBy rdf:type owl:ObjectProperty ;
+                              rdfs:domain beAWARE_ontology:VulnerableObject ;
+                              rdfs:range beAWARE_ontology:Impact ;
+                              rdfs:label "is impacted by" ;
+                              skos:definition "Links an affected object to an impact." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#causedByIncident
+beAWARE_ontology:causedByIncident rdf:type owl:ObjectProperty ;
+                                  owl:inverseOf beAWARE_ontology:causesIncidentImpact ;
+                                  rdfs:domain beAWARE_ontology:ImpactType ;
+                                  rdfs:range beAWARE_ontology:IncidentType ;
+                                  rdfs:label "caused by incident" ;
+                                  skos:definition "Indicates which incident type has caused this impact type." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#detectsIncident
+beAWARE_ontology:detectsIncident rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf beAWARE_ontology:incidentDetectedBy ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range beAWARE_ontology:Incident ;
+                                 rdfs:label "detects incident" ;
+                                 skos:definition "Indicates which incidents were detected by a specific detection activity." ;
+                                 skos:example "A flooding incident, a blocked road etc." .Rule in Natural Language:
+  If a responder is assigned to a mission, and that mission is related to an incident and the location of the incident is known, then the location of responder is the same with the location of the incident.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+Responder(?r) ^ hasAssignedMission(?r, ?m) ^ Mission(?m) ^ relatesToIncident(?m, ?i) ^ Incident(?i) ^ hasIncidentLocation(?i, ?l) ^ Location(?l) ^ beAWARE_ontology:hasResponderLocation(?r, ?lr) -> beAWARE_ontology:isLocationOfResponder(?lr, ?r)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasResponderLocation
+beAWARE_ontology:hasResponderLocation rdf:type owl:ObjectProperty ;
+                                      owl:inverseOf beAWARE_ontology:isLocationOfResponder ;
+                                      rdfs:domain beAWARE_ontology:Responder ;
+                                      rdfs:range beAWARE_ontology:Location ;
+                                      rdfs:label "has responder location" ;
+                                      skos:definition "Represents the location where a rescue unit is at." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfResponder
+beAWARE_ontology:isLocationOfResponder rdf:type owl:ObjectProperty ;
+                                       rdfs:domain beAWARE_ontology:Location ;
+                                       rdfs:range beAWARE_ontology:Responder ;
+                                       rdfs:label "is location of responder" ;
+                                       skos:definition "Links a location to a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfIncident
+beAWARE_ontology:isLocationOfIncident rdf:type owl:ObjectProperty ;
+                                      rdfs:domain beAWARE_ontology:Location ;
+                                      rdfs:range beAWARE_ontology:Incident ;
+                                      rdfs:label "is location of incident" ;
+                                      skos:definition "Links a location to an incident occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isAssignedToResponder
+beAWARE_ontology:isAssignedToResponder rdf:type owl:ObjectProperty ;
+                                       rdfs:domain beAWARE_ontology:Mission ;
+                                       rdfs:range beAWARE_ontology:Responder ;
+                                       rdfs:label "is assigned to responder" ;
+                                       skos:definition "Links a mission to a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentLocation
+beAWARE_ontology:hasIncidentLocation rdf:type owl:ObjectProperty ;
+                                     owl:inverseOf beAWARE_ontology:isLocationOfIncident ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range beAWARE_ontology:Location ;
+                                     rdfs:label "has incident location" ;
+                                     skos:definition "Represents the location where an incident occurs." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isAssignedMission
+beAWARE_ontology:isAssignedMission rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isAssignedToResponder ;
+                                   rdfs:domain beAWARE_ontology:Responder ;
+                                   rdfs:range beAWARE_ontology:Mission ;
+                                   rdfs:label "is assigned mission" ;
+                                   skos:definition "Indicates the mission assignment of a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToIncident
+beAWARE_ontology:relatesToIncident rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:relatesToMission ;
+                                   rdfs:domain beAWARE_ontology:Mission ;
+                                   rdfs:range beAWARE_ontology:Incident ;
+                                   rdfs:label "relates to incident" ;
+                                   skos:definition "Associates a mission to an incident occurrence." .Rule in Natural Language:
+  If a detection has a start time and an end time, and its total duration is calculated to be greater than 60 minutes, then the severity of the incident is 'high'.
+SWRL Rule:
+ SWRL rule:
+Detection(?d) ^ hasDetectionStart(?d, ?start) ^ hasDetectionEnd(?d, ?end) ^ swrlb:greaterThan(swrlb:add(?end, -?start), 60) -> beAWARE_ontology:hasIncidentSeverity(?i, "high")
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentSeverity
+beAWARE_ontology:hasIncidentSeverity rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident severity" ;
+                                     skos:definition "Indicates the severity of the incident." ;
+                                     skos:example "Incidents involving injured or dead people are of high severity." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#detectsIncident
+beAWARE_ontology:detectsIncident rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf beAWARE_ontology:incidentDetectedBy ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range beAWARE_ontology:Incident ;
+                                 rdfs:label "detects incident" ;
+                                 skos:definition "Indicates which incidents were detected by a specific detection activity." ;
+                                 skos:example "A flooding incident, a blocked road etc." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasDetectionEnd
+beAWARE_ontology:hasDetectionEnd rdf:type owl:DatatypeProperty ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range xsd:dateTime ;
+                                 rdfs:label "has detection end" ;
+                                 skos:definition "Indicates the end of the detection." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasDetectionRisk
+beAWARE_ontology:hasDetectionRisk rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain beAWARE_ontology:Detection ;
+                                  rdfs:range xsd:float ;
+                                  rdfs:label "has detection risk" ;
+                                  skos:definition "Indicates the risk level of the detection." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentPriority
+beAWARE_ontology:hasIncidentPriority rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident priority" ;
+                                     skos:definition "Indicates the priority of the incident." ;
+                                     skos:example "Incidents involving humans in danger are of high priority." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#incidentDetectedBy
+beAWARE_ontology:incidentDetectedBy rdf:type owl:ObjectProperty ;
+                                    rdfs:domain beAWARE_ontology:Incident ;
+                                    rdfs:range beAWARE_ontology:Detection ;
+                                    rdfs:label "incident detected by" ;
+                                    skos:definition "Indicates the detection activity that detected this incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasDetectionStart
+beAWARE_ontology:hasDetectionStart rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain beAWARE_ontology:Detection ;
+                                   rdfs:range xsd:dateTime ;
+                                   rdfs:label "has detection start" ;
+                                   skos:definition "Indicates the start of the detection." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasDetectionTimestamp
+beAWARE_ontology:hasDetectionTimestamp rdf:type owl:DatatypeProperty ;
+                                       rdfs:domain beAWARE_ontology:Detection ;
+                                       rdfs:range xsd:dateTime ;
+                                       rdfs:label "has detection timestamp" ;
+                                       skos:definition "Represents the timestamp of the detection." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentImpact
+beAWARE_ontology:hasIncidentImpact rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isImpactOfIncident ;
+                                   rdfs:domain beAWARE_ontology:Incident ;
+                                   rdfs:range beAWARE_ontology:Impact ;
+                                   rdfs:label "has incident impact" ;
+                                   skos:definition "Indicates the impact of the specific incident." .Rule in Natural Language:
+  If a measurement of a climate parameter is taken at a specific location, and an incident occurs at that same location, then that measurement can be associated with that incident.
+SWRL Rule:
+ Person(?p) ^ hasMeasurementLocation(?c, ?l) ^ Incident(?i) ^ isLocationOfIncident(?i, ?l) -> hasClimateParameterOccurrence(?c, ?i)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isClimateParameterOfIncident
+beAWARE_ontology:isClimateParameterOfIncident rdf:type owl:ObjectProperty ;
+                                              rdfs:domain beAWARE_ontology:ClimateParameter ;
+                                              rdfs:range beAWARE_ontology:Incident ;
+                                              rdfs:label "is climate parameter of incident" ;
+                                              skos:definition "Links a climate parameter measurement to an incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentClimateParameter
+beAWARE_ontology:hasIncidentClimateParameter rdf:type owl:ObjectProperty ;
+                                             owl:inverseOf beAWARE_ontology:isClimateParameterOfIncident ;
+                                             rdfs:domain beAWARE_ontology:Incident ;
+                                             rdfs:range beAWARE_ontology:ClimateParameter ;
+                                             rdfs:label "has incident climate parameter" ;
+                                             skos:definition "Associates an incident to a climate parameter measurement." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasMeasurementLocation
+beAWARE_ontology:hasMeasurementLocation rdf:type owl:ObjectProperty ;
+                                        owl:inverseOf beAWARE_ontology:isLocationOfMeasurement ;
+                                        rdfs:domain beAWARE_ontology:ClimateParameter ;
+                                        rdfs:range beAWARE_ontology:Location ;
+                                        rdfs:label "has measurement location" ;
+                                        skos:definition "Represents the location where a climate parameter measurement was taken." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasClimateParameterMeasurement
+beAWARE_ontology:hasClimateParameterMeasurement rdf:type owl:ObjectProperty ;
+                                                owl:inverseOf beAWARE_ontology:relatesToNaturalDisaster ;
+                                                rdfs:domain beAWARE_ontology:NaturalDisaster ;
+                                                rdfs:range beAWARE_ontology:ClimateParameter ;
+                                                rdfs:label "has disaster climate parameter" ;
+                                                skos:definition "Associates a natural disaster occurrence to a climate parameter measurement." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfMeasurement
+beAWARE_ontology:isLocationOfMeasurement rdf:type owl:ObjectProperty ;
+                                         rdfs:domain beAWARE_ontology:Location ;
+                                         rdfs:range beAWARE_ontology:ClimateParameter ;
+                                         rdfs:label "is location of measurement" ;
+                                         skos:definition "Links a location to a climate parameter measurement." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfIncident
+beAWARE_ontology:isLocationOfIncident rdf:type owl:ObjectProperty ;
+                                      rdfs:domain beAWARE_ontology:Location ;
+                                      rdfs:range beAWARE_ontology:Incident ;
+                                      rdfs:label "is location of incident" ;
+                                      skos:definition "Links a location to an incident occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasClimateParameterOccurrence
+beAWARE_ontology:hasClimateParameterOccurrence rdf:type owl:ObjectProperty ;
+                                               owl:inverseOf beAWARE_ontology:isOfClimateParameterType ;
+                                               rdfs:domain beAWARE_ontology:ClimateParameterType ;
+                                               rdfs:range beAWARE_ontology:ClimateParameter ;
+                                               rdfs:label "has climate parameter occurrence" ;
+                                               skos:definition "Assigns a climate parameter type to a specific climate parameter." .Rule in Natural Language:
+  If an incident is involved within a dataset, and that dataset was produced by a task and that task is related with a media item, then the location of incident is the same with the location of media item.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+Dataset(?d) ^ beAWARE_ontology:involvesIncident(?d, ?i) ^ Task(?t) ^ beAWARE_ontology:hasProduced(?t, ?d) ^ MediaItem(?m) ^ beAWARE_ontology:relatesToMediaItem(?t, ?m) ^ Location(?l1) ^ beAWARE_ontology:isLocationOfIncident(?i, ?l1) ^ Location(?l2) ^ beAWARE_ontology:hasMediaLocation(?m, ?l2) -> beAWARE_ontology:isLocationOfIncident(?i, ?l2)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfIncident
+beAWARE_ontology:isLocationOfIncident rdf:type owl:ObjectProperty ;
+                                      rdfs:domain beAWARE_ontology:Location ;
+                                      rdfs:range beAWARE_ontology:Incident ;
+                                      rdfs:label "is location of incident" ;
+                                      skos:definition "Links a location to an incident occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfMediaItem
+beAWARE_ontology:isLocationOfMediaItem rdf:type owl:ObjectProperty ;
+                                       rdfs:domain beAWARE_ontology:Location ;
+                                       rdfs:range beAWARE_ontology:MediaItem ;
+                                       rdfs:label "is location of media item" ;
+                                       skos:definition "Links a location to a media item." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentLocation
+beAWARE_ontology:hasIncidentLocation rdf:type owl:ObjectProperty ;
+                                     owl:inverseOf beAWARE_ontology:isLocationOfIncident ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range beAWARE_ontology:Location ;
+                                     rdfs:label "has incident location" ;
+                                     skos:definition "Represents the location where an incident occurs." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvesIncident
+beAWARE_ontology:involvesIncident rdf:type owl:ObjectProperty ;
+                                  rdfs:domain beAWARE_ontology:Dataset ;
+                                  rdfs:range beAWARE_ontology:Incident ;
+                                  rdfs:label "involves incident" ;
+                                  skos:definition "Certain analysis components recognize the major incident (e.g. fire, flood, etc.) portrayed in a media item." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasMediaLocation
+beAWARE_ontology:hasMediaLocation rdf:type owl:ObjectProperty ;
+                                  owl:inverseOf beAWARE_ontology:isLocationOfMediaItem ;
+                                  rdfs:domain beAWARE_ontology:MediaItem ;
+                                  rdfs:range beAWARE_ontology:Location ;
+                                  rdfs:label "has media location" ;
+                                  skos:definition "Represents the location where a media item was captured." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToMediaItem
+beAWARE_ontology:relatesToMediaItem rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf beAWARE_ontology:relatesToTask ;
+                                    rdfs:domain beAWARE_ontology:Task ;
+                                    rdfs:range beAWARE_ontology:MediaItem ;
+                                    rdfs:label "relates to media item" ;
+                                    skos:definition "Associates a task to a media item." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToIncident
+beAWARE_ontology:relatesToIncident rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:relatesToMission ;
+                                   rdfs:domain beAWARE_ontology:Mission ;
+                                   rdfs:range beAWARE_ontology:Incident ;
+                                   rdfs:label "relates to incident" ;
+                                   skos:definition "Associates a mission to an incident occurrence." .Rule in Natural Language:
+  If an incident is identified and a vulnerable object is also identified, then it can be inferred that the vulnerable object is involved in that incident.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+Incident(?i) ^ Identified(?i, true) ^ VulnerableObject(?v) ^ Identified(?v, true) -> involvedInIncident(?v, ?i)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvedInIncident
+beAWARE_ontology:involvedInIncident rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf beAWARE_ontology:involvesParticipant ;
+                                    rdfs:domain beAWARE_ontology:VulnerableObject ;
+                                    rdfs:range beAWARE_ontology:Incident ;
+                                    rdfs:label "involved in incident" ;
+                                    skos:definition "Indicates the incident a vulnerable object is involved in." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvesIncident
+beAWARE_ontology:involvesIncident rdf:type owl:ObjectProperty ;
+                                  rdfs:domain beAWARE_ontology:Dataset ;
+                                  rdfs:range beAWARE_ontology:Incident ;
+                                  rdfs:label "involves incident" ;
+                                  skos:definition "Certain analysis components recognize the major incident (e.g. fire, flood, etc.) portrayed in a media item." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#detectsIncident
+beAWARE_ontology:detectsIncident rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf beAWARE_ontology:incidentDetectedBy ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range beAWARE_ontology:Incident ;
+                                 rdfs:label "detects incident" ;
+                                 skos:definition "Indicates which incidents were detected by a specific detection activity." ;
+                                 skos:example "A flooding incident, a blocked road etc." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvesParticipant
+beAWARE_ontology:involvesParticipant rdf:type owl:ObjectProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range beAWARE_ontology:VulnerableObject ;
+                                     rdfs:label "involves participant" ;
+                                     skos:definition "Indicates the vulnerable objects involved in an incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#incidentDetectedBy
+beAWARE_ontology:incidentDetectedBy rdf:type owl:ObjectProperty ;
+                                    rdfs:domain beAWARE_ontology:Incident ;
+                                    rdfs:range beAWARE_ontology:Detection ;
+                                    rdfs:label "incident detected by" ;
+                                    skos:definition "Indicates the detection activity that detected this incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#VulnerableObject
+beAWARE_ontology:VulnerableObject rdf:type owl:Class ;
+                                  rdfs:label "Vulnerable Object" ;
+                                  skos:definition "Any living being or object that needs to be protected from hazards." .
+
+
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#Wall
+beAWARE_ontology:Wall rdf:type owl:Class ;
+                      rdfs:subClassOf beAWARE_ontology:Structure ;
+                      rdfs:label "Wall" ;
+                      skos:definition "A vertical structure often made of stone or brick that divides or surrounds something." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#causedByIncident
+beAWARE_ontology:causedByIncident rdf:type owl:ObjectProperty ;
+                                  owl:inverseOf beAWARE_ontology:causesIncidentImpact ;
+                                  rdfs:domain beAWARE_ontology:ImpactType ;
+                                  rdfs:range beAWARE_ontology:IncidentType ;
+                                  rdfs:label "caused by incident" ;
+                                  skos:definition "Indicates which incident type has caused this impact type." .Rule in Natural Language:
+  If an incident has an impact, and that impact affects a vulnerable object, then the incident's severity level is classified as 'high'.
+SWRL Rule:
+ Person(?i) ^ Incident(?i) ^ hasImpact(?i, ?impact) ^ Impact(?impact) ^ hasImpactOn(?impact, ?vulnerableObject) ^ VulnerableObject(?vulnerableObject) -> hasIncidentSeverity(?i, "high")
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentImpact
+beAWARE_ontology:hasIncidentImpact rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isImpactOfIncident ;
+                                   rdfs:domain beAWARE_ontology:Incident ;
+                                   rdfs:range beAWARE_ontology:Impact ;
+                                   rdfs:label "has incident impact" ;
+                                   skos:definition "Indicates the impact of the specific incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentSeverity
+beAWARE_ontology:hasIncidentSeverity rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident severity" ;
+                                     skos:definition "Indicates the severity of the incident." ;
+                                     skos:example "Incidents involving injured or dead people are of high severity." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#causesIncidentImpact
+beAWARE_ontology:causesIncidentImpact rdf:type owl:ObjectProperty ;
+                                      rdfs:domain beAWARE_ontology:IncidentType ;
+                                      rdfs:range beAWARE_ontology:ImpactType ;
+                                      rdfs:label "causes incident impact" ;
+                                      skos:definition "Indicates which impact type is caused by this type of incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentPriority
+beAWARE_ontology:hasIncidentPriority rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident priority" ;
+                                     skos:definition "Indicates the priority of the incident." ;
+                                     skos:example "Incidents involving humans in danger are of high priority." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasImpactOn
+beAWARE_ontology:hasImpactOn rdf:type owl:ObjectProperty ;
+                             owl:inverseOf beAWARE_ontology:isImpactedBy ;
+                             rdfs:domain beAWARE_ontology:Impact ;
+                             rdfs:range beAWARE_ontology:VulnerableObject ;
+                             rdfs:label "has impact on" ;
+                             skos:definition "Indicates which vulnerable object is impacted by the specific impact occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvedInIncident
+beAWARE_ontology:involvedInIncident rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf beAWARE_ontology:involvesParticipant ;
+                                    rdfs:domain beAWARE_ontology:VulnerableObject ;
+                                    rdfs:range beAWARE_ontology:Incident ;
+                                    rdfs:label "involved in incident" ;
+                                    skos:definition "Indicates the incident a vulnerable object is involved in." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#causedByIncident
+beAWARE_ontology:causedByIncident rdf:type owl:ObjectProperty ;
+                                  owl:inverseOf beAWARE_ontology:causesIncidentImpact ;
+                                  rdfs:domain beAWARE_ontology:ImpactType ;
+                                  rdfs:range beAWARE_ontology:IncidentType ;
+                                  rdfs:label "caused by incident" ;
+                                  skos:definition "Indicates which incident type has caused this impact type." .Rule in Natural Language:
+  If an incident is involved within a dataset, and that dataset was produced by a task and that task is related with a media item, then the location of incident is the same with the location of media item.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+Dataset(?d) ^ beAWARE_ontology:involvesIncident(?d, ?i) ^ Task(?t) ^ beAWARE_ontology:hasProduced(?t, ?d) ^ MediaItem(?m) ^ beAWARE_ontology:relatesToMediaItem(?t, ?m) ^ Location(?l1) ^ beAWARE_ontology:isLocationOfIncident(?i, ?l1) ^ Location(?l2) ^ beAWARE_ontology:hasMediaLocation(?m, ?l2) -> beAWARE_ontology:isLocationOfIncident(?i, ?l2)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfIncident
+beAWARE_ontology:isLocationOfIncident rdf:type owl:ObjectProperty ;
+                                      rdfs:domain beAWARE_ontology:Location ;
+                                      rdfs:range beAWARE_ontology:Incident ;
+                                      rdfs:label "is location of incident" ;
+                                      skos:definition "Links a location to an incident occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfMediaItem
+beAWARE_ontology:isLocationOfMediaItem rdf:type owl:ObjectProperty ;
+                                       rdfs:domain beAWARE_ontology:Location ;
+                                       rdfs:range beAWARE_ontology:MediaItem ;
+                                       rdfs:label "is location of media item" ;
+                                       skos:definition "Links a location to a media item." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentLocation
+beAWARE_ontology:hasIncidentLocation rdf:type owl:ObjectProperty ;
+                                     owl:inverseOf beAWARE_ontology:isLocationOfIncident ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range beAWARE_ontology:Location ;
+                                     rdfs:label "has incident location" ;
+                                     skos:definition "Represents the location where an incident occurs." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvesIncident
+beAWARE_ontology:involvesIncident rdf:type owl:ObjectProperty ;
+                                  rdfs:domain beAWARE_ontology:Dataset ;
+                                  rdfs:range beAWARE_ontology:Incident ;
+                                  rdfs:label "involves incident" ;
+                                  skos:definition "Certain analysis components recognize the major incident (e.g. fire, flood, etc.) portrayed in a media item." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasMediaLocation
+beAWARE_ontology:hasMediaLocation rdf:type owl:ObjectProperty ;
+                                  owl:inverseOf beAWARE_ontology:isLocationOfMediaItem ;
+                                  rdfs:domain beAWARE_ontology:MediaItem ;
+                                  rdfs:range beAWARE_ontology:Location ;
+                                  rdfs:label "has media location" ;
+                                  skos:definition "Represents the location where a media item was captured." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToMediaItem
+beAWARE_ontology:relatesToMediaItem rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf beAWARE_ontology:relatesToTask ;
+                                    rdfs:domain beAWARE_ontology:Task ;
+                                    rdfs:range beAWARE_ontology:MediaItem ;
+                                    rdfs:label "relates to media item" ;
+                                    skos:definition "Associates a task to a media item." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToIncident
+beAWARE_ontology:relatesToIncident rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:relatesToMission ;
+                                   rdfs:domain beAWARE_ontology:Mission ;
+                                   rdfs:range beAWARE_ontology:Incident ;
+                                   rdfs:label "relates to incident" ;
+                                   skos:definition "Associates a mission to an incident occurrence." .Rule in Natural Language:
+  If an incident is detected and the confidence of this detection is greater than 0.9 and vulnerable objects are also detected, then the priority of the incident is set to 'high' and the detected vulnerable objects are involved in this incident.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+`Detection(?d) ^ hasConfidence(?d, ?c) ^ swrlb:greaterThan(?c, 0.9) ^ Detection(?v) ^ hasVulnerableObject(?v, ?o) ^ Incident(?i) ^ beAWARE_ontology:detectsIncident(?d, ?i) ^ beAWARE_ontology:detectsIncident(?v, ?i) -> beAWARE_ontology:hasIncidentPriority(?i, "high") ^ beAWARE_ontology:involvedInIncident(?o, ?i)`
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentPriority
+beAWARE_ontology:hasIncidentPriority rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident priority" ;
+                                     skos:definition "Indicates the priority of the incident." ;
+                                     skos:example "Incidents involving humans in danger are of high priority." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#detectsIncident
+beAWARE_ontology:detectsIncident rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf beAWARE_ontology:incidentDetectedBy ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range beAWARE_ontology:Incident ;
+                                 rdfs:label "detects incident" ;
+                                 skos:definition "Indicates which incidents were detected by a specific detection activity." ;
+                                 skos:example "A flooding incident, a blocked road etc." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#incidentDetectedBy
+beAWARE_ontology:incidentDetectedBy rdf:type owl:ObjectProperty ;
+                                    rdfs:domain beAWARE_ontology:Incident ;
+                                    rdfs:range beAWARE_ontology:Detection ;
+                                    rdfs:label "incident detected by" ;
+                                    skos:definition "Indicates the detection activity that detected this incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvedInIncident
+beAWARE_ontology:involvedInIncident rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf beAWARE_ontology:involvesParticipant ;
+                                    rdfs:domain beAWARE_ontology:VulnerableObject ;
+                                    rdfs:range beAWARE_ontology:Incident ;
+                                    rdfs:label "involved in incident" ;
+                                    skos:definition "Indicates the incident a vulnerable object is involved in." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvesIncident
+beAWARE_ontology:involvesIncident rdf:type owl:ObjectProperty ;
+                                  rdfs:domain beAWARE_ontology:Dataset ;
+                                  rdfs:range beAWARE_ontology:Incident ;
+                                  rdfs:label "involves incident" ;
+                                  skos:definition "Certain analysis components recognize the major incident (e.g. fire, flood, etc.) portrayed in a media item." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentSeverity
+beAWARE_ontology:hasIncidentSeverity rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident severity" ;
+                                     skos:definition "Indicates the severity of the incident." ;
+                                     skos:example "Incidents involving injured or dead people are of high severity." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentImpact
+beAWARE_ontology:hasIncidentImpact rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isImpactOfIncident ;
+                                   rdfs:domain beAWARE_ontology:Incident ;
+                                   rdfs:range beAWARE_ontology:Impact ;
+                                   rdfs:label "has incident impact" ;
+                                   skos:definition "Indicates the impact of the specific incident." .Rule in Natural Language:
+  If a measurement of a climate parameter is taken at a specific location, and an incident occurs at that same location, then that measurement can be associated with that incident.
+SWRL Rule:
+ Person(?p) ^ hasMeasurementLocation(?c, ?l) ^ Incident(?i) ^ isLocationOfIncident(?i, ?l) -> hasClimateParameterOccurrence(?c, ?i)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isClimateParameterOfIncident
+beAWARE_ontology:isClimateParameterOfIncident rdf:type owl:ObjectProperty ;
+                                              rdfs:domain beAWARE_ontology:ClimateParameter ;
+                                              rdfs:range beAWARE_ontology:Incident ;
+                                              rdfs:label "is climate parameter of incident" ;
+                                              skos:definition "Links a climate parameter measurement to an incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentClimateParameter
+beAWARE_ontology:hasIncidentClimateParameter rdf:type owl:ObjectProperty ;
+                                             owl:inverseOf beAWARE_ontology:isClimateParameterOfIncident ;
+                                             rdfs:domain beAWARE_ontology:Incident ;
+                                             rdfs:range beAWARE_ontology:ClimateParameter ;
+                                             rdfs:label "has incident climate parameter" ;
+                                             skos:definition "Associates an incident to a climate parameter measurement." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasMeasurementLocation
+beAWARE_ontology:hasMeasurementLocation rdf:type owl:ObjectProperty ;
+                                        owl:inverseOf beAWARE_ontology:isLocationOfMeasurement ;
+                                        rdfs:domain beAWARE_ontology:ClimateParameter ;
+                                        rdfs:range beAWARE_ontology:Location ;
+                                        rdfs:label "has measurement location" ;
+                                        skos:definition "Represents the location where a climate parameter measurement was taken." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasClimateParameterMeasurement
+beAWARE_ontology:hasClimateParameterMeasurement rdf:type owl:ObjectProperty ;
+                                                owl:inverseOf beAWARE_ontology:relatesToNaturalDisaster ;
+                                                rdfs:domain beAWARE_ontology:NaturalDisaster ;
+                                                rdfs:range beAWARE_ontology:ClimateParameter ;
+                                                rdfs:label "has disaster climate parameter" ;
+                                                skos:definition "Associates a natural disaster occurrence to a climate parameter measurement." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfMeasurement
+beAWARE_ontology:isLocationOfMeasurement rdf:type owl:ObjectProperty ;
+                                         rdfs:domain beAWARE_ontology:Location ;
+                                         rdfs:range beAWARE_ontology:ClimateParameter ;
+                                         rdfs:label "is location of measurement" ;
+                                         skos:definition "Links a location to a climate parameter measurement." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfIncident
+beAWARE_ontology:isLocationOfIncident rdf:type owl:ObjectProperty ;
+                                      rdfs:domain beAWARE_ontology:Location ;
+                                      rdfs:range beAWARE_ontology:Incident ;
+                                      rdfs:label "is location of incident" ;
+                                      skos:definition "Links a location to an incident occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasClimateParameterOccurrence
+beAWARE_ontology:hasClimateParameterOccurrence rdf:type owl:ObjectProperty ;
+                                               owl:inverseOf beAWARE_ontology:isOfClimateParameterType ;
+                                               rdfs:domain beAWARE_ontology:ClimateParameterType ;
+                                               rdfs:range beAWARE_ontology:ClimateParameter ;
+                                               rdfs:label "has climate parameter occurrence" ;
+                                               skos:definition "Assigns a climate parameter type to a specific climate parameter." .Rule in Natural Language:
+  If an incident is detected and the risk of the detection is greater than 0.8 and the confidence of the detection is less than 0.5, then the incident has priority 'Requires Verification' and a responder is assigned to identification mission.
+SWRL Rule:
+ Here is the final SWRL rule:
+
+Incident(?i) ^ Detection(?d) ^ beAWARE_ontology:detectsIncident(?d, ?i) ^ swrlb:greaterThan(beAWARE_ontology:hasRisk(?d), 0.8) ^ swrlb:lessThan(beAWARE_ontology:hasConfidence(?d), 0.5) -> beAWARE_ontology:hasIncidentPriority(?i, "Requires Verification") ^ beAWARE_ontology:isAssignedMission(?m, ?r)
+RAG Content(Ontology Parts):
+ ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentPriority
+beAWARE_ontology:hasIncidentPriority rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain beAWARE_ontology:Incident ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:label "has incident priority" ;
+                                     skos:definition "Indicates the priority of the incident." ;
+                                     skos:example "Incidents involving humans in danger are of high priority." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#detectsIncident
+beAWARE_ontology:detectsIncident rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf beAWARE_ontology:incidentDetectedBy ;
+                                 rdfs:domain beAWARE_ontology:Detection ;
+                                 rdfs:range beAWARE_ontology:Incident ;
+                                 rdfs:label "detects incident" ;
+                                 skos:definition "Indicates which incidents were detected by a specific detection activity." ;
+                                 skos:example "A flooding incident, a blocked road etc." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#incidentDetectedBy
+beAWARE_ontology:incidentDetectedBy rdf:type owl:ObjectProperty ;
+                                    rdfs:domain beAWARE_ontology:Incident ;
+                                    rdfs:range beAWARE_ontology:Detection ;
+                                    rdfs:label "incident detected by" ;
+                                    skos:definition "Indicates the detection activity that detected this incident." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToIncident
+beAWARE_ontology:relatesToIncident rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:relatesToMission ;
+                                   rdfs:domain beAWARE_ontology:Mission ;
+                                   rdfs:range beAWARE_ontology:Incident ;
+                                   rdfs:label "relates to incident" ;
+                                   skos:definition "Associates a mission to an incident occurrence." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isAssignedMission
+beAWARE_ontology:isAssignedMission rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf beAWARE_ontology:isAssignedToResponder ;
+                                   rdfs:domain beAWARE_ontology:Responder ;
+                                   rdfs:range beAWARE_ontology:Mission ;
+                                   rdfs:label "is assigned mission" ;
+                                   skos:definition "Indicates the mission assignment of a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isAssignedToResponder
+beAWARE_ontology:isAssignedToResponder rdf:type owl:ObjectProperty ;
+                                       rdfs:domain beAWARE_ontology:Mission ;
+                                       rdfs:range beAWARE_ontology:Responder ;
+                                       rdfs:label "is assigned to responder" ;
+                                       skos:definition "Links a mission to a rescue unit." .
+###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#involvesIncident
+beAWARE_ontology:involvesIncident rdf:type owl:ObjectProperty ;
+                                  rdfs:domain beAWARE_ontology:Dataset ;
+                                  rdfs:range beAWARE_ontology:Incident ;
+                                  rdfs:label "involves incident" ;
+                                  skos:definition "Certain analysis components recognize the major incident (e.g. fire, flood, etc.) portrayed in a media item." .

@@ -1,0 +1,119 @@
+{
+  "inputs": {
+    "messages": [
+      [
+        {
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "HumanMessage"
+          ],
+          "kwargs": {
+            "content": "\n  Act as an ontology engineer. Use the following content (examples, part of the ontology, and a list of guidelines) as a guide to translate the natural language rule you are given into a SWRL rule. \n  EXAMPLES\n    Example 1\n    Rule in natural language: If a person has a sibling who is a man, then the person has a brother.\n    SWRL rule: Person(?p) ^ hasSibling(?p, ?s) ^ Person(?s) ^ IsMan(?s, true) -> hasBrother(?p, ?s)\n\n    Example 2\n    Rule in natural language: if a person has a phone number that starts with '+', then the person has an international phone number.\n    SWRL rule: Person(?p) ^ hasPhoneNumber(?p, ?number) ^ swrlb:startsWith(?number, \"+\") -> hasInternationalPhoneNumber(?p, true)\n\n    Example 3\n    Rule in natural language:  if a person has age greater than 17, then the person is an adult and has id card.\n    SWRL rule: Person(?p) ^ hasAge(?p, ?age) ^ Age(?age) ^ swrlb:greaterThan(?age, 17) ^ IdCard(?id) -> Adult(?p) ^ hasIdCard(?p, ?id)\n\n    Example 4\n    Rule in natural language: if a publication has two different authors, then those authors have cooperated with each other.\n    SWRL rule: Publication(?p) ^ Author(?y) ^ Author(?z) ^ hasAuthor(?p, ?y) ^ hasAuthor(?p, ?z) ^ differentFrom(?y, ?z) -> cooperatedWith(?y, ?z)\n\n    Example 5\n    Rule in natural language: if a researcher has published more than 10 papers in a Top-Tier conference, then the researcher is a prominent researcher and has a high citation impact.\n    SWRL rule: Researcher(?r) ^ hasPublished(?r, ?c) ^ Conference(?c) ^ topTierConference(?c) ^ swrlb:greaterThan(count(?c), 10) -> ProminentResearcher(?r) ^ hasHighCitationImpact(?r, true)\n  END OF EXAMPLES\n  PART OF ONTOLOGY \n    <!-- http://w3id.org/Wear4PDmove/onto#NotifyRelatives -->\n\n    <owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#NotifyRelatives\">\n        <rdfs:subClassOf rdf:resource=\"http://w3id.org/Wear4PDmove/onto#AlertingNotification\"/>\n    </owl:Class>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#PD_Patient -->\n\n    <owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#PD_Patient\">\n        <rdfs:subClassOf rdf:resource=\"http://w3id.org/Wear4PDmove/onto#Patient\"/>\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://w3id.org/Wear4PDmove/onto#hasPersonalHealthRecord\"/>\n                <owl:someValuesFrom rdf:resource=\"http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n        <rdfs:comment>PD patient</rdfs:comment>\n        <rdfs:label>PD Patient</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#PDpatientFalllingEventObservation -->\n<owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#PDpatientFalllingEventObservation\">\n        <rdfs:subClassOf rdf:resource=\"http://w3id.org/Wear4PDmove/onto#RecognizedEvent\"/>\n        <rdfs:comment>Falling event observation for PD Patient</rdfs:comment>\n        <rdfs:label>PD patient Fallling Event Observation</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#PDpatientMissingDoseEventObservation -->\n\n    <owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#PDpatientMissingDoseEventObservation\">\n        <rdfs:subClassOf rdf:resource=\"http://w3id.org/Wear4PDmove/onto#RecognizedEvent\"/>\n        <rdfs:comment>Missing dose event observation for PD Patient</rdfs:comment>\n        <rdfs:label>PD patient Missing Dose Event Observation</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#Patient -->\n<owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#Patient\">\n        <rdfs:subClassOf rdf:resource=\"http://schema.org/Person\"/>\n        <rdfs:comment>Any kind of patient</rdfs:comment>\n        <rdfs:label>Patient</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord -->\n\n    <owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord\">\n        <rdfs:comment>Personal Health Record of a patient</rdfs:comment>\n        <rdfs:label>Personal Health Record</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#RecognizedEvent -->\n\n    <owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#RecognizedEvent\">\n        <rdfs:subClassOf rdf:resource=\"http://www.w3.org/ns/sosa/Observation\"/>\n        <rdfs:comment>An observation of a recognized event for a PD Patient</rdfs:comment>\n        <rdfs:label>PD patient recognized event observation</rdfs:label>\n    </owl:Class>\n<owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#AlertingNotification\">\n        <rdfs:subClassOf rdf:resource=\"https://saref.etsi.org/core/ActuatingFunction\"/>\n        <rdfs:comment>Alerting Notification Function for event</rdfs:comment>\n        <rdfs:label>Alerting Notification Function</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#DailyDosagePlan -->\n<owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#MedicalPrescription\">\n        <rdfs:subClassOf rdf:resource=\"http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord\"/>\n        <rdfs:comment>Medical Prescription for Patient</rdfs:comment>\n        <rdfs:label>Medical Prescription</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#NotifyDoctor -->\n\n    <owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#NotifyDoctor\">\n        <rdfs:subClassOf rdf:resource=\"http://w3id.org/Wear4PDmove/onto#AlertingNotification\"/>\n        <rdfs:comment>Notify doctor for event (alert notification)</rdfs:comment>\n        <rdfs:label>Notify Doctor</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#NotifyNurse -->\n\n    <owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#NotifyNurse\">\n        <rdfs:subClassOf rdf:resource=\"http://w3id.org/Wear4PDmove/onto#AlertingNotification\"/>\n    </owl:Class>\n<owl:ObjectProperty rdf:about=\"http://w3id.org/Wear4PDmove/onto#performs\">\n        <rdfs:domain rdf:resource=\"http://w3id.org/Wear4PDmove/onto#Patient\"/>\n        <rdfs:range rdf:resource=\"http://www.case.edu/MDO#ActivitiesofDailyLiving\"/>\n        <rdfs:comment>human (patient) performs an action (ADL)</rdfs:comment>\n        <rdfs:label>performs</rdfs:label>\n    </owl:ObjectProperty>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#recordBelongsToPatient -->\n\n    <owl:ObjectProperty rdf:about=\"http://w3id.org/Wear4PDmove/onto#recordBelongsToPatient\">\n        <rdfs:label xml:lang=\"en\">record Belongs To Patient</rdfs:label>\n    </owl:ObjectProperty>\n    \n\n\n    <!-- http://www.w3.org/ns/sosa/hasFeatureOfInterest -->\n<rdfs:comment>The designed Wear4PDmoveOnto aims to semantically integrate heterogeneous data such as dynamic/stream data  (collected from wearables) and static/historic data (stored in health databases), in order to represent personal health knowledge in the form of a KG, supporting health apps’ reasoning capabilities for high-level events recognition (e.g., ‘missing dose’ or  ‘patient fall’ event).</rdfs:comment>\n        <rdfs:label xml:lang=\"en\">Wear4PDmoveOnto</rdfs:label>\n        <owl:versionInfo>v1.0.0</owl:versionInfo>\n    </owl:Ontology>\n  END OF ONTOLOGY\n  \n  COMMON GUIDELINES\n\n  Please try to implement the following guidelines:\n  1: Variables e.g., (?something) used in Conclusions must be present in Conditions. So create as many variables as needed in Conditions. \n  2: Each atom must have exactly one variable if it represents class.\n  3: Each atom must have exactly two variables if it represents object property.\n  4: Each concept must be represented by a class and must be present in Conditions.\n\n  END OF COMMON GUIDELINES\n\n  The rule in natural language is the following: If a falling event observation is identified for a patient with Parkinson disease, then send a notification alert to the nurse and the relative.\n  Give only the final SWRL rule\n  ",
+            "type": "human"
+          },
+          "lc": 1,
+          "type": "constructor"
+        }
+      ]
+    ]
+  },
+  "outputs": {
+    "generations": [
+      [
+        {
+          "generation_info": {
+            "created_at": "2026-05-09T10:29:53.2360058Z",
+            "done": true,
+            "done_reason": "stop",
+            "eval_count": 175,
+            "eval_duration": 19629483100,
+            "load_duration": 95113200,
+            "message": {
+              "content": "",
+              "images": null,
+              "role": "assistant",
+              "tool_calls": null
+            },
+            "model": "qwen2.5:7b",
+            "prompt_eval_count": 2296,
+            "prompt_eval_duration": 94573643800,
+            "total_duration": 114444891800
+          },
+          "message": {
+            "id": [
+              "langchain",
+              "schema",
+              "messages",
+              "AIMessage"
+            ],
+            "kwargs": {
+              "content": "```swrl\nPD_Patient(?p) ^ PDpatientFalllingEventObservation(?e) ^ hasPersonalHealthRecord(?p, ?r) ^ recordBelongsToPatient(?r, ?p) -> NotifyNurse(?n, ?e) ^ NotifyRelatives(?rel, ?e)\n```\n\nExplanation:\n- `PD_Patient(?p)` represents the patient with Parkinson disease.\n- `PDpatientFalllingEventObservation(?e)` represents the falling event observation for that patient.\n- `hasPersonalHealthRecord(?p, ?r)` and `recordBelongsToPatient(?r, ?p)` ensure that the personal health record belongs to the patient.\n- The conclusion sends a notification alert to both the nurse (`NotifyNurse(?n, ?e)`) and the relative (`NotifyRelatives(?rel, ?e)`).",
+              "id": "run--019e0c47-96c6-77c1-a226-418a924f3ca6-0",
+              "invalid_tool_calls": [],
+              "response_metadata": {
+                "created_at": "2026-05-09T10:29:53.2360058Z",
+                "done": true,
+                "done_reason": "stop",
+                "eval_count": 175,
+                "eval_duration": 19629483100,
+                "load_duration": 95113200,
+                "message": {
+                  "id": [
+                    "ollama",
+                    "_types",
+                    "Message"
+                  ],
+                  "lc": 1,
+                  "repr": "Message(role='assistant', content='', images=None, tool_calls=None)",
+                  "type": "not_implemented"
+                },
+                "model": "qwen2.5:7b",
+                "prompt_eval_count": 2296,
+                "prompt_eval_duration": 94573643800,
+                "total_duration": 114444891800
+              },
+              "tool_calls": [],
+              "type": "ai",
+              "usage_metadata": {
+                "input_tokens": 2296,
+                "output_tokens": 175,
+                "total_tokens": 2471
+              }
+            },
+            "lc": 1,
+            "type": "constructor"
+          },
+          "text": "```swrl\nPD_Patient(?p) ^ PDpatientFalllingEventObservation(?e) ^ hasPersonalHealthRecord(?p, ?r) ^ recordBelongsToPatient(?r, ?p) -> NotifyNurse(?n, ?e) ^ NotifyRelatives(?rel, ?e)\n```\n\nExplanation:\n- `PD_Patient(?p)` represents the patient with Parkinson disease.\n- `PDpatientFalllingEventObservation(?e)` represents the falling event observation for that patient.\n- `hasPersonalHealthRecord(?p, ?r)` and `recordBelongsToPatient(?r, ?p)` ensure that the personal health record belongs to the patient.\n- The conclusion sends a notification alert to both the nurse (`NotifyNurse(?n, ?e)`) and the relative (`NotifyRelatives(?rel, ?e)`).",
+          "type": "ChatGeneration"
+        }
+      ]
+    ],
+    "llm_output": null,
+    "run": null,
+    "type": "LLMResult"
+  },
+  "metadata": {
+    "ls_model_name": "qwen2.5:7b",
+    "ls_model_type": "chat",
+    "ls_provider": "ollama",
+    "ls_run_depth": 1,
+    "ls_temperature": 0,
+    "revision_id": "3ec4949-dirty"
+  },
+  "langsmith": {
+    "organization": {
+      "name": "Personal",
+      "id": "dddfdd98-7034-429c-ae34-81262387c9b0"
+    },
+    "workspace": {
+      "name": "Personal",
+      "id": "1da9662e-2f17-5b78-a525-2d13842bf0d3"
+    },
+    "tracing_project": {
+      "id": "4ceb8582-bbe4-4518-a40c-517392f83285",
+      "name": "Updated-Phase1-PD-rdf-1000-qwen2.5:7b-k7"
+    }
+  }
+}

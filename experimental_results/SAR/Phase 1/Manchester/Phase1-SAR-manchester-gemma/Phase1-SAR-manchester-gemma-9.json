@@ -1,0 +1,119 @@
+{
+  "inputs": {
+    "messages": [
+      [
+        {
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "HumanMessage"
+          ],
+          "kwargs": {
+            "content": "\n  Act as an ontology engineer. Use the following content (examples, part of the ontology, and a list of guidelines) as a guide to translate the natural language rule you are given into a SWRL rule. \n  EXAMPLES\n    Example 1\n    Rule in natural language: If a person has a sibling who is a man, then the person has a brother.\n    SWRL rule: Person(?p) ^ hasSibling(?p, ?s) ^ Person(?s) ^ IsMan(?s, true) -> hasBrother(?p, ?s)\n\n    Example 2\n    Rule in natural language: if a person has a phone number that starts with '+', then the person has an international phone number.\n    SWRL rule: Person(?p) ^ hasPhoneNumber(?p, ?number) ^ swrlb:startsWith(?number, \"+\") -> hasInternationalPhoneNumber(?p, true)\n\n    Example 3\n    Rule in natural language:  if a person has age greater than 17, then the person is an adult and has id card.\n    SWRL rule: Person(?p) ^ hasAge(?p, ?age) ^ Age(?age) ^ swrlb:greaterThan(?age, 17) ^ IdCard(?id) -> Adult(?p) ^ hasIdCard(?p, ?id)\n\n    Example 4\n    Rule in natural language: if a publication has two different authors, then those authors have cooperated with each other.\n    SWRL rule: Publication(?p) ^ Author(?y) ^ Author(?z) ^ hasAuthor(?p, ?y) ^ hasAuthor(?p, ?z) ^ differentFrom(?y, ?z) -> cooperatedWith(?y, ?z)\n\n    Example 5\n    Rule in natural language: if a researcher has published more than 10 papers in a Top-Tier conference, then the researcher is a prominent researcher and has a high citation impact.\n    SWRL rule: Researcher(?r) ^ hasPublished(?r, ?c) ^ Conference(?c) ^ topTierConference(?c) ^ swrlb:greaterThan(count(?c), 10) -> ProminentResearcher(?r) ^ hasHighCitationImpact(?r, true)\n  END OF EXAMPLES\n  PART OF ONTOLOGY \n    ObjectProperty: beAWARE_ontology:isImpactOfIncident\n\n    Annotations: \n        rdfs:label \"is impact of incident\",\n        skos:definition \"Links an impact to an incident.\"\n    \n    Domain: \n        beAWARE_ontology:Impact\n    \n    Range: \n        beAWARE_ontology:Incident\n    \n    InverseOf: \n        beAWARE_ontology:hasIncidentImpact\n    \n    \nObjectProperty: beAWARE_ontology:isImpactedBy\n\n    Annotations: \n        rdfs:label \"is impacted by\",\n        skos:definition \"Links an affected object to an impact.\"\n    \n    Domain: \n        beAWARE_ontology:VulnerableObject\n    \n    Range: \n        beAWARE_ontology:Impact\n    \n    InverseOf: \n        beAWARE_ontology:hasImpactOn\nObjectProperty: beAWARE_ontology:causesIncidentImpact\n\n    Annotations: \n        rdfs:label \"causes incident impact\",\n        skos:definition \"Indicates which impact type is caused by this type of incident.\"\n    \n    Domain: \n        beAWARE_ontology:IncidentType\n    \n    Range: \n        beAWARE_ontology:ImpactType\n    \n    InverseOf: \n        beAWARE_ontology:causedByIncident\n    \n    \nObjectProperty: beAWARE_ontology:characterizedByParameterType\n\n    Annotations: \n        rdfs:label \"characterized by parameter type\",\n        skos:definition \"Associates a natural disaster type with a climate parameter type.\"\n    \n    Domain: \n        beAWARE_ontology:NaturalDisasterType\n    \n    Range: \n        beAWARE_ontology:ClimateParameterType\n    \n    InverseOf: \n        beAWARE_ontology:characterizesDisasterType\nClass: beAWARE_ontology:Impact\n\n    Annotations: \n        rdfs:label \"Impact\",\n        skos:definition \"Represents the impact of natural disasters and incidents.\"\n    \n    \nClass: beAWARE_ontology:ImpactType\n\n    Annotations: \n        rdfs:label \"Impact Type\",\n        skos:definition \"Represents the various types of impacts.\",\n        skos:example \"Injuries, damage to properties etc.\"\n    \n    \nClass: beAWARE_ontology:Incident\n\n    Annotations: \n        rdfs:label \"Incident\",\n        skos:definition \"Represents the various incidents taking place during a natural disaster.\"\n    \n    \nClass: beAWARE_ontology:IncidentReport\n\n    Annotations: \n        rdfs:label \"Incident Report\",\n        skos:definition \"Represents an incident report submitted to the PSAP.\"\n    \n    \nClass: beAWARE_ontology:IncidentType\n\n    Annotations: \n        rdfs:label \"Incident Type\",\n        skos:definition \"Represents the various types of incidents.\",\n        skos:example \"Floods, blocked streets etc.\"\nObjectProperty: beAWARE_ontology:involvedInIncident\n\n    Annotations: \n        rdfs:label \"involved in incident\",\n        skos:definition \"Indicates the incident a vulnerable object is involved in.\"\n    \n    Domain: \n        beAWARE_ontology:VulnerableObject\n    \n    Range: \n        beAWARE_ontology:Incident\n    \n    InverseOf: \n        beAWARE_ontology:involvesParticipant\n    \n    \nObjectProperty: beAWARE_ontology:involvesIncident\n\n    Annotations: \n        rdfs:label \"involves incident\",\n        skos:definition \"Certain analysis components recognize the major incident (e.g. fire, flood, etc.) portrayed in a media item.\"\n    \n    Domain: \n        beAWARE_ontology:Dataset\n    \n    Range: \n        beAWARE_ontology:Incident\n    \n    InverseOf: \n        beAWARE_ontology:involvedInDataset\nObjectProperty: beAWARE_ontology:causedByIncident\n\n    Annotations: \n        rdfs:label \"caused by incident\",\n        skos:definition \"Indicates which incident type has caused this impact type.\"\n    \n    Domain: \n        beAWARE_ontology:ImpactType\n    \n    Range: \n        beAWARE_ontology:IncidentType\n    \n    InverseOf: \n        beAWARE_ontology:causesIncidentImpact\n    \n    \nObjectProperty: beAWARE_ontology:causesDisasterImpact\n\n    Annotations: \n        rdfs:label \"causes disaster impact\",\n        skos:definition \"Indicates which impact type is caused by this natural disaster type.\"\n    \n    Domain: \n        beAWARE_ontology:NaturalDisasterType\n    \n    Range: \n        beAWARE_ontology:ImpactType\n    \n    InverseOf: \n        beAWARE_ontology:causedByDisaster\nObjectProperty: beAWARE_ontology:hasImpactOccurrence\n\n    Annotations: \n        rdfs:label \"has impact occurrence\",\n        skos:definition \"Links an impact type to a specific impact pccurrence.\"\n    \n    Domain: \n        beAWARE_ontology:ImpactType\n    \n    Range: \n        beAWARE_ontology:Impact\n    \n    InverseOf: \n        beAWARE_ontology:isOfImpactType\n    \n    \nObjectProperty: beAWARE_ontology:hasImpactOn\n\n    Annotations: \n        rdfs:label \"has impact on\",\n        skos:definition \"Indicates which vulnerable object is impacted by the specific impact occurrence.\"\n    \n    Domain: \n        beAWARE_ontology:Impact\n    \n    Range: \n        beAWARE_ontology:VulnerableObject\n    \n    InverseOf: \n        beAWARE_ontology:isImpactedBy\nObjectProperty: beAWARE_ontology:detectsIncident\n\n    Annotations: \n        rdfs:label \"detects incident\",\n        skos:definition \"Indicates which incidents were detected by a specific detection activity.\",\n        skos:example \"A flooding incident, a blocked road etc.\"\n    \n    Domain: \n        beAWARE_ontology:Detection\n    \n    Range: \n        beAWARE_ontology:Incident\n    \n    InverseOf: \n        beAWARE_ontology:incidentDetectedBy\n    \n    \nObjectProperty: beAWARE_ontology:detectsParticipant\n\n    Annotations: \n        rdfs:label \"detects participant\",\n        skos:definition \"Indicates which participants were detected by a specific detection activity.\",\n        skos:example \"Humans in danger, submerged cars etc.\"\n    \n    Domain: \n        beAWARE_ontology:Detection\n    \n    Range: \n        beAWARE_ontology:VulnerableObject\n    \n    InverseOf: \n        beAWARE_ontology:participantDetectedBy\n  END OF ONTOLOGY\n  \n  COMMON GUIDELINES\n\n  Please try to implement the following guidelines:\n  1: Variables e.g., (?something) used in Conclusions must be present in Conditions. So create as many variables as needed in Conditions. \n  2: Each atom must have exactly one variable if it represents class.\n  3: Each atom must have exactly two variables if it represents object property.\n  4: Each concept must be represented by a class and must be present in Conditions.\n\n  END OF COMMON GUIDELINES\n\n  The rule in natural language is the following: If a vulnerable object and an incident are detected, and this incident has an impact, then the vulnerable object is impacted by that impact.\n  Give only the final SWRL rule\n  ",
+            "type": "human"
+          },
+          "lc": 1,
+          "type": "constructor"
+        }
+      ]
+    ]
+  },
+  "outputs": {
+    "generations": [
+      [
+        {
+          "generation_info": {
+            "created_at": "2026-05-07T17:15:58.5519605Z",
+            "done": true,
+            "done_reason": "stop",
+            "eval_count": 47,
+            "eval_duration": 6739441500,
+            "load_duration": 106436300,
+            "message": {
+              "content": "",
+              "images": null,
+              "role": "assistant",
+              "tool_calls": null
+            },
+            "model": "gemma2:9b",
+            "prompt_eval_count": 2182,
+            "prompt_eval_duration": 99368431800,
+            "total_duration": 106386322600
+          },
+          "message": {
+            "id": [
+              "langchain",
+              "schema",
+              "messages",
+              "AIMessage"
+            ],
+            "kwargs": {
+              "content": "Detection(?d) ^ detectsIncident(?d, ?i) ^ detectsParticipant(?d, ?v) ^ hasImpactOn(?i, ?imp) ^ isImpactedBy(?v, ?imp) . \n\n\n",
+              "id": "run--019e036e-c744-7ab1-96e4-7914760d7a40-0",
+              "invalid_tool_calls": [],
+              "response_metadata": {
+                "created_at": "2026-05-07T17:15:58.5519605Z",
+                "done": true,
+                "done_reason": "stop",
+                "eval_count": 47,
+                "eval_duration": 6739441500,
+                "load_duration": 106436300,
+                "message": {
+                  "id": [
+                    "ollama",
+                    "_types",
+                    "Message"
+                  ],
+                  "lc": 1,
+                  "repr": "Message(role='assistant', content='', images=None, tool_calls=None)",
+                  "type": "not_implemented"
+                },
+                "model": "gemma2:9b",
+                "prompt_eval_count": 2182,
+                "prompt_eval_duration": 99368431800,
+                "total_duration": 106386322600
+              },
+              "tool_calls": [],
+              "type": "ai",
+              "usage_metadata": {
+                "input_tokens": 2182,
+                "output_tokens": 47,
+                "total_tokens": 2229
+              }
+            },
+            "lc": 1,
+            "type": "constructor"
+          },
+          "text": "Detection(?d) ^ detectsIncident(?d, ?i) ^ detectsParticipant(?d, ?v) ^ hasImpactOn(?i, ?imp) ^ isImpactedBy(?v, ?imp) . \n\n\n",
+          "type": "ChatGeneration"
+        }
+      ]
+    ],
+    "llm_output": null,
+    "run": null,
+    "type": "LLMResult"
+  },
+  "metadata": {
+    "ls_model_name": "gemma2:9b",
+    "ls_model_type": "chat",
+    "ls_provider": "ollama",
+    "ls_run_depth": 1,
+    "ls_temperature": 0,
+    "revision_id": "528d065-dirty"
+  },
+  "langsmith": {
+    "organization": {
+      "name": "Personal",
+      "id": "dddfdd98-7034-429c-ae34-81262387c9b0"
+    },
+    "workspace": {
+      "name": "Personal",
+      "id": "1da9662e-2f17-5b78-a525-2d13842bf0d3"
+    },
+    "tracing_project": {
+      "id": "ed8b494a-5b4b-4dfb-967d-a8ffd4040d0d",
+      "name": "Updated-Phase1-SAR-manchester-1000-gemma2:9b-k7-test"
+    }
+  }
+}

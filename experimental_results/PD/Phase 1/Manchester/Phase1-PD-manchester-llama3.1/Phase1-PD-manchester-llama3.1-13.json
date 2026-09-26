@@ -1,0 +1,119 @@
+{
+  "inputs": {
+    "messages": [
+      [
+        {
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "HumanMessage"
+          ],
+          "kwargs": {
+            "content": "\n  Act as an ontology engineer. Use the following content (examples, part of the ontology, and a list of guidelines) as a guide to translate the natural language rule you are given into a SWRL rule. \n  EXAMPLES\n    Example 1\n    Rule in natural language: If a person has a sibling who is a man, then the person has a brother.\n    SWRL rule: Person(?p) ^ hasSibling(?p, ?s) ^ Person(?s) ^ IsMan(?s, true) -> hasBrother(?p, ?s)\n\n    Example 2\n    Rule in natural language: if a person has a phone number that starts with '+', then the person has an international phone number.\n    SWRL rule: Person(?p) ^ hasPhoneNumber(?p, ?number) ^ swrlb:startsWith(?number, \"+\") -> hasInternationalPhoneNumber(?p, true)\n\n    Example 3\n    Rule in natural language:  if a person has age greater than 17, then the person is an adult and has id card.\n    SWRL rule: Person(?p) ^ hasAge(?p, ?age) ^ Age(?age) ^ swrlb:greaterThan(?age, 17) ^ IdCard(?id) -> Adult(?p) ^ hasIdCard(?p, ?id)\n\n    Example 4\n    Rule in natural language: if a publication has two different authors, then those authors have cooperated with each other.\n    SWRL rule: Publication(?p) ^ Author(?y) ^ Author(?z) ^ hasAuthor(?p, ?y) ^ hasAuthor(?p, ?z) ^ differentFrom(?y, ?z) -> cooperatedWith(?y, ?z)\n\n    Example 5\n    Rule in natural language: if a researcher has published more than 10 papers in a Top-Tier conference, then the researcher is a prominent researcher and has a high citation impact.\n    SWRL rule: Researcher(?r) ^ hasPublished(?r, ?c) ^ Conference(?c) ^ topTierConference(?c) ^ swrlb:greaterThan(count(?c), 10) -> ProminentResearcher(?r) ^ hasHighCitationImpact(?r, true)\n  END OF EXAMPLES\n  PART OF ONTOLOGY \n    Annotations: \n        rdfs:comment \"symptom of PD, usually observed at patient's legs\"@en,\n        rdfs:label \"Bradykinesia of Upper Limb\"@en\n    \n    \nClass: <https://saref.etsi.org/saref4wear/OnBodyWearable>\n\n    \nClass: core:ActuatingFunction\n\n    \nClass: core:FeatureOfInterest\n\n    EquivalentTo: \n        sosa:FeatureOfInterest\n    \n    \nClass: core:Time\n\n    \nClass: dahcc:Accelerometer\n\n    \nClass: dahcc:WearableAcceleration\n\n    Annotations: \n        rdfs:label \"Wearable Acceleration\"@en\n    \n    \nClass: onto:AlertingNotification\n\n    Annotations: \n        rdfs:comment \"Alerting Notification Function for event\",\n        rdfs:label \"Alerting Notification Function\"\n    \n    SubClassOf: \n        core:ActuatingFunction\n    \n    \nClass: onto:DailyDosagePlan\nAnnotations: \n        rdfs:label \"score UPDRS\"@en\n    \n    Range: \n        xsd:decimal\n    \n    SubPropertyOf: \n        owl:topDataProperty\n    \n    \nDataProperty: onto:sendNotification\n\n    Annotations: \n        rdfs:label \"send notification\"@en\n    \n    Domain: \n        onto:AlertingNotification\n    \n    Range: \n        xsd:boolean\n    \n    \nDataProperty: owl:topDataProperty\n\n    \nDataProperty: sosa:resultTime\n\n    Annotations: \n        rdfs:label \"result time\"@en\n    \n    Domain: \n        sosa:Observation\n    \n    \nClass: <http://www.case.edu/MDO#ActivitiesofDailyLiving>\n\n    \nClass: <http://www.case.edu/MDO#Tremor>\n\n    Annotations: \n        rdfs:comment \"symptom of PD, usually observed at patient's hands\"@en,\n        rdfs:label \"Tremor\"@en\n    \n    \nClass: <http://www.case.edu/PMDO#BradykinesiaofUpperLimb>\nAnnotations: \n        rdfs:label \"has Anxiety\"@en\n    \n    Domain: \n        schema:Person\n    \n    Range: \n        xsd:boolean\n    \n    SubPropertyOf: \n        owl:topDataProperty\n    \n    \nDataProperty: onto:hasBradykinisiaOfUpperLimp\n\n    Annotations: \n        rdfs:label \"has bradykinisia of upper limp\"@en\n    \n    Domain: \n        schema:Person\n    \n    Range: \n        xsd:boolean\n    \n    SubPropertyOf: \n        owl:topDataProperty\n    \n    \nDataProperty: onto:hasDepression\n\n    Annotations: \n        rdfs:label \"has depression\"@en\n    \n    Domain: \n        schema:Person\n    \n    Range: \n        xsd:boolean\n    \n    SubPropertyOf: \n        owl:topDataProperty\n    \n    \nDataProperty: onto:hasDysphagia\n\n    Annotations: \n        rdfs:label \"has dysphagia\"@en\n    \n    Domain: \n        schema:Person\n    \n    Range: \n        xsd:boolean\n    \n    SubPropertyOf: \n        owl:topDataProperty\n    \n    \nDataProperty: onto:hasEndTime\nAnnotations: \n        rdfs:label \"has tremor\"@en\n    \n    Domain: \n        schema:Person\n    \n    Range: \n        xsd:boolean\n    \n    SubPropertyOf: \n        owl:topDataProperty\n    \n    \nDataProperty: onto:heartRate\n\n    Annotations: \n        rdfs:label \"heart rate\"@en\n    \n    Domain: \n        schema:Person\n    \n    Range: \n        xsd:decimal\n    \n    SubPropertyOf: \n        owl:topDataProperty\n    \n    \nDataProperty: onto:levelHoehnYahrStage\n\n    Annotations: \n        rdfs:label \"level Hoehn Yahr stage\"@en\n    \n    Range: \n        xsd:integer\n    \n    SubPropertyOf: \n        owl:topDataProperty\n    \n    \nDataProperty: onto:obsAfterDosing\n\n    Annotations: \n        rdfs:comment \"Check if observation is taken 30 min after the last dosage of dosage plan\",\n        rdfs:label \"observation after dosing\"@en\n    \n    Domain: \n        sosa:Observation\n    \n    Range: \n        xsd:boolean\n    \n    \nDataProperty: onto:scoreUPDRS\nAnnotations: \n        rdfs:label \"has postural instability\"@en\n    \n    Domain: \n        schema:Person\n    \n    Range: \n        xsd:boolean\n    \n    SubPropertyOf: \n        owl:topDataProperty\n    \n    \nDataProperty: onto:hasRigidity\n\n    Annotations: \n        rdfs:label \"has rigidity\"@en\n    \n    Range: \n        xsd:boolean\n    \n    SubPropertyOf: \n        owl:topDataProperty\n    \n    \nDataProperty: onto:hasSleepDisturbances\n\n    Annotations: \n        rdfs:label \"has sleep disturbances\"@en\n    \n    Domain: \n        schema:Person\n    \n    Range: \n        xsd:boolean\n    \n    SubPropertyOf: \n        owl:topDataProperty\n    \n    \nDataProperty: onto:hasStartTime\n\n    Domain: \n        sosa:Observation\n    \n    Range: \n        xsd:dateTime\n    \n    \nDataProperty: onto:hasSubstance\n\n    Domain: \n        onto:MedicalPrescription\n    \n    Range: \n        xsd:string\n    \n    \nDataProperty: onto:hasTremor\nAnnotations: \n        rdfs:comment \"Notify doctor for event (alert notification)\",\n        rdfs:label \"Notify Doctor\"\n    \n    SubClassOf: \n        onto:AlertingNotification\n    \n    \nClass: onto:NotifyNurse\n\n    SubClassOf: \n        onto:AlertingNotification\n    \n    \nClass: onto:NotifyRelatives\n\n    SubClassOf: \n        onto:AlertingNotification\n    \n    \nClass: onto:PD_Patient\n\n    Annotations: \n        rdfs:comment \"PD patient\",\n        rdfs:label \"PD Patient\"\n    \n    SubClassOf: \n        onto:Patient,\n        onto:hasPersonalHealthRecord some onto:PersonalHealthRecord\n    \n    \nClass: onto:PDpatientFalllingEventObservation\n\n    Annotations: \n        rdfs:comment \"Falling event observation for PD Patient\",\n        rdfs:label \"PD patient Fallling Event Observation\"\n    \n    SubClassOf: \n        onto:RecognizedEvent\n    \n    \nClass: onto:PDpatientMissingDoseEventObservation\nAnnotations: \n        rdfs:comment \"Missing dose event observation for PD Patient\",\n        rdfs:label \"PD patient Missing Dose Event Observation\"\n    \n    SubClassOf: \n        onto:RecognizedEvent\n    \n    \nClass: onto:Patient\n\n    Annotations: \n        rdfs:comment \"Any kind of patient\",\n        rdfs:label \"Patient\"\n    \n    SubClassOf: \n        schema:Person\n    \n    \nClass: onto:PersonalHealthRecord\n\n    Annotations: \n        rdfs:comment \"Personal Health Record of a patient\",\n        rdfs:label \"Personal Health Record\"\n    \n    \nClass: onto:RecognizedEvent\n\n    Annotations: \n        rdfs:comment \"An observation of a recognized event for a PD Patient\",\n        rdfs:label \"PD patient recognized event observation\"\n    \n    SubClassOf: \n        sosa:Observation\n    \n    \nClass: onto:SketchingActivity\n  END OF ONTOLOGY\n  \n  COMMON GUIDELINES\n\n  Please try to implement the following guidelines:\n  1: Variables e.g., (?something) used in Conclusions must be present in Conditions. So create as many variables as needed in Conditions. \n  2: Each atom must have exactly one variable if it represents class.\n  3: Each atom must have exactly two variables if it represents object property.\n  4: Each concept must be represented by a class and must be present in Conditions.\n\n  END OF COMMON GUIDELINES\n\n  The rule in natural language is the following: If a patient has tremor and bradykinesia of upper limp, then that patient should be classified as a patient with Parkinson disease.\n  Give only the final SWRL rule\n  ",
+            "type": "human"
+          },
+          "lc": 1,
+          "type": "constructor"
+        }
+      ]
+    ]
+  },
+  "outputs": {
+    "generations": [
+      [
+        {
+          "generation_info": {
+            "created_at": "2026-05-11T17:42:20.2392886Z",
+            "done": true,
+            "done_reason": "stop",
+            "eval_count": 37,
+            "eval_duration": 3604290600,
+            "load_duration": 132375400,
+            "message": {
+              "content": "",
+              "images": null,
+              "role": "assistant",
+              "tool_calls": null
+            },
+            "model": "llama3.1:8b",
+            "prompt_eval_count": 2150,
+            "prompt_eval_duration": 71157237300,
+            "total_duration": 74924099100
+          },
+          "message": {
+            "id": [
+              "langchain",
+              "schema",
+              "messages",
+              "AIMessage"
+            ],
+            "kwargs": {
+              "content": "Person(?p) ^ hasTremor(?p, true) ^ hasBradykinisiaOfUpperLimp(?p, true) -> PD_Patient(?p)",
+              "id": "run--019e1820-d4a8-7d83-ba3e-2c9e83b43e28-0",
+              "invalid_tool_calls": [],
+              "response_metadata": {
+                "created_at": "2026-05-11T17:42:20.2392886Z",
+                "done": true,
+                "done_reason": "stop",
+                "eval_count": 37,
+                "eval_duration": 3604290600,
+                "load_duration": 132375400,
+                "message": {
+                  "id": [
+                    "ollama",
+                    "_types",
+                    "Message"
+                  ],
+                  "lc": 1,
+                  "repr": "Message(role='assistant', content='', images=None, tool_calls=None)",
+                  "type": "not_implemented"
+                },
+                "model": "llama3.1:8b",
+                "prompt_eval_count": 2150,
+                "prompt_eval_duration": 71157237300,
+                "total_duration": 74924099100
+              },
+              "tool_calls": [],
+              "type": "ai",
+              "usage_metadata": {
+                "input_tokens": 2150,
+                "output_tokens": 37,
+                "total_tokens": 2187
+              }
+            },
+            "lc": 1,
+            "type": "constructor"
+          },
+          "text": "Person(?p) ^ hasTremor(?p, true) ^ hasBradykinisiaOfUpperLimp(?p, true) -> PD_Patient(?p)",
+          "type": "ChatGeneration"
+        }
+      ]
+    ],
+    "llm_output": null,
+    "run": null,
+    "type": "LLMResult"
+  },
+  "metadata": {
+    "ls_model_name": "llama3.1:8b",
+    "ls_model_type": "chat",
+    "ls_provider": "ollama",
+    "ls_run_depth": 1,
+    "ls_temperature": 0,
+    "revision_id": "3ec4949-dirty"
+  },
+  "langsmith": {
+    "organization": {
+      "name": "Personal",
+      "id": "dddfdd98-7034-429c-ae34-81262387c9b0"
+    },
+    "workspace": {
+      "name": "Personal",
+      "id": "1da9662e-2f17-5b78-a525-2d13842bf0d3"
+    },
+    "tracing_project": {
+      "id": "08ed77e8-127c-4e17-8778-e750c35545b3",
+      "name": "Updated-Phase1-PD-manchester-1000-llama3.1:8b-k7"
+    }
+  }
+}

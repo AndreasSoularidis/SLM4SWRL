@@ -1,0 +1,119 @@
+{
+  "inputs": {
+    "messages": [
+      [
+        {
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "HumanMessage"
+          ],
+          "kwargs": {
+            "content": "\n  Act as an ontology engineer. Use the following content (examples, part of the ontology, and a list of guidelines) as a guide to translate the natural language rule you are given into a SWRL rule. \n  EXAMPLES\n    Example 1\n    Rule in natural language: If a person has a sibling who is a man, then the person has a brother.\n    SWRL rule: Person(?p) ^ hasSibling(?p, ?s) ^ Person(?s) ^ IsMan(?s, true) -> hasBrother(?p, ?s)\n\n    Example 2\n    Rule in natural language: if a person has a phone number that starts with '+', then the person has an international phone number.\n    SWRL rule: Person(?p) ^ hasPhoneNumber(?p, ?number) ^ swrlb:startsWith(?number, \"+\") -> hasInternationalPhoneNumber(?p, true)\n\n    Example 3\n    Rule in natural language:  if a person has age greater than 17, then the person is an adult and has id card.\n    SWRL rule: Person(?p) ^ hasAge(?p, ?age) ^ Age(?age) ^ swrlb:greaterThan(?age, 17) ^ IdCard(?id) -> Adult(?p) ^ hasIdCard(?p, ?id)\n\n    Example 4\n    Rule in natural language: if a publication has two different authors, then those authors have cooperated with each other.\n    SWRL rule: Publication(?p) ^ Author(?y) ^ Author(?z) ^ hasAuthor(?p, ?y) ^ hasAuthor(?p, ?z) ^ differentFrom(?y, ?z) -> cooperatedWith(?y, ?z)\n\n    Example 5\n    Rule in natural language: if a researcher has published more than 10 papers in a Top-Tier conference, then the researcher is a prominent researcher and has a high citation impact.\n    SWRL rule: Researcher(?r) ^ hasPublished(?r, ?c) ^ Conference(?c) ^ topTierConference(?c) ^ swrlb:greaterThan(count(?c), 10) -> ProminentResearcher(?r) ^ hasHighCitationImpact(?r, true)\n  END OF EXAMPLES\n  PART OF ONTOLOGY \n    ###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasResponderLocation\nbeAWARE_ontology:hasResponderLocation rdf:type owl:ObjectProperty ;\n                                      owl:inverseOf beAWARE_ontology:isLocationOfResponder ;\n                                      rdfs:domain beAWARE_ontology:Responder ;\n                                      rdfs:range beAWARE_ontology:Location ;\n                                      rdfs:label \"has responder location\" ;\n                                      skos:definition \"Represents the location where a rescue unit is at.\" .\n###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfResponder\nbeAWARE_ontology:isLocationOfResponder rdf:type owl:ObjectProperty ;\n                                       rdfs:domain beAWARE_ontology:Location ;\n                                       rdfs:range beAWARE_ontology:Responder ;\n                                       rdfs:label \"is location of responder\" ;\n                                       skos:definition \"Links a location to a rescue unit.\" .\n###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isLocationOfIncident\nbeAWARE_ontology:isLocationOfIncident rdf:type owl:ObjectProperty ;\n                                      rdfs:domain beAWARE_ontology:Location ;\n                                      rdfs:range beAWARE_ontology:Incident ;\n                                      rdfs:label \"is location of incident\" ;\n                                      skos:definition \"Links a location to an incident occurrence.\" .\n###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isAssignedToResponder\nbeAWARE_ontology:isAssignedToResponder rdf:type owl:ObjectProperty ;\n                                       rdfs:domain beAWARE_ontology:Mission ;\n                                       rdfs:range beAWARE_ontology:Responder ;\n                                       rdfs:label \"is assigned to responder\" ;\n                                       skos:definition \"Links a mission to a rescue unit.\" .\n###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#hasIncidentLocation\nbeAWARE_ontology:hasIncidentLocation rdf:type owl:ObjectProperty ;\n                                     owl:inverseOf beAWARE_ontology:isLocationOfIncident ;\n                                     rdfs:domain beAWARE_ontology:Incident ;\n                                     rdfs:range beAWARE_ontology:Location ;\n                                     rdfs:label \"has incident location\" ;\n                                     skos:definition \"Represents the location where an incident occurs.\" .\n###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#isAssignedMission\nbeAWARE_ontology:isAssignedMission rdf:type owl:ObjectProperty ;\n                                   owl:inverseOf beAWARE_ontology:isAssignedToResponder ;\n                                   rdfs:domain beAWARE_ontology:Responder ;\n                                   rdfs:range beAWARE_ontology:Mission ;\n                                   rdfs:label \"is assigned mission\" ;\n                                   skos:definition \"Indicates the mission assignment of a rescue unit.\" .\n###  https://raw.githubusercontent.com/beAWARE-project/ontology/master/beAWARE_ontology#relatesToIncident\nbeAWARE_ontology:relatesToIncident rdf:type owl:ObjectProperty ;\n                                   owl:inverseOf beAWARE_ontology:relatesToMission ;\n                                   rdfs:domain beAWARE_ontology:Mission ;\n                                   rdfs:range beAWARE_ontology:Incident ;\n                                   rdfs:label \"relates to incident\" ;\n                                   skos:definition \"Associates a mission to an incident occurrence.\" .\n  END OF ONTOLOGY\n  \n  COMMON GUIDELINES\n\n  Please try to implement the following guidelines:\n  1: Variables e.g., (?something) used in Conclusions must be present in Conditions. So create as many variables as needed in Conditions. \n  2: Each atom must have exactly one variable if it represents class.\n  3: Each atom must have exactly two variables if it represents object property.\n  4: Each concept must be represented by a class and must be present in Conditions.\n\n  END OF COMMON GUIDELINES\n\n  The rule in natural language is the following: If a responder is assigned to a mission, and that mission is related to an incident and the location of the incident is known, then the location of responder is the same with the location of the incident.\n  Give only the final SWRL rule\n  ",
+            "type": "human"
+          },
+          "lc": 1,
+          "type": "constructor"
+        }
+      ]
+    ]
+  },
+  "outputs": {
+    "generations": [
+      [
+        {
+          "generation_info": {
+            "created_at": "2026-05-19T15:17:17.8121012Z",
+            "done": true,
+            "done_reason": "stop",
+            "eval_count": 216,
+            "eval_duration": 18897939000,
+            "load_duration": 20715600,
+            "message": {
+              "content": "",
+              "images": null,
+              "role": "assistant",
+              "tool_calls": null
+            },
+            "model": "mistral:7b",
+            "prompt_eval_count": 1799,
+            "prompt_eval_duration": 68669154700,
+            "total_duration": 88770512400
+          },
+          "message": {
+            "id": [
+              "langchain",
+              "schema",
+              "messages",
+              "AIMessage"
+            ],
+            "kwargs": {
+              "content": " Based on the provided examples and guidelines, the SWRL rule for the given natural language rule would be:\n\n```swrl\nResponder(?r) ^ beAWARE_ontology:isAssignedToResponder(?r, ?m) ^ Mission(?m) ^ beAWARE_ontology:relatesToIncident(?m, ?i) ^ Incident(?i) ^ beAWARE_ontology:hasIncidentLocation(?i, ?il) -> beAWARE_ontology:hasResponderLocation(?r, ?il)\n```\n\nThis rule states that if a `Responder` (?r) is assigned to a `Mission` (?m), and the mission (?m) relates to an `Incident` (?i) with a known location (?il), then the location of the responder (?r) is the same as the location of the incident (?il).",
+              "id": "run--019e40ce-b4c4-7c73-864c-a29c5b5d5e04-0",
+              "invalid_tool_calls": [],
+              "response_metadata": {
+                "created_at": "2026-05-19T15:17:17.8121012Z",
+                "done": true,
+                "done_reason": "stop",
+                "eval_count": 216,
+                "eval_duration": 18897939000,
+                "load_duration": 20715600,
+                "message": {
+                  "id": [
+                    "ollama",
+                    "_types",
+                    "Message"
+                  ],
+                  "lc": 1,
+                  "repr": "Message(role='assistant', content='', images=None, tool_calls=None)",
+                  "type": "not_implemented"
+                },
+                "model": "mistral:7b",
+                "prompt_eval_count": 1799,
+                "prompt_eval_duration": 68669154700,
+                "total_duration": 88770512400
+              },
+              "tool_calls": [],
+              "type": "ai",
+              "usage_metadata": {
+                "input_tokens": 1799,
+                "output_tokens": 216,
+                "total_tokens": 2015
+              }
+            },
+            "lc": 1,
+            "type": "constructor"
+          },
+          "text": " Based on the provided examples and guidelines, the SWRL rule for the given natural language rule would be:\n\n```swrl\nResponder(?r) ^ beAWARE_ontology:isAssignedToResponder(?r, ?m) ^ Mission(?m) ^ beAWARE_ontology:relatesToIncident(?m, ?i) ^ Incident(?i) ^ beAWARE_ontology:hasIncidentLocation(?i, ?il) -> beAWARE_ontology:hasResponderLocation(?r, ?il)\n```\n\nThis rule states that if a `Responder` (?r) is assigned to a `Mission` (?m), and the mission (?m) relates to an `Incident` (?i) with a known location (?il), then the location of the responder (?r) is the same as the location of the incident (?il).",
+          "type": "ChatGeneration"
+        }
+      ]
+    ],
+    "llm_output": null,
+    "run": null,
+    "type": "LLMResult"
+  },
+  "metadata": {
+    "ls_model_name": "mistral:7b",
+    "ls_model_type": "chat",
+    "ls_provider": "ollama",
+    "ls_run_depth": 1,
+    "ls_temperature": 0,
+    "revision_id": "3ec4949-dirty"
+  },
+  "langsmith": {
+    "organization": {
+      "name": "Personal",
+      "id": "dddfdd98-7034-429c-ae34-81262387c9b0"
+    },
+    "workspace": {
+      "name": "Personal",
+      "id": "1da9662e-2f17-5b78-a525-2d13842bf0d3"
+    },
+    "tracing_project": {
+      "id": "8206a6fd-6737-42c3-9313-8a3fc603b061",
+      "name": "Updated-Phase1-SAR-ttl-1000-mistral:7b-k7"
+    }
+  }
+}

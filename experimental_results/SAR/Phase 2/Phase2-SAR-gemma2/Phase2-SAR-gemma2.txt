@@ -1,0 +1,2901 @@
+Rule in Natural Language:
+  If an incident is detected and the confidence of this detection is greater than 0.9 and vulnerable objects are also detected, then the priority of the incident is set to 'high' and the detected vulnerable objects are involved in this incident.
+SWRL Rule:
+ Incident(?i) ^ detectsIncident(?d, ?i) ^ hasDetectionConfidence(?d, ?confidence) ^ swrlb:greaterThan(?confidence, 0.9) ^ detectsParticipant(?d, ?v) -> isOfIncidentType(?i, :HighPriorityIncident) ^ involvesParticipant(?v, ?i)
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containsDetection  rdfs:domain  :Dataset .
+:containsDetection  rdfs:range  :Detection .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:domain  :Detection .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasDetectionConfidence  rdfs:domain  :Detection .
+:hasDetectionEnd  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:range  :float .
+:hasDetectionStart  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:range  :dateTime .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:range  :Detection .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:participantDetectedBy  rdfs:range  :Detection .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If a vulnerable object and an incident are detected, and this incident has an impact, then the vulnerable object is impacted by that impact.
+SWRL Rule:
+ VulnerableObject(?v) ^ Incident(?i) ^ detectsIncident(?i, ?v) ^ hasImpactOccurrence(?i, ?o) -> isImpactedBy(?v, ?o)
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByDisaster  rdfs:domain  :ImpactType .
+:causedByIncident  owl:inverseOf  :causesIncidentImpact .
+:causedByIncident  rdfs:domain  :ImpactType .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesDisasterImpact  rdfs:range  :ImpactType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:causesIncidentImpact  rdfs:range  :ImpactType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasImpactOccurrence  rdfs:domain  :ImpactType .
+:hasImpactOccurrence  rdfs:range  :Impact .
+:hasImpactOn  owl:inverseOf  :isImpactedBy .
+:hasImpactOn  rdfs:domain  :Impact .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:range  :Impact .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:domain  :Impact .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isImpactedBy  rdfs:range  :Impact .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfImpactType  rdfs:domain  :Impact .
+:isOfImpactType  rdfs:range  :ImpactType .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If a detection has a start time and an end time, and its total duration is calculated to be greater than 60 minutes, then the severity of the incident is 'high'.
+SWRL Rule:
+ Detection(?d) ^ hasDetectionStart(?d, ?start) ^ hasDetectionEnd(?d, ?end) ^ swrlb:greaterThan(calculateDuration(?start, ?end), 60) -> hasIncidentSeverity(?incidentDetectedBy(?d), "high").
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containsDetection  rdfs:domain  :Dataset .
+:containsDetection  rdfs:range  :Detection .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:domain  :Detection .
+:hasDetectionConfidence  rdfs:domain  :Detection .
+:hasDetectionEnd  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:range  :float .
+:hasDetectionStart  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:range  :dateTime .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:range  :string .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:range  :Detection .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:range  :Detection .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If a responder is assigned to a mission, and that mission is related to an incident and the location of the incident is known, then the location of responder is the same with the location of the incident.
+SWRL Rule:
+ Responder(?r) ^ isAssignedMission(?r, ?m) ^ relatesToIncident(?m, ?i) ^ hasIncidentLocation(?i, ?loc) -> hasResponderLocation(?r, ?loc)
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasDisasterLocation  rdfs:range  :Location .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  owl:inverseOf  :isLocationOfIncident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:range  :Location .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMeasurementLocation  owl:inverseOf  :isLocationOfMeasurement .
+:hasMeasurementLocation  rdfs:domain  :ClimateParameter .
+:hasMeasurementLocation  rdfs:range  :Location .
+:hasMediaLocation  rdfs:range  :Location .
+:hasMissionEnd  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:range  :string .
+:hasMissionStart  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:range  :string .
+:hasRadius  rdfs:domain  :Location .
+:hasReportLocation  rdfs:range  :Location .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isAssignedMission  owl:inverseOf  :isAssignedToResponder .
+:isAssignedMission  rdfs:domain  :Responder .
+:isAssignedMission  rdfs:range  :Mission .
+:isAssignedToResponder  rdfs:domain  :Mission .
+:isAssignedToResponder  rdfs:range  :Responder .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfDisaster  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfMeasurement  rdfs:domain  :Location .
+:isLocationOfMediaItem  rdfs:domain  :Location .
+:isLocationOfReport  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:range  :Responder .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:lat  rdfs:domain  :Location .
+:long  rdfs:domain  :Location .
+:relatesToIncident  rdfs:domain  :Mission .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToMission  rdfs:range  :Mission .Rule in Natural Language:
+  If a vulnerable object and an incident are detected, and this incident has an impact, then the vulnerable object is impacted by that impact.
+SWRL Rule:
+ VulnerableObject(?v) ^ Incident(?i) ^ detectsIncident(?i, ?v) ^ hasImpactOccurrence(?i, ?o) -> isImpactedBy(?v, ?o)
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByDisaster  rdfs:domain  :ImpactType .
+:causedByIncident  owl:inverseOf  :causesIncidentImpact .
+:causedByIncident  rdfs:domain  :ImpactType .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesDisasterImpact  rdfs:range  :ImpactType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:causesIncidentImpact  rdfs:range  :ImpactType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasImpactOccurrence  rdfs:domain  :ImpactType .
+:hasImpactOccurrence  rdfs:range  :Impact .
+:hasImpactOn  owl:inverseOf  :isImpactedBy .
+:hasImpactOn  rdfs:domain  :Impact .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:range  :Impact .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:domain  :Impact .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isImpactedBy  rdfs:range  :Impact .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfImpactType  rdfs:domain  :Impact .
+:isOfImpactType  rdfs:range  :ImpactType .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If a mission is related to a specific incident and that incident has a priority level of 'high', then the mission should also be assigned as a 'high' priority.
+SWRL Rule:
+ Mission(?m) ^ relatesToIncident(?m, ?i) ^ hasIncidentPriority(?i, "high") -> hasMissionPriority(?m, "high")
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentPriority  rdfs:range  :string .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMissionEnd  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:range  :string .
+:hasMissionStart  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:range  :string .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isAssignedMission  owl:inverseOf  :isAssignedToResponder .
+:isAssignedMission  rdfs:domain  :Responder .
+:isAssignedMission  rdfs:range  :Mission .
+:isAssignedToResponder  rdfs:domain  :Mission .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:relatesToIncident  rdfs:domain  :Mission .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToMission  rdfs:range  :Mission .Rule in Natural Language:
+  If a vulnerable object and an incident are detected, and this incident has an impact, then the vulnerable object is impacted by that impact.
+SWRL Rule:
+ VulnerableObject(?v) ^ Incident(?i) ^ detectsIncident(?i, ?v) ^ hasImpactOccurrence(?i, ?o) -> isImpactedBy(?v, ?o)
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByDisaster  rdfs:domain  :ImpactType .
+:causedByIncident  owl:inverseOf  :causesIncidentImpact .
+:causedByIncident  rdfs:domain  :ImpactType .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesDisasterImpact  rdfs:range  :ImpactType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:causesIncidentImpact  rdfs:range  :ImpactType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasImpactOccurrence  rdfs:domain  :ImpactType .
+:hasImpactOccurrence  rdfs:range  :Impact .
+:hasImpactOn  owl:inverseOf  :isImpactedBy .
+:hasImpactOn  rdfs:domain  :Impact .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:range  :Impact .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:domain  :Impact .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isImpactedBy  rdfs:range  :Impact .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfImpactType  rdfs:domain  :Impact .
+:isOfImpactType  rdfs:range  :ImpactType .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If a measurement of a climate parameter is taken at a specific location, and an incident occurs at that same location, then that measurement can be associated with that incident.
+SWRL Rule:
+ ClimateParameter(?cp) ^ hasMeasurementLocation(?cp, ?loc) ^ Incident(?i) ^ hasIncidentLocation(?i, ?loc) -> relatesToIncident(?cp, ?i).
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:characterizedByParameterType  rdfs:range  :ClimateParameterType .
+:characterizesDisasterType  rdfs:domain  :ClimateParameterType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasClimateParameterMeasurement  owl:inverseOf  :relatesToNaturalDisaster .
+:hasClimateParameterMeasurement  rdfs:domain  :NaturalDisaster .
+:hasClimateParameterMeasurement  rdfs:range  :ClimateParameter .
+:hasClimateParameterOccurrence  rdfs:domain  :ClimateParameterType .
+:hasClimateParameterOccurrence  rdfs:range  :ClimateParameter .
+:hasDisasterLocation  rdfs:range  :Location .
+:hasIncidentClimateParameter  owl:inverseOf  :isClimateParameterOfIncident .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentClimateParameter  rdfs:range  :ClimateParameter .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  owl:inverseOf  :isLocationOfIncident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:range  :Location .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMeasurementLocation  owl:inverseOf  :isLocationOfMeasurement .
+:hasMeasurementLocation  rdfs:domain  :ClimateParameter .
+:hasMeasurementLocation  rdfs:range  :Location .
+:hasMeasurementTimestamp  rdfs:domain  :ClimateParameter .
+:hasMediaLocation  rdfs:range  :Location .
+:hasRadius  rdfs:domain  :Location .
+:hasReportLocation  rdfs:range  :Location .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:hasUnit  rdfs:domain  :ClimateParameter .
+:hasValue  rdfs:domain  :ClimateParameter .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isClimateParameterOfIncident  rdfs:domain  :ClimateParameter .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfDisaster  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfMeasurement  rdfs:domain  :Location .
+:isLocationOfMeasurement  rdfs:range  :ClimateParameter .
+:isLocationOfMediaItem  rdfs:domain  :Location .
+:isLocationOfReport  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isOfClimateParameterType  rdfs:domain  :ClimateParameter .
+:isOfClimateParameterType  rdfs:range  :ClimateParameterType .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:lat  rdfs:domain  :Location .
+:long  rdfs:domain  :Location .
+:observes  rdfs:range  :ClimateParameter .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToNaturalDisaster  rdfs:domain  :ClimateParameter .Rule in Natural Language:
+  If a vulnerable object and an incident are detected, and this incident has an impact, then the vulnerable object is impacted by that impact.
+SWRL Rule:
+ VulnerableObject(?v) ^ Incident(?i) ^ detectsIncident(?i, ?v) ^ hasImpactOccurrence(?i, ?o) -> isImpactedBy(?v, ?o)
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByDisaster  rdfs:domain  :ImpactType .
+:causedByIncident  owl:inverseOf  :causesIncidentImpact .
+:causedByIncident  rdfs:domain  :ImpactType .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesDisasterImpact  rdfs:range  :ImpactType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:causesIncidentImpact  rdfs:range  :ImpactType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasImpactOccurrence  rdfs:domain  :ImpactType .
+:hasImpactOccurrence  rdfs:range  :Impact .
+:hasImpactOn  owl:inverseOf  :isImpactedBy .
+:hasImpactOn  rdfs:domain  :Impact .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:range  :Impact .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:domain  :Impact .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isImpactedBy  rdfs:range  :Impact .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfImpactType  rdfs:domain  :Impact .
+:isOfImpactType  rdfs:range  :ImpactType .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If a mission is related to a specific incident and that incident has a priority level of 'high', then the mission should also be assigned as a 'high' priority.
+SWRL Rule:
+ Mission(?m) ^ relatesToIncident(?m, ?i) ^ hasIncidentPriority(?i, "high") -> hasMissionPriority(?m, "high")
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentPriority  rdfs:range  :string .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMissionEnd  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:range  :string .
+:hasMissionStart  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:range  :string .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isAssignedMission  owl:inverseOf  :isAssignedToResponder .
+:isAssignedMission  rdfs:domain  :Responder .
+:isAssignedMission  rdfs:range  :Mission .
+:isAssignedToResponder  rdfs:domain  :Mission .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:relatesToIncident  rdfs:domain  :Mission .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToMission  rdfs:range  :Mission .Rule in Natural Language:
+  If a measurement of a climate parameter is taken at a specific location, and an incident occurs at that same location, then that measurement can be associated with that incident.
+SWRL Rule:
+ ClimateParameter(?cp) ^ hasMeasurementLocation(?cp, ?loc) ^ Incident(?i) ^ hasIncidentLocation(?i, ?loc) -> relatesToIncident(?cp, ?i).
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:characterizedByParameterType  rdfs:range  :ClimateParameterType .
+:characterizesDisasterType  rdfs:domain  :ClimateParameterType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasClimateParameterMeasurement  owl:inverseOf  :relatesToNaturalDisaster .
+:hasClimateParameterMeasurement  rdfs:domain  :NaturalDisaster .
+:hasClimateParameterMeasurement  rdfs:range  :ClimateParameter .
+:hasClimateParameterOccurrence  rdfs:domain  :ClimateParameterType .
+:hasClimateParameterOccurrence  rdfs:range  :ClimateParameter .
+:hasDisasterLocation  rdfs:range  :Location .
+:hasIncidentClimateParameter  owl:inverseOf  :isClimateParameterOfIncident .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentClimateParameter  rdfs:range  :ClimateParameter .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  owl:inverseOf  :isLocationOfIncident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:range  :Location .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMeasurementLocation  owl:inverseOf  :isLocationOfMeasurement .
+:hasMeasurementLocation  rdfs:domain  :ClimateParameter .
+:hasMeasurementLocation  rdfs:range  :Location .
+:hasMeasurementTimestamp  rdfs:domain  :ClimateParameter .
+:hasMediaLocation  rdfs:range  :Location .
+:hasRadius  rdfs:domain  :Location .
+:hasReportLocation  rdfs:range  :Location .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:hasUnit  rdfs:domain  :ClimateParameter .
+:hasValue  rdfs:domain  :ClimateParameter .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isClimateParameterOfIncident  rdfs:domain  :ClimateParameter .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfDisaster  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfMeasurement  rdfs:domain  :Location .
+:isLocationOfMeasurement  rdfs:range  :ClimateParameter .
+:isLocationOfMediaItem  rdfs:domain  :Location .
+:isLocationOfReport  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isOfClimateParameterType  rdfs:domain  :ClimateParameter .
+:isOfClimateParameterType  rdfs:range  :ClimateParameterType .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:lat  rdfs:domain  :Location .
+:long  rdfs:domain  :Location .
+:observes  rdfs:range  :ClimateParameter .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToNaturalDisaster  rdfs:domain  :ClimateParameter .Rule in Natural Language:
+  If an incident is identified and a vulnerable object is also identified, then it can be inferred that the vulnerable object is involved in that incident.
+SWRL Rule:
+ Incident(?i) ^ detected(?i) ^ VulnerableObject(?v) ^ detected(?v) -> involvedInIncident(?v, ?i)
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If a detection has a start time and an end time, and its total duration is calculated to be greater than 60 minutes, then the severity of the incident is 'high'.
+SWRL Rule:
+ Detection(?d) ^ hasDetectionStart(?d, ?start) ^ hasDetectionEnd(?d, ?end) ^ swrlb:greaterThan(calculateDuration(?start, ?end), 60) -> hasIncidentSeverity(?incidentDetectedBy(?d), "high").
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containsDetection  rdfs:domain  :Dataset .
+:containsDetection  rdfs:range  :Detection .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:domain  :Detection .
+:hasDetectionConfidence  rdfs:domain  :Detection .
+:hasDetectionEnd  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:range  :float .
+:hasDetectionStart  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:range  :dateTime .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:range  :string .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:range  :Detection .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:range  :Detection .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If an incident is involved within a dataset, and that dataset was produced by a task and that task is related with a media item, then the location of incident is the same with the location of media item.
+SWRL Rule:
+ Incident(?i) ^ involvedInDataset(?i, ?d) ^ producedByTask(?d, ?t) ^ relatesToMediaItem(?t, ?m) ^ hasIncidentLocation(?i, ?loc1) ^ hasMediaLocation(?m, ?loc2) -> sameAs(?loc1, ?loc2)
+RAG Content(Ontology Parts):
+ :AudioItem  rdfs:subClassOf  :MediaItem .
+:DataAnalysis  rdfs:subClassOf  :Task .
+:ImageItem  rdfs:subClassOf  :MediaItem .
+:TextItem  rdfs:subClassOf  :MediaItem .
+:VideoItem  rdfs:subClassOf  :MediaItem .
+:belongsToCollection  rdfs:domain  :MediaItem .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containedInDataset  rdfs:range  :Dataset .
+:containsDetection  rdfs:domain  :Dataset .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasAnalyzedMediaSource  rdfs:domain  :MediaItem .
+:hasDatasetResultsSource  rdfs:domain  :Dataset .
+:hasDisasterLocation  rdfs:range  :Location .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  owl:inverseOf  :isLocationOfIncident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:range  :Location .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMeasurementLocation  owl:inverseOf  :isLocationOfMeasurement .
+:hasMeasurementLocation  rdfs:domain  :ClimateParameter .
+:hasMeasurementLocation  rdfs:range  :Location .
+:hasMediaItemTimestamp  rdfs:domain  :MediaItem .
+:hasMediaItemTimestamp  rdfs:range  :dateTime .
+:hasMediaLocation  owl:inverseOf  :isLocationOfMediaItem .
+:hasMediaLocation  rdfs:domain  :MediaItem .
+:hasMediaLocation  rdfs:range  :Location .
+:hasRadius  rdfs:domain  :Location .
+:hasRawMediaSource  rdfs:domain  :MediaItem .
+:hasReportLocation  rdfs:range  :Location .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInDataset  rdfs:range  :Dataset .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfDisaster  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfMeasurement  rdfs:domain  :Location .
+:isLocationOfMediaItem  rdfs:domain  :Location .
+:isLocationOfMediaItem  rdfs:range  :MediaItem .
+:isLocationOfReport  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:lat  rdfs:domain  :Location .
+:long  rdfs:domain  :Location .
+:producedByTask  owl:inverseOf  :taskProducesDataset .
+:producedByTask  rdfs:domain  :Dataset .
+:producedByTask  rdfs:range  :Task .
+:relatesTo  rdfs:domain  :MediaItem .
+:relatesTo  rdfs:range  :MediaItem .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMediaItem  owl:inverseOf  :relatesToTask .
+:relatesToMediaItem  rdfs:domain  :Task .
+:relatesToMediaItem  rdfs:range  :MediaItem .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToTask  rdfs:domain  :MediaItem .
+:relatesToTask  rdfs:range  :Task .
+:sensorProducesDataset  rdfs:domain  :Sensor .
+:sensorProducesDataset  rdfs:range  :Dataset .
+:taskProducesDataset  rdfs:domain  :Task .
+:taskProducesDataset  rdfs:range  :Dataset .Rule in Natural Language:
+  If an incident is detected and the risk of the detection is greater than 0.8 and the confidence of the detection is less than 0.5, then the incident has priority 'Requires Verification' and a responder is assigned to identification mission.
+SWRL Rule:
+ Incident(?i) ^ detectsIncident(?i, ?d) ^ hasDetectionRisk(?d, ?risk) ^ swrlb:greaterThan(?risk, 0.8) ^ hasDetectionConfidence(?d, ?confidence) ^ swrlb:lessThan(?confidence, 0.5) -> hasPriority(?i, "Requires Verification") ^ isAssignedMission(?r, ?m) .
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containsDetection  rdfs:domain  :Dataset .
+:containsDetection  rdfs:range  :Detection .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:domain  :Detection .
+:hasDetectionConfidence  rdfs:domain  :Detection .
+:hasDetectionEnd  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:range  :float .
+:hasDetectionStart  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:range  :dateTime .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMissionEnd  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:range  :string .
+:hasMissionStart  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:range  :string .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:range  :Detection .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isAssignedMission  owl:inverseOf  :isAssignedToResponder .
+:isAssignedMission  rdfs:domain  :Responder .
+:isAssignedMission  rdfs:range  :Mission .
+:isAssignedToResponder  rdfs:domain  :Mission .
+:isAssignedToResponder  rdfs:range  :Responder .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:range  :Responder .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:range  :Detection .
+:relatesToIncident  rdfs:domain  :Mission .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToMission  rdfs:range  :Mission .Rule in Natural Language:
+  If a responder is assigned to a mission, and that mission is related to an incident and the location of the incident is known, then the location of responder is the same with the location of the incident.
+SWRL Rule:
+ Responder(?r) ^ isAssignedMission(?r, ?m) ^ relatesToIncident(?m, ?i) ^ hasIncidentLocation(?i, ?loc) -> hasResponderLocation(?r, ?loc)
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasDisasterLocation  rdfs:range  :Location .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  owl:inverseOf  :isLocationOfIncident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:range  :Location .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMeasurementLocation  owl:inverseOf  :isLocationOfMeasurement .
+:hasMeasurementLocation  rdfs:domain  :ClimateParameter .
+:hasMeasurementLocation  rdfs:range  :Location .
+:hasMediaLocation  rdfs:range  :Location .
+:hasMissionEnd  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:range  :string .
+:hasMissionStart  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:range  :string .
+:hasRadius  rdfs:domain  :Location .
+:hasReportLocation  rdfs:range  :Location .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isAssignedMission  owl:inverseOf  :isAssignedToResponder .
+:isAssignedMission  rdfs:domain  :Responder .
+:isAssignedMission  rdfs:range  :Mission .
+:isAssignedToResponder  rdfs:domain  :Mission .
+:isAssignedToResponder  rdfs:range  :Responder .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfDisaster  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfMeasurement  rdfs:domain  :Location .
+:isLocationOfMediaItem  rdfs:domain  :Location .
+:isLocationOfReport  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:range  :Responder .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:lat  rdfs:domain  :Location .
+:long  rdfs:domain  :Location .
+:relatesToIncident  rdfs:domain  :Mission .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToMission  rdfs:range  :Mission .Rule in Natural Language:
+  If an incident is involved within a dataset, and that dataset was produced by a task and that task is related with a media item, then the location of incident is the same with the location of media item.
+SWRL Rule:
+ Incident(?i) ^ involvedInDataset(?i, ?d) ^ producedByTask(?d, ?t) ^ relatesToMediaItem(?t, ?m) ^ hasIncidentLocation(?i, ?loc1) ^ hasMediaLocation(?m, ?loc2) -> sameAs(?loc1, ?loc2)
+RAG Content(Ontology Parts):
+ :AudioItem  rdfs:subClassOf  :MediaItem .
+:DataAnalysis  rdfs:subClassOf  :Task .
+:ImageItem  rdfs:subClassOf  :MediaItem .
+:TextItem  rdfs:subClassOf  :MediaItem .
+:VideoItem  rdfs:subClassOf  :MediaItem .
+:belongsToCollection  rdfs:domain  :MediaItem .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containedInDataset  rdfs:range  :Dataset .
+:containsDetection  rdfs:domain  :Dataset .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasAnalyzedMediaSource  rdfs:domain  :MediaItem .
+:hasDatasetResultsSource  rdfs:domain  :Dataset .
+:hasDisasterLocation  rdfs:range  :Location .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  owl:inverseOf  :isLocationOfIncident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:range  :Location .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMeasurementLocation  owl:inverseOf  :isLocationOfMeasurement .
+:hasMeasurementLocation  rdfs:domain  :ClimateParameter .
+:hasMeasurementLocation  rdfs:range  :Location .
+:hasMediaItemTimestamp  rdfs:domain  :MediaItem .
+:hasMediaItemTimestamp  rdfs:range  :dateTime .
+:hasMediaLocation  owl:inverseOf  :isLocationOfMediaItem .
+:hasMediaLocation  rdfs:domain  :MediaItem .
+:hasMediaLocation  rdfs:range  :Location .
+:hasRadius  rdfs:domain  :Location .
+:hasRawMediaSource  rdfs:domain  :MediaItem .
+:hasReportLocation  rdfs:range  :Location .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInDataset  rdfs:range  :Dataset .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfDisaster  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfMeasurement  rdfs:domain  :Location .
+:isLocationOfMediaItem  rdfs:domain  :Location .
+:isLocationOfMediaItem  rdfs:range  :MediaItem .
+:isLocationOfReport  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:lat  rdfs:domain  :Location .
+:long  rdfs:domain  :Location .
+:producedByTask  owl:inverseOf  :taskProducesDataset .
+:producedByTask  rdfs:domain  :Dataset .
+:producedByTask  rdfs:range  :Task .
+:relatesTo  rdfs:domain  :MediaItem .
+:relatesTo  rdfs:range  :MediaItem .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMediaItem  owl:inverseOf  :relatesToTask .
+:relatesToMediaItem  rdfs:domain  :Task .
+:relatesToMediaItem  rdfs:range  :MediaItem .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToTask  rdfs:domain  :MediaItem .
+:relatesToTask  rdfs:range  :Task .
+:sensorProducesDataset  rdfs:domain  :Sensor .
+:sensorProducesDataset  rdfs:range  :Dataset .
+:taskProducesDataset  rdfs:domain  :Task .
+:taskProducesDataset  rdfs:range  :Dataset .Rule in Natural Language:
+  If a responder is assigned to a mission, and that mission is related to an incident and the location of the incident is known, then the location of responder is the same with the location of the incident.
+SWRL Rule:
+ Responder(?r) ^ isAssignedMission(?r, ?m) ^ relatesToIncident(?m, ?i) ^ hasIncidentLocation(?i, ?loc) -> hasResponderLocation(?r, ?loc)
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasDisasterLocation  rdfs:range  :Location .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  owl:inverseOf  :isLocationOfIncident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:range  :Location .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMeasurementLocation  owl:inverseOf  :isLocationOfMeasurement .
+:hasMeasurementLocation  rdfs:domain  :ClimateParameter .
+:hasMeasurementLocation  rdfs:range  :Location .
+:hasMediaLocation  rdfs:range  :Location .
+:hasMissionEnd  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:range  :string .
+:hasMissionStart  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:range  :string .
+:hasRadius  rdfs:domain  :Location .
+:hasReportLocation  rdfs:range  :Location .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isAssignedMission  owl:inverseOf  :isAssignedToResponder .
+:isAssignedMission  rdfs:domain  :Responder .
+:isAssignedMission  rdfs:range  :Mission .
+:isAssignedToResponder  rdfs:domain  :Mission .
+:isAssignedToResponder  rdfs:range  :Responder .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfDisaster  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfMeasurement  rdfs:domain  :Location .
+:isLocationOfMediaItem  rdfs:domain  :Location .
+:isLocationOfReport  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:range  :Responder .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:lat  rdfs:domain  :Location .
+:long  rdfs:domain  :Location .
+:relatesToIncident  rdfs:domain  :Mission .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToMission  rdfs:range  :Mission .Rule in Natural Language:
+  If an incident is identified and a vulnerable object is also identified, then it can be inferred that the vulnerable object is involved in that incident.
+SWRL Rule:
+ Incident(?i) ^ detected(?i) ^ VulnerableObject(?v) ^ detected(?v) -> involvedInIncident(?v, ?i)
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If an incident is identified and a vulnerable object is also identified, then it can be inferred that the vulnerable object is involved in that incident.
+SWRL Rule:
+ Incident(?i) ^ detected(?i) ^ VulnerableObject(?v) ^ detected(?v) -> involvedInIncident(?v, ?i)
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If an incident is detected and the risk of the detection is greater than 0.8 and the confidence of the detection is less than 0.5, then the incident has priority 'Requires Verification' and a responder is assigned to identification mission.
+SWRL Rule:
+ Incident(?i) ^ detectsIncident(?i, ?d) ^ hasDetectionRisk(?d, ?risk) ^ swrlb:greaterThan(?risk, 0.8) ^ hasDetectionConfidence(?d, ?confidence) ^ swrlb:lessThan(?confidence, 0.5) -> hasPriority(?i, "Requires Verification") ^ isAssignedMission(?r, ?m) .
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containsDetection  rdfs:domain  :Dataset .
+:containsDetection  rdfs:range  :Detection .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:domain  :Detection .
+:hasDetectionConfidence  rdfs:domain  :Detection .
+:hasDetectionEnd  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:range  :float .
+:hasDetectionStart  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:range  :dateTime .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMissionEnd  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:range  :string .
+:hasMissionStart  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:range  :string .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:range  :Detection .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isAssignedMission  owl:inverseOf  :isAssignedToResponder .
+:isAssignedMission  rdfs:domain  :Responder .
+:isAssignedMission  rdfs:range  :Mission .
+:isAssignedToResponder  rdfs:domain  :Mission .
+:isAssignedToResponder  rdfs:range  :Responder .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:range  :Responder .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:range  :Detection .
+:relatesToIncident  rdfs:domain  :Mission .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToMission  rdfs:range  :Mission .Rule in Natural Language:
+  If an incident is identified and a vulnerable object is also identified, then it can be inferred that the vulnerable object is involved in that incident.
+SWRL Rule:
+ Incident(?i) ^ detected(?i) ^ VulnerableObject(?v) ^ detected(?v) -> involvedInIncident(?v, ?i)
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If an incident has an impact, and that impact affects a vulnerable object, then the incident's severity level is classified as 'high'.
+SWRL Rule:
+ Incident(?i) ^ hasImpactOccurrence(?i, ?o) ^ hasImpactOn(?o, ?v) -> hasIncidentSeverity(?i, "high")
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByDisaster  rdfs:domain  :ImpactType .
+:causedByIncident  owl:inverseOf  :causesIncidentImpact .
+:causedByIncident  rdfs:domain  :ImpactType .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesDisasterImpact  rdfs:range  :ImpactType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:causesIncidentImpact  rdfs:range  :ImpactType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasImpactOccurrence  rdfs:domain  :ImpactType .
+:hasImpactOccurrence  rdfs:range  :Impact .
+:hasImpactOn  owl:inverseOf  :isImpactedBy .
+:hasImpactOn  rdfs:domain  :Impact .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:range  :Impact .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:range  :string .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:domain  :Impact .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isImpactedBy  rdfs:range  :Impact .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfImpactType  rdfs:domain  :Impact .
+:isOfImpactType  rdfs:range  :ImpactType .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If an incident has an impact, and that impact affects a vulnerable object, then the incident's severity level is classified as 'high'.
+SWRL Rule:
+ Incident(?i) ^ hasImpactOccurrence(?i, ?o) ^ hasImpactOn(?o, ?v) -> hasIncidentSeverity(?i, "high")
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByDisaster  rdfs:domain  :ImpactType .
+:causedByIncident  owl:inverseOf  :causesIncidentImpact .
+:causedByIncident  rdfs:domain  :ImpactType .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesDisasterImpact  rdfs:range  :ImpactType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:causesIncidentImpact  rdfs:range  :ImpactType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasImpactOccurrence  rdfs:domain  :ImpactType .
+:hasImpactOccurrence  rdfs:range  :Impact .
+:hasImpactOn  owl:inverseOf  :isImpactedBy .
+:hasImpactOn  rdfs:domain  :Impact .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:range  :Impact .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:range  :string .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:domain  :Impact .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isImpactedBy  rdfs:range  :Impact .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfImpactType  rdfs:domain  :Impact .
+:isOfImpactType  rdfs:range  :ImpactType .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If an incident is detected and the confidence of this detection is greater than 0.9 and vulnerable objects are also detected, then the priority of the incident is set to 'high' and the detected vulnerable objects are involved in this incident.
+SWRL Rule:
+ Incident(?i) ^ detectsIncident(?d, ?i) ^ hasDetectionConfidence(?d, ?confidence) ^ swrlb:greaterThan(?confidence, 0.9) ^ detectsParticipant(?d, ?v) -> isOfIncidentType(?i, :HighPriorityIncident) ^ involvesParticipant(?v, ?i)
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containsDetection  rdfs:domain  :Dataset .
+:containsDetection  rdfs:range  :Detection .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:domain  :Detection .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasDetectionConfidence  rdfs:domain  :Detection .
+:hasDetectionEnd  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:range  :float .
+:hasDetectionStart  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:range  :dateTime .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:range  :Detection .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:participantDetectedBy  rdfs:range  :Detection .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If an incident is detected and the confidence of this detection is greater than 0.9 and vulnerable objects are also detected, then the priority of the incident is set to 'high' and the detected vulnerable objects are involved in this incident.
+SWRL Rule:
+ Incident(?i) ^ detectsIncident(?d, ?i) ^ hasDetectionConfidence(?d, ?confidence) ^ swrlb:greaterThan(?confidence, 0.9) ^ detectsParticipant(?d, ?v) -> isOfIncidentType(?i, :HighPriorityIncident) ^ involvesParticipant(?v, ?i)
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containsDetection  rdfs:domain  :Dataset .
+:containsDetection  rdfs:range  :Detection .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:domain  :Detection .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasDetectionConfidence  rdfs:domain  :Detection .
+:hasDetectionEnd  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:range  :float .
+:hasDetectionStart  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:range  :dateTime .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:range  :Detection .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:participantDetectedBy  rdfs:range  :Detection .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If a detection has a start time and an end time, and its total duration is calculated to be greater than 60 minutes, then the severity of the incident is 'high'.
+SWRL Rule:
+ Detection(?d) ^ hasDetectionStart(?d, ?start) ^ hasDetectionEnd(?d, ?end) ^ swrlb:greaterThan(calculateDuration(?start, ?end), 60) -> hasIncidentSeverity(?incidentDetectedBy(?d), "high").
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containsDetection  rdfs:domain  :Dataset .
+:containsDetection  rdfs:range  :Detection .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:domain  :Detection .
+:hasDetectionConfidence  rdfs:domain  :Detection .
+:hasDetectionEnd  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:range  :float .
+:hasDetectionStart  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:range  :dateTime .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:range  :string .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:range  :Detection .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:range  :Detection .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If an incident has an impact, and that impact affects a vulnerable object, then the incident's severity level is classified as 'high'.
+SWRL Rule:
+ Incident(?i) ^ hasImpactOccurrence(?i, ?o) ^ hasImpactOn(?o, ?v) -> hasIncidentSeverity(?i, "high")
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByDisaster  rdfs:domain  :ImpactType .
+:causedByIncident  owl:inverseOf  :causesIncidentImpact .
+:causedByIncident  rdfs:domain  :ImpactType .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesDisasterImpact  rdfs:range  :ImpactType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:causesIncidentImpact  rdfs:range  :ImpactType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasImpactOccurrence  rdfs:domain  :ImpactType .
+:hasImpactOccurrence  rdfs:range  :Impact .
+:hasImpactOn  owl:inverseOf  :isImpactedBy .
+:hasImpactOn  rdfs:domain  :Impact .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:range  :Impact .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:range  :string .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:domain  :Impact .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isImpactedBy  rdfs:range  :Impact .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfImpactType  rdfs:domain  :Impact .
+:isOfImpactType  rdfs:range  :ImpactType .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If a mission is related to a specific incident and that incident has a priority level of 'high', then the mission should also be assigned as a 'high' priority.
+SWRL Rule:
+ Mission(?m) ^ relatesToIncident(?m, ?i) ^ hasIncidentPriority(?i, "high") -> hasMissionPriority(?m, "high")
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentPriority  rdfs:range  :string .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMissionEnd  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:range  :string .
+:hasMissionStart  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:range  :string .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isAssignedMission  owl:inverseOf  :isAssignedToResponder .
+:isAssignedMission  rdfs:domain  :Responder .
+:isAssignedMission  rdfs:range  :Mission .
+:isAssignedToResponder  rdfs:domain  :Mission .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:relatesToIncident  rdfs:domain  :Mission .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToMission  rdfs:range  :Mission .Rule in Natural Language:
+  If an incident has an impact, and that impact affects a vulnerable object, then the incident's severity level is classified as 'high'.
+SWRL Rule:
+ Incident(?i) ^ hasImpactOccurrence(?i, ?o) ^ hasImpactOn(?o, ?v) -> hasIncidentSeverity(?i, "high")
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByDisaster  rdfs:domain  :ImpactType .
+:causedByIncident  owl:inverseOf  :causesIncidentImpact .
+:causedByIncident  rdfs:domain  :ImpactType .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesDisasterImpact  rdfs:range  :ImpactType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:causesIncidentImpact  rdfs:range  :ImpactType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasImpactOccurrence  rdfs:domain  :ImpactType .
+:hasImpactOccurrence  rdfs:range  :Impact .
+:hasImpactOn  owl:inverseOf  :isImpactedBy .
+:hasImpactOn  rdfs:domain  :Impact .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:range  :Impact .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:range  :string .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:domain  :Impact .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isImpactedBy  rdfs:range  :Impact .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfImpactType  rdfs:domain  :Impact .
+:isOfImpactType  rdfs:range  :ImpactType .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If an incident is involved within a dataset, and that dataset was produced by a task and that task is related with a media item, then the location of incident is the same with the location of media item.
+SWRL Rule:
+ Incident(?i) ^ involvedInDataset(?i, ?d) ^ producedByTask(?d, ?t) ^ relatesToMediaItem(?t, ?m) ^ hasIncidentLocation(?i, ?loc1) ^ hasMediaLocation(?m, ?loc2) -> sameAs(?loc1, ?loc2)
+RAG Content(Ontology Parts):
+ :AudioItem  rdfs:subClassOf  :MediaItem .
+:DataAnalysis  rdfs:subClassOf  :Task .
+:ImageItem  rdfs:subClassOf  :MediaItem .
+:TextItem  rdfs:subClassOf  :MediaItem .
+:VideoItem  rdfs:subClassOf  :MediaItem .
+:belongsToCollection  rdfs:domain  :MediaItem .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containedInDataset  rdfs:range  :Dataset .
+:containsDetection  rdfs:domain  :Dataset .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasAnalyzedMediaSource  rdfs:domain  :MediaItem .
+:hasDatasetResultsSource  rdfs:domain  :Dataset .
+:hasDisasterLocation  rdfs:range  :Location .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  owl:inverseOf  :isLocationOfIncident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:range  :Location .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMeasurementLocation  owl:inverseOf  :isLocationOfMeasurement .
+:hasMeasurementLocation  rdfs:domain  :ClimateParameter .
+:hasMeasurementLocation  rdfs:range  :Location .
+:hasMediaItemTimestamp  rdfs:domain  :MediaItem .
+:hasMediaItemTimestamp  rdfs:range  :dateTime .
+:hasMediaLocation  owl:inverseOf  :isLocationOfMediaItem .
+:hasMediaLocation  rdfs:domain  :MediaItem .
+:hasMediaLocation  rdfs:range  :Location .
+:hasRadius  rdfs:domain  :Location .
+:hasRawMediaSource  rdfs:domain  :MediaItem .
+:hasReportLocation  rdfs:range  :Location .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInDataset  rdfs:range  :Dataset .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfDisaster  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfMeasurement  rdfs:domain  :Location .
+:isLocationOfMediaItem  rdfs:domain  :Location .
+:isLocationOfMediaItem  rdfs:range  :MediaItem .
+:isLocationOfReport  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:lat  rdfs:domain  :Location .
+:long  rdfs:domain  :Location .
+:producedByTask  owl:inverseOf  :taskProducesDataset .
+:producedByTask  rdfs:domain  :Dataset .
+:producedByTask  rdfs:range  :Task .
+:relatesTo  rdfs:domain  :MediaItem .
+:relatesTo  rdfs:range  :MediaItem .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMediaItem  owl:inverseOf  :relatesToTask .
+:relatesToMediaItem  rdfs:domain  :Task .
+:relatesToMediaItem  rdfs:range  :MediaItem .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToTask  rdfs:domain  :MediaItem .
+:relatesToTask  rdfs:range  :Task .
+:sensorProducesDataset  rdfs:domain  :Sensor .
+:sensorProducesDataset  rdfs:range  :Dataset .
+:taskProducesDataset  rdfs:domain  :Task .
+:taskProducesDataset  rdfs:range  :Dataset .Rule in Natural Language:
+  If an incident is identified and a vulnerable object is also identified, then it can be inferred that the vulnerable object is involved in that incident.
+SWRL Rule:
+ Incident(?i) ^ detected(?i) ^ VulnerableObject(?v) ^ detected(?v) -> involvedInIncident(?v, ?i)
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If a responder is assigned to a mission, and that mission is related to an incident and the location of the incident is known, then the location of responder is the same with the location of the incident.
+SWRL Rule:
+ Responder(?r) ^ isAssignedMission(?r, ?m) ^ relatesToIncident(?m, ?i) ^ hasIncidentLocation(?i, ?loc) -> hasResponderLocation(?r, ?loc)
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasDisasterLocation  rdfs:range  :Location .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  owl:inverseOf  :isLocationOfIncident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:range  :Location .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMeasurementLocation  owl:inverseOf  :isLocationOfMeasurement .
+:hasMeasurementLocation  rdfs:domain  :ClimateParameter .
+:hasMeasurementLocation  rdfs:range  :Location .
+:hasMediaLocation  rdfs:range  :Location .
+:hasMissionEnd  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:range  :string .
+:hasMissionStart  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:range  :string .
+:hasRadius  rdfs:domain  :Location .
+:hasReportLocation  rdfs:range  :Location .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isAssignedMission  owl:inverseOf  :isAssignedToResponder .
+:isAssignedMission  rdfs:domain  :Responder .
+:isAssignedMission  rdfs:range  :Mission .
+:isAssignedToResponder  rdfs:domain  :Mission .
+:isAssignedToResponder  rdfs:range  :Responder .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfDisaster  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfMeasurement  rdfs:domain  :Location .
+:isLocationOfMediaItem  rdfs:domain  :Location .
+:isLocationOfReport  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:range  :Responder .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:lat  rdfs:domain  :Location .
+:long  rdfs:domain  :Location .
+:relatesToIncident  rdfs:domain  :Mission .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToMission  rdfs:range  :Mission .Rule in Natural Language:
+  If an incident has an impact, and that impact affects a vulnerable object, then the incident's severity level is classified as 'high'.
+SWRL Rule:
+ Incident(?i) ^ hasImpactOccurrence(?i, ?o) ^ hasImpactOn(?o, ?v) -> hasIncidentSeverity(?i, "high")
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByDisaster  rdfs:domain  :ImpactType .
+:causedByIncident  owl:inverseOf  :causesIncidentImpact .
+:causedByIncident  rdfs:domain  :ImpactType .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesDisasterImpact  rdfs:range  :ImpactType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:causesIncidentImpact  rdfs:range  :ImpactType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasImpactOccurrence  rdfs:domain  :ImpactType .
+:hasImpactOccurrence  rdfs:range  :Impact .
+:hasImpactOn  owl:inverseOf  :isImpactedBy .
+:hasImpactOn  rdfs:domain  :Impact .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:range  :Impact .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:range  :string .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:domain  :Impact .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isImpactedBy  rdfs:range  :Impact .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfImpactType  rdfs:domain  :Impact .
+:isOfImpactType  rdfs:range  :ImpactType .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If an incident is detected and the risk of the detection is greater than 0.8 and the confidence of the detection is less than 0.5, then the incident has priority 'Requires Verification' and a responder is assigned to identification mission.
+SWRL Rule:
+ Incident(?i) ^ detectsIncident(?i, ?d) ^ hasDetectionRisk(?d, ?risk) ^ swrlb:greaterThan(?risk, 0.8) ^ hasDetectionConfidence(?d, ?confidence) ^ swrlb:lessThan(?confidence, 0.5) -> hasPriority(?i, "Requires Verification") ^ isAssignedMission(?r, ?m) .
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containsDetection  rdfs:domain  :Dataset .
+:containsDetection  rdfs:range  :Detection .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:domain  :Detection .
+:hasDetectionConfidence  rdfs:domain  :Detection .
+:hasDetectionEnd  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:range  :float .
+:hasDetectionStart  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:range  :dateTime .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMissionEnd  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:range  :string .
+:hasMissionStart  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:range  :string .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:range  :Detection .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isAssignedMission  owl:inverseOf  :isAssignedToResponder .
+:isAssignedMission  rdfs:domain  :Responder .
+:isAssignedMission  rdfs:range  :Mission .
+:isAssignedToResponder  rdfs:domain  :Mission .
+:isAssignedToResponder  rdfs:range  :Responder .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:range  :Responder .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:range  :Detection .
+:relatesToIncident  rdfs:domain  :Mission .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToMission  rdfs:range  :Mission .Rule in Natural Language:
+  If a mission is related to a specific incident and that incident has a priority level of 'high', then the mission should also be assigned as a 'high' priority.
+SWRL Rule:
+ Mission(?m) ^ relatesToIncident(?m, ?i) ^ hasIncidentPriority(?i, "high") -> hasMissionPriority(?m, "high")
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentPriority  rdfs:range  :string .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMissionEnd  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:range  :string .
+:hasMissionStart  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:range  :string .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isAssignedMission  owl:inverseOf  :isAssignedToResponder .
+:isAssignedMission  rdfs:domain  :Responder .
+:isAssignedMission  rdfs:range  :Mission .
+:isAssignedToResponder  rdfs:domain  :Mission .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:relatesToIncident  rdfs:domain  :Mission .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToMission  rdfs:range  :Mission .Rule in Natural Language:
+  If an incident is detected and the confidence of this detection is greater than 0.9 and vulnerable objects are also detected, then the priority of the incident is set to 'high' and the detected vulnerable objects are involved in this incident.
+SWRL Rule:
+ Incident(?i) ^ detectsIncident(?d, ?i) ^ hasDetectionConfidence(?d, ?confidence) ^ swrlb:greaterThan(?confidence, 0.9) ^ detectsParticipant(?d, ?v) -> isOfIncidentType(?i, :HighPriorityIncident) ^ involvesParticipant(?v, ?i)
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containsDetection  rdfs:domain  :Dataset .
+:containsDetection  rdfs:range  :Detection .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:domain  :Detection .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasDetectionConfidence  rdfs:domain  :Detection .
+:hasDetectionEnd  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:range  :float .
+:hasDetectionStart  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:range  :dateTime .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:range  :Detection .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:participantDetectedBy  rdfs:range  :Detection .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If a detection has a start time and an end time, and its total duration is calculated to be greater than 60 minutes, then the severity of the incident is 'high'.
+SWRL Rule:
+ Detection(?d) ^ hasDetectionStart(?d, ?start) ^ hasDetectionEnd(?d, ?end) ^ swrlb:greaterThan(calculateDuration(?start, ?end), 60) -> hasIncidentSeverity(?incidentDetectedBy(?d), "high").
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containsDetection  rdfs:domain  :Dataset .
+:containsDetection  rdfs:range  :Detection .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:domain  :Detection .
+:hasDetectionConfidence  rdfs:domain  :Detection .
+:hasDetectionEnd  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:range  :float .
+:hasDetectionStart  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:range  :dateTime .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:range  :string .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:range  :Detection .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:range  :Detection .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If a vulnerable object and an incident are detected, and this incident has an impact, then the vulnerable object is impacted by that impact.
+SWRL Rule:
+ VulnerableObject(?v) ^ Incident(?i) ^ detectsIncident(?i, ?v) ^ hasImpactOccurrence(?i, ?o) -> isImpactedBy(?v, ?o)
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByDisaster  rdfs:domain  :ImpactType .
+:causedByIncident  owl:inverseOf  :causesIncidentImpact .
+:causedByIncident  rdfs:domain  :ImpactType .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesDisasterImpact  rdfs:range  :ImpactType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:causesIncidentImpact  rdfs:range  :ImpactType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasImpactOccurrence  rdfs:domain  :ImpactType .
+:hasImpactOccurrence  rdfs:range  :Impact .
+:hasImpactOn  owl:inverseOf  :isImpactedBy .
+:hasImpactOn  rdfs:domain  :Impact .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:range  :Impact .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:domain  :Impact .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isImpactedBy  rdfs:range  :Impact .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfImpactType  rdfs:domain  :Impact .
+:isOfImpactType  rdfs:range  :ImpactType .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If a responder is assigned to a mission, and that mission is related to an incident and the location of the incident is known, then the location of responder is the same with the location of the incident.
+SWRL Rule:
+ Responder(?r) ^ isAssignedMission(?r, ?m) ^ relatesToIncident(?m, ?i) ^ hasIncidentLocation(?i, ?loc) -> hasResponderLocation(?r, ?loc)
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasDisasterLocation  rdfs:range  :Location .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  owl:inverseOf  :isLocationOfIncident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:range  :Location .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMeasurementLocation  owl:inverseOf  :isLocationOfMeasurement .
+:hasMeasurementLocation  rdfs:domain  :ClimateParameter .
+:hasMeasurementLocation  rdfs:range  :Location .
+:hasMediaLocation  rdfs:range  :Location .
+:hasMissionEnd  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:range  :string .
+:hasMissionStart  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:range  :string .
+:hasRadius  rdfs:domain  :Location .
+:hasReportLocation  rdfs:range  :Location .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isAssignedMission  owl:inverseOf  :isAssignedToResponder .
+:isAssignedMission  rdfs:domain  :Responder .
+:isAssignedMission  rdfs:range  :Mission .
+:isAssignedToResponder  rdfs:domain  :Mission .
+:isAssignedToResponder  rdfs:range  :Responder .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfDisaster  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfMeasurement  rdfs:domain  :Location .
+:isLocationOfMediaItem  rdfs:domain  :Location .
+:isLocationOfReport  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:range  :Responder .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:lat  rdfs:domain  :Location .
+:long  rdfs:domain  :Location .
+:relatesToIncident  rdfs:domain  :Mission .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToMission  rdfs:range  :Mission .Rule in Natural Language:
+  If a detection has a start time and an end time, and its total duration is calculated to be greater than 60 minutes, then the severity of the incident is 'high'.
+SWRL Rule:
+ Detection(?d) ^ hasDetectionStart(?d, ?start) ^ hasDetectionEnd(?d, ?end) ^ swrlb:greaterThan(calculateDuration(?start, ?end), 60) -> hasIncidentSeverity(?incidentDetectedBy(?d), "high").
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containsDetection  rdfs:domain  :Dataset .
+:containsDetection  rdfs:range  :Detection .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:domain  :Detection .
+:hasDetectionConfidence  rdfs:domain  :Detection .
+:hasDetectionEnd  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:range  :float .
+:hasDetectionStart  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:range  :dateTime .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:range  :string .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:range  :Detection .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:range  :Detection .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If an incident is involved within a dataset, and that dataset was produced by a task and that task is related with a media item, then the location of incident is the same with the location of media item.
+SWRL Rule:
+ Incident(?i) ^ involvedInDataset(?i, ?d) ^ producedByTask(?d, ?t) ^ relatesToMediaItem(?t, ?m) ^ hasIncidentLocation(?i, ?loc1) ^ hasMediaLocation(?m, ?loc2) -> sameAs(?loc1, ?loc2)
+RAG Content(Ontology Parts):
+ :AudioItem  rdfs:subClassOf  :MediaItem .
+:DataAnalysis  rdfs:subClassOf  :Task .
+:ImageItem  rdfs:subClassOf  :MediaItem .
+:TextItem  rdfs:subClassOf  :MediaItem .
+:VideoItem  rdfs:subClassOf  :MediaItem .
+:belongsToCollection  rdfs:domain  :MediaItem .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containedInDataset  rdfs:range  :Dataset .
+:containsDetection  rdfs:domain  :Dataset .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasAnalyzedMediaSource  rdfs:domain  :MediaItem .
+:hasDatasetResultsSource  rdfs:domain  :Dataset .
+:hasDisasterLocation  rdfs:range  :Location .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  owl:inverseOf  :isLocationOfIncident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:range  :Location .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMeasurementLocation  owl:inverseOf  :isLocationOfMeasurement .
+:hasMeasurementLocation  rdfs:domain  :ClimateParameter .
+:hasMeasurementLocation  rdfs:range  :Location .
+:hasMediaItemTimestamp  rdfs:domain  :MediaItem .
+:hasMediaItemTimestamp  rdfs:range  :dateTime .
+:hasMediaLocation  owl:inverseOf  :isLocationOfMediaItem .
+:hasMediaLocation  rdfs:domain  :MediaItem .
+:hasMediaLocation  rdfs:range  :Location .
+:hasRadius  rdfs:domain  :Location .
+:hasRawMediaSource  rdfs:domain  :MediaItem .
+:hasReportLocation  rdfs:range  :Location .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInDataset  rdfs:range  :Dataset .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfDisaster  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfMeasurement  rdfs:domain  :Location .
+:isLocationOfMediaItem  rdfs:domain  :Location .
+:isLocationOfMediaItem  rdfs:range  :MediaItem .
+:isLocationOfReport  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:lat  rdfs:domain  :Location .
+:long  rdfs:domain  :Location .
+:producedByTask  owl:inverseOf  :taskProducesDataset .
+:producedByTask  rdfs:domain  :Dataset .
+:producedByTask  rdfs:range  :Task .
+:relatesTo  rdfs:domain  :MediaItem .
+:relatesTo  rdfs:range  :MediaItem .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMediaItem  owl:inverseOf  :relatesToTask .
+:relatesToMediaItem  rdfs:domain  :Task .
+:relatesToMediaItem  rdfs:range  :MediaItem .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToTask  rdfs:domain  :MediaItem .
+:relatesToTask  rdfs:range  :Task .
+:sensorProducesDataset  rdfs:domain  :Sensor .
+:sensorProducesDataset  rdfs:range  :Dataset .
+:taskProducesDataset  rdfs:domain  :Task .
+:taskProducesDataset  rdfs:range  :Dataset .Rule in Natural Language:
+  If a measurement of a climate parameter is taken at a specific location, and an incident occurs at that same location, then that measurement can be associated with that incident.
+SWRL Rule:
+ ClimateParameter(?cp) ^ hasMeasurementLocation(?cp, ?loc) ^ Incident(?i) ^ hasIncidentLocation(?i, ?loc) -> relatesToIncident(?cp, ?i).
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:characterizedByParameterType  rdfs:range  :ClimateParameterType .
+:characterizesDisasterType  rdfs:domain  :ClimateParameterType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasClimateParameterMeasurement  owl:inverseOf  :relatesToNaturalDisaster .
+:hasClimateParameterMeasurement  rdfs:domain  :NaturalDisaster .
+:hasClimateParameterMeasurement  rdfs:range  :ClimateParameter .
+:hasClimateParameterOccurrence  rdfs:domain  :ClimateParameterType .
+:hasClimateParameterOccurrence  rdfs:range  :ClimateParameter .
+:hasDisasterLocation  rdfs:range  :Location .
+:hasIncidentClimateParameter  owl:inverseOf  :isClimateParameterOfIncident .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentClimateParameter  rdfs:range  :ClimateParameter .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  owl:inverseOf  :isLocationOfIncident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:range  :Location .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMeasurementLocation  owl:inverseOf  :isLocationOfMeasurement .
+:hasMeasurementLocation  rdfs:domain  :ClimateParameter .
+:hasMeasurementLocation  rdfs:range  :Location .
+:hasMeasurementTimestamp  rdfs:domain  :ClimateParameter .
+:hasMediaLocation  rdfs:range  :Location .
+:hasRadius  rdfs:domain  :Location .
+:hasReportLocation  rdfs:range  :Location .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:hasUnit  rdfs:domain  :ClimateParameter .
+:hasValue  rdfs:domain  :ClimateParameter .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isClimateParameterOfIncident  rdfs:domain  :ClimateParameter .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfDisaster  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfMeasurement  rdfs:domain  :Location .
+:isLocationOfMeasurement  rdfs:range  :ClimateParameter .
+:isLocationOfMediaItem  rdfs:domain  :Location .
+:isLocationOfReport  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isOfClimateParameterType  rdfs:domain  :ClimateParameter .
+:isOfClimateParameterType  rdfs:range  :ClimateParameterType .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:lat  rdfs:domain  :Location .
+:long  rdfs:domain  :Location .
+:observes  rdfs:range  :ClimateParameter .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToNaturalDisaster  rdfs:domain  :ClimateParameter .Rule in Natural Language:
+  If a measurement of a climate parameter is taken at a specific location, and an incident occurs at that same location, then that measurement can be associated with that incident.
+SWRL Rule:
+ ClimateParameter(?cp) ^ hasMeasurementLocation(?cp, ?loc) ^ Incident(?i) ^ hasIncidentLocation(?i, ?loc) -> relatesToIncident(?cp, ?i).
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:characterizedByParameterType  rdfs:range  :ClimateParameterType .
+:characterizesDisasterType  rdfs:domain  :ClimateParameterType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasClimateParameterMeasurement  owl:inverseOf  :relatesToNaturalDisaster .
+:hasClimateParameterMeasurement  rdfs:domain  :NaturalDisaster .
+:hasClimateParameterMeasurement  rdfs:range  :ClimateParameter .
+:hasClimateParameterOccurrence  rdfs:domain  :ClimateParameterType .
+:hasClimateParameterOccurrence  rdfs:range  :ClimateParameter .
+:hasDisasterLocation  rdfs:range  :Location .
+:hasIncidentClimateParameter  owl:inverseOf  :isClimateParameterOfIncident .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentClimateParameter  rdfs:range  :ClimateParameter .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  owl:inverseOf  :isLocationOfIncident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:range  :Location .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMeasurementLocation  owl:inverseOf  :isLocationOfMeasurement .
+:hasMeasurementLocation  rdfs:domain  :ClimateParameter .
+:hasMeasurementLocation  rdfs:range  :Location .
+:hasMeasurementTimestamp  rdfs:domain  :ClimateParameter .
+:hasMediaLocation  rdfs:range  :Location .
+:hasRadius  rdfs:domain  :Location .
+:hasReportLocation  rdfs:range  :Location .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:hasUnit  rdfs:domain  :ClimateParameter .
+:hasValue  rdfs:domain  :ClimateParameter .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isClimateParameterOfIncident  rdfs:domain  :ClimateParameter .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfDisaster  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfMeasurement  rdfs:domain  :Location .
+:isLocationOfMeasurement  rdfs:range  :ClimateParameter .
+:isLocationOfMediaItem  rdfs:domain  :Location .
+:isLocationOfReport  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isOfClimateParameterType  rdfs:domain  :ClimateParameter .
+:isOfClimateParameterType  rdfs:range  :ClimateParameterType .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:lat  rdfs:domain  :Location .
+:long  rdfs:domain  :Location .
+:observes  rdfs:range  :ClimateParameter .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToNaturalDisaster  rdfs:domain  :ClimateParameter .Rule in Natural Language:
+  If an incident is detected and the risk of the detection is greater than 0.8 and the confidence of the detection is less than 0.5, then the incident has priority 'Requires Verification' and a responder is assigned to identification mission.
+SWRL Rule:
+ Incident(?i) ^ detectsIncident(?i, ?d) ^ hasDetectionRisk(?d, ?risk) ^ swrlb:greaterThan(?risk, 0.8) ^ hasDetectionConfidence(?d, ?confidence) ^ swrlb:lessThan(?confidence, 0.5) -> hasPriority(?i, "Requires Verification") ^ isAssignedMission(?r, ?m) .
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containsDetection  rdfs:domain  :Dataset .
+:containsDetection  rdfs:range  :Detection .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:domain  :Detection .
+:hasDetectionConfidence  rdfs:domain  :Detection .
+:hasDetectionEnd  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:range  :float .
+:hasDetectionStart  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:range  :dateTime .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMissionEnd  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:range  :string .
+:hasMissionStart  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:range  :string .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:range  :Detection .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isAssignedMission  owl:inverseOf  :isAssignedToResponder .
+:isAssignedMission  rdfs:domain  :Responder .
+:isAssignedMission  rdfs:range  :Mission .
+:isAssignedToResponder  rdfs:domain  :Mission .
+:isAssignedToResponder  rdfs:range  :Responder .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:range  :Responder .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:range  :Detection .
+:relatesToIncident  rdfs:domain  :Mission .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToMission  rdfs:range  :Mission .Rule in Natural Language:
+  If an incident is detected and the confidence of this detection is greater than 0.9 and vulnerable objects are also detected, then the priority of the incident is set to 'high' and the detected vulnerable objects are involved in this incident.
+SWRL Rule:
+ Incident(?i) ^ detectsIncident(?d, ?i) ^ hasDetectionConfidence(?d, ?confidence) ^ swrlb:greaterThan(?confidence, 0.9) ^ detectsParticipant(?d, ?v) -> isOfIncidentType(?i, :HighPriorityIncident) ^ involvesParticipant(?v, ?i)
+RAG Content(Ontology Parts):
+ :Asset  rdfs:subClassOf  :VulnerableObject .
+:LivingBeing  rdfs:subClassOf  :VulnerableObject .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containsDetection  rdfs:domain  :Dataset .
+:containsDetection  rdfs:range  :Detection .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:domain  :Detection .
+:detectsParticipant  rdfs:range  :VulnerableObject .
+:hasDetectionConfidence  rdfs:domain  :Detection .
+:hasDetectionEnd  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:range  :float .
+:hasDetectionStart  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:range  :dateTime .
+:hasImpactOn  rdfs:range  :VulnerableObject .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:range  :Detection .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:domain  :VulnerableObject .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:involvesParticipant  rdfs:range  :VulnerableObject .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isImpactedBy  rdfs:domain  :VulnerableObject .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:domain  :VulnerableObject .
+:participantDetectedBy  rdfs:range  :Detection .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .Rule in Natural Language:
+  If an incident is involved within a dataset, and that dataset was produced by a task and that task is related with a media item, then the location of incident is the same with the location of media item.
+SWRL Rule:
+ Incident(?i) ^ involvedInDataset(?i, ?d) ^ producedByTask(?d, ?t) ^ relatesToMediaItem(?t, ?m) ^ hasIncidentLocation(?i, ?loc1) ^ hasMediaLocation(?m, ?loc2) -> sameAs(?loc1, ?loc2)
+RAG Content(Ontology Parts):
+ :AudioItem  rdfs:subClassOf  :MediaItem .
+:DataAnalysis  rdfs:subClassOf  :Task .
+:ImageItem  rdfs:subClassOf  :MediaItem .
+:TextItem  rdfs:subClassOf  :MediaItem .
+:VideoItem  rdfs:subClassOf  :MediaItem .
+:belongsToCollection  rdfs:domain  :MediaItem .
+:causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containedInDataset  rdfs:range  :Dataset .
+:containsDetection  rdfs:domain  :Dataset .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasAnalyzedMediaSource  rdfs:domain  :MediaItem .
+:hasDatasetResultsSource  rdfs:domain  :Dataset .
+:hasDisasterLocation  rdfs:range  :Location .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  owl:inverseOf  :isLocationOfIncident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:range  :Location .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMeasurementLocation  owl:inverseOf  :isLocationOfMeasurement .
+:hasMeasurementLocation  rdfs:domain  :ClimateParameter .
+:hasMeasurementLocation  rdfs:range  :Location .
+:hasMediaItemTimestamp  rdfs:domain  :MediaItem .
+:hasMediaItemTimestamp  rdfs:range  :dateTime .
+:hasMediaLocation  owl:inverseOf  :isLocationOfMediaItem .
+:hasMediaLocation  rdfs:domain  :MediaItem .
+:hasMediaLocation  rdfs:range  :Location .
+:hasRadius  rdfs:domain  :Location .
+:hasRawMediaSource  rdfs:domain  :MediaItem .
+:hasReportLocation  rdfs:range  :Location .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInDataset  rdfs:range  :Dataset .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfDisaster  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfMeasurement  rdfs:domain  :Location .
+:isLocationOfMediaItem  rdfs:domain  :Location .
+:isLocationOfMediaItem  rdfs:range  :MediaItem .
+:isLocationOfReport  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:lat  rdfs:domain  :Location .
+:long  rdfs:domain  :Location .
+:producedByTask  owl:inverseOf  :taskProducesDataset .
+:producedByTask  rdfs:domain  :Dataset .
+:producedByTask  rdfs:range  :Task .
+:relatesTo  rdfs:domain  :MediaItem .
+:relatesTo  rdfs:range  :MediaItem .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMediaItem  owl:inverseOf  :relatesToTask .
+:relatesToMediaItem  rdfs:domain  :Task .
+:relatesToMediaItem  rdfs:range  :MediaItem .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToTask  rdfs:domain  :MediaItem .
+:relatesToTask  rdfs:range  :Task .
+:sensorProducesDataset  rdfs:domain  :Sensor .
+:sensorProducesDataset  rdfs:range  :Dataset .
+:taskProducesDataset  rdfs:domain  :Task .
+:taskProducesDataset  rdfs:range  :Dataset .Rule in Natural Language:
+  If a mission is related to a specific incident and that incident has a priority level of 'high', then the mission should also be assigned as a 'high' priority.
+SWRL Rule:
+ Mission(?m) ^ relatesToIncident(?m, ?i) ^ hasIncidentPriority(?i, "high") -> hasMissionPriority(?m, "high")
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentPriority  rdfs:range  :string .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMissionEnd  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:range  :string .
+:hasMissionStart  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:range  :string .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isAssignedMission  owl:inverseOf  :isAssignedToResponder .
+:isAssignedMission  rdfs:domain  :Responder .
+:isAssignedMission  rdfs:range  :Mission .
+:isAssignedToResponder  rdfs:domain  :Mission .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:relatesToIncident  rdfs:domain  :Mission .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToMission  rdfs:range  :Mission .Rule in Natural Language:
+  If an incident is detected and the risk of the detection is greater than 0.8 and the confidence of the detection is less than 0.5, then the incident has priority 'Requires Verification' and a responder is assigned to identification mission.
+SWRL Rule:
+ Incident(?i) ^ detectsIncident(?i, ?d) ^ hasDetectionRisk(?d, ?risk) ^ swrlb:greaterThan(?risk, 0.8) ^ hasDetectionConfidence(?d, ?confidence) ^ swrlb:lessThan(?confidence, 0.5) -> hasPriority(?i, "Requires Verification") ^ isAssignedMission(?r, ?m) .
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:containedInDataset  owl:inverseOf  :containsDetection .
+:containedInDataset  rdfs:domain  :Detection .
+:containsDetection  rdfs:domain  :Dataset .
+:containsDetection  rdfs:range  :Detection .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:detectsParticipant  rdfs:domain  :Detection .
+:hasDetectionConfidence  rdfs:domain  :Detection .
+:hasDetectionEnd  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:domain  :Detection .
+:hasDetectionRisk  rdfs:range  :float .
+:hasDetectionStart  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:domain  :Detection .
+:hasDetectionTimestamp  rdfs:range  :dateTime .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMissionEnd  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:domain  :Mission .
+:hasMissionPriority  rdfs:range  :string .
+:hasMissionStart  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:domain  :Mission .
+:hasMissionStatus  rdfs:range  :string .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:incidentDetectedBy  rdfs:range  :Detection .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isAssignedMission  owl:inverseOf  :isAssignedToResponder .
+:isAssignedMission  rdfs:domain  :Responder .
+:isAssignedMission  rdfs:range  :Mission .
+:isAssignedToResponder  rdfs:domain  :Mission .
+:isAssignedToResponder  rdfs:range  :Responder .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:range  :Responder .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:participantDetectedBy  rdfs:range  :Detection .
+:relatesToIncident  rdfs:domain  :Mission .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToMission  rdfs:range  :Mission .Rule in Natural Language:
+  If a measurement of a climate parameter is taken at a specific location, and an incident occurs at that same location, then that measurement can be associated with that incident.
+SWRL Rule:
+ ClimateParameter(?cp) ^ hasMeasurementLocation(?cp, ?loc) ^ Incident(?i) ^ hasIncidentLocation(?i, ?loc) -> relatesToIncident(?cp, ?i).
+RAG Content(Ontology Parts):
+ :causedByIncident  rdfs:range  :IncidentType .
+:causesIncidentImpact  rdfs:domain  :IncidentType .
+:characterizedByParameterType  rdfs:range  :ClimateParameterType .
+:characterizesDisasterType  rdfs:domain  :ClimateParameterType .
+:derivedFrom  rdfs:domain  :Incident .
+:derivedFrom  rdfs:range  :Incident .
+:detectsIncident  owl:inverseOf  :incidentDetectedBy .
+:detectsIncident  rdfs:domain  :Detection .
+:detectsIncident  rdfs:range  :Incident .
+:hasClimateParameterMeasurement  owl:inverseOf  :relatesToNaturalDisaster .
+:hasClimateParameterMeasurement  rdfs:domain  :NaturalDisaster .
+:hasClimateParameterMeasurement  rdfs:range  :ClimateParameter .
+:hasClimateParameterOccurrence  rdfs:domain  :ClimateParameterType .
+:hasClimateParameterOccurrence  rdfs:range  :ClimateParameter .
+:hasDisasterLocation  rdfs:range  :Location .
+:hasIncidentClimateParameter  owl:inverseOf  :isClimateParameterOfIncident .
+:hasIncidentClimateParameter  rdfs:domain  :Incident .
+:hasIncidentClimateParameter  rdfs:range  :ClimateParameter .
+:hasIncidentImpact  rdfs:domain  :Incident .
+:hasIncidentLocation  owl:inverseOf  :isLocationOfIncident .
+:hasIncidentLocation  rdfs:domain  :Incident .
+:hasIncidentLocation  rdfs:range  :Location .
+:hasIncidentOccurrence  rdfs:domain  :IncidentType .
+:hasIncidentOccurrence  rdfs:range  :Incident .
+:hasIncidentPriority  rdfs:domain  :Incident .
+:hasIncidentSeverity  rdfs:domain  :Incident .
+:hasMeasurementLocation  owl:inverseOf  :isLocationOfMeasurement .
+:hasMeasurementLocation  rdfs:domain  :ClimateParameter .
+:hasMeasurementLocation  rdfs:range  :Location .
+:hasMeasurementTimestamp  rdfs:domain  :ClimateParameter .
+:hasMediaLocation  rdfs:range  :Location .
+:hasRadius  rdfs:domain  :Location .
+:hasReportLocation  rdfs:range  :Location .
+:hasResponderLocation  owl:inverseOf  :isLocationOfResponder .
+:hasResponderLocation  rdfs:domain  :Responder .
+:hasResponderLocation  rdfs:range  :Location .
+:hasUnit  rdfs:domain  :ClimateParameter .
+:hasValue  rdfs:domain  :ClimateParameter .
+:incidentDetectedBy  rdfs:domain  :Incident .
+:involvedInDataset  owl:inverseOf  :involvesIncident .
+:involvedInDataset  rdfs:domain  :Incident .
+:involvedInIncident  rdfs:range  :Incident .
+:involvesIncident  rdfs:domain  :Dataset .
+:involvesIncident  rdfs:range  :Incident .
+:involvesParticipant  rdfs:domain  :Incident .
+:isClimateParameterOfIncident  rdfs:domain  :ClimateParameter .
+:isClimateParameterOfIncident  rdfs:range  :Incident .
+:isImpactOfIncident  rdfs:range  :Incident .
+:isLocationOfDisaster  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:domain  :Location .
+:isLocationOfIncident  rdfs:range  :Incident .
+:isLocationOfMeasurement  rdfs:domain  :Location .
+:isLocationOfMeasurement  rdfs:range  :ClimateParameter .
+:isLocationOfMediaItem  rdfs:domain  :Location .
+:isLocationOfReport  rdfs:domain  :Location .
+:isLocationOfResponder  rdfs:domain  :Location .
+:isOfClimateParameterType  rdfs:domain  :ClimateParameter .
+:isOfClimateParameterType  rdfs:range  :ClimateParameterType .
+:isOfIncidentType  rdfs:domain  :Incident .
+:isOfIncidentType  rdfs:range  :IncidentType .
+:lat  rdfs:domain  :Location .
+:long  rdfs:domain  :Location .
+:observes  rdfs:range  :ClimateParameter .
+:relatesToIncident  rdfs:range  :Incident .
+:relatesToMission  rdfs:domain  :Incident .
+:relatesToNaturalDisaster  rdfs:domain  :ClimateParameter .

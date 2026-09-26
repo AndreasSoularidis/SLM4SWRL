@@ -1,0 +1,1256 @@
+Rule in Natural Language:
+  If a patient with Parkinson disease has bradykinesia of the upper limb and this observation  is made after dosing, then send a  notification to relatives and a missing dosing event observation is identified.
+SWRL Rule:
+ Based on the examples and guidelines provided, here's the SWRL rule for the given natural language rule:
+
+```swrl
+PD_Patient(?p) ^
+hasBradykinisiaOfUpperLimp(?p, true) ^
+hasFeatureOfInterest(?p, ?obs) ^
+RecognizedEvent(?obs) ^
+PDpatientMissingDoseEventObservation(?obs) ^
+obsAfterDosing(?obs, true) ^
+NotifyRelatives(?n) ^
+sendNotification(?n, true) ->
+sendNotification(?n, true) ^ hasFeatureOfInterest(?p, ?obs)
+```
+
+RAG Content(Ontology Parts):
+ :3763ea9c1f5b44aaae22becb5b1b9ef71  owl:onProperty  :hasDosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef71  owl:someValuesFrom  :DosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:onProperty  :hasPersonalHealthRecord .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:someValuesFrom  :PersonalHealthRecord .
+:AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:DailyDosagePlan  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef71 .
+:DailyDosagePlan  rdfs:subClassOf  :MedicalPrescription .
+:Diagnosis  rdfs:subClassOf  :PersonalHealthRecord .
+:DosageTime  rdfs:subClassOf  :Time .
+:MedicalPrescription  rdfs:subClassOf  :PersonalHealthRecord .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:PDpatientFalllingEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:PDpatientMissingDoseEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:RecognizedEvent  rdfs:subClassOf  :Observation .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:consistsOf  rdfs:domain  :PersonalHealthRecord .
+:hasBradykinisiaOfUpperLimp  rdfs:domain  :Person .
+:hasBradykinisiaOfUpperLimp  rdfs:range  :boolean .
+:hasBradykinisiaOfUpperLimp  rdfs:subPropertyOf  :topDataProperty .
+:hasDosageTime  rdfs:domain  :DailyDosagePlan .
+:hasDosageTime  rdfs:range  :DosageTime .
+:hasDosageTime  rdfs:subPropertyOf  :hasTime .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFeatureOfInterest  rdfs:range  :RecognizedEvent .
+:hasFrequency  rdfs:domain  :DailyDosagePlan .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasPersonalHealthRecord  rdfs:range  :PersonalHealthRecord .
+:hasSubstance  rdfs:domain  :MedicalPrescription .
+:hasTremor  rdfs:domain  :Person .
+:hasTremor  rdfs:range  :boolean .
+:hasTremor  rdfs:subPropertyOf  :topDataProperty .
+:obsAfterDosing  rdfs:domain  :Observation .
+:obsAfterDosing  rdfs:range  :boolean .
+:observedProperty  rdfs:range  :BradykinesiaofUpperLimb .
+:observedProperty  rdfs:range  :Tremor .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .
+Rule in Natural Language:
+  None
+SWRL Rule:
+ {
+  "names": ["Person", "AlertingNotification", "DailyDosagePlan", "Diagnosis", "DosageTime", "MedicalPrescription", "NotifyDoctor", "NotifyNurse", "NotifyRelatives", "PD_Patient", "PDpatientFalllingEventObservation", "PDpatientMissingDoseEventObservation", "Patient", "PersonalHealthRecord", "RecognizedEvent", "SketchingActivity", "SmartWatch", "WalkingActivity", "ActivitiesofDailyLiving", "Tremor", "BradykinesiaofUpperLimb", "Accelerometer", "WearableAcceleration", "ActuatingFunction", "FeatureOfInterest", "Time", "OnBodyWearable", "Parkinson disease"]
+}
+RAG Content(Ontology Parts):
+ NoneRule in Natural Language:
+  None
+SWRL Rule:
+ { "names": ["Person", "Patient", "PD_Patient", "Parkinson disease", "Tremor", "BradykinesiaofUpperLimb", "WalkingActivity", "SmartWatch", "AlertingNotification", "NotifyDoctor", "MedicalPrescription", "DailyDosagePlan", "DosageTime"] }
+RAG Content(Ontology Parts):
+ None
+ Rule in Natural Language:
+  If a patient with Parkinson disease has tremor and bradykinesia of upper limb and performs a walking activity that is measured by a smart watch and a patient falling event is observed, then send a notification to the doctor.
+SWRL Rule:
+ Based on the examples and guidelines provided, here's the SWRL rule for the given natural language rule:
+
+```swrl
+PD_Patient(?p) ^ hasTremor(?p, true) ^ hasBradykinisiaOfUpperLimp(?p, true) ^ performs(?p, ?a) ^ WalkingActivity(?a) ^ hasFeatureOfInterest(?p, ?e) ^ PDpatientFalllingEventObservation(?e) ^ obsAfterDosing(?e, true) ^ sendNotification(?n, true) ^ NotifyDoctor(?n) -> sendNotification(?n, true)
+```
+
+RAG Content(Ontology Parts):
+ :3763ea9c1f5b44aaae22becb5b1b9ef71  owl:onProperty  :hasDosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef71  owl:someValuesFrom  :DosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef73  owl:someValuesFrom  :SmartWatch .
+:3763ea9c1f5b44aaae22becb5b1b9ef74  owl:someValuesFrom  :SmartWatch .
+:AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:DailyDosagePlan  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef71 .
+:DailyDosagePlan  rdfs:subClassOf  :MedicalPrescription .
+:DosageTime  rdfs:subClassOf  :Time .
+:MedicalPrescription  rdfs:subClassOf  :PersonalHealthRecord .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:SketchingActivity  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef73 .
+:SketchingActivity  rdfs:subClassOf  :ActivitiesofDailyLiving .
+:SmartWatch  rdfs:subClassOf  :OnBodyWearable .
+:WalkingActivity  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef74 .
+:WalkingActivity  rdfs:subClassOf  :ActivitiesofDailyLiving .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:diseaseDuration  rdfs:range  :integer .
+:diseaseDuration  rdfs:subPropertyOf  :topDataProperty .
+:hasBradykinisiaOfUpperLimp  rdfs:domain  :Person .
+:hasBradykinisiaOfUpperLimp  rdfs:range  :boolean .
+:hasBradykinisiaOfUpperLimp  rdfs:subPropertyOf  :topDataProperty .
+:hasDosageTime  rdfs:domain  :DailyDosagePlan .
+:hasDosageTime  rdfs:range  :DosageTime .
+:hasDosageTime  rdfs:subPropertyOf  :hasTime .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFrequency  rdfs:domain  :DailyDosagePlan .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasSubstance  rdfs:domain  :MedicalPrescription .
+:hasTremor  rdfs:domain  :Person .
+:hasTremor  rdfs:range  :boolean .
+:hasTremor  rdfs:subPropertyOf  :topDataProperty .
+:observedProperty  rdfs:range  :BradykinesiaofUpperLimb .
+:observedProperty  rdfs:range  :Tremor .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .
+
+Rule in Natural Language:
+  If a patient with Parkinson disease has tremor and bradykinesia of upper limb and performs a walking activity that is measured by a smart watch and a patient falling event is observed, then send a notification to the doctor.
+SWRL Rule:
+ Based on the examples and guidelines provided, here's the SWRL rule for the given natural language rule:
+
+```swrl
+PD_Patient(?p) ^ hasTremor(?p, true) ^ hasBradykinisiaOfUpperLimp(?p, true) ^ performs(?p, ?a) ^ WalkingActivity(?a) ^ hasFeatureOfInterest(?p, ?e) ^ PDpatientFalllingEventObservation(?e) ^ obsAfterDosing(?e, true) ^ sendNotification(?n, true) ^ NotifyDoctor(?n) -> sendNotification(?n, true)
+```
+
+RAG Content(Ontology Parts):
+ :3763ea9c1f5b44aaae22becb5b1b9ef71  owl:onProperty  :hasDosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef71  owl:someValuesFrom  :DosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef73  owl:someValuesFrom  :SmartWatch .
+:3763ea9c1f5b44aaae22becb5b1b9ef74  owl:someValuesFrom  :SmartWatch .
+:AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:DailyDosagePlan  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef71 .
+:DailyDosagePlan  rdfs:subClassOf  :MedicalPrescription .
+:DosageTime  rdfs:subClassOf  :Time .
+:MedicalPrescription  rdfs:subClassOf  :PersonalHealthRecord .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:SketchingActivity  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef73 .
+:SketchingActivity  rdfs:subClassOf  :ActivitiesofDailyLiving .
+:SmartWatch  rdfs:subClassOf  :OnBodyWearable .
+:WalkingActivity  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef74 .
+:WalkingActivity  rdfs:subClassOf  :ActivitiesofDailyLiving .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:diseaseDuration  rdfs:range  :integer .
+:diseaseDuration  rdfs:subPropertyOf  :topDataProperty .
+:hasBradykinisiaOfUpperLimp  rdfs:domain  :Person .
+:hasBradykinisiaOfUpperLimp  rdfs:range  :boolean .
+:hasBradykinisiaOfUpperLimp  rdfs:subPropertyOf  :topDataProperty .
+:hasDosageTime  rdfs:domain  :DailyDosagePlan .
+:hasDosageTime  rdfs:range  :DosageTime .
+:hasDosageTime  rdfs:subPropertyOf  :hasTime .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFrequency  rdfs:domain  :DailyDosagePlan .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasSubstance  rdfs:domain  :MedicalPrescription .
+:hasTremor  rdfs:domain  :Person .
+:hasTremor  rdfs:range  :boolean .
+:hasTremor  rdfs:subPropertyOf  :topDataProperty .
+:observedProperty  rdfs:range  :BradykinesiaofUpperLimb .
+:observedProperty  rdfs:range  :Tremor .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .
+Rule in Natural Language:
+  If a patient has tremor and bradykinesia of upper limp, then that patient should be classified as a patient with Parkinson disease.
+SWRL Rule:
+ Based on the examples and guidelines provided, here's the SWRL rule for the given natural language rule:
+
+```swrl
+Patient(?p) ^ hasTremor(?p, true) ^ hasBradykinisiaOfUpperLimp(?p, true) -> PD_Patient(?p)
+```
+
+RAG Content(Ontology Parts):
+ :PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:hasBradykinisiaOfUpperLimp  rdfs:domain  :Person .
+:hasBradykinisiaOfUpperLimp  rdfs:range  :boolean .
+:hasBradykinisiaOfUpperLimp  rdfs:subPropertyOf  :topDataProperty .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasTremor  rdfs:domain  :Person .
+:hasTremor  rdfs:range  :boolean .
+:hasTremor  rdfs:subPropertyOf  :topDataProperty .
+:observedProperty  rdfs:range  :BradykinesiaofUpperLimb .
+:observedProperty  rdfs:range  :Tremor .
+:performs  rdfs:domain  :Patient .
+Rule in Natural Language:
+  None
+SWRL Rule:
+ {
+  "names": ["Person", "PD_Patient", "ParkinsonDisease", "Tremor", "DosageTime", "AlertingNotification", "NotifyRelatives", "PDpatientMissingDoseEventObservation", "RecognizedEvent", "Patient", "PersonalHealthRecord"]
+}
+RAG Content(Ontology Parts):
+ None
+
+Rule in Natural Language:
+  If a person is monitored and the low-level events of tremor and  bradykinesia of the upper limb are identified, and this person has a medical prescription that contains Dopamine, then it is most likely to be a patient with Parkinson disease.
+SWRL Rule:
+ Based on the examples and guidelines provided, here's the SWRL rule for the given natural language rule:
+
+Rule in natural language: If a person is monitored and the low-level events of tremor and bradykinesia of the upper limb are identified, and this person has a medical prescription that contains Dopamine, then it is most likely to be a patient with Parkinson disease.
+
+SWRL rule:
+Person(?p) ^ hasTremor(?p, true) ^ hasBradykinisiaOfUpperLimp(?p, true) ^ hasPersonalHealthRecord(?p, ?phr) ^ MedicalPrescription(?phr) ^ hasSubstance(?phr, ?substance) ^ swrlb:equalIgnoreCase(?substance, "Dopamine") -> :PD_Patient(?p)
+
+RAG Content(Ontology Parts):
+ :3763ea9c1f5b44aaae22becb5b1b9ef71  owl:onProperty  :hasDosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef71  owl:someValuesFrom  :DosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:onProperty  :hasPersonalHealthRecord .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:someValuesFrom  :PersonalHealthRecord .
+:3763ea9c1f5b44aaae22becb5b1b9ef73  owl:someValuesFrom  :SmartWatch .
+:3763ea9c1f5b44aaae22becb5b1b9ef74  owl:someValuesFrom  :SmartWatch .
+:AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:DailyDosagePlan  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef71 .
+:DailyDosagePlan  rdfs:subClassOf  :MedicalPrescription .
+:Diagnosis  rdfs:subClassOf  :PersonalHealthRecord .
+:DosageTime  rdfs:subClassOf  :Time .
+:MedicalPrescription  rdfs:subClassOf  :PersonalHealthRecord .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:PDpatientFalllingEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:PDpatientMissingDoseEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:RecognizedEvent  rdfs:subClassOf  :Observation .
+:SketchingActivity  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef73 .
+:SketchingActivity  rdfs:subClassOf  :ActivitiesofDailyLiving .
+:SmartWatch  rdfs:subClassOf  :OnBodyWearable .
+:WalkingActivity  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef74 .
+:WalkingActivity  rdfs:subClassOf  :ActivitiesofDailyLiving .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:bodyMassIndex  rdfs:domain  :Person .
+:bodyMassIndex  rdfs:range  :decimal .
+:bodyMassIndex  rdfs:subPropertyOf  :topDataProperty .
+:consistsOf  rdfs:domain  :PersonalHealthRecord .
+:consistsOf  rdfs:range  :Observation .
+:diseaseDuration  rdfs:range  :integer .
+:diseaseDuration  rdfs:subPropertyOf  :topDataProperty .
+:hasBradykinisiaOfUpperLimp  rdfs:domain  :Person .
+:hasBradykinisiaOfUpperLimp  rdfs:range  :boolean .
+:hasBradykinisiaOfUpperLimp  rdfs:subPropertyOf  :topDataProperty .
+:hasDosageTime  rdfs:domain  :DailyDosagePlan .
+:hasDosageTime  rdfs:range  :DosageTime .
+:hasDosageTime  rdfs:subPropertyOf  :hasTime .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFeatureOfInterest  rdfs:range  :RecognizedEvent .
+:hasFreezingOfGait  rdfs:domain  :Person .
+:hasFreezingOfGait  rdfs:range  :boolean .
+:hasFreezingOfGait  rdfs:subPropertyOf  :topDataProperty .
+:hasFrequency  rdfs:domain  :DailyDosagePlan .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasPersonalHealthRecord  rdfs:range  :PersonalHealthRecord .
+:hasSubstance  rdfs:domain  :MedicalPrescription .
+:hasTremor  rdfs:domain  :Person .
+:hasTremor  rdfs:range  :boolean .
+:hasTremor  rdfs:subPropertyOf  :topDataProperty .
+:obsAfterDosing  rdfs:domain  :Observation .
+:obsAfterDosing  rdfs:range  :boolean .
+:observedProperty  rdfs:range  :BradykinesiaofUpperLimb .
+:observedProperty  rdfs:range  :Tremor .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .
+
+Rule in Natural Language:
+  If a patient with Parkinson disease has bradykinesia of the upper limb and this observation  is made after dosing, then send a  notification to relatives and a missing dosing event observation is identified.
+SWRL Rule:
+ Based on the examples and guidelines provided, here's the SWRL rule for the given natural language rule:
+
+```swrl
+PD_Patient(?p) ^
+hasBradykinisiaOfUpperLimp(?p, true) ^
+hasFeatureOfInterest(?p, ?obs) ^
+RecognizedEvent(?obs) ^
+PDpatientMissingDoseEventObservation(?obs) ^
+obsAfterDosing(?obs, true) ^
+NotifyRelatives(?n) ^
+sendNotification(?n, true) ->
+sendNotification(?n, true) ^ hasFeatureOfInterest(?p, ?obs)
+```
+
+RAG Content(Ontology Parts):
+ :3763ea9c1f5b44aaae22becb5b1b9ef71  owl:onProperty  :hasDosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef71  owl:someValuesFrom  :DosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:onProperty  :hasPersonalHealthRecord .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:someValuesFrom  :PersonalHealthRecord .
+:AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:DailyDosagePlan  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef71 .
+:DailyDosagePlan  rdfs:subClassOf  :MedicalPrescription .
+:Diagnosis  rdfs:subClassOf  :PersonalHealthRecord .
+:DosageTime  rdfs:subClassOf  :Time .
+:MedicalPrescription  rdfs:subClassOf  :PersonalHealthRecord .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:PDpatientFalllingEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:PDpatientMissingDoseEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:RecognizedEvent  rdfs:subClassOf  :Observation .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:consistsOf  rdfs:domain  :PersonalHealthRecord .
+:hasBradykinisiaOfUpperLimp  rdfs:domain  :Person .
+:hasBradykinisiaOfUpperLimp  rdfs:range  :boolean .
+:hasBradykinisiaOfUpperLimp  rdfs:subPropertyOf  :topDataProperty .
+:hasDosageTime  rdfs:domain  :DailyDosagePlan .
+:hasDosageTime  rdfs:range  :DosageTime .
+:hasDosageTime  rdfs:subPropertyOf  :hasTime .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFeatureOfInterest  rdfs:range  :RecognizedEvent .
+:hasFrequency  rdfs:domain  :DailyDosagePlan .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasPersonalHealthRecord  rdfs:range  :PersonalHealthRecord .
+:hasSubstance  rdfs:domain  :MedicalPrescription .
+:hasTremor  rdfs:domain  :Person .
+:hasTremor  rdfs:range  :boolean .
+:hasTremor  rdfs:subPropertyOf  :topDataProperty .
+:obsAfterDosing  rdfs:domain  :Observation .
+:obsAfterDosing  rdfs:range  :boolean .
+:observedProperty  rdfs:range  :BradykinesiaofUpperLimb .
+:observedProperty  rdfs:range  :Tremor .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .
+
+Rule in Natural Language:
+  None
+SWRL Rule:
+ { "names": ["Person", "Parkinson_disease", "DailyDosagePlan", "DosageTime", "AlertingNotification", "MedicalPrescription", "NotifyDoctor", "Patient", "PD_Patient", "PDpatientMissingDoseEventObservation", "PersonalHealthRecord"] }
+RAG Content(Ontology Parts):
+ None
+ 
+ Rule in Natural Language:
+  If a patient with Parkinson disease has a falling event observation and that observation happened 30 minutes after dosing, then send a notification alert to the doctor.
+SWRL Rule:
+ Based on the examples and guidelines provided, here's the SWRL rule for the given natural language rule:
+
+```swrl
+PD_Patient(?p) ^
+hasFeatureOfInterest(?p, ?fallEvent) ^
+PDpatientFallingEventObservation(?fallEvent) ^
+RecognizedEvent(?fallEvent) ^
+hasPersonalHealthRecord(?p, ?prescription) ^
+MedicalPrescription(?prescription) ^
+DailyDosagePlan(?prescription) ^
+hasDosageTime(?prescription, ?doseTime) ^
+DosageTime(?doseTime) ^
+obsAfterDosing(?fallEvent, true) ^
+swrlb:greaterThanOrEqual(swrlb:subtract(?fallEventTime, ?doseTime), 30) ^
+swrlb:extractTime(?fallEventTime, ?fallEvent) ^
+NotifyDoctor(?notification) ^
+sendNotification(?notification, true) ->
+sendNotification(?notification, true)
+```
+
+RAG Content(Ontology Parts):
+ :3763ea9c1f5b44aaae22becb5b1b9ef71  owl:onProperty  :hasDosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef71  owl:someValuesFrom  :DosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:onProperty  :hasPersonalHealthRecord .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:someValuesFrom  :PersonalHealthRecord .
+:3763ea9c1f5b44aaae22becb5b1b9ef73  owl:someValuesFrom  :SmartWatch .
+:3763ea9c1f5b44aaae22becb5b1b9ef74  owl:someValuesFrom  :SmartWatch .
+:AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:DailyDosagePlan  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef71 .
+:DailyDosagePlan  rdfs:subClassOf  :MedicalPrescription .
+:Diagnosis  rdfs:subClassOf  :PersonalHealthRecord .
+:DosageTime  rdfs:subClassOf  :Time .
+:MedicalPrescription  rdfs:subClassOf  :PersonalHealthRecord .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:PDpatientFalllingEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:PDpatientMissingDoseEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:RecognizedEvent  rdfs:subClassOf  :Observation .
+:SmartWatch  rdfs:subClassOf  :OnBodyWearable .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:consistsOf  rdfs:domain  :PersonalHealthRecord .
+:consistsOf  rdfs:range  :Observation .
+:diseaseDuration  rdfs:range  :integer .
+:diseaseDuration  rdfs:subPropertyOf  :topDataProperty .
+:hasBradykinisiaOfUpperLimp  rdfs:domain  :Person .
+:hasBradykinisiaOfUpperLimp  rdfs:range  :boolean .
+:hasBradykinisiaOfUpperLimp  rdfs:subPropertyOf  :topDataProperty .
+:hasDosageTime  rdfs:domain  :DailyDosagePlan .
+:hasDosageTime  rdfs:range  :DosageTime .
+:hasDosageTime  rdfs:subPropertyOf  :hasTime .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFeatureOfInterest  rdfs:range  :RecognizedEvent .
+:hasFreezingOfGait  rdfs:domain  :Person .
+:hasFreezingOfGait  rdfs:range  :boolean .
+:hasFreezingOfGait  rdfs:subPropertyOf  :topDataProperty .
+:hasFrequency  rdfs:domain  :DailyDosagePlan .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasPersonalHealthRecord  rdfs:range  :PersonalHealthRecord .
+:hasSubstance  rdfs:domain  :MedicalPrescription .
+:hasTremor  rdfs:domain  :Person .
+:hasTremor  rdfs:range  :boolean .
+:hasTremor  rdfs:subPropertyOf  :topDataProperty .
+:obsAfterDosing  rdfs:domain  :Observation .
+:obsAfterDosing  rdfs:range  :boolean .
+:observedProperty  rdfs:range  :BradykinesiaofUpperLimb .
+:observedProperty  rdfs:range  :Tremor .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .Rule in Natural Language:
+  None
+SWRL Rule:
+ {
+  "names": ["Person", "AlertingNotification", "DailyDosagePlan", "Diagnosis", "DosageTime", "MedicalPrescription", "NotifyDoctor", "NotifyNurse", "NotifyRelatives", "PD_Patient", "PDpatientFalllingEventObservation", "PDpatientMissingDoseEventObservation", "Patient", "PersonalHealthRecord", "RecognizedEvent", "SketchingActivity", "SmartWatch", "WalkingActivity", "ActivitiesofDailyLiving", "Tremor", "BradykinesiaofUpperLimb", "Accelerometer", "WearableAcceleration", "ActuatingFunction", "FeatureOfInterest", "Time", "OnBodyWearable", "Parkinson disease"]
+}
+RAG Content(Ontology Parts):
+ None
+
+Rule in Natural Language:
+  None
+SWRL Rule:
+ { "names": ["Person", "Parkinson_disease", "DailyDosagePlan", "DosageTime", "AlertingNotification", "MedicalPrescription", "NotifyDoctor", "Patient", "PD_Patient", "PDpatientMissingDoseEventObservation", "PersonalHealthRecord"] }
+RAG Content(Ontology Parts):
+ None
+ 
+Rule in Natural Language:
+  If a missing dosing event has been observed for a patient with Parkinson disease more than 2 times, then send notification to the doctor for action.
+SWRL Rule:
+ Based on the provided examples and guidelines, the SWRL rule for the given natural language rule is as follows:
+
+```swrl
+PD_Patient(?p) ^ hasFeatureOfInterest(?p, ?event) ^ PDpatientMissingDoseEventObservation(?event) ^ swrlb:greaterThan(count(?event), 2) ^ NotifyDoctor(?n) -> sendNotification(?n, true)
+```
+
+RAG Content(Ontology Parts):
+ :3763ea9c1f5b44aaae22becb5b1b9ef71  owl:onProperty  :hasDosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef71  owl:someValuesFrom  :DosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:onProperty  :hasPersonalHealthRecord .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:someValuesFrom  :PersonalHealthRecord .
+:AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:DailyDosagePlan  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef71 .
+:DailyDosagePlan  rdfs:subClassOf  :MedicalPrescription .
+:Diagnosis  rdfs:subClassOf  :PersonalHealthRecord .
+:DosageTime  rdfs:subClassOf  :Time .
+:MedicalPrescription  rdfs:subClassOf  :PersonalHealthRecord .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:PDpatientFalllingEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:PDpatientMissingDoseEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:RecognizedEvent  rdfs:subClassOf  :Observation .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:consistsOf  rdfs:domain  :PersonalHealthRecord .
+:hasDosageTime  rdfs:domain  :DailyDosagePlan .
+:hasDosageTime  rdfs:range  :DosageTime .
+:hasDosageTime  rdfs:subPropertyOf  :hasTime .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFeatureOfInterest  rdfs:range  :RecognizedEvent .
+:hasFrequency  rdfs:domain  :DailyDosagePlan .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasPersonalHealthRecord  rdfs:range  :PersonalHealthRecord .
+:hasSubstance  rdfs:domain  :MedicalPrescription .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .
+
+Rule in Natural Language:
+  If a patient with Parkinson disease has a daily dosage plan with a specific dosage time and a missing dose event is observed, then send a notification to the doctor.
+SWRL Rule:
+ Based on the provided examples, ontology, and guidelines, the SWRL rule for the given natural language rule would be:
+
+```swrl
+:PD_Patient(?p) ^
+:hasPersonalHealthRecord(?p, ?phr) ^
+:DailyDosagePlan(?ddp) ^
+:hasDosageTime(?ddp, ?dt) ^
+:hasPersonalHealthRecord(?p, ?ddp) ^
+:PDpatientMissingDoseEventObservation(?mde) ^
+:hasFeatureOfInterest(?p, ?mde) ^
+:NotifyDoctor(?n) ^
+swrlb:equal(?dt, ?specificDosageTime) ->
+:sendNotification(?n, true)```
+
+RAG Content(Ontology Parts):
+ :3763ea9c1f5b44aaae22becb5b1b9ef71  owl:onProperty  :hasDosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef71  owl:someValuesFrom  :DosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:onProperty  :hasPersonalHealthRecord .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:someValuesFrom  :PersonalHealthRecord .
+:AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:DailyDosagePlan  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef71 .
+:DailyDosagePlan  rdfs:subClassOf  :MedicalPrescription .
+:Diagnosis  rdfs:subClassOf  :PersonalHealthRecord .
+:DosageTime  rdfs:subClassOf  :Time .
+:MedicalPrescription  rdfs:subClassOf  :PersonalHealthRecord .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:PDpatientFalllingEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:PDpatientMissingDoseEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:RecognizedEvent  rdfs:subClassOf  :Observation .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:consistsOf  rdfs:domain  :PersonalHealthRecord .
+:hasDosageTime  rdfs:domain  :DailyDosagePlan .
+:hasDosageTime  rdfs:range  :DosageTime .
+:hasDosageTime  rdfs:subPropertyOf  :hasTime .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFeatureOfInterest  rdfs:range  :RecognizedEvent .
+:hasFrequency  rdfs:domain  :DailyDosagePlan .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasPersonalHealthRecord  rdfs:range  :PersonalHealthRecord .
+:hasSubstance  rdfs:domain  :MedicalPrescription .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .
+
+Rule in Natural Language:
+  If a patient has tremor and bradykinesia of upper limp, then that patient should be classified as a patient with Parkinson disease.
+SWRL Rule:
+ Based on the examples and guidelines provided, here's the SWRL rule for the given natural language rule:
+
+```swrl
+Patient(?p) ^ hasTremor(?p, true) ^ hasBradykinisiaOfUpperLimp(?p, true) -> PD_Patient(?p)
+```
+
+RAG Content(Ontology Parts):
+ :PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:hasBradykinisiaOfUpperLimp  rdfs:domain  :Person .
+:hasBradykinisiaOfUpperLimp  rdfs:range  :boolean .
+:hasBradykinisiaOfUpperLimp  rdfs:subPropertyOf  :topDataProperty .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasTremor  rdfs:domain  :Person .
+:hasTremor  rdfs:range  :boolean .
+:hasTremor  rdfs:subPropertyOf  :topDataProperty .
+:observedProperty  rdfs:range  :BradykinesiaofUpperLimb .
+:observedProperty  rdfs:range  :Tremor .
+:performs  rdfs:domain  :Patient .
+
+Rule in Natural Language:
+  If a patient with Parkinson disease has  tremor and that tremor is observed after a dosage time then a notification is sent to the relatives and a missing dose event observation is recognized.
+SWRL Rule:
+ Based on the examples, ontology, and guidelines provided, here's the SWRL rule for the given natural language rule:
+
+```swrl
+:PD_Patient(?p) ^
+:hasTremor(?p, true) ^
+:hasFeatureOfInterest(?p, ?event) ^
+:PDpatientMissingDoseEventObservation(?event) ^
+:hasDosageTime(?plan, ?time) ^
+:DailyDosagePlan(?plan) ^
+:hasFrequency(?plan, ?freq) ^
+swrlb:greaterThan(?freq, 0) ^
+swrlb:after(?eventTime, ?time) ->
+:NotifyRelatives(?notification) ^
+:sendNotification(?notification, true) ^
+:hasFeatureOfInterest(?p, ?event)
+```
+
+RAG Content(Ontology Parts):
+ :3763ea9c1f5b44aaae22becb5b1b9ef71  owl:onProperty  :hasDosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef71  owl:someValuesFrom  :DosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:onProperty  :hasPersonalHealthRecord .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:someValuesFrom  :PersonalHealthRecord .
+:AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:DailyDosagePlan  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef71 .
+:DailyDosagePlan  rdfs:subClassOf  :MedicalPrescription .
+:Diagnosis  rdfs:subClassOf  :PersonalHealthRecord .
+:DosageTime  rdfs:subClassOf  :Time .
+:MedicalPrescription  rdfs:subClassOf  :PersonalHealthRecord .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:PDpatientFalllingEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:PDpatientMissingDoseEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:RecognizedEvent  rdfs:subClassOf  :Observation .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:consistsOf  rdfs:domain  :PersonalHealthRecord .
+:diseaseDuration  rdfs:range  :integer .
+:diseaseDuration  rdfs:subPropertyOf  :topDataProperty .
+:hasDosageTime  rdfs:domain  :DailyDosagePlan .
+:hasDosageTime  rdfs:range  :DosageTime .
+:hasDosageTime  rdfs:subPropertyOf  :hasTime .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFeatureOfInterest  rdfs:range  :RecognizedEvent .
+:hasFrequency  rdfs:domain  :DailyDosagePlan .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasPersonalHealthRecord  rdfs:range  :PersonalHealthRecord .
+:hasTremor  rdfs:domain  :Person .
+:hasTremor  rdfs:range  :boolean .
+:hasTremor  rdfs:subPropertyOf  :topDataProperty .
+:observedProperty  rdfs:range  :Tremor .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .
+
+Rule in Natural Language:
+  None
+SWRL Rule:
+ { "names": ["Person", "PD_Patient", "DailyDosagePlan", "DosageTime", "AlertingNotification", "MedicalPrescription", "NotifyDoctor", "Diagnosis", "Tremor", "BradykinesiaofUpperLimb"] }
+RAG Content(Ontology Parts):
+ NoneRule in Natural Language:
+  None
+SWRL Rule:
+ {"names": ["Person", "AlertingNotification", "DailyDosagePlan", "Diagnosis", "DosageTime", "MedicalPrescription", "NotifyDoctor", "Patient", "PD_Patient", "PDpatientMissingDoseEventObservation", "PersonalHealthRecord", "RecognizedEvent"]}
+RAG Content(Ontology Parts):
+ NoneRule in Natural Language:
+  None
+SWRL Rule:
+ {"names": ["Person", "PD_Patient", "AlertingNotification", "NotifyNurse", "NotifyRelatives", "Diagnosis: Parkinson disease", "Observation: PDpatientFalllingEventObservation"]}
+RAG Content(Ontology Parts):
+ NoneRule in Natural Language:
+  None
+SWRL Rule:
+ { "names": ["Person", "Parkinson_disease", "PD_Patient", "Diagnosis", "DailyDosagePlan", "MedicalPrescription", "AlertingNotification", "NotifyRelatives", "PDpatientMissingDoseEventObservation", "PersonalHealthRecord", "Observation", "Tremor", "BradykinesiaofUpperLimb", "Time", "Dosing", "ActivitiesofDailyLiving"] }
+RAG Content(Ontology Parts):
+ NoneRule in Natural Language:
+  None
+SWRL Rule:
+ {"names": ["Person", "PD_Patient", "AlertingNotification", "NotifyNurse", "NotifyRelatives", "Diagnosis: Parkinson disease", "Observation: PDpatientFalllingEventObservation"]}
+RAG Content(Ontology Parts):
+ None
+
+Rule in Natural Language:
+  If a falling event observation is identified for a patient with Parkinson disease, then send a notification alert to the nurse and the relative.
+SWRL Rule:
+ Based on the examples and guidelines provided, here's the SWRL rule for your given natural language rule:
+
+Rule in natural language: If a falling event observation is identified for a patient with Parkinson disease, then send a notification alert to the nurse and the relative.
+
+SWRL rule: PD_Patient(?p) ^ :PDpatientFalllingEventObservation(?e) ^ :hasFeatureOfInterest(?p, ?e) ^ :NotifyNurse(?n) ^ :NotifyRelatives(?r) -> :sendNotification(?n, true) ^ :sendNotification(?r, true)
+
+RAG Content(Ontology Parts):
+ :AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:PDpatientFalllingEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:PDpatientMissingDoseEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:RecognizedEvent  rdfs:subClassOf  :Observation .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:diseaseDuration  rdfs:range  :integer .
+:diseaseDuration  rdfs:subPropertyOf  :topDataProperty .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFeatureOfInterest  rdfs:range  :RecognizedEvent .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:obsAfterDosing  rdfs:domain  :Observation .
+:obsAfterDosing  rdfs:range  :boolean .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .Rule in Natural Language:
+  None
+SWRL Rule:
+ { "names": ["Person", "PD_Patient", "Patient", "ParkinsonDisease", "AlertingNotification", "Doctor", "Diagnosis", "DailyDosagePlan", "DosageTime", "MedicalPrescription", "NotifyDoctor", "PersonalHealthRecord", "RecognizedEvent", "PDpatientFalllingEventObservation", "Tremor", "BradykinesiaofUpperLimb", "ActivitiesofDailyLiving", "SmartWatch", "Accelerometer", "WearableAcceleration", "ActuatingFunction", "FeatureOfInterest", "Time" ]}
+RAG Content(Ontology Parts):
+ None
+ 
+Rule in Natural Language:
+  If a patient with Parkinson disease has a dose plan every 4 hours, and tremor and bradykinesia of the upper limb is identified within the boundaries of this interval then send notification to the doctor for action.
+SWRL Rule:
+ Based on the examples, ontology, and guidelines provided, here's the SWRL rule for the given natural language rule:
+
+```swrl
+PD_Patient(?p) ^
+hasPersonalHealthRecord(?p, ?phr) ^
+DailyDosagePlan(?dp) ^
+hasDosageTime(?dp, ?dt) ^
+swrlb:equals(?dt, "every 4 hours") ^
+hasFrequency(?dp, ?freq) ^
+swrlb:equals(?freq, "4") ^
+hasFeatureOfInterest(?p, ?tremor) ^
+hasTremor(?p, true) ^
+hasFeatureOfInterest(?p, ?bradykinesia) ^
+hasBradykinisiaOfUpperLimp(?p, true) ^
+NotifyDoctor(?n) ^
+sendNotification(?n, true) ->
+sendNotification(?n, true)
+```
+
+RAG Content(Ontology Parts):
+ :3763ea9c1f5b44aaae22becb5b1b9ef71  owl:onProperty  :hasDosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef71  owl:someValuesFrom  :DosageTime .
+:AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:DailyDosagePlan  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef71 .
+:DailyDosagePlan  rdfs:subClassOf  :MedicalPrescription .
+:Diagnosis  rdfs:subClassOf  :PersonalHealthRecord .
+:DosageTime  rdfs:subClassOf  :Time .
+:MedicalPrescription  rdfs:subClassOf  :PersonalHealthRecord .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:hasBradykinisiaOfUpperLimp  rdfs:domain  :Person .
+:hasBradykinisiaOfUpperLimp  rdfs:range  :boolean .
+:hasBradykinisiaOfUpperLimp  rdfs:subPropertyOf  :topDataProperty .
+:hasDosageTime  rdfs:domain  :DailyDosagePlan .
+:hasDosageTime  rdfs:range  :DosageTime .
+:hasDosageTime  rdfs:subPropertyOf  :hasTime .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFrequency  rdfs:domain  :DailyDosagePlan .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasSubstance  rdfs:domain  :MedicalPrescription .
+:hasTremor  rdfs:domain  :Person .
+:hasTremor  rdfs:range  :boolean .
+:hasTremor  rdfs:subPropertyOf  :topDataProperty .
+:observedProperty  rdfs:range  :BradykinesiaofUpperLimb .
+:observedProperty  rdfs:range  :Tremor .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .Rule in Natural Language:
+  None
+SWRL Rule:
+ {"names": ["Person", "Patient", "Parkinson_disease", "Tremor", "BradykinesiaofUpperLimb"]}
+RAG Content(Ontology Parts):
+ None
+
+Rule in Natural Language:
+  If a patient with Parkinson disease has a dose plan every 4 hours, and tremor and bradykinesia of the upper limb is identified within the boundaries of this interval then send notification to the doctor for action.
+SWRL Rule:
+ Based on the examples, ontology, and guidelines provided, here's the SWRL rule for the given natural language rule:
+
+```swrl
+PD_Patient(?p) ^
+hasPersonalHealthRecord(?p, ?phr) ^
+DailyDosagePlan(?dp) ^
+hasDosageTime(?dp, ?dt) ^
+swrlb:equals(?dt, "every 4 hours") ^
+hasFrequency(?dp, ?freq) ^
+swrlb:equals(?freq, "4") ^
+hasFeatureOfInterest(?p, ?tremor) ^
+hasTremor(?p, true) ^
+hasFeatureOfInterest(?p, ?bradykinesia) ^
+hasBradykinisiaOfUpperLimp(?p, true) ^
+NotifyDoctor(?n) ^
+sendNotification(?n, true) ->
+sendNotification(?n, true)
+```
+
+RAG Content(Ontology Parts):
+ :3763ea9c1f5b44aaae22becb5b1b9ef71  owl:onProperty  :hasDosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef71  owl:someValuesFrom  :DosageTime .
+:AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:DailyDosagePlan  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef71 .
+:DailyDosagePlan  rdfs:subClassOf  :MedicalPrescription .
+:Diagnosis  rdfs:subClassOf  :PersonalHealthRecord .
+:DosageTime  rdfs:subClassOf  :Time .
+:MedicalPrescription  rdfs:subClassOf  :PersonalHealthRecord .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:hasBradykinisiaOfUpperLimp  rdfs:domain  :Person .
+:hasBradykinisiaOfUpperLimp  rdfs:range  :boolean .
+:hasBradykinisiaOfUpperLimp  rdfs:subPropertyOf  :topDataProperty .
+:hasDosageTime  rdfs:domain  :DailyDosagePlan .
+:hasDosageTime  rdfs:range  :DosageTime .
+:hasDosageTime  rdfs:subPropertyOf  :hasTime .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFrequency  rdfs:domain  :DailyDosagePlan .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasSubstance  rdfs:domain  :MedicalPrescription .
+:hasTremor  rdfs:domain  :Person .
+:hasTremor  rdfs:range  :boolean .
+:hasTremor  rdfs:subPropertyOf  :topDataProperty .
+:observedProperty  rdfs:range  :BradykinesiaofUpperLimb .
+:observedProperty  rdfs:range  :Tremor .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .Rule in Natural Language:
+  If a missing dosing event has been observed for a patient with Parkinson disease more than 2 times, then send notification to the doctor for action.
+SWRL Rule:
+ Based on the provided examples and guidelines, the SWRL rule for the given natural language rule is as follows:
+
+```swrl
+PD_Patient(?p) ^ hasFeatureOfInterest(?p, ?event) ^ PDpatientMissingDoseEventObservation(?event) ^ swrlb:greaterThan(count(?event), 2) ^ NotifyDoctor(?n) -> sendNotification(?n, true)```
+
+RAG Content(Ontology Parts):
+ :3763ea9c1f5b44aaae22becb5b1b9ef71  owl:onProperty  :hasDosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef71  owl:someValuesFrom  :DosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:onProperty  :hasPersonalHealthRecord .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:someValuesFrom  :PersonalHealthRecord .
+:AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:DailyDosagePlan  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef71 .
+:DailyDosagePlan  rdfs:subClassOf  :MedicalPrescription .
+:Diagnosis  rdfs:subClassOf  :PersonalHealthRecord .
+:DosageTime  rdfs:subClassOf  :Time .
+:MedicalPrescription  rdfs:subClassOf  :PersonalHealthRecord .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:PDpatientFalllingEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:PDpatientMissingDoseEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:RecognizedEvent  rdfs:subClassOf  :Observation .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:consistsOf  rdfs:domain  :PersonalHealthRecord .
+:hasDosageTime  rdfs:domain  :DailyDosagePlan .
+:hasDosageTime  rdfs:range  :DosageTime .
+:hasDosageTime  rdfs:subPropertyOf  :hasTime .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFeatureOfInterest  rdfs:range  :RecognizedEvent .
+:hasFrequency  rdfs:domain  :DailyDosagePlan .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasPersonalHealthRecord  rdfs:range  :PersonalHealthRecord .
+:hasSubstance  rdfs:domain  :MedicalPrescription .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .Rule in Natural Language:
+  None
+SWRL Rule:
+ { "names": ["Person", "Patient", "PD_Patient", "Parkinson disease", "Tremor", "BradykinesiaofUpperLimb", "WalkingActivity", "SmartWatch", "AlertingNotification", "NotifyDoctor", "MedicalPrescription", "DailyDosagePlan", "DosageTime"] }
+RAG Content(Ontology Parts):
+ NoneRule in Natural Language:
+  None
+SWRL Rule:
+ {"names": ["Person", "Patient", "Parkinson_disease", "Tremor", "BradykinesiaofUpperLimb"]}
+RAG Content(Ontology Parts):
+ NoneRule in Natural Language:
+  None
+SWRL Rule:
+ { "names": ["Person", "PD_Patient", "Patient", "ParkinsonDisease", "AlertingNotification", "Doctor", "Diagnosis", "DailyDosagePlan", "DosageTime", "MedicalPrescription", "NotifyDoctor", "PersonalHealthRecord", "RecognizedEvent", "PDpatientFalllingEventObservation", "Tremor", "BradykinesiaofUpperLimb", "ActivitiesofDailyLiving", "SmartWatch", "Accelerometer", "WearableAcceleration", "ActuatingFunction", "FeatureOfInterest", "Time" ]}
+RAG Content(Ontology Parts):
+ NoneRule in Natural Language:
+  None
+SWRL Rule:
+ {
+  "names": ["Person", "PD_Patient", "ParkinsonDisease", "Tremor", "DosageTime", "AlertingNotification", "NotifyRelatives", "PDpatientMissingDoseEventObservation", "RecognizedEvent", "Patient", "PersonalHealthRecord"]
+}
+RAG Content(Ontology Parts):
+ NoneRule in Natural Language:
+  None
+SWRL Rule:
+ { "names": ["Person", "Parkinson_disease", "PD_Patient", "Diagnosis", "DailyDosagePlan", "MedicalPrescription", "AlertingNotification", "NotifyRelatives", "PDpatientMissingDoseEventObservation", "PersonalHealthRecord", "Observation", "Tremor", "BradykinesiaofUpperLimb", "Time", "Dosing", "ActivitiesofDailyLiving"] }
+RAG Content(Ontology Parts):
+ None
+
+Rule in Natural Language:
+  If a patient with Parkinson disease has a daily dosage plan with a specific dosage time and a missing dose event is observed, then send a notification to the doctor.
+SWRL Rule:
+ Based on the provided examples, ontology, and guidelines, the SWRL rule for the given natural language rule would be:
+
+```swrl
+:PD_Patient(?p) ^
+:hasPersonalHealthRecord(?p, ?phr) ^
+:DailyDosagePlan(?ddp) ^
+:hasDosageTime(?ddp, ?dt) ^
+:hasPersonalHealthRecord(?p, ?ddp) ^
+:PDpatientMissingDoseEventObservation(?mde) ^
+:hasFeatureOfInterest(?p, ?mde) ^
+:NotifyDoctor(?n) ^
+swrlb:equal(?dt, ?specificDosageTime) ->
+:sendNotification(?n, true)```
+
+RAG Content(Ontology Parts):
+ :3763ea9c1f5b44aaae22becb5b1b9ef71  owl:onProperty  :hasDosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef71  owl:someValuesFrom  :DosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:onProperty  :hasPersonalHealthRecord .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:someValuesFrom  :PersonalHealthRecord .
+:AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:DailyDosagePlan  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef71 .
+:DailyDosagePlan  rdfs:subClassOf  :MedicalPrescription .
+:Diagnosis  rdfs:subClassOf  :PersonalHealthRecord .
+:DosageTime  rdfs:subClassOf  :Time .
+:MedicalPrescription  rdfs:subClassOf  :PersonalHealthRecord .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:PDpatientFalllingEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:PDpatientMissingDoseEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:RecognizedEvent  rdfs:subClassOf  :Observation .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:consistsOf  rdfs:domain  :PersonalHealthRecord .
+:hasDosageTime  rdfs:domain  :DailyDosagePlan .
+:hasDosageTime  rdfs:range  :DosageTime .
+:hasDosageTime  rdfs:subPropertyOf  :hasTime .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFeatureOfInterest  rdfs:range  :RecognizedEvent .
+:hasFrequency  rdfs:domain  :DailyDosagePlan .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasPersonalHealthRecord  rdfs:range  :PersonalHealthRecord .
+:hasSubstance  rdfs:domain  :MedicalPrescription .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .
+
+Rule in Natural Language:
+  If a person is monitored and the low-level events of tremor and  bradykinesia of the upper limb are identified, and this person has a medical prescription that contains Dopamine, then it is most likely to be a patient with Parkinson disease.
+SWRL Rule:
+ Based on the examples and guidelines provided, here's the SWRL rule for the given natural language rule:
+
+Rule in natural language: If a person is monitored and the low-level events of tremor and bradykinesia of the upper limb are identified, and this person has a medical prescription that contains Dopamine, then it is most likely to be a patient with Parkinson disease.
+
+SWRL rule:
+Person(?p) ^ hasTremor(?p, true) ^ hasBradykinisiaOfUpperLimp(?p, true) ^ hasPersonalHealthRecord(?p, ?phr) ^ MedicalPrescription(?phr) ^ hasSubstance(?phr, ?substance) ^ swrlb:equalIgnoreCase(?substance, "Dopamine") -> :PD_Patient(?p)
+
+RAG Content(Ontology Parts):
+ :3763ea9c1f5b44aaae22becb5b1b9ef71  owl:onProperty  :hasDosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef71  owl:someValuesFrom  :DosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:onProperty  :hasPersonalHealthRecord .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:someValuesFrom  :PersonalHealthRecord .
+:3763ea9c1f5b44aaae22becb5b1b9ef73  owl:someValuesFrom  :SmartWatch .
+:3763ea9c1f5b44aaae22becb5b1b9ef74  owl:someValuesFrom  :SmartWatch .
+:AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:DailyDosagePlan  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef71 .
+:DailyDosagePlan  rdfs:subClassOf  :MedicalPrescription .
+:Diagnosis  rdfs:subClassOf  :PersonalHealthRecord .
+:DosageTime  rdfs:subClassOf  :Time .
+:MedicalPrescription  rdfs:subClassOf  :PersonalHealthRecord .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:PDpatientFalllingEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:PDpatientMissingDoseEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:RecognizedEvent  rdfs:subClassOf  :Observation .
+:SketchingActivity  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef73 .
+:SketchingActivity  rdfs:subClassOf  :ActivitiesofDailyLiving .
+:SmartWatch  rdfs:subClassOf  :OnBodyWearable .
+:WalkingActivity  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef74 .
+:WalkingActivity  rdfs:subClassOf  :ActivitiesofDailyLiving .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:bodyMassIndex  rdfs:domain  :Person .
+:bodyMassIndex  rdfs:range  :decimal .
+:bodyMassIndex  rdfs:subPropertyOf  :topDataProperty .
+:consistsOf  rdfs:domain  :PersonalHealthRecord .
+:consistsOf  rdfs:range  :Observation .
+:diseaseDuration  rdfs:range  :integer .
+:diseaseDuration  rdfs:subPropertyOf  :topDataProperty .
+:hasBradykinisiaOfUpperLimp  rdfs:domain  :Person .
+:hasBradykinisiaOfUpperLimp  rdfs:range  :boolean .
+:hasBradykinisiaOfUpperLimp  rdfs:subPropertyOf  :topDataProperty .
+:hasDosageTime  rdfs:domain  :DailyDosagePlan .
+:hasDosageTime  rdfs:range  :DosageTime .
+:hasDosageTime  rdfs:subPropertyOf  :hasTime .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFeatureOfInterest  rdfs:range  :RecognizedEvent .
+:hasFreezingOfGait  rdfs:domain  :Person .
+:hasFreezingOfGait  rdfs:range  :boolean .
+:hasFreezingOfGait  rdfs:subPropertyOf  :topDataProperty .
+:hasFrequency  rdfs:domain  :DailyDosagePlan .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasPersonalHealthRecord  rdfs:range  :PersonalHealthRecord .
+:hasSubstance  rdfs:domain  :MedicalPrescription .
+:hasTremor  rdfs:domain  :Person .
+:hasTremor  rdfs:range  :boolean .
+:hasTremor  rdfs:subPropertyOf  :topDataProperty .
+:obsAfterDosing  rdfs:domain  :Observation .
+:obsAfterDosing  rdfs:range  :boolean .
+:observedProperty  rdfs:range  :BradykinesiaofUpperLimb .
+:observedProperty  rdfs:range  :Tremor .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .Rule in Natural Language:
+  None
+SWRL Rule:
+ { "names": ["Person", "PD_Patient", "DailyDosagePlan", "DosageTime", "AlertingNotification", "MedicalPrescription", "NotifyDoctor", "Diagnosis", "Tremor", "BradykinesiaofUpperLimb"] }
+RAG Content(Ontology Parts):
+ NoneRule in Natural Language:
+  None
+SWRL Rule:
+ {"names": ["Person", "AlertingNotification", "DailyDosagePlan", "Diagnosis", "DosageTime", "MedicalPrescription", "NotifyDoctor", "Patient", "PD_Patient", "PDpatientMissingDoseEventObservation", "PersonalHealthRecord", "RecognizedEvent"]}
+RAG Content(Ontology Parts):
+ None
+
+Rule in Natural Language:
+  If a falling event observation is identified for a patient with Parkinson disease, then send a notification alert to the nurse and the relative.
+SWRL Rule:
+ Based on the examples and guidelines provided, here's the SWRL rule for your given natural language rule:
+
+Rule in natural language: If a falling event observation is identified for a patient with Parkinson disease, then send a notification alert to the nurse and the relative.
+
+SWRL rule: PD_Patient(?p) ^ :PDpatientFalllingEventObservation(?e) ^ :hasFeatureOfInterest(?p, ?e) ^ :NotifyNurse(?n) ^ :NotifyRelatives(?r) -> :sendNotification(?n, true) ^ :sendNotification(?r, true)
+
+RAG Content(Ontology Parts):
+ :AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:PDpatientFalllingEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:PDpatientMissingDoseEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:RecognizedEvent  rdfs:subClassOf  :Observation .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:diseaseDuration  rdfs:range  :integer .
+:diseaseDuration  rdfs:subPropertyOf  :topDataProperty .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFeatureOfInterest  rdfs:range  :RecognizedEvent .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:obsAfterDosing  rdfs:domain  :Observation .
+:obsAfterDosing  rdfs:range  :boolean .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .
+
+Rule in Natural Language:
+  If a patient with Parkinson disease has a falling event observation and that observation happened 30 minutes after dosing, then send a notification alert to the doctor.
+SWRL Rule:
+ Based on the examples and guidelines provided, here's the SWRL rule for the given natural language rule:
+
+```swrl
+PD_Patient(?p) ^
+hasFeatureOfInterest(?p, ?fallEvent) ^
+PDpatientFallingEventObservation(?fallEvent) ^
+RecognizedEvent(?fallEvent) ^
+hasPersonalHealthRecord(?p, ?prescription) ^
+MedicalPrescription(?prescription) ^
+DailyDosagePlan(?prescription) ^
+hasDosageTime(?prescription, ?doseTime) ^
+DosageTime(?doseTime) ^
+obsAfterDosing(?fallEvent, true) ^
+swrlb:greaterThanOrEqual(swrlb:subtract(?fallEventTime, ?doseTime), 30) ^
+swrlb:extractTime(?fallEventTime, ?fallEvent) ^
+NotifyDoctor(?notification) ^
+sendNotification(?notification, true) ->
+sendNotification(?notification, true)
+```
+
+RAG Content(Ontology Parts):
+ :3763ea9c1f5b44aaae22becb5b1b9ef71  owl:onProperty  :hasDosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef71  owl:someValuesFrom  :DosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:onProperty  :hasPersonalHealthRecord .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:someValuesFrom  :PersonalHealthRecord .
+:3763ea9c1f5b44aaae22becb5b1b9ef73  owl:someValuesFrom  :SmartWatch .
+:3763ea9c1f5b44aaae22becb5b1b9ef74  owl:someValuesFrom  :SmartWatch .
+:AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:DailyDosagePlan  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef71 .
+:DailyDosagePlan  rdfs:subClassOf  :MedicalPrescription .
+:Diagnosis  rdfs:subClassOf  :PersonalHealthRecord .
+:DosageTime  rdfs:subClassOf  :Time .
+:MedicalPrescription  rdfs:subClassOf  :PersonalHealthRecord .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:PDpatientFalllingEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:PDpatientMissingDoseEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:RecognizedEvent  rdfs:subClassOf  :Observation .
+:SmartWatch  rdfs:subClassOf  :OnBodyWearable .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:consistsOf  rdfs:domain  :PersonalHealthRecord .
+:consistsOf  rdfs:range  :Observation .
+:diseaseDuration  rdfs:range  :integer .
+:diseaseDuration  rdfs:subPropertyOf  :topDataProperty .
+:hasBradykinisiaOfUpperLimp  rdfs:domain  :Person .
+:hasBradykinisiaOfUpperLimp  rdfs:range  :boolean .
+:hasBradykinisiaOfUpperLimp  rdfs:subPropertyOf  :topDataProperty .
+:hasDosageTime  rdfs:domain  :DailyDosagePlan .
+:hasDosageTime  rdfs:range  :DosageTime .
+:hasDosageTime  rdfs:subPropertyOf  :hasTime .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFeatureOfInterest  rdfs:range  :RecognizedEvent .
+:hasFreezingOfGait  rdfs:domain  :Person .
+:hasFreezingOfGait  rdfs:range  :boolean .
+:hasFreezingOfGait  rdfs:subPropertyOf  :topDataProperty .
+:hasFrequency  rdfs:domain  :DailyDosagePlan .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasPersonalHealthRecord  rdfs:range  :PersonalHealthRecord .
+:hasSubstance  rdfs:domain  :MedicalPrescription .
+:hasTremor  rdfs:domain  :Person .
+:hasTremor  rdfs:range  :boolean .
+:hasTremor  rdfs:subPropertyOf  :topDataProperty .
+:obsAfterDosing  rdfs:domain  :Observation .
+:obsAfterDosing  rdfs:range  :boolean .
+:observedProperty  rdfs:range  :BradykinesiaofUpperLimb .
+:observedProperty  rdfs:range  :Tremor .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .
+
+Rule in Natural Language:
+  If a patient with Parkinson disease has  tremor and that tremor is observed after a dosage time then a notification is sent to the relatives and a missing dose event observation is recognized.
+SWRL Rule:
+ Based on the examples, ontology, and guidelines provided, here's the SWRL rule for the given natural language rule:
+
+```swrl
+:PD_Patient(?p) ^
+:hasTremor(?p, true) ^
+:hasFeatureOfInterest(?p, ?event) ^
+:PDpatientMissingDoseEventObservation(?event) ^
+:hasDosageTime(?plan, ?time) ^
+:DailyDosagePlan(?plan) ^
+:hasFrequency(?plan, ?freq) ^
+swrlb:greaterThan(?freq, 0) ^
+swrlb:after(?eventTime, ?time) ->
+:NotifyRelatives(?notification) ^
+:sendNotification(?notification, true) ^
+:hasFeatureOfInterest(?p, ?event)
+```
+
+RAG Content(Ontology Parts):
+ :3763ea9c1f5b44aaae22becb5b1b9ef71  owl:onProperty  :hasDosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef71  owl:someValuesFrom  :DosageTime .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:onProperty  :hasPersonalHealthRecord .
+:3763ea9c1f5b44aaae22becb5b1b9ef72  owl:someValuesFrom  :PersonalHealthRecord .
+:AlertingNotification  rdfs:subClassOf  :ActuatingFunction .
+:DailyDosagePlan  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef71 .
+:DailyDosagePlan  rdfs:subClassOf  :MedicalPrescription .
+:Diagnosis  rdfs:subClassOf  :PersonalHealthRecord .
+:DosageTime  rdfs:subClassOf  :Time .
+:MedicalPrescription  rdfs:subClassOf  :PersonalHealthRecord .
+:NotifyDoctor  rdfs:subClassOf  :AlertingNotification .
+:NotifyNurse  rdfs:subClassOf  :AlertingNotification .
+:NotifyRelatives  rdfs:subClassOf  :AlertingNotification .
+:PD_Patient  rdfs:subClassOf  :3763ea9c1f5b44aaae22becb5b1b9ef72 .
+:PD_Patient  rdfs:subClassOf  :Patient .
+:PDpatientFalllingEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:PDpatientMissingDoseEventObservation  rdfs:subClassOf  :RecognizedEvent .
+:Patient  rdfs:subClassOf  :Person .
+:ReceiveDose  rdfs:domain  :Patient .
+:RecognizedEvent  rdfs:subClassOf  :Observation .
+:ageOfPatient  rdfs:domain  :Patient .
+:ageOfPatient  rdfs:range  :integer .
+:ageOfPatient  rdfs:subPropertyOf  :topDataProperty .
+:consistsOf  rdfs:domain  :PersonalHealthRecord .
+:diseaseDuration  rdfs:range  :integer .
+:diseaseDuration  rdfs:subPropertyOf  :topDataProperty .
+:hasDosageTime  rdfs:domain  :DailyDosagePlan .
+:hasDosageTime  rdfs:range  :DosageTime .
+:hasDosageTime  rdfs:subPropertyOf  :hasTime .
+:hasFeatureOfInterest  rdfs:domain  :Patient .
+:hasFeatureOfInterest  rdfs:range  :RecognizedEvent .
+:hasFrequency  rdfs:domain  :DailyDosagePlan .
+:hasPersonalHealthRecord  owl:inverseOf  :recordBelongsToPatient .
+:hasPersonalHealthRecord  rdfs:domain  :Patient .
+:hasPersonalHealthRecord  rdfs:range  :PersonalHealthRecord .
+:hasTremor  rdfs:domain  :Person .
+:hasTremor  rdfs:range  :boolean .
+:hasTremor  rdfs:subPropertyOf  :topDataProperty .
+:observedProperty  rdfs:range  :Tremor .
+:performs  rdfs:domain  :Patient .
+:sendNotification  rdfs:domain  :AlertingNotification .
+:sendNotification  rdfs:range  :boolean .

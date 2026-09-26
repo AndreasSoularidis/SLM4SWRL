@@ -1,0 +1,119 @@
+{
+  "inputs": {
+    "messages": [
+      [
+        {
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "HumanMessage"
+          ],
+          "kwargs": {
+            "content": "\n  Act as an ontology engineer. Use the following content (examples, part of the ontology, and a list of guidelines) as a guide to translate the natural language rule you are given into a SWRL rule. \n  EXAMPLES\n    Example 1\n    Rule in natural language: If a person has a sibling who is a man, then the person has a brother.\n    SWRL rule: Person(?p) ^ hasSibling(?p, ?s) ^ Person(?s) ^ IsMan(?s, true) -> hasBrother(?p, ?s)\n\n    Example 2\n    Rule in natural language: if a person has a phone number that starts with '+', then the person has an international phone number.\n    SWRL rule: Person(?p) ^ hasPhoneNumber(?p, ?number) ^ swrlb:startsWith(?number, \"+\") -> hasInternationalPhoneNumber(?p, true)\n\n    Example 3\n    Rule in natural language:  if a person has age greater than 17, then the person is an adult and has id card.\n    SWRL rule: Person(?p) ^ hasAge(?p, ?age) ^ Age(?age) ^ swrlb:greaterThan(?age, 17) ^ IdCard(?id) -> Adult(?p) ^ hasIdCard(?p, ?id)\n\n    Example 4\n    Rule in natural language: if a publication has two different authors, then those authors have cooperated with each other.\n    SWRL rule: Publication(?p) ^ Author(?y) ^ Author(?z) ^ hasAuthor(?p, ?y) ^ hasAuthor(?p, ?z) ^ differentFrom(?y, ?z) -> cooperatedWith(?y, ?z)\n\n    Example 5\n    Rule in natural language: if a researcher has published more than 10 papers in a Top-Tier conference, then the researcher is a prominent researcher and has a high citation impact.\n    SWRL rule: Researcher(?r) ^ hasPublished(?r, ?c) ^ Conference(?c) ^ topTierConference(?c) ^ swrlb:greaterThan(count(?c), 10) -> ProminentResearcher(?r) ^ hasHighCitationImpact(?r, true)\n  END OF EXAMPLES\n  PART OF ONTOLOGY \n    Annotations: \n        rdfs:comment \"Notify doctor for event (alert notification)\",\n        rdfs:label \"Notify Doctor\"\n    \n    SubClassOf: \n        onto:AlertingNotification\n    \n    \nClass: onto:NotifyNurse\n\n    SubClassOf: \n        onto:AlertingNotification\n    \n    \nClass: onto:NotifyRelatives\n\n    SubClassOf: \n        onto:AlertingNotification\n    \n    \nClass: onto:PD_Patient\n\n    Annotations: \n        rdfs:comment \"PD patient\",\n        rdfs:label \"PD Patient\"\n    \n    SubClassOf: \n        onto:Patient,\n        onto:hasPersonalHealthRecord some onto:PersonalHealthRecord\n    \n    \nClass: onto:PDpatientFalllingEventObservation\n\n    Annotations: \n        rdfs:comment \"Falling event observation for PD Patient\",\n        rdfs:label \"PD patient Fallling Event Observation\"\n    \n    SubClassOf: \n        onto:RecognizedEvent\n    \n    \nClass: onto:PDpatientMissingDoseEventObservation\nAnnotations: \n        rdfs:comment \"symptom of PD, usually observed at patient's legs\"@en,\n        rdfs:label \"Bradykinesia of Upper Limb\"@en\n    \n    \nClass: <https://saref.etsi.org/saref4wear/OnBodyWearable>\n\n    \nClass: core:ActuatingFunction\n\n    \nClass: core:FeatureOfInterest\n\n    EquivalentTo: \n        sosa:FeatureOfInterest\n    \n    \nClass: core:Time\n\n    \nClass: dahcc:Accelerometer\n\n    \nClass: dahcc:WearableAcceleration\n\n    Annotations: \n        rdfs:label \"Wearable Acceleration\"@en\n    \n    \nClass: onto:AlertingNotification\n\n    Annotations: \n        rdfs:comment \"Alerting Notification Function for event\",\n        rdfs:label \"Alerting Notification Function\"\n    \n    SubClassOf: \n        core:ActuatingFunction\n    \n    \nClass: onto:DailyDosagePlan\nAnnotations: \n        rdfs:label \"score UPDRS\"@en\n    \n    Range: \n        xsd:decimal\n    \n    SubPropertyOf: \n        owl:topDataProperty\n    \n    \nDataProperty: onto:sendNotification\n\n    Annotations: \n        rdfs:label \"send notification\"@en\n    \n    Domain: \n        onto:AlertingNotification\n    \n    Range: \n        xsd:boolean\n    \n    \nDataProperty: owl:topDataProperty\n\n    \nDataProperty: sosa:resultTime\n\n    Annotations: \n        rdfs:label \"result time\"@en\n    \n    Domain: \n        sosa:Observation\n    \n    \nClass: <http://www.case.edu/MDO#ActivitiesofDailyLiving>\n\n    \nClass: <http://www.case.edu/MDO#Tremor>\n\n    Annotations: \n        rdfs:comment \"symptom of PD, usually observed at patient's hands\"@en,\n        rdfs:label \"Tremor\"@en\n    \n    \nClass: <http://www.case.edu/PMDO#BradykinesiaofUpperLimb>\nAnnotations: \n        rdfs:comment \"Missing dose event observation for PD Patient\",\n        rdfs:label \"PD patient Missing Dose Event Observation\"\n    \n    SubClassOf: \n        onto:RecognizedEvent\n    \n    \nClass: onto:Patient\n\n    Annotations: \n        rdfs:comment \"Any kind of patient\",\n        rdfs:label \"Patient\"\n    \n    SubClassOf: \n        schema:Person\n    \n    \nClass: onto:PersonalHealthRecord\n\n    Annotations: \n        rdfs:comment \"Personal Health Record of a patient\",\n        rdfs:label \"Personal Health Record\"\n    \n    \nClass: onto:RecognizedEvent\n\n    Annotations: \n        rdfs:comment \"An observation of a recognized event for a PD Patient\",\n        rdfs:label \"PD patient recognized event observation\"\n    \n    SubClassOf: \n        sosa:Observation\n    \n    \nClass: onto:SketchingActivity\nAnnotations: \n        rdfs:comment \"human (patient) performs an action (ADL)\",\n        rdfs:label \"performs\"\n    \n    Domain: \n        onto:Patient\n    \n    Range: \n        <http://www.case.edu/MDO#ActivitiesofDailyLiving>\n    \n    InverseOf: \n        onto:isPerformedBy\n    \n    \nObjectProperty: onto:recordBelongsToPatient\n\n    Annotations: \n        rdfs:label \"record Belongs To Patient\"@en\n    \n    InverseOf: \n        onto:hasPersonalHealthRecord\n    \n    \nObjectProperty: sosa:hasFeatureOfInterest\n\n    Annotations: \n        rdfs:label \"hasFeatureOfInterest\"@en\n    \n    Domain: \n        onto:Patient\n    \n    Range: \n        onto:RecognizedEvent\n    \n    \nDataProperty: dahcc:hasAxis\n\n    Annotations: \n        rdfs:label \"has Axis\"@en\n    \n    \nDataProperty: onto:ReceiveDose\n\n    Domain: \n        onto:Patient\n    \n    Range: \n        xsd:dateTime\n    \n    \nDataProperty: onto:ageOfPatient\nOntology: <http://w3id.org/Wear4PDmove/onto>\n<http://w3id.org/Wear4PDmove/onto/1.0.0>\nImport: <http://www.case.edu/PMDO>\nImport: <http://www.w3.org/ns/sosa/>\nImport: <https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/>\nAnnotations: \n    terms:contributor \"Nikolaos Zafeiropoulos\",\n    terms:contributor \"Pavlos Bitilis\",\n    terms:created \"05-05-2023\",\n    terms:creator \"Konstantinos Kotis\",\n    terms:description \"Wear4PDmove: an ontology for knowledge-based personalized health monitoring of PD patients\",\n    terms:license \"CC0\",\n    rdfs:comment \"The designed Wear4PDmoveOnto aims to semantically integrate heterogeneous data such as dynamic/stream data  (collected from wearables) and static/historic data (stored in health databases), in order to represent personal health knowledge in the form of a KG, supporting health apps’ reasoning capabilities for high-level events recognition (e.g., ‘missing dose’ or  ‘patient fall’ event).\",\n    rdfs:label \"Wear4PDmoveOnto\"@en,\n    owl:versionInfo \"v1.0.0\"\n\nAnnotationProperty: core:hasTimestamp\n\n    Annotations: \n        rdfs:label \"dose time\"\n    \n    \nAnnotationProperty: owl:versionInfo\n\n    \nAnnotationProperty: rdfs:comment\n  END OF ONTOLOGY\n  \n  COMMON GUIDELINES\n\n  Please try to implement the following guidelines:\n  1: Variables e.g., (?something) used in Conclusions must be present in Conditions. So create as many variables as needed in Conditions. \n  2: Each atom must have exactly one variable if it represents class.\n  3: Each atom must have exactly two variables if it represents object property.\n  4: Each concept must be represented by a class and must be present in Conditions.\n\n  END OF COMMON GUIDELINES\n\n  The rule in natural language is the following: If a falling event observation is identified for a patient with Parkinson disease, then send a notification alert to the nurse and the relative.\n  Give only the final SWRL rule\n  ",
+            "type": "human"
+          },
+          "lc": 1,
+          "type": "constructor"
+        }
+      ]
+    ]
+  },
+  "outputs": {
+    "generations": [
+      [
+        {
+          "generation_info": {
+            "created_at": "2026-05-03T08:53:46.6616783Z",
+            "done": true,
+            "done_reason": "stop",
+            "eval_count": 197,
+            "eval_duration": 19424196200,
+            "load_duration": 24380900,
+            "message": {
+              "content": "",
+              "images": null,
+              "role": "assistant",
+              "tool_calls": null
+            },
+            "model": "mistral:7b",
+            "prompt_eval_count": 2537,
+            "prompt_eval_duration": 104064290300,
+            "total_duration": 123612127500
+          },
+          "message": {
+            "id": [
+              "langchain",
+              "schema",
+              "messages",
+              "AIMessage"
+            ],
+            "kwargs": {
+              "content": " Based on the examples provided and the common guidelines, the SWRL rule for the given natural language rule would be as follows:\n\n```swrl\nFallingEventObservation(?e) ^ onto:PD_Patient(?p) ^ hasPatient(?e, ?p) ->\n   onto:NotifyNurse(?n) ^ onto:sendNotification(?n, true) .\n   onto:NotifyRelatives(?r) ^ onto:sendNotification(?r, true) .\n```\n\nThis rule states that if there is a falling event observation (?e) for a PD patient (?p), then send a notification alert to the nurse (?n) and the relative (?r). The variables used in the conclusion are present in the conditions. Each atom representing a class has exactly one variable, and each atom representing an object property has exactly two variables as per the guidelines.",
+              "id": "run--019ded09-4d48-76a0-9a10-cc64d50a89b9-0",
+              "invalid_tool_calls": [],
+              "response_metadata": {
+                "created_at": "2026-05-03T08:53:46.6616783Z",
+                "done": true,
+                "done_reason": "stop",
+                "eval_count": 197,
+                "eval_duration": 19424196200,
+                "load_duration": 24380900,
+                "message": {
+                  "id": [
+                    "ollama",
+                    "_types",
+                    "Message"
+                  ],
+                  "lc": 1,
+                  "repr": "Message(role='assistant', content='', images=None, tool_calls=None)",
+                  "type": "not_implemented"
+                },
+                "model": "mistral:7b",
+                "prompt_eval_count": 2537,
+                "prompt_eval_duration": 104064290300,
+                "total_duration": 123612127500
+              },
+              "tool_calls": [],
+              "type": "ai",
+              "usage_metadata": {
+                "input_tokens": 2537,
+                "output_tokens": 197,
+                "total_tokens": 2734
+              }
+            },
+            "lc": 1,
+            "type": "constructor"
+          },
+          "text": " Based on the examples provided and the common guidelines, the SWRL rule for the given natural language rule would be as follows:\n\n```swrl\nFallingEventObservation(?e) ^ onto:PD_Patient(?p) ^ hasPatient(?e, ?p) ->\n   onto:NotifyNurse(?n) ^ onto:sendNotification(?n, true) .\n   onto:NotifyRelatives(?r) ^ onto:sendNotification(?r, true) .\n```\n\nThis rule states that if there is a falling event observation (?e) for a PD patient (?p), then send a notification alert to the nurse (?n) and the relative (?r). The variables used in the conclusion are present in the conditions. Each atom representing a class has exactly one variable, and each atom representing an object property has exactly two variables as per the guidelines.",
+          "type": "ChatGeneration"
+        }
+      ]
+    ],
+    "llm_output": null,
+    "run": null,
+    "type": "LLMResult"
+  },
+  "metadata": {
+    "ls_model_name": "mistral:7b",
+    "ls_model_type": "chat",
+    "ls_provider": "ollama",
+    "ls_run_depth": 1,
+    "ls_temperature": 0,
+    "revision_id": "528d065-dirty"
+  },
+  "langsmith": {
+    "organization": {
+      "name": "Personal",
+      "id": "dddfdd98-7034-429c-ae34-81262387c9b0"
+    },
+    "workspace": {
+      "name": "Personal",
+      "id": "1da9662e-2f17-5b78-a525-2d13842bf0d3"
+    },
+    "tracing_project": {
+      "id": "87ed27f6-8ce2-4b34-a0bc-13ed84a549a4",
+      "name": "Updated-Phase1-PD-manchester-1000-mistral:7b-k7"
+    }
+  }
+}

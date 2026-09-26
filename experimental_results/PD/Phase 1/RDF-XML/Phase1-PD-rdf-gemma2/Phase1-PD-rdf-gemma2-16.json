@@ -1,0 +1,119 @@
+{
+  "inputs": {
+    "messages": [
+      [
+        {
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "HumanMessage"
+          ],
+          "kwargs": {
+            "content": "\n  Act as an ontology engineer. Use the following content (examples, part of the ontology, and a list of guidelines) as a guide to translate the natural language rule you are given into a SWRL rule. \n  EXAMPLES\n    Example 1\n    Rule in natural language: If a person has a sibling who is a man, then the person has a brother.\n    SWRL rule: Person(?p) ^ hasSibling(?p, ?s) ^ Person(?s) ^ IsMan(?s, true) -> hasBrother(?p, ?s)\n\n    Example 2\n    Rule in natural language: if a person has a phone number that starts with '+', then the person has an international phone number.\n    SWRL rule: Person(?p) ^ hasPhoneNumber(?p, ?number) ^ swrlb:startsWith(?number, \"+\") -> hasInternationalPhoneNumber(?p, true)\n\n    Example 3\n    Rule in natural language:  if a person has age greater than 17, then the person is an adult and has id card.\n    SWRL rule: Person(?p) ^ hasAge(?p, ?age) ^ Age(?age) ^ swrlb:greaterThan(?age, 17) ^ IdCard(?id) -> Adult(?p) ^ hasIdCard(?p, ?id)\n\n    Example 4\n    Rule in natural language: if a publication has two different authors, then those authors have cooperated with each other.\n    SWRL rule: Publication(?p) ^ Author(?y) ^ Author(?z) ^ hasAuthor(?p, ?y) ^ hasAuthor(?p, ?z) ^ differentFrom(?y, ?z) -> cooperatedWith(?y, ?z)\n\n    Example 5\n    Rule in natural language: if a researcher has published more than 10 papers in a Top-Tier conference, then the researcher is a prominent researcher and has a high citation impact.\n    SWRL rule: Researcher(?r) ^ hasPublished(?r, ?c) ^ Conference(?c) ^ topTierConference(?c) ^ swrlb:greaterThan(count(?c), 10) -> ProminentResearcher(?r) ^ hasHighCitationImpact(?r, true)\n  END OF EXAMPLES\n  PART OF ONTOLOGY \n    <owl:Class rdf:about=\"http://www.case.edu/MDO#Tremor\">\n        <rdfs:comment xml:lang=\"en\">symptom of PD, usually observed at patient&apos;s hands</rdfs:comment>\n        <rdfs:label xml:lang=\"en\">Tremor</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://www.case.edu/PMDO#BradykinesiaofUpperLimb -->\n\n    <owl:Class rdf:about=\"http://www.case.edu/PMDO#BradykinesiaofUpperLimb\">\n        <rdfs:comment xml:lang=\"en\">symptom of PD, usually observed at patient&apos;s legs</rdfs:comment>\n        <rdfs:label xml:lang=\"en\">Bradykinesia of Upper Limb</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://www.w3.org/ns/sosa/FeatureOfInterest -->\n\n    <rdf:Description rdf:about=\"http://www.w3.org/ns/sosa/FeatureOfInterest\">\n        <owl:equivalentClass rdf:resource=\"https://saref.etsi.org/core/FeatureOfInterest\"/>\n    </rdf:Description>\n    \n\n\n    <!-- https://dahcc.idlab.ugent.be/Ontology/SensorsAndWearables/Accelerometer -->\n<!-- http://w3id.org/Wear4PDmove/onto#NotifyRelatives -->\n\n    <owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#NotifyRelatives\">\n        <rdfs:subClassOf rdf:resource=\"http://w3id.org/Wear4PDmove/onto#AlertingNotification\"/>\n    </owl:Class>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#PD_Patient -->\n\n    <owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#PD_Patient\">\n        <rdfs:subClassOf rdf:resource=\"http://w3id.org/Wear4PDmove/onto#Patient\"/>\n        <rdfs:subClassOf>\n            <owl:Restriction>\n                <owl:onProperty rdf:resource=\"http://w3id.org/Wear4PDmove/onto#hasPersonalHealthRecord\"/>\n                <owl:someValuesFrom rdf:resource=\"http://w3id.org/Wear4PDmove/onto#PersonalHealthRecord\"/>\n            </owl:Restriction>\n        </rdfs:subClassOf>\n        <rdfs:comment>PD patient</rdfs:comment>\n        <rdfs:label>PD Patient</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#PDpatientFalllingEventObservation -->\n<owl:DatatypeProperty rdf:about=\"http://w3id.org/Wear4PDmove/onto#hasBradykinisiaOfUpperLimp\">\n        <rdfs:subPropertyOf rdf:resource=\"http://www.w3.org/2002/07/owl#topDataProperty\"/>\n        <rdfs:domain rdf:resource=\"http://schema.org/Person\"/>\n        <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#boolean\"/>\n        <rdfs:label xml:lang=\"en\">has bradykinisia of upper limp</rdfs:label>\n    </owl:DatatypeProperty>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#hasDepression -->\n\n    <owl:DatatypeProperty rdf:about=\"http://w3id.org/Wear4PDmove/onto#hasDepression\">\n        <rdfs:subPropertyOf rdf:resource=\"http://www.w3.org/2002/07/owl#topDataProperty\"/>\n        <rdfs:domain rdf:resource=\"http://schema.org/Person\"/>\n        <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#boolean\"/>\n        <rdfs:label xml:lang=\"en\">has depression</rdfs:label>\n    </owl:DatatypeProperty>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#hasDysphagia -->\n<owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#PDpatientFalllingEventObservation\">\n        <rdfs:subClassOf rdf:resource=\"http://w3id.org/Wear4PDmove/onto#RecognizedEvent\"/>\n        <rdfs:comment>Falling event observation for PD Patient</rdfs:comment>\n        <rdfs:label>PD patient Fallling Event Observation</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#PDpatientMissingDoseEventObservation -->\n\n    <owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#PDpatientMissingDoseEventObservation\">\n        <rdfs:subClassOf rdf:resource=\"http://w3id.org/Wear4PDmove/onto#RecognizedEvent\"/>\n        <rdfs:comment>Missing dose event observation for PD Patient</rdfs:comment>\n        <rdfs:label>PD patient Missing Dose Event Observation</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#Patient -->\n<owl:DatatypeProperty rdf:about=\"http://w3id.org/Wear4PDmove/onto#hasAkinesia\">\n        <rdfs:subPropertyOf rdf:resource=\"http://www.w3.org/2002/07/owl#topDataProperty\"/>\n        <rdfs:domain rdf:resource=\"http://schema.org/Person\"/>\n        <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#boolean\"/>\n        <rdfs:label xml:lang=\"en\">has Akinesia</rdfs:label>\n    </owl:DatatypeProperty>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#hasAnxiety -->\n\n    <owl:DatatypeProperty rdf:about=\"http://w3id.org/Wear4PDmove/onto#hasAnxiety\">\n        <rdfs:subPropertyOf rdf:resource=\"http://www.w3.org/2002/07/owl#topDataProperty\"/>\n        <rdfs:domain rdf:resource=\"http://schema.org/Person\"/>\n        <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#boolean\"/>\n        <rdfs:label xml:lang=\"en\">has Anxiety</rdfs:label>\n    </owl:DatatypeProperty>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#hasBradykinisiaOfUpperLimp -->\n<owl:Class rdf:about=\"http://w3id.org/Wear4PDmove/onto#AlertingNotification\">\n        <rdfs:subClassOf rdf:resource=\"https://saref.etsi.org/core/ActuatingFunction\"/>\n        <rdfs:comment>Alerting Notification Function for event</rdfs:comment>\n        <rdfs:label>Alerting Notification Function</rdfs:label>\n    </owl:Class>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#DailyDosagePlan -->\n<owl:DatatypeProperty rdf:about=\"http://w3id.org/Wear4PDmove/onto#levelHoehnYahrStage\">\n        <rdfs:subPropertyOf rdf:resource=\"http://www.w3.org/2002/07/owl#topDataProperty\"/>\n        <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#integer\"/>\n        <rdfs:label xml:lang=\"en\">level Hoehn Yahr stage</rdfs:label>\n    </owl:DatatypeProperty>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#obsAfterDosing -->\n\n    <owl:DatatypeProperty rdf:about=\"http://w3id.org/Wear4PDmove/onto#obsAfterDosing\">\n        <rdfs:domain rdf:resource=\"http://www.w3.org/ns/sosa/Observation\"/>\n        <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#boolean\"/>\n        <rdfs:comment>Check if observation is taken 30 min after the last dosage of dosage plan</rdfs:comment>\n        <rdfs:label xml:lang=\"en\">observation after dosing</rdfs:label>\n    </owl:DatatypeProperty>\n    \n\n\n    <!-- http://w3id.org/Wear4PDmove/onto#scoreUPDRS -->\n  END OF ONTOLOGY\n  \n  COMMON GUIDELINES\n\n  Please try to implement the following guidelines:\n  1: Variables e.g., (?something) used in Conclusions must be present in Conditions. So create as many variables as needed in Conditions. \n  2: Each atom must have exactly one variable if it represents class.\n  3: Each atom must have exactly two variables if it represents object property.\n  4: Each concept must be represented by a class and must be present in Conditions.\n\n  END OF COMMON GUIDELINES\n\n  The rule in natural language is the following: If a patient with Parkinson disease has bradykinesia of the upper limb and this observation  is made after dosing, then send a  notification to relatives and a missing dosing event observation is identified.\n  Give only the final SWRL rule\n  ",
+            "type": "human"
+          },
+          "lc": 1,
+          "type": "constructor"
+        }
+      ]
+    ]
+  },
+  "outputs": {
+    "generations": [
+      [
+        {
+          "generation_info": {
+            "created_at": "2026-05-10T11:54:58.3020831Z",
+            "done": true,
+            "done_reason": "stop",
+            "eval_count": 58,
+            "eval_duration": 8949534800,
+            "load_duration": 127263700,
+            "message": {
+              "content": "",
+              "images": null,
+              "role": "assistant",
+              "tool_calls": null
+            },
+            "model": "gemma2:9b",
+            "prompt_eval_count": 2733,
+            "prompt_eval_duration": 104190862500,
+            "total_duration": 113409234700
+          },
+          "message": {
+            "id": [
+              "langchain",
+              "schema",
+              "messages",
+              "AIMessage"
+            ],
+            "kwargs": {
+              "content": "PD_Patient(?p) ^ hasBradykinisiaOfUpperLimb(?p, true) ^ obsAfterDosing( ?o) ^ hasObservation(?p, ?o) -> NotifyRelatives(?p) ^ PDpatientMissingDoseEventObservation(?o) \n",
+              "id": "run--019e11bb-dc7b-7be0-98ff-f4a788316489-0",
+              "invalid_tool_calls": [],
+              "response_metadata": {
+                "created_at": "2026-05-10T11:54:58.3020831Z",
+                "done": true,
+                "done_reason": "stop",
+                "eval_count": 58,
+                "eval_duration": 8949534800,
+                "load_duration": 127263700,
+                "message": {
+                  "id": [
+                    "ollama",
+                    "_types",
+                    "Message"
+                  ],
+                  "lc": 1,
+                  "repr": "Message(role='assistant', content='', images=None, tool_calls=None)",
+                  "type": "not_implemented"
+                },
+                "model": "gemma2:9b",
+                "prompt_eval_count": 2733,
+                "prompt_eval_duration": 104190862500,
+                "total_duration": 113409234700
+              },
+              "tool_calls": [],
+              "type": "ai",
+              "usage_metadata": {
+                "input_tokens": 2733,
+                "output_tokens": 58,
+                "total_tokens": 2791
+              }
+            },
+            "lc": 1,
+            "type": "constructor"
+          },
+          "text": "PD_Patient(?p) ^ hasBradykinisiaOfUpperLimb(?p, true) ^ obsAfterDosing( ?o) ^ hasObservation(?p, ?o) -> NotifyRelatives(?p) ^ PDpatientMissingDoseEventObservation(?o) \n",
+          "type": "ChatGeneration"
+        }
+      ]
+    ],
+    "llm_output": null,
+    "run": null,
+    "type": "LLMResult"
+  },
+  "metadata": {
+    "ls_model_name": "gemma2:9b",
+    "ls_model_type": "chat",
+    "ls_provider": "ollama",
+    "ls_run_depth": 1,
+    "ls_temperature": 0,
+    "revision_id": "3ec4949-dirty"
+  },
+  "langsmith": {
+    "organization": {
+      "name": "Personal",
+      "id": "dddfdd98-7034-429c-ae34-81262387c9b0"
+    },
+    "workspace": {
+      "name": "Personal",
+      "id": "1da9662e-2f17-5b78-a525-2d13842bf0d3"
+    },
+    "tracing_project": {
+      "id": "764e4c4b-df91-4a00-87ba-f7948c40a503",
+      "name": "Updated-Phase1-SAR-rdf-1000-gemma2:9b-k7"
+    }
+  }
+}
