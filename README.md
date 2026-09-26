@@ -161,5 +161,28 @@ source .venv/bin/activate
 ```bash
 python3 -m pip install -r requirements.txt
 ```
+
+## .env file
+Once you download the project, create an .env file and add the following:
+````code
+LANGCHAIN_API_KEY="YOUR_API_KEY"
+
+LANGSMITH_TRACING=true
+LANGSMITH_ENDPOINT=https://api.smith.langchain.com
+LANGSMITH_API_KEY=YOUR_API_KEY
+LANGSMITH_PROJECT="SLM4SWRL"
+
+OPENAI_API_KEY = "YOUR_API_KEY"
+
+NEO4J_URI = "bolt://localhost:7687"
+NEO4J_USERNAME = "YOUR_USERNAME"
+NEO4J_PASSWORD = "YOUR_PASSWORD" #SAR
+NEO4J_PASSWORD = "YOUR_PASSWORD" #PD
+````
+
 #### Important Node
-Ollama and Neo4j are required for running the framework
+Ollama and Neo4j are required for running the framework.
+
+To upload the related ontologies in Neo4j follow the instructions here: https://neo4j.com/labs/neosemantics/
+
+To install Ollama follow the instructions here: https://docs.ollama.com/quickstart
