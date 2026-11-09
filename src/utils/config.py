@@ -17,17 +17,16 @@ class TranslatorConfig:
   """Configuration for SWRL translation"""
   with open(_CONFIG_PATH, 'r', encoding='utf-8') as f:
     config = yaml.safe_load(f)
-  
-  domain: str = config['domain']  # or "SAR"
+
+  # Terminal arguments
+  rag_type: str
+  domain: str
   
   # Model configuration
-  model_name: str = config['model']['name']
   temperature: float = config['model']['temperature']
-  mode: str = config['model']['mode']
   
   # RAG configuration
   ontology_path: str = config['rag']['ontology_path']
-  rag_type: str = config['rag']['type']
   chunk_size: int = config['rag']['chunk_size']
   chunk_overlap: int = config['rag']['chunk_overlap']
   search_type: str = config['rag']['search_type']
@@ -43,7 +42,7 @@ class TranslatorConfig:
   rules_file: str = config['rules'] 
   rules_category: str = None
   
-  def __post_init__(self, config=config):
+  def __post_init__(self):
     """Load environment variables for Neo4j if not provided"""
     if self.rag_type == "graph":
       self.neo4j_uri = self.neo4j_uri or os.getenv("NEO4J_URI")
