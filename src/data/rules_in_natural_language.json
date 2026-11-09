@@ -15,7 +15,7 @@
     "If a patient with Parkinson disease has a daily dosage plan with a specific dosage time and a missing dose event is observed, then send a notification to the doctor.",
     "If a patient with Parkinson disease has tremor and bradykinesia of upper limb and performs a walking activity that is measured by a smart watch and a patient falling event is observed, then send a notification to the doctor.",
     "If a patient has tremor and bradykinesia of upper limp, then that patient should be classified as a patient with Parkinson disease.",
-    "If a patient with Parkinson disease has a falling event observation and that observation happened 30 minutes after dosing, then send a notification alert to the doctor.",
+    "If a patient with Parkinson disease has a falling event observation and that observation happened after dosing, then send a notification alert to the doctor.",
     "If a patient with Parkinson disease has  tremor and that tremor is observed after a dosage time then a notification is sent to the relatives and a missing dose event observation is recognized.",
     "If a patient with Parkinson disease has bradykinesia of the upper limb and this observation  is made after dosing, then send a  notification to relatives and a missing dosing event observation is identified.",
     "If a falling event observation is identified for a patient with Parkinson disease, then send a notification alert to the nurse and the relative.",
