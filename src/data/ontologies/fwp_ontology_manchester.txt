@@ -1,0 +1,342 @@
+Prefix: : <http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+
+Ontology: <http://www.semanticweb.org/adklts/ontologies/2025/3/FWP>
+
+
+Annotations: 
+    <http://purl.org/dc/terms/abstract> "To provide a structured, machine-readable representation of kurtosis, signal entropy, and smoothness and their associated fuzzy categories for investigating healthy and Parkinsonian patterns."@en,
+    <http://purl.org/dc/terms/creator> "Adam Koletis",
+    <http://purl.org/dc/terms/description> "An ontology for representing individuals, measurements, and fuzzy feature categories based on kurtosis, signal entropy, and smoothness. It includes healthy-status and Parkinsonian-severity categories, fuzzy OWL annotations, and SWRL rules."@en,
+    <http://purl.org/dc/terms/language> "en",
+    <http://purl.org/dc/terms/modified> "2026-09-08"^^xsd:date,
+    <http://purl.org/dc/terms/subject> "Fuzzy ontologies; measurement features; Parkinsonian patterns"@en,
+    <http://purl.org/dc/terms/title> "FWP — Fuzzy Wave Feature Ontology"@en,
+    <http://purl.org/vocab/vann/preferredNamespacePrefix> "FWP",
+    <http://purl.org/vocab/vann/preferredNamespaceUri> <http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#>,
+    rdfs:comment "Metadata-enriched documentation copy. Aim and description summarize the vocabulary and rules in the supplied file. No owl:imports declarations are present. No additional contributors were supplied."@en
+
+AnnotationProperty: <http://purl.org/dc/terms/abstract>
+
+    
+AnnotationProperty: <http://purl.org/dc/terms/creator>
+
+    
+AnnotationProperty: <http://purl.org/dc/terms/description>
+
+    
+AnnotationProperty: <http://purl.org/dc/terms/language>
+
+    
+AnnotationProperty: <http://purl.org/dc/terms/modified>
+
+    
+AnnotationProperty: <http://purl.org/dc/terms/subject>
+
+    
+AnnotationProperty: <http://purl.org/dc/terms/title>
+
+    
+AnnotationProperty: <http://purl.org/vocab/vann/preferredNamespacePrefix>
+
+    
+AnnotationProperty: <http://purl.org/vocab/vann/preferredNamespaceUri>
+
+    
+AnnotationProperty: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled>
+
+    
+AnnotationProperty: fuzzyLabel
+
+    
+AnnotationProperty: rdfs:comment
+
+    
+Datatype: FuzzyKurtosisHigh
+
+    Annotations: 
+        fuzzyLabel "<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"-1.089635 \" b=\"-0.981657\" c=\"-0.563756\" />
+</fuzzyOwl2>"
+    
+    EquivalentTo: 
+        (xsd:double[>= "-1.0855"^^xsd:double] and xsd:double[<= "-0.564"^^xsd:double])
+    
+    
+Datatype: FuzzyKurtosisLow
+
+    Annotations: 
+        fuzzyLabel "<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"-1.318914\" b=\"-1.238854\" c=\"-1.160034\" />
+</fuzzyOwl2>"
+    
+    EquivalentTo: 
+        (xsd:double[>= "-1.321"^^xsd:double] and xsd:double[<= "-1.167"^^xsd:double])
+    
+    
+Datatype: FuzzyKurtosisMedium
+
+    Annotations: 
+        fuzzyLabel "<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"-1.178301\" b=\"-1.129060\" c=\"-1.067824\" />
+</fuzzyOwl2>"
+    
+    EquivalentTo: 
+        (xsd:double[>= "-1.185"^^xsd:double] and xsd:double[<= "-1.059"^^xsd:double])
+    
+    
+Datatype: FuzzySignalEntropyHigh
+
+    Annotations: 
+        fuzzyLabel "<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"2.282196\" b=\"2.291570\" c=\"2.301314\" />
+</fuzzyOwl2>"
+    
+    EquivalentTo: 
+        (xsd:double[>= "2.28"^^xsd:double] and xsd:double[<= "2.3"^^xsd:double])
+    
+    
+Datatype: FuzzySignalEntropyLow
+
+    Annotations: 
+        fuzzyLabel "<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"2.142051\" b=\"2.247265\" c=\"2.270753\" />
+</fuzzyOwl2>"
+    
+    EquivalentTo: 
+        (xsd:double[>= "2.14"^^xsd:double] and xsd:double[<= "2.26"^^xsd:double])
+    
+    
+Datatype: FuzzySignalEntropyMedium
+
+    Annotations: 
+        fuzzyLabel "<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"2.265899\" b=\"2.276484\" c=\"2.284394\" />
+</fuzzyOwl2>"
+    
+    EquivalentTo: 
+        (xsd:double[>= "2.25"^^xsd:double] and xsd:double[<= "2.28"^^xsd:double])
+    
+    
+Datatype: FuzzySmoothnessHigh
+
+    Annotations: 
+        fuzzyLabel "<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"0.036604\" b=\"0.046033\" c=\"0.059681\" />
+</fuzzyOwl2>"
+    
+    EquivalentTo: 
+        (xsd:double[>= "0.036604"^^xsd:double] and xsd:double[<= "0.059681"^^xsd:double])
+    
+    
+Datatype: FuzzySmoothnessLow
+
+    Annotations: 
+        fuzzyLabel "<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"0.007047\" b=\"0.018882\" c=\"0.027102\" />
+</fuzzyOwl2>"
+    
+    EquivalentTo: 
+        (xsd:double[>= "0.007047"^^xsd:double] and xsd:double[<= "0.027102"^^xsd:double])
+    
+    
+Datatype: FuzzySmoothnessMedium
+
+    Annotations: 
+        fuzzyLabel "<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"0.025078\" b=\"0.032118\" c=\"0.038903\" />
+</fuzzyOwl2>"
+    
+    EquivalentTo: 
+        (xsd:double[>= "0.025078"^^xsd:double] and xsd:double[<= "0.038903"^^xsd:double])
+    
+    
+Datatype: rdf:PlainLiteral
+
+    
+Datatype: xsd:date
+
+    
+Datatype: xsd:double
+
+    
+Datatype: xsd:string
+
+    
+ObjectProperty: hasMeasurement
+
+    Domain: 
+        Individuals
+    
+    Range: 
+        Measurement
+    
+    
+DataProperty: hasKurtosis
+
+    Domain: 
+        Measurement
+    
+    Range: 
+        xsd:double
+    
+    
+DataProperty: hasSignalEntropy
+
+    Domain: 
+        Measurement
+    
+    Range: 
+        xsd:double
+    
+    
+DataProperty: hasSmoothness
+
+    Domain: 
+        Measurement
+    
+    Range: 
+        xsd:double
+    
+    
+Class: Healthy
+
+    SubClassOf: 
+        Individuals
+    
+    
+Class: HealthyStatusHigh
+
+    SubClassOf: 
+        Healthy
+    
+    
+Class: HealthyStatusLow
+
+    SubClassOf: 
+        Healthy
+    
+    
+Class: HealthyStatusMedium
+
+    SubClassOf: 
+        Healthy
+    
+    
+Class: Individuals
+
+    
+Class: KurtosisHigh
+
+    EquivalentTo: 
+        hasKurtosis some FuzzyKurtosisHigh
+    
+    SubClassOf: 
+        Measurement
+    
+    
+Class: KurtosisLow
+
+    EquivalentTo: 
+        hasKurtosis some FuzzyKurtosisLow
+    
+    SubClassOf: 
+        Measurement
+    
+    
+Class: KurtosisMedium
+
+    EquivalentTo: 
+        hasKurtosis some FuzzyKurtosisMedium
+    
+    SubClassOf: 
+        Measurement
+    
+    
+Class: Measurement
+
+    
+Class: Parkinsonian
+
+    SubClassOf: 
+        Individuals
+    
+    
+Class: ParkinsonianSeverityHigh
+
+    SubClassOf: 
+        Parkinsonian
+    
+    
+Class: ParkinsonianSeverityLow
+
+    SubClassOf: 
+        Parkinsonian
+    
+    
+Class: ParkinsonianSeverityMedium
+
+    SubClassOf: 
+        Parkinsonian
+    
+    
+Class: SignalEntropyHigh
+
+    EquivalentTo: 
+        hasSignalEntropy some FuzzySignalEntropyHigh
+    
+    SubClassOf: 
+        Measurement
+    
+    
+Class: SignalEntropyLow
+
+    EquivalentTo: 
+        hasSignalEntropy some FuzzySignalEntropyLow
+    
+    SubClassOf: 
+        Measurement
+    
+    
+Class: SignalEntropyMedium
+
+    EquivalentTo: 
+        hasSignalEntropy some FuzzySignalEntropyMedium
+    
+    SubClassOf: 
+        Measurement
+    
+    
+Class: SmoothnessHigh
+
+    EquivalentTo: 
+        hasSmoothness some FuzzySmoothnessHigh
+    
+    SubClassOf: 
+        Measurement
+    
+    
+Class: SmoothnessLow
+
+    EquivalentTo: 
+        hasSmoothness some FuzzySmoothnessLow
+    
+    SubClassOf: 
+        Measurement
+    
+    
+Class: SmoothnessMedium
+
+    EquivalentTo: 
+        hasSmoothness some FuzzySmoothnessMedium
+    
+    SubClassOf: 
+        Measurement
+    
+    

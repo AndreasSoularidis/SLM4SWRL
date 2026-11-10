@@ -1,0 +1,682 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#"
+     xml:base="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP">
+        <terms:abstract xml:lang="en">To provide a structured, machine-readable representation of kurtosis, signal entropy, and smoothness and their associated fuzzy categories for investigating healthy and Parkinsonian patterns.</terms:abstract>
+        <terms:creator>Adam Koletis</terms:creator>
+        <terms:description xml:lang="en">An ontology for representing individuals, measurements, and fuzzy feature categories based on kurtosis, signal entropy, and smoothness. It includes healthy-status and Parkinsonian-severity categories, fuzzy OWL annotations, and SWRL rules.</terms:description>
+        <terms:language>en</terms:language>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-09-08</terms:modified>
+        <terms:subject xml:lang="en">Fuzzy ontologies; measurement features; Parkinsonian patterns</terms:subject>
+        <terms:title xml:lang="en">FWP — Fuzzy Wave Feature Ontology</terms:title>
+        <vann:preferredNamespacePrefix>FWP</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#"/>
+        <rdfs:comment xml:lang="en">Metadata-enriched documentation copy. Aim and description summarize the vocabulary and rules in the supplied file. No owl:imports declarations are present. No additional contributors were supplied.</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/abstract -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/abstract"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/language -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/language"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/subject -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/subject"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#fuzzyLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#fuzzyLabel"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzyKurtosisHigh -->
+
+    <rdfs:Datatype rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzyKurtosisHigh">
+        <fuzzyLabel>&lt;fuzzyOwl2 fuzzyType=&quot;datatype&quot;&gt;
+&lt;Datatype type=&quot;triangular&quot; a=&quot;-1.089635 &quot; b=&quot;-0.981657&quot; c=&quot;-0.563756&quot; /&gt;
+&lt;/fuzzyOwl2&gt;</fuzzyLabel>
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.0855</xsd:minInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-0.564</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:intersectionOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzyKurtosisLow -->
+
+    <rdfs:Datatype rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzyKurtosisLow">
+        <fuzzyLabel>&lt;fuzzyOwl2 fuzzyType=&quot;datatype&quot;&gt;
+&lt;Datatype type=&quot;triangular&quot; a=&quot;-1.318914&quot; b=&quot;-1.238854&quot; c=&quot;-1.160034&quot; /&gt;
+&lt;/fuzzyOwl2&gt;</fuzzyLabel>
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.321</xsd:minInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.167</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:intersectionOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzyKurtosisMedium -->
+
+    <rdfs:Datatype rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzyKurtosisMedium">
+        <fuzzyLabel>&lt;fuzzyOwl2 fuzzyType=&quot;datatype&quot;&gt;
+&lt;Datatype type=&quot;triangular&quot; a=&quot;-1.178301&quot; b=&quot;-1.129060&quot; c=&quot;-1.067824&quot; /&gt;
+&lt;/fuzzyOwl2&gt;</fuzzyLabel>
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.185</xsd:minInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-1.059</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:intersectionOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySignalEntropyHigh -->
+
+    <rdfs:Datatype rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySignalEntropyHigh">
+        <fuzzyLabel>&lt;fuzzyOwl2 fuzzyType=&quot;datatype&quot;&gt;
+&lt;Datatype type=&quot;triangular&quot; a=&quot;2.282196&quot; b=&quot;2.291570&quot; c=&quot;2.301314&quot; /&gt;
+&lt;/fuzzyOwl2&gt;</fuzzyLabel>
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">2.28</xsd:minInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">2.3</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:intersectionOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySignalEntropyLow -->
+
+    <rdfs:Datatype rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySignalEntropyLow">
+        <fuzzyLabel>&lt;fuzzyOwl2 fuzzyType=&quot;datatype&quot;&gt;
+&lt;Datatype type=&quot;triangular&quot; a=&quot;2.142051&quot; b=&quot;2.247265&quot; c=&quot;2.270753&quot; /&gt;
+&lt;/fuzzyOwl2&gt;</fuzzyLabel>
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">2.14</xsd:minInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">2.26</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:intersectionOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySignalEntropyMedium -->
+
+    <rdfs:Datatype rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySignalEntropyMedium">
+        <fuzzyLabel>&lt;fuzzyOwl2 fuzzyType=&quot;datatype&quot;&gt;
+&lt;Datatype type=&quot;triangular&quot; a=&quot;2.265899&quot; b=&quot;2.276484&quot; c=&quot;2.284394&quot; /&gt;
+&lt;/fuzzyOwl2&gt;</fuzzyLabel>
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">2.25</xsd:minInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">2.28</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:intersectionOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySmoothnessHigh -->
+
+    <rdfs:Datatype rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySmoothnessHigh">
+        <fuzzyLabel>&lt;fuzzyOwl2 fuzzyType=&quot;datatype&quot;&gt;
+&lt;Datatype type=&quot;triangular&quot; a=&quot;0.036604&quot; b=&quot;0.046033&quot; c=&quot;0.059681&quot; /&gt;
+&lt;/fuzzyOwl2&gt;</fuzzyLabel>
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.036604</xsd:minInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.059681</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:intersectionOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySmoothnessLow -->
+
+    <rdfs:Datatype rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySmoothnessLow">
+        <fuzzyLabel>&lt;fuzzyOwl2 fuzzyType=&quot;datatype&quot;&gt;
+&lt;Datatype type=&quot;triangular&quot; a=&quot;0.007047&quot; b=&quot;0.018882&quot; c=&quot;0.027102&quot; /&gt;
+&lt;/fuzzyOwl2&gt;</fuzzyLabel>
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.007047</xsd:minInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.027102</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:intersectionOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySmoothnessMedium -->
+
+    <rdfs:Datatype rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySmoothnessMedium">
+        <fuzzyLabel>&lt;fuzzyOwl2 fuzzyType=&quot;datatype&quot;&gt;
+&lt;Datatype type=&quot;triangular&quot; a=&quot;0.025078&quot; b=&quot;0.032118&quot; c=&quot;0.038903&quot; /&gt;
+&lt;/fuzzyOwl2&gt;</fuzzyLabel>
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.025078</xsd:minInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.038903</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:intersectionOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasMeasurement -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasMeasurement">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Individuals"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Measurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasKurtosis -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasKurtosis">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Measurement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasSignalEntropy -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasSignalEntropy">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Measurement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasSmoothness -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasSmoothness">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Measurement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Healthy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Healthy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Individuals"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#HealthyStatusHigh -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#HealthyStatusHigh">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Healthy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#HealthyStatusLow -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#HealthyStatusLow">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Healthy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#HealthyStatusMedium -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#HealthyStatusMedium">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Healthy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Individuals -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Individuals"/>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#KurtosisHigh -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#KurtosisHigh">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasKurtosis"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzyKurtosisHigh"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Measurement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#KurtosisLow -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#KurtosisLow">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasKurtosis"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzyKurtosisLow"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Measurement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#KurtosisMedium -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#KurtosisMedium">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasKurtosis"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzyKurtosisMedium"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Measurement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Measurement -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Measurement"/>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Parkinsonian -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Parkinsonian">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Individuals"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#ParkinsonianSeverityHigh -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#ParkinsonianSeverityHigh">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Parkinsonian"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#ParkinsonianSeverityLow -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#ParkinsonianSeverityLow">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Parkinsonian"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#ParkinsonianSeverityMedium -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#ParkinsonianSeverityMedium">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Parkinsonian"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SignalEntropyHigh -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SignalEntropyHigh">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasSignalEntropy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySignalEntropyHigh"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Measurement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SignalEntropyLow -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SignalEntropyLow">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasSignalEntropy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySignalEntropyLow"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Measurement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SignalEntropyMedium -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SignalEntropyMedium">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasSignalEntropy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySignalEntropyMedium"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Measurement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SmoothnessHigh -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SmoothnessHigh">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasSmoothness"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySmoothnessHigh"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Measurement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SmoothnessLow -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SmoothnessLow">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasSmoothness"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySmoothnessLow"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Measurement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SmoothnessMedium -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SmoothnessMedium">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasSmoothness"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySmoothnessMedium"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Measurement"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

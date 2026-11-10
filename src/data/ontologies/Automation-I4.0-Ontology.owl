@@ -1,0 +1,3942 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology"
+     xml:base="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:ns="http://creativecommons.org/ns#"
+     xmlns:DUL="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
+     xmlns:i40="https://w3id.org/i40/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:sto="https://w3id.org/i40/sto#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:doap="http://usefulinc.com/ns/doap#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:om-2="http://www.ontology-of-units-of-measure.org/resource/om-2/"
+     xmlns:prov="http://www.w3.org/ns/prov#"
+     xmlns:rami="https://w3id.org/i40/rami#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:void="http://rdfs.org/ns/void#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology">
+        <owl:versionIRI rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology/2.0.0"/>
+        <terms:contributor rdf:resource="https://www.linkedin.com/in/sebastianrbader/"/>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-01-25</terms:created>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-10-31</terms:created>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-09-08</terms:modified>
+        <terms:publisher rdf:resource="http://de.dbpedia.org/resource/Fraunhofer-Gesellschaft"/>
+        <terms:publisher rdf:resource="https://github.com/sagilar"/>
+        <terms:rights xml:lang="en">This work is distributed under a Creative Commons Attribution License (http://creativecommons.org/licenses/by/3.0/).</terms:rights>
+        <terms:rights xml:lang="en">This work is distributed under an Apache License 2.0 (http://www.apache.org/licenses/).</terms:rights>
+        <terms:title xml:lang="en">Standards Ontology</terms:title>
+        <vann:preferredNamespacePrefix>Automation-I4.0-Core-Ontology</vann:preferredNamespacePrefix>
+        <vann:preferredNamespacePrefix>ddo</vann:preferredNamespacePrefix>
+        <vann:preferredNamespacePrefix>minified-sto</vann:preferredNamespacePrefix>
+        <vann:preferredNamespacePrefix>rami</vann:preferredNamespacePrefix>
+        <vann:preferredNamespacePrefix>sto</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri>https://w3id.org/i40/rami#</vann:preferredNamespaceUri>
+        <vann:preferredNamespaceUri>https://w3id.org/i40/sto#</vann:preferredNamespaceUri>
+        <void:vocabulary rdf:resource="http://purl.org/dc/elements/1.1/"/>
+        <void:vocabulary rdf:resource="http://www.w3.org/2000/01/rdf-schema#"/>
+        <void:vocabulary rdf:resource="http://www.w3.org/2001/XMLSchema#"/>
+        <void:vocabulary rdf:resource="http://www.w3.org/2004/02/skos/core#"/>
+        <doap:repository rdf:resource="https://github.com/sagilar"/>
+        <doap:repository rdf:resource="https://github.com/i40-Tools/StandardsOntology"/>
+        <rdfs:comment xml:lang="en">An ontology to describe standards related to Industry 4.0 and Smart Manufacturing</rdfs:comment>
+        <rdfs:comment xml:lang="en">The core ontology for automation systems related to the Industry 4.0 and Smart Manufacturing</rdfs:comment>
+        <rdfs:comment xml:lang="en">The ontology to represent a minified version of standards to integrate the ontology for automation systems in I4.0 and the STO by Grangel et al</rdfs:comment>
+        <rdfs:comment xml:lang="en">The ontology to represent discrete dynamics in automation systems related to the Industry 4.0 and Smart Manufacturing</rdfs:comment>
+        <rdfs:comment>Update implementing the specifiations coming from &apos;Details of the Asset Administration Shell - Part 1: The exchange of information between partners in the value chain of Industrie 4.0 (Version 1.0)&apos;</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/i40/rami#"/>
+        <owl:versionInfo>0.3</owl:versionInfo>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.4</owl:versionInfo>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.0</owl:versionInfo>
+        <skos:definition xml:lang="en">An Ontology to represents the Reference Architecture Model for Industry 4.0 (RAMI), including the concept of the Administration Shell I4.0 Component.</skos:definition>
+        <skos:prefLabel xml:lang="en">rami</skos:prefLabel>
+        <sto:hasOfficialResource rdf:resource="https://webstore.iec.ch/publication/153"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/date -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description">
+        <terms:description xml:lang="en">Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.</terms:description>
+        <terms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#description-006"/>
+        <terms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1999-07-02</terms:issued>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-01-14</terms:modified>
+        <rdfs:comment xml:lang="en">An account of the resource.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+        <rdfs:label xml:lang="en">Description</rdfs:label>
+        <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/format -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/format"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/identifier -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/identifier"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/language -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/language"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/relation -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/relation"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/source -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/source"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title">
+        <terms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#title-006"/>
+        <terms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1999-07-02</terms:issued>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-01-14</terms:modified>
+        <rdfs:comment xml:lang="en">A name given to the resource.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+        <rdfs:label xml:lang="en">Title</rdfs:label>
+        <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/contributor -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/creator"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/contributor"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/date -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/date"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description">
+        <terms:description xml:lang="en">Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.</terms:description>
+        <terms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#descriptionT-001"/>
+        <terms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-01-14</terms:issued>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-01-14</terms:modified>
+        <rdfs:comment xml:lang="en">An account of the resource.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:label xml:lang="en">Description</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/description"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/hasVersion -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/hasVersion">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/identifier -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/identifier">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/identifier"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/issued -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/issued">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license">
+        <terms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#license-002"/>
+        <terms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2004-06-14</terms:issued>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-12-19</terms:modified>
+        <rdfs:comment xml:lang="en">A legal document giving official permission to do something with the resource.</rdfs:comment>
+        <rdfs:comment xml:lang="en">A legal document giving official permission to do something with the resource. In this ontology denotes the license of a Standard.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Represent the license document for a given Standard</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:label xml:lang="en">has License</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/publisher -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/publisher"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/relation -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/relation"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/rights -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/rights"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/title"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+    
+
+
+    <!-- http://rdfs.org/ns/void#vocabulary -->
+
+    <owl:AnnotationProperty rdf:about="http://rdfs.org/ns/void#vocabulary"/>
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- http://usefulinc.com/ns/doap#repository -->
+
+    <owl:AnnotationProperty rdf:about="http://usefulinc.com/ns/doap#repository"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#altLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#altLabel">
+        <rdfs:label xml:lang="en">alternative label</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition">
+        <rdfs:label xml:lang="en">definition</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#note -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#note">
+        <rdfs:label xml:lang="en">note</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel">
+        <rdfs:label xml:lang="en">preferred label</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/familyName -->
+
+    <owl:AnnotationProperty rdf:about="http://xmlns.com/foaf/0.1/familyName">
+        <rdfs:label xml:lang="en">Family Name</rdfs:label>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/person"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/name -->
+
+    <owl:AnnotationProperty rdf:about="http://xmlns.com/foaf/0.1/name">
+        <rdfs:label xml:lang="en">name</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Thing"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#description -->
+
+    <owl:AnnotationProperty rdf:about="https://w3id.org/i40/rami#description">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#display -->
+
+    <owl:AnnotationProperty rdf:about="https://w3id.org/i40/rami#display"/>
+    
+
+
+    <!-- https://w3id.org/i40/rami#idShort -->
+
+    <owl:AnnotationProperty rdf:about="https://w3id.org/i40/rami#idShort"/>
+    
+
+
+    <!-- https://w3id.org/i40/rami#semanticId -->
+
+    <owl:AnnotationProperty rdf:about="https://w3id.org/i40/rami#semanticId">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#seeAlso"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/rami#ExpressionSemantic"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#publisher -->
+
+    <owl:AnnotationProperty rdf:about="https://w3id.org/i40/sto#publisher"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/muto/core#Tag -->
+
+    <rdfs:Datatype rdf:about="http://purl.org/muto/core#Tag"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#gYear -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#gYear"/>
+    
+
+
+    <!-- https://w3id.org/i40/rami#IRDI -->
+
+    <rdfs:Datatype rdf:about="https://w3id.org/i40/rami#IRDI">
+        <rdfs:comment xml:lang="en">IRDI - ISO29002-5, ISO IEC 6523 and ISO IEC 11179-6 [20] as an Identifier scheme for properties and classifications. They are created in a process of consortium-wise specification or international standardisation.
+To this end, users sit down together and feed their ideas into the consortia or standardisation bodies. Properties in ISO, IEC help to safeguard key commercial interests. Repositories like eCl@ss and others make it possible to standardise a relatively large number of Identifiers in an appropriately short time.</rdfs:comment>
+    </rdfs:Datatype>
+    
+
+
+    <!-- https://w3id.org/i40/rami#blob -->
+
+    <rdfs:Datatype rdf:about="https://w3id.org/i40/rami#blob">
+        <rdfs:comment xml:lang="en">A BLOB is a data element that represents a file that is contained with its source code in the value attribute.</rdfs:comment>
+        <rdfs:label>rami:blob</rdfs:label>
+    </rdfs:Datatype>
+    
+
+
+    <!-- https://w3id.org/i40/rami#file -->
+
+    <rdfs:Datatype rdf:about="https://w3id.org/i40/rami#file">
+        <rdfs:comment xml:lang="en">A File is a data element that represents a file via its path description.</rdfs:comment>
+        <rdfs:label>rami:file</rdfs:label>
+    </rdfs:Datatype>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/creator">
+        <owl:equivalentProperty rdf:resource="http://xmlns.com/foaf/0.1/maker"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/language -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/language"/>
+    
+
+
+    <!-- http://www.loa-cnr.it/ontologies/DUL.owl#isPartOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.loa-cnr.it/ontologies/DUL.owl#isPartOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#Asset"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/rami#Asset"/>
+        <rdfs:comment>A relation between any entities, in this case, the Asset can be part of other Asset(s).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl"/>
+        <rdfs:label xml:lang="en">is Part Of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit">
+        <rdfs:domain rdf:resource="http://org.semanticweb.owlapi/error#Error1"/>
+        <rdfs:range rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/Unit"/>
+        <rdfs:label xml:lang="en">has unit</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isComponentOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isComponentOf">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/i40/sto#relatedTo"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Standard"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/i40/sto#Standard"/>
+                    <rdf:Description rdf:about="https://w3id.org/i40/sto#StandardPart"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:comment xml:lang="en">Represents Standards that are component of other Standards. This relation is not transitive</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl"/>
+        <rdfs:label xml:lang="en">is Component Of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isMemberOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isMemberOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection"/>
+        <rdfs:comment xml:lang="en">A relation between collections and entities, e.g. &apos;the Night Watch by Rembrandt is in the Rijksmuseum collection&apos;; &apos;Davide is member of the Pen Club&apos;, &apos;Igor is one the subjects chosen for the experiment&apos;.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl"/>
+        <rdfs:label xml:lang="en">is member of</rdfs:label>
+        <rdfs:label xml:lang="it">è membro di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#actsOver -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#actsOver">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Output"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#belongsToSequence -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#belongsToSequence">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Sequence"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#belongsToSubdomain -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#belongsToSubdomain">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Process"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/sto#Domain"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#callsAService -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#callsAService">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#RequestFunction"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Service"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#contains -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#contains">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ExecutionScope"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#defines -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#defines">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DynamicsModel"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Architecture"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#executes -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#executes">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isExecutedBy"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#finalizesLoop -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#finalizesLoop">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Loop"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#finalizesSequence -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#finalizesSequence">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#FinalState"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Sequence"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#generates -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#generates">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasAssociatedModel -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasAssociatedModel">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Process"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DynamicsModel"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDomain -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDomain">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isStandardizedBy"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Standard"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/sto#Domain"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasModelElement -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasModelElement">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DynamicsModel"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNextState -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNextState">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasPreviousState"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasPreviousState -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasPreviousState">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasStateFunction -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasStateFunction">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#StateFunction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasTransitionFunction -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasTransitionFunction">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#TransitionFunction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#initializesLoop -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#initializesLoop">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Loop"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#initializesSequence -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#initializesSequence">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#InitialState"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Sequence"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#interactsWith -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#interactsWith">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isCarriedOutIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isCarriedOutIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#Asset"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Process"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isComposedOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isComposedOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Architecture"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isConnectedToState -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isConnectedToState">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isConnectedToTransition"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isConnectedToTransition -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isConnectedToTransition">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isContextVariableOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isContextVariableOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ExecutionScope"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isDeployedThrough -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isDeployedThrough">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Architecture"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Network"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isExecutedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isExecutedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isStandardizedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isStandardizedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Domain"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/sto#Standard"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isVirtualizedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isVirtualizedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent"/>
+                    <rdf:Description rdf:about="https://w3id.org/i40/rami#Asset"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="https://w3id.org/i40/rami#AdminShell"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#monitors -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#monitors">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Input"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#offers -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#offers">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Service"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#receives -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#receives">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#receivesExecutionScope -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#receivesExecutionScope">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ExecutionScope"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#receivesParameter -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#receivesParameter">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#spreads -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#spreads">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Network"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Service"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#transmits -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#transmits">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Network"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#topObjectProperty -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#topObjectProperty">
+        <rdfs:range rdf:resource="https://w3id.org/i40/sto#Domain"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/TR/2013/REC-prov-o-20130430/#wasDerivedFrom -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/TR/2013/REC-prov-o-20130430/#wasDerivedFrom">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#wasGeneratedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#wasGeneratedBy">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/i40/sto#relatedTo"/>
+        <rdfs:comment xml:lang="en">Standard A has influences in Standard B. For example, IEC_61499 hasInfluenceIn IEC_61804-2(EDDL)</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">https://www.w3.org/TR/prov-o/#wasGeneratedBy</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">was Generated By</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/maker -->
+
+    <owl:ObjectProperty rdf:about="http://xmlns.com/foaf/0.1/maker"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/mbox -->
+
+    <owl:ObjectProperty rdf:about="http://xmlns.com/foaf/0.1/mbox">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Thing"/>
+        <rdfs:label xml:lang="en">mbox</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/hasTargetConcern -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/hasTargetConcern">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Standard"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/sto#Concern"/>
+        <rdfs:comment xml:lang="en">The relation declaring that a standard is relevant or targets a certain concern.</rdfs:comment>
+        <rdfs:label xml:lang="en">has Target Concern</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#administration -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#administration">
+        <rdfs:comment xml:lang="en">Administrative information of an identifiable element.
+Note: Some of the administrative information like the version number might
+need to be part of the identification.</rdfs:comment>
+        <rdfs:label xml:lang="en">has administration</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#asset -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#asset">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#AdminShell"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/rami#Asset"/>
+        <rdfs:comment xml:lang="en">The asset the AAS is representing.</rdfs:comment>
+        <rdfs:label xml:lang="en">asset</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#assetIdentificationModel -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#assetIdentificationModel">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/i40/rami#hasSubmodel"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#Asset"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/rami#Submodel"/>
+        <rdfs:comment xml:lang="en">A reference to a Submodel that defines the handling of
+additional domain specific (proprietary) Identifiers for
+the asset like e.g. serial number etc.</rdfs:comment>
+        <rdfs:label>has Asset Identification Model</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#conceptDictionary -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#conceptDictionary">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#AdminShell"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/rami#ConceptDictionary"/>
+        <rdfs:comment xml:lang="en">An AAS max have one or more concept dictionaries assigned to it. The concept dictionaries typically contain only descriptions for elements that are also used within the AAS (via HasSemantics).</rdfs:comment>
+        <rdfs:label>has concept dictionary</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#containedElement -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#containedElement">
+        <rdfs:comment xml:lang="en">Referable elements that are contained in the view.</rdfs:comment>
+        <rdfs:label>containedElement</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#contributes -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#contributes">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#Submodel"/>
+        <skos:definition xml:lang="en">Agent(Person or Software) that contributes to the Entity/Object related data. It correspond to the Contributor concept of OMM</skos:definition>
+        <skos:prefLabel xml:lang="en">has Type Description</skos:prefLabel>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#dataElement -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#dataElement">
+        <rdfs:comment xml:lang="en">A data element is a submodel element that is not further composed out of other submodel elements.
+A data element is a submodel element that has a value. The type of value differs for different subtypes of data elements.</rdfs:comment>
+        <rdfs:label xml:lang="en">dataElement</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#defaultEnvironmentAttributes -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#defaultEnvironmentAttributes">
+        <rdfs:comment xml:lang="en">Reference to a submodel defining default environment attributes, i.e. attributes that are not describing the asset itself.
+The submodel is of kind=Type.
+At the same type the values of these environment attributes need to be accessible when evaluating the access permission rules. This is realized as a policy information point.</rdfs:comment>
+        <rdfs:label>defaultEnvironmentAttributes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#defaultPermissions -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#defaultPermissions">
+        <rdfs:comment xml:lang="en">Reference to a submodel defining the default permissions for the AAS.</rdfs:comment>
+        <rdfs:label>defaultPermissions</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#defaultSubjectAttributes -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#defaultSubjectAttributes">
+        <rdfs:comment xml:lang="en">Reference to a submodel defining the default subjects attributes for the AAS that can be used to describe access permission rules.
+The submodel is of kind=Type.</rdfs:comment>
+        <rdfs:label>defaultSubjectAttributes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#dependsOn -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#dependsOn">
+        <rdfs:comment xml:lang="en">A formula may depend on referable or even external global elements - assumed that can be referenced and their value may be evaluated - that are used in the logical expression.</rdfs:comment>
+        <rdfs:label xml:lang="en">dependsOn</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#derivedFrom -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#derivedFrom">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/TR/2013/REC-prov-o-20130430/#wasDerivedFrom"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#AdminShell"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/rami#AdminShell"/>
+        <rdfs:comment xml:lang="en">This relation connects instances of AAS with their respective types. Refer to Asset Kind for further information of instance and type kinds.</rdfs:comment>
+        <rdfs:label>derived from</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#describes -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#describes">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#AdminShell"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/rami#Asset"/>
+        <rdfs:comment xml:lang="en">Connect the Asset with the Administration Shell</rdfs:comment>
+        <skos:altLabel xml:lang="en">describes</skos:altLabel>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#first -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#first">
+        <rdfs:comment xml:lang="en">First element in the relationship taking the role of the subject.</rdfs:comment>
+        <rdfs:label>first</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#hasConceptDescription -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#hasConceptDescription">
+        <rdfs:comment xml:lang="en">The semantics of a property or other elements that may have a semantic description is defined by a concept description.
+The description of the concept should follow a standardized schema (realized as data specification template).</rdfs:comment>
+        <rdfs:label xml:lang="en">has ConceptDescription</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#hasDataSpecification -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#hasDataSpecification">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:comment xml:lang="en">Global reference to the data specification template used by the element.</rdfs:comment>
+        <rdfs:label xml:lang="en">has Data Specification</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#hasDatatype -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#hasDatatype">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#Submodel"/>
+        <rdfs:comment xml:lang="en">Points to the datatypes of the Submodels</rdfs:comment>
+        <rdfs:label xml:lang="en">has Datatype</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#hasIdType -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#hasIdType">
+        <rdfs:comment xml:lang="en">Type of the key value.
+In case of idType = idShort local shall be true.
+In case type=GlobalReference idType shall not be IdShort.</rdfs:comment>
+        <rdfs:label xml:lang="en">has idType</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#hasKey -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#hasKey">
+        <rdfs:comment xml:lang="en">Unique reference in its name space.</rdfs:comment>
+        <rdfs:label>has Key</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#hasKind -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#hasKind">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#AdminShell"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/rami#AssetKind"/>
+        <rdfs:label xml:lang="en">has kind</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#hasReference -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#hasReference">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#Submodel"/>
+        <rdfs:label xml:lang="en">has Reference</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#hasSubjectAttribute -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#hasSubjectAttribute">
+        <rdfs:comment xml:lang="en">A data element that further classifies a specific subject.</rdfs:comment>
+        <rdfs:label>has subjectAttribute</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#hasSubmodel -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#hasSubmodel">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#Asset"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/rami#Submodel"/>
+        <rdfs:comment xml:lang="en">Points to the Admin Shell to the Submodels that describe the Admin Shell of a given Asset</rdfs:comment>
+        <rdfs:label xml:lang="en">has Submodel</rdfs:label>
+        <skos:altLabel xml:lang="en">assetIdentificationModel</skos:altLabel>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#hasValue -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#hasValue">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#Submodel"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/rami#Value"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#hasView -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#hasView">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#AdminShell"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/rami#View"/>
+        <rdfs:comment xml:lang="en">Points to the differents views associated to the Administration Shell via the Submodels.</rdfs:comment>
+        <rdfs:label xml:lang="en">has View</rdfs:label>
+        <skos:prefLabel xml:lang="en">view</skos:prefLabel>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#in -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#in">
+        <rdfs:comment xml:lang="en">the rami:in attribute of rami:operation is the input parameter</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#inAccordanceWith -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#inAccordanceWith">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#Submodel"/>
+        <rdfs:comment xml:lang="en">The Submodel is in accordance with a given standard specified in the STO ontology</rdfs:comment>
+        <rdfs:label xml:lang="en">in Accordance With</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#isCaseOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#isCaseOf"/>
+    
+
+
+    <!-- https://w3id.org/i40/rami#isConnectedTo -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#isConnectedTo">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#AdminShell"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/rami#Dimension"/>
+        <rdfs:comment xml:lang="en">Connects the Admin Shell with the different RAMI4.0 Dimensions</rdfs:comment>
+        <rdfs:label xml:lang="en">is Connected To</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#mimeType -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#mimeType">
+        <rdfs:comment xml:lang="en">Mime type of the content of the BLOB.
+The mime type states which file extension the file has.
+Valid values are e.g. “application/json”, “application/xls”, ”image/jpg”
+The allowed values are defined as in RFC2046.
+
+or
+
+Mime type of the content of the File.</rdfs:comment>
+        <rdfs:label>mimeType</rdfs:label>
+        <rdfs:seeAlso>http://uri4uri.net/vocab.html/#MimetypeDatatype</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#object -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#object">
+        <rdfs:comment xml:lang="en">Element to which permission shall be assigned.</rdfs:comment>
+        <rdfs:label>has object</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#objectAttribute -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#objectAttribute">
+        <rdfs:comment xml:lang="en">A data element that further classifies an object.</rdfs:comment>
+        <rdfs:label>objectAttribute</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#out -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#out">
+        <rdfs:comment xml:lang="en">out is the output paramter of the Operation</rdfs:comment>
+        <rdfs:label xml:lang="en">out</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#parent -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#parent">
+        <rdfs:comment xml:lang="en">Reference to the next referable parent element of the element. Constraint AASd-004: Add parent in case of non-identifiable elements.
+Note: This element is used to ease navigation in the model and thus it enables more performant</rdfs:comment>
+        <rdfs:label xml:lang="en">parent</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#preferredName -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#preferredName">
+        <rdfs:comment xml:lang="en">This is the preferredName of a ConceptDescription object</rdfs:comment>
+        <rdfs:label>preferredName</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#qualifierType -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#qualifierType"/>
+    
+
+
+    <!-- https://w3id.org/i40/rami#qualifierValue -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#qualifierValue">
+        <rdfs:comment xml:lang="en">The qualifier value is the value of the qualifier.
+Constraint AASd-006: if both, the value and the valueId are present then the value needs to be identical to the short name of the referenced coded value in qualifierValueId.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#second -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#second">
+        <rdfs:comment xml:lang="en">Second element in the relationship taking the role of the object.</rdfs:comment>
+        <rdfs:label>second</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#selectableEnvironmentAttributes -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#selectableEnvironmentAttributes">
+        <rdfs:comment xml:lang="en">Reference to a submodel defining which environment attributes can be accessed via the permission rules defined for the AAS, i.e. attributes that are not describing the asset itself.
+Default: reference to the submodel referenced via
+defaultEnvironmentAttributes</rdfs:comment>
+        <rdfs:label>selectableEnvironmentAttributes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#submodelElement -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#submodelElement">
+        <rdfs:range rdf:resource="https://w3id.org/i40/rami#SubmodelElement"/>
+        <rdfs:comment xml:lang="en">A submodel consists of zero or more
+submodel elements.</rdfs:comment>
+        <rdfs:label xml:lang="en">has Submodel Element</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#targetObjectAttributes -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#targetObjectAttributes">
+        <rdfs:comment xml:lang="en">Target object attributes that need to be fulfilled so that the access permissions apply to the accessing subject.</rdfs:comment>
+        <rdfs:label>targetObjectAttributes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#targetSubjectAttributes -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#targetSubjectAttributes">
+        <rdfs:comment xml:lang="en">Target subject attributes that need to be fulfilled by the accessing subject to get the permissions defined by this rule.</rdfs:comment>
+        <rdfs:label>targetSubjetAtrtibutes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#trustAnchor -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#trustAnchor">
+        <rdfs:comment xml:lang="en">Trust anchor of AAS, typically certificates.</rdfs:comment>
+        <rdfs:label>trustAnchor</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#value -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/rami#value">
+        <rdfs:comment xml:lang="en">The key value, for example an IRDI if the idType=IRDI.</rdfs:comment>
+        <rdfs:label>keyValue</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#Standardizes -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#Standardizes">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Standard"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Process"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#alignesWith -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#alignesWith">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <rdfs:comment xml:lang="en">indicates that some Standard Classification entity has a similar scope as another. This property most probably is symmetric but not transitive.</rdfs:comment>
+        <rdfs:label xml:lang="en">alignes With</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#belongsTo -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#belongsTo">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#StandardOrganization"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology#Country"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#frames -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#frames">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Viewpoint"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/sto#Concern"/>
+        <rdfs:comment xml:lang="en">A relation specifying that a vewpoint regards a Concern.</rdfs:comment>
+        <rdfs:label xml:lang="en">frames</rdfs:label>
+        <sto:hasOfficialResource rdf:resource="http://www.iso-architecture.org/42010/"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasAvailableLanguage -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#hasAvailableLanguage">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/language"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <rdfs:range rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasClassification -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#hasClassification">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Standard"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasDeveloper -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#hasDeveloper">
+        <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/maker"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Publication"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/sto#StandardOrganization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasDomain -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#hasDomain">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Publication"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/sto#Domain"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasFileSize -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#hasFileSize">
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <rdfs:range rdf:resource="http://www.ontology-of-units-of-measure.org/resource/om-2/Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasHeadquaterIn -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#hasHeadquaterIn">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#StandardOrganization"/>
+        <rdfs:range rdf:resource="http://dbpedia.org/ontology#Place"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasICS -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#hasICS">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Publication"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/sto#InternationalClassificationForStandards"/>
+        <rdfs:comment xml:lang="en">Serves as a catalogue of International Classification For Standards</rdfs:comment>
+        <rdfs:label xml:lang="en">has ICS</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasMotivation -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#hasMotivation">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Publication"/>
+        <rdfs:range rdf:resource="http://purl.org/spar/deo/Motivation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasPreviousVersion -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#hasPreviousVersion">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/i40/sto#relatedTo"/>
+        <rdfs:comment xml:lang="en">Indicates the list of Standards that are previous versions of a Standard. For example,IEC 60038:2009 has IEC 60038:1983+AMD1:1994+AMD2:1997,IEC 60038:1983/AMD2:1997,IEC 60038:1983/AMD1:1994,IEC 60038:1983,IEC 60038:1975/AMD1:1977,IEC 60038:1975,IEC 60038:1967,IEC 60038:1954,IEC 60038:1938,IEC 60038:1927 as previous versions.</rdfs:comment>
+        <rdfs:label xml:lang="en">has Previous Version</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasPublisher -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#hasPublisher">
+        <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/maker"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Publication"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/sto#StandardOrganization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasTechnicalCommittee -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#hasTechnicalCommittee">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Publication"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/sto#TechnicalCommittee"/>
+        <rdfs:comment xml:lang="en">Specifies the Technical Committee or a Sub-Committee that is responsible for creation and maintenance of a standard</rdfs:comment>
+        <rdfs:label xml:lang="en">has Technical Committee</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#isDescribedin -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#isDescribedin">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/sto#StandardizationFramework"/>
+        <rdfs:comment xml:lang="en">Links the Standarization Frameworks with the Classification of Standards</rdfs:comment>
+        <rdfs:label xml:lang="en">is Described in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#isImplementationOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#isImplementationOf">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/i40/sto#relatedTo"/>
+        <rdfs:comment xml:lang="en">Represent the relation that connects two standards when standard A is the implementation of standard B, e.g., B2MML isImplementationOf ISA-95.</rdfs:comment>
+        <rdfs:label xml:lang="en">is Implementation Of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#relatedTo -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#relatedTo">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Standard"/>
+        <rdfs:range rdf:resource="https://w3id.org/i40/sto#Standard"/>
+        <rdfs:comment xml:lang="en">Represent any type of relation that connects two standards.</rdfs:comment>
+        <rdfs:label xml:lang="en">related To</rdfs:label>
+        <skos:altLabel xml:lang="en">has Associated Standard</skos:altLabel>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#useStructureOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#useStructureOf">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/i40/sto#relatedTo"/>
+        <rdfs:comment xml:lang="en">Standard A uses the structure of Standard B. For example, OPC UA uses Structure Of IEC_61804 (EDDL)</rdfs:comment>
+        <rdfs:label xml:lang="en">use Structure Of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#uses -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/i40/sto#uses">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/i40/sto#relatedTo"/>
+        <rdfs:comment xml:lang="en">Defines that Standard A uses Standard B. For example, IEC_62714(AML) uses MathML.</rdfs:comment>
+        <rdfs:label xml:lang="en">uses</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://creativecommons.org/ns#attributionName -->
+
+    <owl:DatatypeProperty rdf:about="http://creativecommons.org/ns#attributionName"/>
+    
+
+
+    <!-- http://creativecommons.org/ns#attributionURL -->
+
+    <owl:DatatypeProperty rdf:about="http://creativecommons.org/ns#attributionURL"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/hasVersion -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/hasVersion"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/identifier -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/identifier"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/issued -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/issued"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/modified"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue">
+        <rdfs:domain rdf:resource="http://org.semanticweb.owlapi/error#Error2"/>
+        <rdfs:label xml:lang="en">has numerical value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#belongsToArchitectureLayer -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#belongsToArchitectureLayer">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#integer"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string"/>
+                </owl:unionOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#concernsTo -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#concernsTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Standard"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasAssociatedMemory -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasAssociatedMemory">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasConstraint -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasConstraint">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DynamicsModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasContent -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasContent">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDBpediaResource -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDBpediaResource">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Standard"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#anyURI"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string"/>
+                </owl:unionOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDataType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDataType">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDescription -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDescription">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Service"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasEmbeddingCapability -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasEmbeddingCapability">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Standard"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasFeature -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasFeature">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasFile -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasFile">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#AdminShell"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasIdentifier -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasIdentifier">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasInteroperabilityDegree -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasInteroperabilityDegree">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNumberOfParameters -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNumberOfParameters">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNumberOfStates -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNumberOfStates">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SetElement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNumberOfTasks -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNumberOfTasks">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNumberOfTransitions -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNumberOfTransitions">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SetElement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasOfficialResource -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasOfficialResource">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Standard"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#anyURI"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string"/>
+                </owl:unionOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasReceiver -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasReceiver">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasRelatedOntology -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasRelatedOntology">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#anyURI"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string"/>
+                </owl:unionOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasRequirement -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasRequirement">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DynamicsModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasReturnDataType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasReturnDataType">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasReturnValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasReturnValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasSoftwareContent -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasSoftwareContent">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Standard"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasTransmitter -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasTransmitter">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasURI -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasURI">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Service"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isActive -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isActive">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isContextStandard -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isContextStandard">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Standard"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isEnabled -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isEnabled">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isParentSetElement -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isParentSetElement">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SetElement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#supportsProtocol -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#supportsProtocol">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8/hasNumericalValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/hasNumericalValue">
+        <rdfs:domain rdf:resource="http://www.wurvoc.org/vocabularies/om-1.8/Measure"/>
+        <rdfs:label xml:lang="en">has numerical value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#allowDuplicates -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/rami#allowDuplicates">
+        <rdfs:comment xml:lang="en">If allowDuplicates=true then it is allowed that the collection contains the same element several times.
+Default = false</rdfs:comment>
+        <skos:altLabel>allow duplicates</skos:altLabel>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#assetId -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/rami#assetId">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/identifier"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#Asset"/>
+        <rdfs:comment xml:lang="en">The unique identifier of an asset. Note the difference between the &apos;asset ID&apos; idenitfier and the URIs for the resources.</rdfs:comment>
+        <rdfs:label xml:lang="en">id</rdfs:label>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#creationDate -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/rami#creationDate">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#Submodel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <skos:definition xml:lang="en">Date when an Agent(Person or Software) creates to the Entity/Object related data. It correspond to the Creator concept of OMM</skos:definition>
+        <skos:prefLabel xml:lang="en">has Creator</skos:prefLabel>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#definition -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/rami#definition">
+        <rdfs:label xml:lang="en">This is the definition that is contained in the conceptDescription.</rdfs:label>
+        <rdfs:label>has definition</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#description -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/rami#description">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#Asset"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#hasLocal -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/rami#hasLocal">
+        <rdfs:comment xml:lang="en">Denotes if the key references a model element of the same AAS (=true) or not (=false). In case of local = false the key may reference a model element of another AAS or an entity outside any AAS that has a global unique id.</rdfs:comment>
+        <rdfs:label>has local</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#id -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/rami#id">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/identifier"/>
+        <rdfs:comment xml:lang="en">A globally unique identifier which is NOT a URI.</rdfs:comment>
+        <rdfs:label xml:lang="en">identification</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#idShort -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/rami#idShort">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/identifier"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#isCaseOf -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/rami#isCaseOf">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/identifier"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#isDescribedWith -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/rami#isDescribedWith">
+        <rdfs:seeAlso rdf:resource="https://w3id.org/i40/rami#asset"/>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+        <skos:definition xml:lang="en">Points to the Standard used to describe a given object</skos:definition>
+        <skos:prefLabel xml:lang="en">Is Described With</skos:prefLabel>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#logs -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/rami#logs">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <skos:prefLabel xml:lang="en">logs</skos:prefLabel>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#ordered -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/rami#ordered">
+        <rdfs:comment xml:lang="en">If ordered=false then the elements in the property collection are not ordered. If ordered=true then the elements in the collection are ordered.
+Default = false</rdfs:comment>
+        <rdfs:label>ordered</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#publishedURL -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/rami#publishedURL"/>
+    
+
+
+    <!-- https://w3id.org/i40/rami#revision -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/rami#revision">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/hasVersion"/>
+        <rdfs:comment xml:lang="en">Revision of the element. Constraint AASd-005: A revision requires a version. This means, if there is no version there is no revision neither.</rdfs:comment>
+        <rdfs:label xml:lang="en">revision</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#semanticId -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/rami#semanticId">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/identifier"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/rami#Submodel"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/rami#version -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/rami#version">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/hasVersion"/>
+        <rdfs:comment xml:lang="en">Version of the element.</rdfs:comment>
+        <rdfs:label xml:lang="en">version</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#abbreviation -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#abbreviation">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"/>
+        <rdfs:comment xml:lang="en">Abbreviated  name of the thing.</rdfs:comment>
+        <rdfs:label xml:lang="en">has Abbreviated Name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#domainName -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#domainName">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Domain"/>
+        <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"/>
+        <rdfs:comment xml:lang="en">Points the Standard with the name of the Industrial Domain</rdfs:comment>
+        <rdfs:label xml:lang="en">has Domain Name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#formationDate -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#formationDate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#StandardOrganization"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="en">Formation date of the Organization</rdfs:comment>
+        <rdfs:label xml:lang="en">has Formation Date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasDBpediaResource -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#hasDBpediaResource"/>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasEdition -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#hasEdition">
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment xml:lang="en">Indicates the current Edition/Version number of the document.</rdfs:comment>
+        <rdfs:label xml:lang="en">has Edition</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasImplementationFormat -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#hasImplementationFormat">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Publication"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:comment xml:lang="en">Describes the name of the implementation or serialization format of the Publication, e.g., XML, Document, binary, batch</rdfs:comment>
+        <rdfs:label xml:lang="en">has Implementation Format</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasObjective -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#hasObjective">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#ISA95Level"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Specifies the objectives for the different ISA 95 levels.</rdfs:comment>
+        <rdfs:label xml:lang="en">has Objective</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasOfficialResource -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#hasOfficialResource">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Publication"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasOntology -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#hasOntology">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Publication"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        <rdfs:comment xml:lang="en">Point to the URL of a recognized Ontology representation of the Standard</rdfs:comment>
+        <rdfs:label xml:lang="en">has Ontology</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasPages -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#hasPages">
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Indicates the number of pages in the document.</rdfs:comment>
+        <rdfs:label xml:lang="en">has Pages</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasPublicationDate -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#hasPublicationDate">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Publication"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="en">Publication date of the Publication</rdfs:comment>
+        <rdfs:label xml:lang="en">has Publication Date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasStabilityDate -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#hasStabilityDate">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Publication"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
+        <rdfs:comment xml:lang="en">Stability date of a publication. Publications are valid for a certain period, i.e., the Stability Period. This property defines the end of the stability period.</rdfs:comment>
+        <rdfs:label xml:lang="en">has Stability Date</rdfs:label>
+        <rdfs:seeAlso rdf:resource="https://webstore.iec.ch/webstore/webstore.nsf/xpFAQ.xsp?Open&amp;id=ADMN-7NALM5"/>
+        <skos:note>The data specified is not actually a Date but an Year</skos:note>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasStatus -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#hasStatus">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#Publication"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:comment xml:lang="en">Publication status of the Standard, e.g., Valid, Revised, Published, under preparation, Released</rdfs:comment>
+        <rdfs:label xml:lang="en">has Status</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasTag -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#hasTag">
+        <rdfs:range rdf:resource="http://purl.org/muto/core#Tag"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:comment xml:lang="en">Points to the identification of the standards</rdfs:comment>
+        <rdfs:label xml:lang="en">has Tag</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasTask -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#hasTask">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#ISA95Level"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Specifies the tasks for the different ISA 95 levels.</rdfs:comment>
+        <rdfs:label xml:lang="en">has Task</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#hasWikipediaArticle -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#hasWikipediaArticle"/>
+    
+
+
+    <!-- https://w3id.org/i40/sto#orgName -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#orgName">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#StandardOrganization"/>
+        <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"/>
+        <rdfs:comment xml:lang="en">Name of the Organization</rdfs:comment>
+        <rdfs:label xml:lang="en">Org Name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/i40/sto#stoPartName -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/i40/sto#stoPartName">
+        <rdfs:domain rdf:resource="https://w3id.org/i40/sto#StandardPart"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Name of the standard part.</rdfs:comment>
+        <rdfs:label xml:lang="en">std Part Name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/ontology#Country -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology#Country"/>
+    
+
+
+    <!-- http://dbpedia.org/ontology#Place -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology#Place"/>
+    
+
+
+    <!-- http://example.org/iira#CrosscuttingFunction -->
+
+    <owl:Class rdf:about="http://example.org/iira#CrosscuttingFunction">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <terms:creator xml:lang="en">sebastian</terms:creator>
+        <rdfs:comment xml:lang="en">Often these enabling functions, the so-called crosscutting functions, need to be made available across many of the system functional components. For Reference Architecture 6: Functional Viewpoint example, system functions need to be connected so they can interact with each other to complete functionality at the system level.</rdfs:comment>
+        <rdfs:label xml:lang="en">IIRA Crosscutting Function</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/iira#FunctionalDomain -->
+
+    <owl:Class rdf:about="http://example.org/iira#FunctionalDomain">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <rdfs:label xml:lang="en">IIRA Functional Domain</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/iira#SystemCharacteristics -->
+
+    <owl:Class rdf:about="http://example.org/iira#SystemCharacteristics">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <rdfs:label xml:lang="en">IIRA System Characteristic</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error1 -->
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error1"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error2 -->
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error2"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/LicenseDocument -->
+
+    <owl:Class rdf:about="http://purl.org/dc/terms/LicenseDocument">
+        <rdfs:comment xml:lang="en">A legal document giving official permission to do something with a Resource.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:label xml:lang="en">License Document</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/dc/terms/LinguisticSystem -->
+
+    <owl:Class rdf:about="http://purl.org/dc/terms/LinguisticSystem"/>
+    
+
+
+    <!-- http://purl.org/spar/deo/Motivation -->
+
+    <owl:Class rdf:about="http://purl.org/spar/deo/Motivation"/>
+    
+
+
+    <!-- http://w3id.org/ids/ram/Perspective -->
+
+    <owl:Class rdf:about="http://w3id.org/ids/ram/Perspective">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <rdfs:label xml:lang="en">IDS RAM Perspective</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ontology-of-units-of-measure.org/resource/om-2/Measure -->
+
+    <owl:Class rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/Measure"/>
+    
+
+
+    <!-- http://www.ontology-of-units-of-measure.org/resource/om-2/Unit -->
+
+    <owl:Class rdf:about="http://www.ontology-of-units-of-measure.org/resource/om-2/Unit"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity -->
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity"/>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor"/>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#AnalogInput -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#AnalogInput">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#AnalogVariable"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Input"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#AnalogOutput -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#AnalogOutput">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#AnalogVariable"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Output"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#AnalogVariable -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#AnalogVariable">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Architecture -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Architecture"/>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ConcurrentState -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ConcurrentState">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#CurrentState -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#CurrentState">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DataInput -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DataInput">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Input"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DataOutput -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DataOutput">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Output"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Device -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Device">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DigitalInput -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DigitalInput">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DigitalVariable"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Input"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DigitalOutput -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DigitalOutput">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DigitalVariable"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Output"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DigitalVariable -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DigitalVariable">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DynamicsModel -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DynamicsModel">
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ExecutionScope -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ExecutionScope">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#FinalState -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#FinalState">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#InitialState -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#InitialState">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Input -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Input">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Loop -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Loop">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SetElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ManyToManyTransition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ManyToManyTransition">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ManyToOneTransition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ManyToOneTransition">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement"/>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Network -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Network"/>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#NextState -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#NextState">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Object -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Object"/>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#OneToManyTransition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#OneToManyTransition">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#OneToOneTransition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#OneToOneTransition">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Output -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Output">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#PreviousState -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#PreviousState">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Process -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Process"/>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#RequestFunction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#RequestFunction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Resource-SharedState -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Resource-SharedState">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Robot -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Robot">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Sequence -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Sequence">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SetElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Service -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Service">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SetElement -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SetElement">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SoftwareResource -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SoftwareResource">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#StateFunction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#StateFunction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SynchronousState -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SynchronousState">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Thing -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Thing">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#TransitionFunction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#TransitionFunction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#class -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#class"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#namedIndividial -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#namedIndividial"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#property -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#property"/>
+    
+
+
+    <!-- http://www.wurvoc.org/vocabularies/om-1.8/Measure -->
+
+    <owl:Class rdf:about="http://www.wurvoc.org/vocabularies/om-1.8/Measure"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Document -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Document"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Organization -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Organization"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Person -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#AccessControlPolicyPoints -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#AccessControlPolicyPoints">
+        <rdfs:comment xml:lang="en">Container for access control policy points.</rdfs:comment>
+        <rdfs:label>Access ControlPolicy Points</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#AdminShell -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#AdminShell">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#HasDataSpecification"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#Identifiable"/>
+        <dc:source xml:lang="en">This definition comprises material from RAMI4.0.</dc:source>
+        <rdfs:label xml:lang="en">Admin Shell</rdfs:label>
+        <skos:altLabel xml:lang="en">Administration Shell</skos:altLabel>
+        <skos:altLabel xml:lang="en">Asset Administration Shell</skos:altLabel>
+        <skos:definition xml:lang="en">Describes the Administration Shell for Assets, Products, Components, e.g. Machines</skos:definition>
+        <skos:prefLabel>Verwaltungsschale</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#AdminShellSubmodel -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#AdminShellSubmodel">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <rdfs:comment xml:lang="en">Describes the Administration Shell concept to organize/classify standards into submodels</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://www.plattform-i40.de/I40/Redaktion/EN/Downloads/Publikation/structure-of-the-administration-shell.pdf?__blob=publicationFile&amp;v=7"/>
+        <rdfs:label xml:lang="en">Admin Shell Sub Model</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#AdministrativeInformation -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#AdministrativeInformation">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#DataSpecification"/>
+        <rdfs:comment xml:lang="en">Every Identifiable may have administrative information. Administrative information includes for example
+ Information about the version of the element
+ Information about who created or who made the last change to the element
+ Information about the languages available in case the element contains text, for translating purposed also themmaster or default language may be defined
+In the first version of the AAS metamodel only version information as defined by IEC 61360 is defined. In later versions additional attributes may be added.</rdfs:comment>
+        <rdfs:label>Administrative Information</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#Asset -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#Asset">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#HasDataSpecification"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#HasKind"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#Identifiable"/>
+        <rdfs:comment xml:lang="en">An Asset describes meta data of an asset that is represented by an AAS.
+The asset may either represent an asset type or an asset instance.
+The asset has a globally unique identifier plus – if needed – additional domain specific (proprietary) identifiers.</rdfs:comment>
+        <rdfs:label xml:lang="en">RAMI Asset Layer</rdfs:label>
+        <skos:altLabel xml:lang="en">Entity</skos:altLabel>
+        <skos:altLabel xml:lang="de">Entität</skos:altLabel>
+        <skos:altLabel xml:lang="en">Object</skos:altLabel>
+        <skos:definition xml:lang="en">Clearly identifiable asset for the Administration Shell</skos:definition>
+        <skos:definition xml:lang="de">Eindeutig identifizierbarer Gegenstand, der aufgrund seiner Bedeutung in der Informationswelt verwaltet wird</skos:definition>
+        <skos:note xml:lang="en">Objects may be known in the form of a type or of an instance. An object in the planning phase is known as a type</skos:note>
+        <skos:prefLabel xml:lang="en">Asset</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#AssetKind -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#AssetKind">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#Dimension"/>
+        <rdfs:comment xml:lang="en">The RAMI4.0 model features one, generalized life-cycle axis, which was derived from IEC 62890. The basic idea is to distinguish for all assets within Industrie 4.0 between possible types and instance. This makes it possible to apply the type/instance distinction for all elements such as material type/material instance, product type/product instance, machine type/ machine instance and more. Business related information will be handled on the &apos;Business&apos; layer of the
+RAMI4.0 model, as well, covering also order details and workflows, again with types/ instances.</rdfs:comment>
+        <rdfs:label xml:lang="en">Asset Kind</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#Blob -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#Blob">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#DataElement"/>
+        <rdfs:comment xml:lang="en">A BLOB is a data element that represents a file that is contained with its source code in the value attribute.</rdfs:comment>
+        <rdfs:label xml:lang="en">BlobDataElement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#ConceptDescription -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#ConceptDescription">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#HasDataSpecification"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#Identifiable"/>
+        <dc:description xml:lang="en">&quot;The AAS itself can also define its own dictionary that contains semantic definitions of its submodel elements. These semantic definitions are called concept descriptions (ConceptDescription). It is optional whether an AAS defines its own concept dictionary (ConceptDictionary) or not.&quot;</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#ConceptDictionary -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#ConceptDictionary">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#Referable"/>
+        <rdfs:comment xml:lang="en">A dictionary contains elements that can be reused. The concept dictionary contains concept descriptions. Typically a concept description dictionary of an AAS contains only concept descriptions of elements used within submodels of the AAS.</rdfs:comment>
+        <rdfs:label>Concept Dictionary</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#DataElement -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#DataElement">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#SubmodelElement"/>
+        <rdfs:comment xml:lang="en">A data element is a submodel element that is not further composed out of other submodel elements. A data element is a submodel element that has a value. The type of value differs for different subtypes of data elements.</rdfs:comment>
+        <rdfs:label>DataElement</rdfs:label>
+        <skos:note>abstract</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#DataSpecification -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#DataSpecification">
+        <rdfs:comment xml:lang="en">Element that can have data specification templates. A template defines the additional attributes an element may or shall have.</rdfs:comment>
+        <rdfs:label xml:lang="en">DataSpecification</rdfs:label>
+        <skos:note xml:lang="en">abstract</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#Dimension -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#Dimension"/>
+    
+
+
+    <!-- https://w3id.org/i40/rami#File -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#File">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#DataElement"/>
+        <rdfs:comment xml:lang="en">A File is a data element that represents a file via its path description.</rdfs:comment>
+        <rdfs:label xml:lang="en">FileDataElement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#Formula -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#Formula">
+        <dc:description xml:lang="en">A formula is used to describe constraints by a logical expression.</dc:description>
+        <rdfs:label xml:lang="en">Formula</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#HasDataSpecification -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#HasDataSpecification">
+        <rdfs:comment xml:lang="en">Element that can have data specification templates. A template defines the additional attributes an element may or shall have.</rdfs:comment>
+        <rdfs:label xml:lang="en">Has Data Specification</rdfs:label>
+        <skos:prefLabel xml:lang="en">Data Specification</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#HasKind -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#HasKind">
+        <rdfs:comment xml:lang="en">An element with a kind is an element that can either represent a type or an instance. Default for an element is that it is representing an instance.</rdfs:comment>
+        <rdfs:label xml:lang="en">Has Kind</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#Identifiable -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#Identifiable">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#Referable"/>
+        <rdfs:comment xml:lang="en">An element that has a globally unique identifier.</rdfs:comment>
+        <rdfs:label xml:lang="en">Identifiable</rdfs:label>
+        <skos:note xml:lang="en">abstract</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#Key -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#Key">
+        <rdfs:comment xml:lang="en">A key is a reference to an element by its id.</rdfs:comment>
+        <rdfs:label>Key</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#ObjectAttributes -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#ObjectAttributes">
+        <rdfs:comment xml:lang="en">A set of data elements that describe object attributes. These attributes need to refer to a data element within an existing submodel.</rdfs:comment>
+        <rdfs:label>Object Attributes</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#Operation -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#Operation">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#SubmodelElement"/>
+        <rdfs:comment xml:lang="en">An operation is a submodel element with input and output variables.</rdfs:comment>
+        <rdfs:label xml:lang="en">Operation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#OperationVariable -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#OperationVariable">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#SubmodelElement"/>
+        <dc:description xml:lang="en">An operation variable is a submodel element that is used as input or output variable of an operation.</dc:description>
+        <rdfs:label>Operation Variable</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#Order -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#Order">
+        <skos:definition xml:lang="en">Each order for manufacturing runs through a life cycle and its specifics necessarily have an impact on the production facility during performance of the order</skos:definition>
+        <skos:note>TODO: Delete?</skos:note>
+        <skos:prefLabel xml:lang="en">Order</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#Property -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#Property">
+        <rdfs:comment xml:lang="en">A property is a data element that has a single value.</rdfs:comment>
+        <rdfs:label xml:lang="en">Property</rdfs:label>
+        <skos:note>TODO: delete?</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#PropertyValueType -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#PropertyValueType">
+        <dc:description xml:lang="en">The qualifier value is the value of the qualifier.
+Constraint AASd-006: if both, the value and the valueId are present then the value needs to be identical to the short name of the referenced coded value in qualifierValueId.</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#Qualifier -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#Qualifier">
+        <dc:description xml:lang="en">A qualifier is a type-value pair that makes additional statements w.r.t. the value of the element.</dc:description>
+        <rdfs:label xml:lang="en">Qualifier</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#RAMIHierarchyLevel -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#RAMIHierarchyLevel">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <rdfs:label xml:lang="en">RAMI Hierarchy Level</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#RAMIITLayer -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#RAMIITLayer">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <rdfs:label xml:lang="en">RAMI IT Layer</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#RAMILifeCycleLayer -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#RAMILifeCycleLayer">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <rdfs:label xml:lang="en">RAMI Life Cycle Layer</rdfs:label>
+        <rdfs:seeAlso>http://www.zvei.org/en/subjects/Industry-40/Pages/The-Reference-Architectural-Model-RAMI-40-and-the-Industrie-40-Component.aspx</rdfs:seeAlso>
+        <skos:definition xml:lang="en">It describes the different Life Cycle and Value Stream layers for the RAMI model according to the IEC 62890 Standard.</skos:definition>
+        <skos:prefLabel xml:lang="en">RAMI Life Cycle Layer</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#Referable -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#Referable">
+        <rdfs:comment xml:lang="en">An element that is referable by its idShort. This id is not globally unique. This id is unique within the name space of the element.</rdfs:comment>
+        <rdfs:label xml:lang="en">Referable</rdfs:label>
+        <skos:note>abstract</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#Reference -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#Reference">
+        <rdfs:comment xml:lang="en">Reference to either a model element of the same or another AAs or to an external entity.
+A reference is an ordered list of keys, each key referencing an element. The complete list of keys may for example be concatenated to a path that then gives unique access to an element or entity.</rdfs:comment>
+        <rdfs:label>Reference</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#ReferenceElement -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#ReferenceElement">
+        <dc:description xml:lang="en">A reference element is a data element that defines a reference to another element within the same or another AAS or a reference to an external object or entity.</dc:description>
+        <rdfs:label>Reference Element</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#RelationshipElement -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#RelationshipElement">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#SubmodelElement"/>
+        <dc:description xml:lang="en">A relationship element is used to define a relationship between two referable elements.</dc:description>
+        <rdfs:label xml:lang="en">RelationshipElement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#Security -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#Security">
+        <rdfs:comment xml:lang="en">Container for security relevant information of the AAS.</rdfs:comment>
+        <rdfs:label xml:lang="en">RAMI Security</rdfs:label>
+        <rdfs:label>Security</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#Submodel -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#Submodel">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#HasDataSpecification"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#HasKind"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#Identifiable"/>
+        <rdfs:comment xml:lang="en">A Submodel defines a specific aspect of the asset represented by the AAS.
+A submodel is used to structure the virtual representation and technical functionality of an Administration Shell into distinguishable parts. Each submodel refers to a well-defined domain or subject matter.
+Submodels can become standardized and thus become submodels types. Submodels can have different life-cycles.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Describe the different types of Data related to the I4.0 Asset</rdfs:comment>
+        <rdfs:label xml:lang="en">Submodel</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#SubmodelElement -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#SubmodelElement">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#HasDataSpecification"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#HasKind"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#Identifiable"/>
+        <rdfs:comment xml:lang="en">A submodel element is an element suitable for the description and differentiation of assets.</rdfs:comment>
+        <rdfs:label>Submodel Element</rdfs:label>
+        <skos:note xml:lang="en">abstract</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#SubmodelElementCollection -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#SubmodelElementCollection">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#SubmodelElement"/>
+        <rdfs:comment xml:lang="en">A submodel element collection is a set or list of submodel elements.</rdfs:comment>
+        <rdfs:label xml:lang="en">SubmodelElementCollection</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#Value -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#Value">
+        <rdfs:comment xml:lang="en">Current value that can be specified through an instanced submodel (for
+instance in station 2) or through the asset, for example.</rdfs:comment>
+        <rdfs:label xml:lang="en">Value</rdfs:label>
+        <skos:note xml:lang="en">maybe &apos;containedElement&apos;?</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/rami#View -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/rami#View">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#HasDataSpecification"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/rami#Referable"/>
+        <rdfs:comment xml:lang="en">Different views associated to the Administration Shell via the Submodels</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="de">https://www.plattform-i40.de/I40/Redaktion/DE/Downloads/Publikation/hm-2018-trilaterale-coop.html</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Sicht</rdfs:label>
+        <rdfs:label xml:lang="en">View</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#ArchitectureDescription -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#ArchitectureDescription">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardizationFramework"/>
+        <rdfs:comment xml:lang="en">A Reference Architecture describes the structure of a system with its element types and their structures, as well as their interaction types, among each other and with their environment. Describing this, a Reference Architecture defines restrictions for an instantiation (concrete architecture). Through abstraction from individual details, a Reference Architecture is universally valid within a specific domain. Further architectures with the same functional requirements can be constructed based on the reference architecture. Along with reference architectures comes a recommendation, based on experiences from existing developments as well as from a wide acceptance and recognition by its users or per definition. [ISO/IEC42010]
+
+Note: It is important to distinguish the Reference Architecture from a Reference Architecture Description. While the first refers to a mental model or shared concept, the second is potentially only one of several different documents describing this model.</rdfs:comment>
+        <rdfs:comment xml:lang="en">ISO 42010 definition of an Architecture Description</rdfs:comment>
+        <rdfs:label>Architecture Description</rdfs:label>
+        <rdfs:seeAlso>https://www.iso.org/standard/50508.html</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#BdvaConcern -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#BdvaConcern">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <terms:creator xml:lang="en">sebastian</terms:creator>
+        <rdfs:comment xml:lang="en">The BDV Reference Model distinguishes between two different elements. On the one hand, it describes the elements that are at the core of the BDVA; on the other, it outlines the features that are developed in strong collaboration with related European activities. The BDV Reference Model is structured into horizontal and vertical concerns.
+Horizontal concerns cover specific aspects along the data processing Vertical concerns address cross-cutting issues, which may affect all the horizontal concerns. In addition, vertical concerns may also involve non-technical aspects.</rdfs:comment>
+        <rdfs:label xml:lang="en">BDVA Concern</rdfs:label>
+        <sto:hasOfficialResource rdf:resource="http://www.bdva.eu/sites/default/files/BDVA_SRIA_v4_Ed1.1.pdf"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#BusinessCycleSCM -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#BusinessCycleSCM">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <rdfs:comment xml:lang="en">Suply Chain Management Business Cycle.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://nvlpubs.nist.gov/nistpubs/ir/2016/NIST.IR.8107.pdf"/>
+        <rdfs:label xml:lang="en">Business Cycle SCM</rdfs:label>
+        <rdfs:seeAlso>https://en.wikipedia.org/wiki/Supply_chain_management</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#Concern -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#Concern">
+        <terms:creator xml:lang="en">sebastian</terms:creator>
+        <rdfs:comment xml:lang="en">A concern regards a specific challenge or topic as defined by ISO42010. Each concern should at least be regarded by one view of an architecture.</rdfs:comment>
+        <rdfs:label>Concern</rdfs:label>
+        <sto:hasDBpediaResource rdf:resource="http://dbpedia.org/resource/ISO/IEC_42010"/>
+        <sto:hasOfficialResource rdf:resource="http://www.iso-architecture.org/42010/"/>
+        <sto:hasWikipediaArticle rdf:resource="https://en.wikipedia.org/wiki/ISO/IEC_42010#Conceptual_Model_-_Concern"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#ConnectivityLayer -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#ConnectivityLayer">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <rdfs:comment xml:lang="en">Connectivity Layer of the Internet Connectivity Framework</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://www.iiconsortium.org/pdf/IIC_PUB_G5_V1.01_PB_20180228.pdf"/>
+        <rdfs:label xml:lang="en">Connectivity Layer</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#Domain -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#Domain">
+        <rdfs:comment xml:lang="en">Represents the Domains in which the Standards can be used</rdfs:comment>
+        <rdfs:label xml:lang="en">Domain</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#FiwareChapter -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#FiwareChapter">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <terms:creator xml:lang="en">sebastian</terms:creator>
+        <rdfs:comment xml:lang="en">Following is a description of the Reference Architecture linked to the different chapters of FIWARE. A description of FIWARE Generic Enablers (GEs) being supported in each chapter is provided, including the high-level description of the APIs that each FIWARE Generic Enabler (GE) exposes to application developers or it uses to connect to another FIWARE GEs.</rdfs:comment>
+        <rdfs:label xml:lang="en">Fiware Chapter</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#IIoTConsortium -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#IIoTConsortium">
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <terms:creator>sebastian</terms:creator>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#ISA95Level -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#ISA95Level">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <rdfs:comment xml:lang="en">Describes the ISA95 levels to classify the industry Standards according to those levels. Eg., Device, SCADA, etc. It has strong relation to the RAMI Hierarchy levels</rdfs:comment>
+        <rdfs:label xml:lang="en">ISA 95 Level</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#InternationalClassificationForStandards -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#InternationalClassificationForStandards">
+        <rdfs:comment xml:lang="en">Serves as a structure for catalogues of international, regional and national standards and other normative documents, and as a basis for standing-order systems.</rdfs:comment>
+        <rdfs:label xml:lang="en">International Classification For Standards</rdfs:label>
+        <rdfs:seeAlso rdf:resource="https://www.iso.org/publication/PUB100033.html"/>
+        <sto:hasOfficialResource rdf:resource="https://www.iso.org/publication/PUB100033.html"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#ProductDevelopmentLifeCycle -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#ProductDevelopmentLifeCycle">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <rdfs:comment xml:lang="en">PLM is the process of managing the entire lifecycle of a product from inception, through engineering design and manufacture, to service and disposal of manufactured products. Related areas are PLMManagement, Modeling Practice, Product Model Data exchange, Manufacturing Model Data, Product Catalog Data.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Product Development Life-Cycle Phase</rdfs:comment>
+        <rdfs:isDefinedBy>https://en.wikipedia.org/wiki/Product_lifecycle</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">Product Development Life Cycle</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#ProductionSystemLifeCycle -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#ProductionSystemLifeCycle">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <rdfs:comment xml:lang="en">Collections of machines, equipment, and auxiliary systems organized to create goods and services from various resources.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://nvlpubs.nist.gov/nistpubs/ir/2016/NIST.IR.8107.pdf"/>
+        <rdfs:label xml:lang="en">Production System Life Cycle</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#Publication -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#Publication">
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <rdfs:comment xml:lang="en">Specifies a Publication. E.g., International Standards,Technical Specifications,Publicly Available Specifications,Amendments
+                Technical Corrigenda,Interpretation Sheets,Technical Reports,Guides</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/i40/sto#IEC"/>
+        <rdfs:label xml:lang="en">Publication</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.iec.ch/standardsdev/publications/"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#Standard -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#Standard">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#Publication"/>
+        <ns:attributionURL rdf:resource="http://www.iec.ch"/>
+        <rdfs:comment xml:lang="en">A document, established by consensus and approved by a recognized body, that provides, for common and repeated use, rules, guidelines or characteristics for activities or their results, aimed at the achievement of the optimum degree of order in a given context.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/i40/sto#IEC"/>
+        <rdfs:label xml:lang="en">Standard</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.iec.ch/standardsdev/publications/is.htm"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#StandardClassification -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#StandardClassification">
+        <rdfs:comment xml:lang="en">Describes categorization areas that the different Standardizations Initiatives use to category Standards.</rdfs:comment>
+        <rdfs:label xml:lang="en">Standard Classification</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#StandardOrganization -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#StandardOrganization">
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <rdfs:comment xml:lang="en">Define the standards organizations that develop and publish industry standards</rdfs:comment>
+        <rdfs:label xml:lang="en">StandardOrganization</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#StandardPart -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#StandardPart">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#Publication"/>
+        <rdfs:comment xml:lang="en">Typically Standards are divided into parts. E.g., ISA 95 has part Part 1: Models and Terminology, Part 2: Object Model Attributes, etc.</rdfs:comment>
+        <rdfs:label>StandardPart</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#StandardizationFramework -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#StandardizationFramework">
+        <rdfs:comment xml:lang="en">Describes existings Standardizations Initiatives, e.g, RAMI, NIST.</rdfs:comment>
+        <rdfs:label xml:lang="en">Standarization Framework</rdfs:label>
+        <skos:altLabel xml:lang="en">Reference Architecture</skos:altLabel>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#TechnicalCommittee -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#TechnicalCommittee">
+        <rdfs:comment xml:lang="en">Specifies the representitive code name of the Technical Committee that covers a Standard for e.g, TC 1, SC 3C. Many thousand experts carry out standardization work in the IEC in TCs (technical committees) and SCs (subcommittees), in hundreds of working groups, project and maintenance teams. They represent the national electrotechnical needs of IEC Member countries and of many Affiliates at the global level in the IEC. These technical experts are sent by industry, governments, test and research laboratories, academia and even consumer groups to work on the global, neutral and independent platform of the IEC. That&apos;s where they develop globally relevant, voluntary, consensus based IEC International Standards.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/i40/sto#IEC"/>
+        <rdfs:label xml:lang="en">Technical Committee</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.iec.ch/dyn/www/f?p=103:62:9979528650478:::62:FSP_ORG_ID,FSP_LANG_ID:,25"/>
+        <skos:note>1.sto:       a property explaining that TC and SC are managed by SMB (Standardization Management Board) needs to be added</skos:note>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#TechnicalReport -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#TechnicalReport">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#Publication"/>
+        <rdfs:comment xml:lang="en">Specifies that a given Publication is a Technical Report</rdfs:comment>
+        <rdfs:comment xml:lang="en">Technical Reports contain collected data of a kind different from that normally published as an International Standard, for example data obtained from a survey carried out among national committees, data of work in other international organizations or data on &quot;the state of the art&quot; in relation to standards of national committees on a particular subject.Technical Reports are entirely informative in nature and shall not contain matter implying that they are normative</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/i40/sto#IEC"/>
+        <rdfs:label xml:lang="en">Technical Report</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.iec.ch/standardsdev/publications/tr.htm"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#TechnicalSpecification -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#TechnicalSpecification">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#Publication"/>
+        <rdfs:comment xml:lang="en">Specifies that a given Publication is a Technical Specification</rdfs:comment>
+        <rdfs:comment xml:lang="en">Technical Specifications are often published when the subject under question is still under development or when insufficient consensus for approval of an International Standard is available.Technical Specifications approach International Standards in terms of detail and completeness, but have not yet passed through all approval stages either because consensus has not been reached or because standardization is seen to be premature.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/i40/sto#IEC"/>
+        <rdfs:label xml:lang="en">Technical Specification</rdfs:label>
+        <rdfs:seeAlso rdf:resource="http://www.iec.ch/standardsdev/publications/ts.htm"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#Technology -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#Technology">
+        <terms:creator xml:lang="en">sebastian</terms:creator>
+        <rdfs:comment xml:lang="en">A Technology is an implementation of one or many standards in order to achieve a goal.</rdfs:comment>
+        <rdfs:label xml:lang="en">Technology</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/i40/sto#Viewpoint -->
+
+    <owl:Class rdf:about="https://w3id.org/i40/sto#Viewpoint">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <terms:creator>sebastian</terms:creator>
+        <rdfs:comment xml:lang="en">ISO 42010 definition of a Viewpoint</rdfs:comment>
+        <rdfs:label>Viewpoint</rdfs:label>
+        <rdfs:seeAlso rdf:resource="https://www.iso.org/standard/50508.html"/>
+        <sto:hasDBpediaResource rdf:resource="http://dbpedia.org/resource/ISO/IEC_42010"/>
+        <sto:hasOfficialResource rdf:resource="http://www.iso-architecture.org/42010/"/>
+        <sto:hasWikipediaArticle rdf:resource="https://en.wikipedia.org/wiki/ISO/IEC_42010#Conceptual_Model_-_Architecture_Viewpoint"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ids/ram/Layer -->
+
+    <owl:Class rdf:about="https://w3id.org/ids/ram/Layer">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/i40/sto#StandardClassification"/>
+        <rdfs:label xml:lang="en">IDS RAM Layer</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
+        <terms:description xml:lang="en">Examples of a Creator include a person, an organization, or a service.</terms:description>
+        <terms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#creatorT-002"/>
+        <terms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-01-14</terms:issued>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-10-11</terms:modified>
+        <rdfs:comment xml:lang="en">An entity primarily responsible for making the resource.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:label xml:lang="en">Creator</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/dc/terms/hasVersion">
+        <terms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#hasVersion-003"/>
+        <terms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-07-11</terms:issued>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-01-14</terms:modified>
+        <rdfs:comment xml:lang="en">A related resource that is a version, edition, or adaptation of the described resource.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:label xml:lang="en">Has Version</rdfs:label>
+        <skos:note xml:lang="en">This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration.</skos:note>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/dc/terms/issued">
+        <terms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#issued-003"/>
+        <terms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-07-11</terms:issued>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-01-14</terms:modified>
+        <rdfs:comment xml:lang="en">Date of formal issuance (e.g., publication) of the resource.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:label xml:lang="en">Date Issued</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/dc/terms/modified">
+        <terms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#modified-003"/>
+        <terms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2000-07-11</terms:issued>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-01-14</terms:modified>
+        <rdfs:comment xml:lang="en">Date on which the resource was changed.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:label xml:lang="en">Date Modified</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/dc/terms/title">
+        <terms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#titleT-002"/>
+        <terms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2008-01-14</terms:issued>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-10-11</terms:modified>
+        <rdfs:comment xml:lang="en">A name given to the resource.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:label xml:lang="en">Title</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/i40/rami#description">
+        <rdfs:comment xml:lang="en">Description or comments on the element. The description can be provided in several languages.</rdfs:comment>
+        <skos:prefLabel xml:lang="en">has Description</skos:prefLabel>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/i40/rami#idShort">
+        <rdfs:label xml:lang="en">idShort</rdfs:label>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/i40/rami#semanticId">
+        <rdfs:comment xml:lang="en">Points to the Expression Semantic of the Submodels</rdfs:comment>
+        <rdfs:comment xml:lang="en">The semantic id might refer to an external information source, which explains the formulation of the submodel (for example an PDF if a standard)</rdfs:comment>
+        <rdfs:label xml:lang="en">semanticId</rdfs:label>
+        <skos:altLabel xml:lang="en">has Semantic Expression</skos:altLabel>
+        <skos:prefLabel xml:lang="en">has semantic ID</skos:prefLabel>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/i40/sto#hasDBpediaResource">
+        <rdfs:comment xml:lang="en">Instance&apos;s DBpedia Resource</rdfs:comment>
+        <rdfs:label xml:lang="en">has DBpedia Resource</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/i40/sto#hasOfficialResource">
+        <rdfs:comment xml:lang="en">Points to the URL of the official websilte from which published the document</rdfs:comment>
+        <rdfs:comment xml:lang="en">Standard Official Website</rdfs:comment>
+        <rdfs:label xml:lang="en">has Official Resource</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="https://w3id.org/i40/sto#hasWikipediaArticle">
+        <rdfs:comment xml:lang="en">Wikipedia Article about the Standard</rdfs:comment>
+        <rdfs:label xml:lang="en">has Wikipedia Article</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasFeature"/>
+                <owl:hasValue>Device</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Device"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasFeature"/>
+                <owl:hasValue>Person</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasFeature"/>
+                <owl:hasValue>SoftwareResource</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SoftwareResource"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasFeature"/>
+                <owl:hasValue>Thing</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Thing"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#CurrentState"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isActive"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ConcurrentState"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#callsAService"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Service"/>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#RequestFunction"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#finalizesSequence"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Sequence"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isParentSetElement"/>
+                        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#FinalState"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#initializesSequence"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Sequence"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isParentSetElement"/>
+                        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#InitialState"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNextState"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#CurrentState"/>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#PreviousState"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasPreviousState"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#CurrentState"/>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#NextState"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isActive"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#CurrentState"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable"/>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDataType"/>
+                        <owl:hasValue>array</owl:hasValue>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDataType"/>
+                        <owl:hasValue>string</owl:hasValue>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable"/>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDataType"/>
+                        <owl:hasValue>double</owl:hasValue>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDataType"/>
+                        <owl:hasValue>float</owl:hasValue>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDataType"/>
+                        <owl:hasValue>integer</owl:hasValue>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDataType"/>
+                        <owl:hasValue>long</owl:hasValue>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#AnalogVariable"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#actsOver"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Object"/>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Output"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#monitors"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Object"/>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Input"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDataType"/>
+                <owl:hasValue>boolean</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DigitalVariable"/>
+    </owl:Class>
+    <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isParentSetElement"/>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Sequence"/>
+    </owl:Restriction>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

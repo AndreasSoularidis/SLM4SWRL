@@ -52,5 +52,9 @@ class TranslatorConfig:
       self.rules_category = self.rules_category or "PARKINSON"
     elif self.domain == "SAR":
       self.rules_category = self.rules_category or "SAR"
+    elif self.domain == "FWP":
+      self.rules_category = self.rules_category or "FWP"
+    elif self.domain == "AUTOMATION":
+      self.rules_category = self.rules_category or "AUTOMATION"
 
 

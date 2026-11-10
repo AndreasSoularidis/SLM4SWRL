@@ -30,6 +30,10 @@ class EmbeddingsRAG(RAGEngineInterface):
         ontology_name = "Wear4PDmoveOnto"
       case "SAR":
         ontology_name = "beAWARE"
+      case "FWP":
+        ontology_name = "fwp_ontology"
+      case "AUTOMATION":
+        ontology_name = "Automation-I4.0-Ontology"
 
     with open(f"{self.ontology_path}/{ontology_name}_{self.serialization}.txt", "r", encoding="utf-8") as f:
       docs = f.read()

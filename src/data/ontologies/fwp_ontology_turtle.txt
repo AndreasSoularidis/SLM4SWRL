@@ -1,0 +1,440 @@
+@prefix : <http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#> .
+
+<http://www.semanticweb.org/adklts/ontologies/2025/3/FWP> rdf:type owl:Ontology ;
+                                                           <http://purl.org/dc/terms/abstract> "To provide a structured, machine-readable representation of kurtosis, signal entropy, and smoothness and their associated fuzzy categories for investigating healthy and Parkinsonian patterns."@en ;
+                                                           <http://purl.org/dc/terms/creator> "Adam Koletis" ;
+                                                           <http://purl.org/dc/terms/description> "An ontology for representing individuals, measurements, and fuzzy feature categories based on kurtosis, signal entropy, and smoothness. It includes healthy-status and Parkinsonian-severity categories, fuzzy OWL annotations, and SWRL rules."@en ;
+                                                           <http://purl.org/dc/terms/language> "en" ;
+                                                           <http://purl.org/dc/terms/modified> "2026-09-08"^^xsd:date ;
+                                                           <http://purl.org/dc/terms/subject> "Fuzzy ontologies; measurement features; Parkinsonian patterns"@en ;
+                                                           <http://purl.org/dc/terms/title> "FWP — Fuzzy Wave Feature Ontology"@en ;
+                                                           <http://purl.org/vocab/vann/preferredNamespacePrefix> "FWP" ;
+                                                           <http://purl.org/vocab/vann/preferredNamespaceUri> : ;
+                                                           rdfs:comment "Metadata-enriched documentation copy. Aim and description summarize the vocabulary and rules in the supplied file. No owl:imports declarations are present. No additional contributors were supplied."@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/abstract
+<http://purl.org/dc/terms/abstract> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/language
+<http://purl.org/dc/terms/language> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+<http://purl.org/dc/terms/modified> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/subject
+<http://purl.org/dc/terms/subject> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+<http://purl.org/vocab/vann/preferredNamespaceUri> rdf:type owl:AnnotationProperty .
+
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#fuzzyLabel
+:fuzzyLabel rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzyKurtosisHigh
+:FuzzyKurtosisHigh rdf:type rdfs:Datatype ;
+                   :fuzzyLabel """<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"-1.089635 \" b=\"-0.981657\" c=\"-0.563756\" />
+</fuzzyOwl2>""" ;
+                   owl:equivalentClass [ rdf:type rdfs:Datatype ;
+                                         owl:intersectionOf ( [ rdf:type rdfs:Datatype ;
+                                                                owl:onDatatype xsd:double ;
+                                                                owl:withRestrictions ( [ xsd:minInclusive "-1.0855"^^xsd:double
+                                                                                       ]
+                                                                                     )
+                                                              ]
+                                                              [ rdf:type rdfs:Datatype ;
+                                                                owl:onDatatype xsd:double ;
+                                                                owl:withRestrictions ( [ xsd:maxInclusive "-0.564"^^xsd:double
+                                                                                       ]
+                                                                                     )
+                                                              ]
+                                                            )
+                                       ] .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzyKurtosisLow
+:FuzzyKurtosisLow rdf:type rdfs:Datatype ;
+                  :fuzzyLabel """<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"-1.318914\" b=\"-1.238854\" c=\"-1.160034\" />
+</fuzzyOwl2>""" ;
+                  owl:equivalentClass [ rdf:type rdfs:Datatype ;
+                                        owl:intersectionOf ( [ rdf:type rdfs:Datatype ;
+                                                               owl:onDatatype xsd:double ;
+                                                               owl:withRestrictions ( [ xsd:minInclusive "-1.321"^^xsd:double
+                                                                                      ]
+                                                                                    )
+                                                             ]
+                                                             [ rdf:type rdfs:Datatype ;
+                                                               owl:onDatatype xsd:double ;
+                                                               owl:withRestrictions ( [ xsd:maxInclusive "-1.167"^^xsd:double
+                                                                                      ]
+                                                                                    )
+                                                             ]
+                                                           )
+                                      ] .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzyKurtosisMedium
+:FuzzyKurtosisMedium rdf:type rdfs:Datatype ;
+                     :fuzzyLabel """<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"-1.178301\" b=\"-1.129060\" c=\"-1.067824\" />
+</fuzzyOwl2>""" ;
+                     owl:equivalentClass [ rdf:type rdfs:Datatype ;
+                                           owl:intersectionOf ( [ rdf:type rdfs:Datatype ;
+                                                                  owl:onDatatype xsd:double ;
+                                                                  owl:withRestrictions ( [ xsd:minInclusive "-1.185"^^xsd:double
+                                                                                         ]
+                                                                                       )
+                                                                ]
+                                                                [ rdf:type rdfs:Datatype ;
+                                                                  owl:onDatatype xsd:double ;
+                                                                  owl:withRestrictions ( [ xsd:maxInclusive "-1.059"^^xsd:double
+                                                                                         ]
+                                                                                       )
+                                                                ]
+                                                              )
+                                         ] .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySignalEntropyHigh
+:FuzzySignalEntropyHigh rdf:type rdfs:Datatype ;
+                        :fuzzyLabel """<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"2.282196\" b=\"2.291570\" c=\"2.301314\" />
+</fuzzyOwl2>""" ;
+                        owl:equivalentClass [ rdf:type rdfs:Datatype ;
+                                              owl:intersectionOf ( [ rdf:type rdfs:Datatype ;
+                                                                     owl:onDatatype xsd:double ;
+                                                                     owl:withRestrictions ( [ xsd:minInclusive "2.28"^^xsd:double
+                                                                                            ]
+                                                                                          )
+                                                                   ]
+                                                                   [ rdf:type rdfs:Datatype ;
+                                                                     owl:onDatatype xsd:double ;
+                                                                     owl:withRestrictions ( [ xsd:maxInclusive "2.3"^^xsd:double
+                                                                                            ]
+                                                                                          )
+                                                                   ]
+                                                                 )
+                                            ] .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySignalEntropyLow
+:FuzzySignalEntropyLow rdf:type rdfs:Datatype ;
+                       :fuzzyLabel """<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"2.142051\" b=\"2.247265\" c=\"2.270753\" />
+</fuzzyOwl2>""" ;
+                       owl:equivalentClass [ rdf:type rdfs:Datatype ;
+                                             owl:intersectionOf ( [ rdf:type rdfs:Datatype ;
+                                                                    owl:onDatatype xsd:double ;
+                                                                    owl:withRestrictions ( [ xsd:minInclusive "2.14"^^xsd:double
+                                                                                           ]
+                                                                                         )
+                                                                  ]
+                                                                  [ rdf:type rdfs:Datatype ;
+                                                                    owl:onDatatype xsd:double ;
+                                                                    owl:withRestrictions ( [ xsd:maxInclusive "2.26"^^xsd:double
+                                                                                           ]
+                                                                                         )
+                                                                  ]
+                                                                )
+                                           ] .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySignalEntropyMedium
+:FuzzySignalEntropyMedium rdf:type rdfs:Datatype ;
+                          :fuzzyLabel """<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"2.265899\" b=\"2.276484\" c=\"2.284394\" />
+</fuzzyOwl2>""" ;
+                          owl:equivalentClass [ rdf:type rdfs:Datatype ;
+                                                owl:intersectionOf ( [ rdf:type rdfs:Datatype ;
+                                                                       owl:onDatatype xsd:double ;
+                                                                       owl:withRestrictions ( [ xsd:minInclusive "2.25"^^xsd:double
+                                                                                              ]
+                                                                                            )
+                                                                     ]
+                                                                     [ rdf:type rdfs:Datatype ;
+                                                                       owl:onDatatype xsd:double ;
+                                                                       owl:withRestrictions ( [ xsd:maxInclusive "2.28"^^xsd:double
+                                                                                              ]
+                                                                                            )
+                                                                     ]
+                                                                   )
+                                              ] .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySmoothnessHigh
+:FuzzySmoothnessHigh rdf:type rdfs:Datatype ;
+                     :fuzzyLabel """<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"0.036604\" b=\"0.046033\" c=\"0.059681\" />
+</fuzzyOwl2>""" ;
+                     owl:equivalentClass [ rdf:type rdfs:Datatype ;
+                                           owl:intersectionOf ( [ rdf:type rdfs:Datatype ;
+                                                                  owl:onDatatype xsd:double ;
+                                                                  owl:withRestrictions ( [ xsd:minInclusive "0.036604"^^xsd:double
+                                                                                         ]
+                                                                                       )
+                                                                ]
+                                                                [ rdf:type rdfs:Datatype ;
+                                                                  owl:onDatatype xsd:double ;
+                                                                  owl:withRestrictions ( [ xsd:maxInclusive "0.059681"^^xsd:double
+                                                                                         ]
+                                                                                       )
+                                                                ]
+                                                              )
+                                         ] .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySmoothnessLow
+:FuzzySmoothnessLow rdf:type rdfs:Datatype ;
+                    :fuzzyLabel """<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"0.007047\" b=\"0.018882\" c=\"0.027102\" />
+</fuzzyOwl2>""" ;
+                    owl:equivalentClass [ rdf:type rdfs:Datatype ;
+                                          owl:intersectionOf ( [ rdf:type rdfs:Datatype ;
+                                                                 owl:onDatatype xsd:double ;
+                                                                 owl:withRestrictions ( [ xsd:minInclusive "0.007047"^^xsd:double
+                                                                                        ]
+                                                                                      )
+                                                               ]
+                                                               [ rdf:type rdfs:Datatype ;
+                                                                 owl:onDatatype xsd:double ;
+                                                                 owl:withRestrictions ( [ xsd:maxInclusive "0.027102"^^xsd:double
+                                                                                        ]
+                                                                                      )
+                                                               ]
+                                                             )
+                                        ] .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#FuzzySmoothnessMedium
+:FuzzySmoothnessMedium rdf:type rdfs:Datatype ;
+                       :fuzzyLabel """<fuzzyOwl2 fuzzyType=\"datatype\">
+<Datatype type=\"triangular\" a=\"0.025078\" b=\"0.032118\" c=\"0.038903\" />
+</fuzzyOwl2>""" ;
+                       owl:equivalentClass [ rdf:type rdfs:Datatype ;
+                                             owl:intersectionOf ( [ rdf:type rdfs:Datatype ;
+                                                                    owl:onDatatype xsd:double ;
+                                                                    owl:withRestrictions ( [ xsd:minInclusive "0.025078"^^xsd:double
+                                                                                           ]
+                                                                                         )
+                                                                  ]
+                                                                  [ rdf:type rdfs:Datatype ;
+                                                                    owl:onDatatype xsd:double ;
+                                                                    owl:withRestrictions ( [ xsd:maxInclusive "0.038903"^^xsd:double
+                                                                                           ]
+                                                                                         )
+                                                                  ]
+                                                                )
+                                           ] .
+
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasMeasurement
+:hasMeasurement rdf:type owl:ObjectProperty ;
+                rdfs:domain :Individuals ;
+                rdfs:range :Measurement .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasKurtosis
+:hasKurtosis rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Measurement ;
+             rdfs:range xsd:double .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasSignalEntropy
+:hasSignalEntropy rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Measurement ;
+                  rdfs:range xsd:double .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#hasSmoothness
+:hasSmoothness rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Measurement ;
+               rdfs:range xsd:double .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Healthy
+:Healthy rdf:type owl:Class ;
+         rdfs:subClassOf :Individuals .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#HealthyStatusHigh
+:HealthyStatusHigh rdf:type owl:Class ;
+                   rdfs:subClassOf :Healthy .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#HealthyStatusLow
+:HealthyStatusLow rdf:type owl:Class ;
+                  rdfs:subClassOf :Healthy .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#HealthyStatusMedium
+:HealthyStatusMedium rdf:type owl:Class ;
+                     rdfs:subClassOf :Healthy .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Individuals
+:Individuals rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#KurtosisHigh
+:KurtosisHigh rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasKurtosis ;
+                                    owl:someValuesFrom :FuzzyKurtosisHigh
+                                  ] ;
+              rdfs:subClassOf :Measurement .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#KurtosisLow
+:KurtosisLow rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasKurtosis ;
+                                   owl:someValuesFrom :FuzzyKurtosisLow
+                                 ] ;
+             rdfs:subClassOf :Measurement .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#KurtosisMedium
+:KurtosisMedium rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasKurtosis ;
+                                      owl:someValuesFrom :FuzzyKurtosisMedium
+                                    ] ;
+                rdfs:subClassOf :Measurement .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Measurement
+:Measurement rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#Parkinsonian
+:Parkinsonian rdf:type owl:Class ;
+              rdfs:subClassOf :Individuals .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#ParkinsonianSeverityHigh
+:ParkinsonianSeverityHigh rdf:type owl:Class ;
+                          rdfs:subClassOf :Parkinsonian .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#ParkinsonianSeverityLow
+:ParkinsonianSeverityLow rdf:type owl:Class ;
+                         rdfs:subClassOf :Parkinsonian .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#ParkinsonianSeverityMedium
+:ParkinsonianSeverityMedium rdf:type owl:Class ;
+                            rdfs:subClassOf :Parkinsonian .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SignalEntropyHigh
+:SignalEntropyHigh rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasSignalEntropy ;
+                                         owl:someValuesFrom :FuzzySignalEntropyHigh
+                                       ] ;
+                   rdfs:subClassOf :Measurement .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SignalEntropyLow
+:SignalEntropyLow rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasSignalEntropy ;
+                                        owl:someValuesFrom :FuzzySignalEntropyLow
+                                      ] ;
+                  rdfs:subClassOf :Measurement .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SignalEntropyMedium
+:SignalEntropyMedium rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty :hasSignalEntropy ;
+                                           owl:someValuesFrom :FuzzySignalEntropyMedium
+                                         ] ;
+                     rdfs:subClassOf :Measurement .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SmoothnessHigh
+:SmoothnessHigh rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasSmoothness ;
+                                      owl:someValuesFrom :FuzzySmoothnessHigh
+                                    ] ;
+                rdfs:subClassOf :Measurement .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SmoothnessLow
+:SmoothnessLow rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasSmoothness ;
+                                     owl:someValuesFrom :FuzzySmoothnessLow
+                                   ] ;
+               rdfs:subClassOf :Measurement .
+
+
+###  http://www.semanticweb.org/adklts/ontologies/2025/3/FWP#SmoothnessMedium
+:SmoothnessMedium rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasSmoothness ;
+                                        owl:someValuesFrom :FuzzySmoothnessMedium
+                                      ] ;
+                  rdfs:subClassOf :Measurement .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

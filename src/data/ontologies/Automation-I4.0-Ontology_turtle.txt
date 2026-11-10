@@ -1,0 +1,2841 @@
+@prefix : <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix ns: <http://creativecommons.org/ns#> .
+@prefix DUL: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix i40: <https://w3id.org/i40/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sto: <https://w3id.org/i40/sto#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix om-2: <http://www.ontology-of-units-of-measure.org/resource/om-2/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rami: <https://w3id.org/i40/rami#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@base <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology> .
+
+<http://www.semanticweb.org/santiago/Automation-I4.0-Ontology> rdf:type owl:Ontology ;
+                                                                owl:versionIRI <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology/2.0.0> ;
+                                                                terms:contributor <https://www.linkedin.com/in/sebastianrbader/> ;
+                                                                terms:created "2017-01-25"^^xsd:date ,
+                                                                              "2018-10-31"^^xsd:date ;
+                                                                terms:modified "2017-09-08"^^xsd:date ;
+                                                                terms:publisher <http://de.dbpedia.org/resource/Fraunhofer-Gesellschaft> ,
+                                                                                <https://github.com/sagilar> ;
+                                                                terms:rights "This work is distributed under a Creative Commons Attribution License (http://creativecommons.org/licenses/by/3.0/)."@en ,
+                                                                             "This work is distributed under an Apache License 2.0 (http://www.apache.org/licenses/)."@en ;
+                                                                terms:title "Standards Ontology"@en ;
+                                                                vann:preferredNamespacePrefix "Automation-I4.0-Core-Ontology" ,
+                                                                                              "ddo" ,
+                                                                                              "minified-sto" ,
+                                                                                              "rami" ,
+                                                                                              "sto" ;
+                                                                vann:preferredNamespaceUri "https://w3id.org/i40/rami#" ,
+                                                                                           "https://w3id.org/i40/sto#" ;
+                                                                void:vocabulary dc: ,
+                                                                                rdfs: ,
+                                                                                xsd: ,
+                                                                                skos: ;
+                                                                doap:repository <https://github.com/sagilar> ,
+                                                                                <https://github.com/i40-Tools/StandardsOntology> ;
+                                                                rdfs:comment "An ontology to describe standards related to Industry 4.0 and Smart Manufacturing"@en ,
+                                                                             "The core ontology for automation systems related to the Industry 4.0 and Smart Manufacturing"@en ,
+                                                                             "The ontology to represent a minified version of standards to integrate the ontology for automation systems in I4.0 and the STO by Grangel et al"@en ,
+                                                                             "The ontology to represent discrete dynamics in automation systems related to the Industry 4.0 and Smart Manufacturing"@en ,
+                                                                             "Update implementing the specifiations coming from 'Details of the Asset Administration Shell - Part 1: The exchange of information between partners in the value chain of Industrie 4.0 (Version 1.0)'" ;
+                                                                rdfs:isDefinedBy rami: ;
+                                                                owl:versionInfo "0.3" ,
+                                                                                0.4 ,
+                                                                                2.0 ;
+                                                                skos:definition "An Ontology to represents the Reference Architecture Model for Industry 4.0 (RAMI), including the concept of the Administration Shell I4.0 Component."@en ;
+                                                                skos:prefLabel "rami"@en ;
+                                                                sto:hasOfficialResource <https://webstore.iec.ch/publication/153> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/date
+dc:date rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:AnnotationProperty ;
+               terms:description "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en ;
+               terms:hasVersion <http://dublincore.org/usage/terms/history/#description-006> ;
+               terms:issued "1999-07-02"^^xsd:date ;
+               terms:modified "2008-01-14"^^xsd:date ;
+               rdfs:comment "An account of the resource."@en ;
+               rdfs:isDefinedBy dc: ;
+               rdfs:label "Description"@en ;
+               skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+
+###  http://purl.org/dc/elements/1.1/format
+dc:format rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/identifier
+dc:identifier rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/language
+dc:language rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/relation
+dc:relation rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/source
+dc:source rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty ;
+         terms:hasVersion <http://dublincore.org/usage/terms/history/#title-006> ;
+         terms:issued "1999-07-02"^^xsd:date ;
+         terms:modified "2008-01-14"^^xsd:date ;
+         rdfs:comment "A name given to the resource."@en ;
+         rdfs:isDefinedBy dc: ;
+         rdfs:label "Title"@en ;
+         skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en .
+
+
+###  http://purl.org/dc/terms/contributor
+terms:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+terms:created rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+terms:creator rdf:type owl:AnnotationProperty ;
+              rdfs:subPropertyOf dc:creator ,
+                                 terms:contributor ;
+              rdfs:range :Agent .
+
+
+###  http://purl.org/dc/terms/date
+terms:date rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+terms:description rdf:type owl:AnnotationProperty ;
+                  terms:description "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en ;
+                  terms:hasVersion <http://dublincore.org/usage/terms/history/#descriptionT-001> ;
+                  terms:issued "2008-01-14"^^xsd:date ;
+                  terms:modified "2008-01-14"^^xsd:date ;
+                  rdfs:comment "An account of the resource."@en ;
+                  rdfs:isDefinedBy terms: ;
+                  rdfs:label "Description"@en ;
+                  rdfs:subPropertyOf dc:description .
+
+
+###  http://purl.org/dc/terms/hasVersion
+terms:hasVersion rdf:type owl:AnnotationProperty ;
+                 rdfs:subPropertyOf dc:relation ,
+                                    terms:relation .
+
+
+###  http://purl.org/dc/terms/identifier
+terms:identifier rdf:type owl:AnnotationProperty ;
+                 rdfs:subPropertyOf dc:identifier ;
+                 rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/issued
+terms:issued rdf:type owl:AnnotationProperty ;
+             rdfs:subPropertyOf dc:date ,
+                                terms:date ;
+             rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/license
+terms:license rdf:type owl:AnnotationProperty ;
+              terms:hasVersion <http://dublincore.org/usage/terms/history/#license-002> ;
+              terms:issued "2004-06-14"^^xsd:date ;
+              terms:modified "2017-12-19"^^xsd:date ;
+              rdfs:comment "A legal document giving official permission to do something with the resource."@en ,
+                           "A legal document giving official permission to do something with the resource. In this ontology denotes the license of a Standard."@en ,
+                           "Represent the license document for a given Standard"@en ;
+              rdfs:isDefinedBy terms: ;
+              rdfs:label "has License"@en .
+
+
+###  http://purl.org/dc/terms/modified
+terms:modified rdf:type owl:AnnotationProperty ;
+               rdfs:subPropertyOf dc:date ,
+                                  terms:date ;
+               rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/dc/terms/publisher
+terms:publisher rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/relation
+terms:relation rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/rights
+terms:rights rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+terms:title rdf:type owl:AnnotationProperty ;
+            rdfs:subPropertyOf dc:title ;
+            rdfs:range rdfs:Literal .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+###  http://rdfs.org/ns/void#vocabulary
+void:vocabulary rdf:type owl:AnnotationProperty .
+
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+swrla:isRuleEnabled rdf:type owl:AnnotationProperty .
+
+
+###  http://usefulinc.com/ns/doap#repository
+doap:repository rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty ;
+              rdfs:label "alternative label"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty ;
+                rdfs:label "definition"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#note
+skos:note rdf:type owl:AnnotationProperty ;
+          rdfs:label "note"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty ;
+               rdfs:label "preferred label"@en .
+
+
+###  http://xmlns.com/foaf/0.1/familyName
+foaf:familyName rdf:type owl:AnnotationProperty ;
+                rdfs:label "Family Name"@en ;
+                rdfs:domain foaf:person .
+
+
+###  http://xmlns.com/foaf/0.1/name
+foaf:name rdf:type owl:AnnotationProperty ;
+          rdfs:label "name"@en ;
+          rdfs:domain :Thing .
+
+
+###  https://w3id.org/i40/rami#description
+rami:description rdf:type owl:AnnotationProperty ;
+                 rdfs:subPropertyOf rdfs:comment ;
+                 rdfs:range xsd:string .
+
+
+###  https://w3id.org/i40/rami#display
+rami:display rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/i40/rami#idShort
+rami:idShort rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/i40/rami#semanticId
+rami:semanticId rdf:type owl:AnnotationProperty ;
+                rdfs:subPropertyOf rdfs:seeAlso ;
+                rdfs:range rami:ExpressionSemantic .
+
+
+###  https://w3id.org/i40/sto#publisher
+sto:publisher rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://purl.org/muto/core#Tag
+<http://purl.org/muto/core#Tag> rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#gYear
+xsd:gYear rdf:type rdfs:Datatype .
+
+
+###  https://w3id.org/i40/rami#IRDI
+rami:IRDI rdf:type rdfs:Datatype ;
+          rdfs:comment """IRDI - ISO29002-5, ISO IEC 6523 and ISO IEC 11179-6 [20] as an Identifier scheme for properties and classifications. They are created in a process of consortium-wise specification or international standardisation.
+To this end, users sit down together and feed their ideas into the consortia or standardisation bodies. Properties in ISO, IEC help to safeguard key commercial interests. Repositories like eCl@ss and others make it possible to standardise a relatively large number of Identifiers in an appropriately short time."""@en .
+
+
+###  https://w3id.org/i40/rami#blob
+rami:blob rdf:type rdfs:Datatype ;
+          rdfs:comment "A BLOB is a data element that represents a file that is contained with its source code in the value attribute."@en ;
+          rdfs:label "rami:blob" .
+
+
+###  https://w3id.org/i40/rami#file
+rami:file rdf:type rdfs:Datatype ;
+          rdfs:comment "A File is a data element that represents a file via its path description."@en ;
+          rdfs:label "rami:file" .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/dc/terms/creator
+terms:creator rdf:type owl:ObjectProperty ;
+              owl:equivalentProperty foaf:maker .
+
+
+###  http://purl.org/dc/terms/language
+terms:language rdf:type owl:ObjectProperty .
+
+
+###  http://www.loa-cnr.it/ontologies/DUL.owl#isPartOf
+<http://www.loa-cnr.it/ontologies/DUL.owl#isPartOf> rdf:type owl:ObjectProperty ,
+                                                             owl:TransitiveProperty ;
+                                                    rdfs:domain rami:Asset ;
+                                                    rdfs:range rami:Asset ;
+                                                    rdfs:comment "A relation between any entities, in this case, the Asset can be part of other Asset(s)." ;
+                                                    rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl> ;
+                                                    rdfs:label "is Part Of"@en .
+
+
+###  http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit
+om-2:hasUnit rdf:type owl:ObjectProperty ;
+             rdfs:domain <http://org.semanticweb.owlapi/error#Error1> ;
+             rdfs:range om-2:Unit ;
+             rdfs:label "has unit"@en .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith
+DUL:associatedWith rdf:type owl:ObjectProperty .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isComponentOf
+DUL:isComponentOf rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf sto:relatedTo ;
+                  rdfs:domain sto:Standard ;
+                  rdfs:range [ rdf:type owl:Class ;
+                               owl:unionOf ( sto:Standard
+                                             sto:StandardPart
+                                           )
+                             ] ;
+                  rdfs:comment "Represents Standards that are component of other Standards. This relation is not transitive"@en ;
+                  rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl> ;
+                  rdfs:label "is Component Of"@en .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isMemberOf
+DUL:isMemberOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf DUL:associatedWith ;
+               rdfs:domain DUL:Entity ;
+               rdfs:range DUL:Collection ;
+               rdfs:comment "A relation between collections and entities, e.g. 'the Night Watch by Rembrandt is in the Rijksmuseum collection'; 'Davide is member of the Pen Club', 'Igor is one the subjects chosen for the experiment'."@en ;
+               rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl> ;
+               rdfs:label "is member of"@en ,
+                          "è membro di"@it .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#actsOver
+:actsOver rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdf:type owl:IrreflexiveProperty ;
+          rdfs:domain :Output ;
+          rdfs:range :Object .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#belongsToSequence
+:belongsToSequence rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdf:type owl:IrreflexiveProperty ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( :State
+                                               :Transition
+                                             )
+                               ] ;
+                   rdfs:range :Sequence .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#belongsToSubdomain
+:belongsToSubdomain rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdf:type owl:IrreflexiveProperty ;
+                    rdfs:domain :Process ;
+                    rdfs:range sto:Domain .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#callsAService
+:callsAService rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdf:type owl:IrreflexiveProperty ;
+               rdfs:domain :RequestFunction ;
+               rdfs:range :Service .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#contains
+:contains rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdf:type owl:IrreflexiveProperty ;
+          rdfs:domain :ExecutionScope ;
+          rdfs:range :Variable .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#defines
+:defines rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         rdf:type owl:IrreflexiveProperty ;
+         rdfs:domain :DynamicsModel ;
+         rdfs:range :Architecture .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#executes
+:executes rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          owl:inverseOf :isExecutedBy ;
+          rdf:type owl:IrreflexiveProperty ;
+          rdfs:domain :Agent ;
+          rdfs:range :Function .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#finalizesLoop
+:finalizesLoop rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdf:type owl:IrreflexiveProperty ;
+               rdfs:domain :State ;
+               rdfs:range :Loop .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#finalizesSequence
+:finalizesSequence rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdf:type owl:IrreflexiveProperty ;
+                   rdfs:domain :FinalState ;
+                   rdfs:range :Sequence .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#generates
+:generates rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdf:type owl:IrreflexiveProperty ;
+           rdfs:domain :Actor ;
+           rdfs:range :Data .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasAssociatedModel
+:hasAssociatedModel rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdf:type owl:IrreflexiveProperty ;
+                    rdfs:domain :Process ;
+                    rdfs:range :DynamicsModel .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDomain
+:hasDomain rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           owl:inverseOf :isStandardizedBy ;
+           rdf:type owl:IrreflexiveProperty ;
+           rdfs:domain sto:Standard ;
+           rdfs:range sto:Domain .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasModelElement
+:hasModelElement rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdf:type owl:InverseFunctionalProperty ,
+                          owl:IrreflexiveProperty ;
+                 rdfs:domain :DynamicsModel ;
+                 rdfs:range :ModelElement .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNextState
+:hasNextState rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              owl:inverseOf :hasPreviousState ;
+              rdf:type owl:IrreflexiveProperty ;
+              rdfs:domain :State ;
+              rdfs:range :State .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasPreviousState
+:hasPreviousState rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdf:type owl:IrreflexiveProperty ;
+                  rdfs:domain :State ;
+                  rdfs:range :State .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasStateFunction
+:hasStateFunction rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdf:type owl:IrreflexiveProperty ;
+                  rdfs:domain :State ;
+                  rdfs:range :StateFunction .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasTransitionFunction
+:hasTransitionFunction rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf owl:topObjectProperty ;
+                       rdf:type owl:IrreflexiveProperty ;
+                       rdfs:domain :Transition ;
+                       rdfs:range :TransitionFunction .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#initializesLoop
+:initializesLoop rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdf:type owl:IrreflexiveProperty ;
+                 rdfs:domain :State ;
+                 rdfs:range :Loop .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#initializesSequence
+:initializesSequence rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty ;
+                     rdf:type owl:IrreflexiveProperty ;
+                     rdfs:domain :InitialState ;
+                     rdfs:range :Sequence .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#interactsWith
+:interactsWith rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain :Actor ;
+               rdfs:range :Actor .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isCarriedOutIn
+:isCarriedOutIn rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdf:type owl:IrreflexiveProperty ;
+                rdfs:domain rami:Asset ;
+                rdfs:range :Process .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isComposedOf
+:isComposedOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdf:type owl:IrreflexiveProperty ;
+              rdfs:domain :Architecture ;
+              rdfs:range :Actor .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isConnectedToState
+:isConnectedToState rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    owl:inverseOf :isConnectedToTransition ;
+                    rdf:type owl:IrreflexiveProperty ;
+                    rdfs:domain :Transition ;
+                    rdfs:range :State .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isConnectedToTransition
+:isConnectedToTransition rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf owl:topObjectProperty ;
+                         rdf:type owl:IrreflexiveProperty ;
+                         rdfs:domain :State ;
+                         rdfs:range :Transition .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isContextVariableOf
+:isContextVariableOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty ;
+                     rdf:type owl:IrreflexiveProperty ;
+                     rdfs:domain :Variable ;
+                     rdfs:range :ExecutionScope .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isDeployedThrough
+:isDeployedThrough rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdf:type owl:IrreflexiveProperty ;
+                   rdfs:domain :Architecture ;
+                   rdfs:range :Network .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isExecutedBy
+:isExecutedBy rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdf:type owl:IrreflexiveProperty ;
+              rdfs:domain :Function ;
+              rdfs:range :Agent .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isStandardizedBy
+:isStandardizedBy rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdf:type owl:IrreflexiveProperty ;
+                  rdfs:domain sto:Domain ;
+                  rdfs:range sto:Standard .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isVirtualizedIn
+:isVirtualizedIn rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdf:type owl:IrreflexiveProperty ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( :Agent
+                                             rami:Asset
+                                           )
+                             ] ;
+                 rdfs:range rami:AdminShell .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#monitors
+:monitors rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdf:type owl:IrreflexiveProperty ;
+          rdfs:domain :Input ;
+          rdfs:range :Object .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#offers
+:offers rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty ;
+        rdf:type owl:IrreflexiveProperty ;
+        rdfs:domain :Agent ;
+        rdfs:range :Service .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#receives
+:receives rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdf:type owl:IrreflexiveProperty ;
+          rdfs:domain :Actor ;
+          rdfs:range :Data .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#receivesExecutionScope
+:receivesExecutionScope rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf owl:topObjectProperty ;
+                        rdf:type owl:IrreflexiveProperty ;
+                        rdfs:domain :State ;
+                        rdfs:range :ExecutionScope .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#receivesParameter
+:receivesParameter rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdf:type owl:IrreflexiveProperty ;
+                   rdfs:domain :Function ;
+                   rdfs:range :Variable .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#spreads
+:spreads rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         rdf:type owl:IrreflexiveProperty ;
+         rdfs:domain :Network ;
+         rdfs:range :Service .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#transmits
+:transmits rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdf:type owl:IrreflexiveProperty ;
+           rdfs:domain :Network ;
+           rdfs:range :Data .
+
+
+###  http://www.w3.org/2002/07/owl#topObjectProperty
+owl:topObjectProperty rdfs:range sto:Domain .
+
+
+###  http://www.w3.org/TR/2013/REC-prov-o-20130430/#wasDerivedFrom
+<http://www.w3.org/TR/2013/REC-prov-o-20130430/#wasDerivedFrom> rdf:type owl:ObjectProperty ;
+                                                                rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.w3.org/ns/prov#wasGeneratedBy
+prov:wasGeneratedBy rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf sto:relatedTo ;
+                    rdfs:comment "Standard A has influences in Standard B. For example, IEC_61499 hasInfluenceIn IEC_61804-2(EDDL)"@en ;
+                    rdfs:isDefinedBy "https://www.w3.org/TR/prov-o/#wasGeneratedBy"@en ;
+                    rdfs:label "was Generated By"@en .
+
+
+###  http://xmlns.com/foaf/0.1/maker
+foaf:maker rdf:type owl:ObjectProperty .
+
+
+###  http://xmlns.com/foaf/0.1/mbox
+foaf:mbox rdf:type owl:ObjectProperty ;
+          rdfs:domain :Agent ;
+          rdfs:range :Thing ;
+          rdfs:label "mbox"@en .
+
+
+###  https://w3id.org/i40/hasTargetConcern
+i40:hasTargetConcern rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf DUL:associatedWith ;
+                     rdfs:domain sto:Standard ;
+                     rdfs:range sto:Concern ;
+                     rdfs:comment "The relation declaring that a standard is relevant or targets a certain concern."@en ;
+                     rdfs:label "has Target Concern"@en .
+
+
+###  https://w3id.org/i40/rami#administration
+rami:administration rdf:type owl:ObjectProperty ;
+                    rdfs:comment """Administrative information of an identifiable element.
+Note: Some of the administrative information like the version number might
+need to be part of the identification."""@en ;
+                    rdfs:label "has administration"@en .
+
+
+###  https://w3id.org/i40/rami#asset
+rami:asset rdf:type owl:ObjectProperty ;
+           rdfs:domain rami:AdminShell ;
+           rdfs:range rami:Asset ;
+           rdfs:comment "The asset the AAS is representing."@en ;
+           rdfs:label "asset"@en .
+
+
+###  https://w3id.org/i40/rami#assetIdentificationModel
+rami:assetIdentificationModel rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf rami:hasSubmodel ;
+                              rdfs:domain rami:Asset ;
+                              rdfs:range rami:Submodel ;
+                              rdfs:comment """A reference to a Submodel that defines the handling of
+additional domain specific (proprietary) Identifiers for
+the asset like e.g. serial number etc."""@en ;
+                              rdfs:label "has Asset Identification Model" .
+
+
+###  https://w3id.org/i40/rami#conceptDictionary
+rami:conceptDictionary rdf:type owl:ObjectProperty ;
+                       rdfs:domain rami:AdminShell ;
+                       rdfs:range rami:ConceptDictionary ;
+                       rdfs:comment "An AAS max have one or more concept dictionaries assigned to it. The concept dictionaries typically contain only descriptions for elements that are also used within the AAS (via HasSemantics)."@en ;
+                       rdfs:label "has concept dictionary" .
+
+
+###  https://w3id.org/i40/rami#containedElement
+rami:containedElement rdf:type owl:ObjectProperty ;
+                      rdfs:comment "Referable elements that are contained in the view."@en ;
+                      rdfs:label "containedElement" .
+
+
+###  https://w3id.org/i40/rami#contributes
+rami:contributes rdf:type owl:ObjectProperty ;
+                 rdfs:domain rami:Submodel ;
+                 skos:definition "Agent(Person or Software) that contributes to the Entity/Object related data. It correspond to the Contributor concept of OMM"@en ;
+                 skos:prefLabel "has Type Description"@en .
+
+
+###  https://w3id.org/i40/rami#dataElement
+rami:dataElement rdf:type owl:ObjectProperty ;
+                 rdfs:comment """A data element is a submodel element that is not further composed out of other submodel elements.
+A data element is a submodel element that has a value. The type of value differs for different subtypes of data elements."""@en ;
+                 rdfs:label "dataElement"@en .
+
+
+###  https://w3id.org/i40/rami#defaultEnvironmentAttributes
+rami:defaultEnvironmentAttributes rdf:type owl:ObjectProperty ;
+                                  rdfs:comment """Reference to a submodel defining default environment attributes, i.e. attributes that are not describing the asset itself.
+The submodel is of kind=Type.
+At the same type the values of these environment attributes need to be accessible when evaluating the access permission rules. This is realized as a policy information point."""@en ;
+                                  rdfs:label "defaultEnvironmentAttributes" .
+
+
+###  https://w3id.org/i40/rami#defaultPermissions
+rami:defaultPermissions rdf:type owl:ObjectProperty ;
+                        rdfs:comment "Reference to a submodel defining the default permissions for the AAS."@en ;
+                        rdfs:label "defaultPermissions" .
+
+
+###  https://w3id.org/i40/rami#defaultSubjectAttributes
+rami:defaultSubjectAttributes rdf:type owl:ObjectProperty ;
+                              rdfs:comment """Reference to a submodel defining the default subjects attributes for the AAS that can be used to describe access permission rules.
+The submodel is of kind=Type."""@en ;
+                              rdfs:label "defaultSubjectAttributes" .
+
+
+###  https://w3id.org/i40/rami#dependsOn
+rami:dependsOn rdf:type owl:ObjectProperty ;
+               rdfs:comment "A formula may depend on referable or even external global elements - assumed that can be referenced and their value may be evaluated - that are used in the logical expression."@en ;
+               rdfs:label "dependsOn"@en .
+
+
+###  https://w3id.org/i40/rami#derivedFrom
+rami:derivedFrom rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf <http://www.w3.org/TR/2013/REC-prov-o-20130430/#wasDerivedFrom> ;
+                 rdfs:domain rami:AdminShell ;
+                 rdfs:range rami:AdminShell ;
+                 rdfs:comment "This relation connects instances of AAS with their respective types. Refer to Asset Kind for further information of instance and type kinds."@en ;
+                 rdfs:label "derived from" .
+
+
+###  https://w3id.org/i40/rami#describes
+rami:describes rdf:type owl:ObjectProperty ;
+               rdfs:domain rami:AdminShell ;
+               rdfs:range rami:Asset ;
+               rdfs:comment "Connect the Asset with the Administration Shell"@en ;
+               skos:altLabel "describes"@en .
+
+
+###  https://w3id.org/i40/rami#first
+rami:first rdf:type owl:ObjectProperty ;
+           rdfs:comment "First element in the relationship taking the role of the subject."@en ;
+           rdfs:label "first" .
+
+
+###  https://w3id.org/i40/rami#hasConceptDescription
+rami:hasConceptDescription rdf:type owl:ObjectProperty ;
+                           rdfs:comment """The semantics of a property or other elements that may have a semantic description is defined by a concept description.
+The description of the concept should follow a standardized schema (realized as data specification template)."""@en ;
+                           rdfs:label "has ConceptDescription"@en .
+
+
+###  https://w3id.org/i40/rami#hasDataSpecification
+rami:hasDataSpecification rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf owl:topObjectProperty ;
+                          rdfs:comment "Global reference to the data specification template used by the element."@en ;
+                          rdfs:label "has Data Specification"@en .
+
+
+###  https://w3id.org/i40/rami#hasDatatype
+rami:hasDatatype rdf:type owl:ObjectProperty ;
+                 rdfs:domain rami:Submodel ;
+                 rdfs:comment "Points to the datatypes of the Submodels"@en ;
+                 rdfs:label "has Datatype"@en .
+
+
+###  https://w3id.org/i40/rami#hasIdType
+rami:hasIdType rdf:type owl:ObjectProperty ;
+               rdfs:comment """Type of the key value.
+In case of idType = idShort local shall be true.
+In case type=GlobalReference idType shall not be IdShort."""@en ;
+               rdfs:label "has idType"@en .
+
+
+###  https://w3id.org/i40/rami#hasKey
+rami:hasKey rdf:type owl:ObjectProperty ;
+            rdfs:comment "Unique reference in its name space."@en ;
+            rdfs:label "has Key" .
+
+
+###  https://w3id.org/i40/rami#hasKind
+rami:hasKind rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain rami:AdminShell ;
+             rdfs:range rami:AssetKind ;
+             rdfs:label "has kind"@en .
+
+
+###  https://w3id.org/i40/rami#hasReference
+rami:hasReference rdf:type owl:ObjectProperty ;
+                  rdfs:domain rami:Submodel ;
+                  rdfs:label "has Reference"@en .
+
+
+###  https://w3id.org/i40/rami#hasSubjectAttribute
+rami:hasSubjectAttribute rdf:type owl:ObjectProperty ;
+                         rdfs:comment "A data element that further classifies a specific subject."@en ;
+                         rdfs:label "has subjectAttribute" .
+
+
+###  https://w3id.org/i40/rami#hasSubmodel
+rami:hasSubmodel rdf:type owl:ObjectProperty ;
+                 rdfs:domain rami:Asset ;
+                 rdfs:range rami:Submodel ;
+                 rdfs:comment "Points to the Admin Shell to the Submodels that describe the Admin Shell of a given Asset"@en ;
+                 rdfs:label "has Submodel"@en ;
+                 skos:altLabel "assetIdentificationModel"@en .
+
+
+###  https://w3id.org/i40/rami#hasValue
+rami:hasValue rdf:type owl:ObjectProperty ;
+              rdfs:domain rami:Submodel ;
+              rdfs:range rami:Value .
+
+
+###  https://w3id.org/i40/rami#hasView
+rami:hasView rdf:type owl:ObjectProperty ;
+             rdfs:domain rami:AdminShell ;
+             rdfs:range rami:View ;
+             rdfs:comment "Points to the differents views associated to the Administration Shell via the Submodels."@en ;
+             rdfs:label "has View"@en ;
+             skos:prefLabel "view"@en .
+
+
+###  https://w3id.org/i40/rami#in
+rami:in rdf:type owl:ObjectProperty ;
+        rdfs:comment "the rami:in attribute of rami:operation is the input parameter"@en .
+
+
+###  https://w3id.org/i40/rami#inAccordanceWith
+rami:inAccordanceWith rdf:type owl:ObjectProperty ;
+                      rdfs:domain rami:Submodel ;
+                      rdfs:comment "The Submodel is in accordance with a given standard specified in the STO ontology"@en ;
+                      rdfs:label "in Accordance With"@en .
+
+
+###  https://w3id.org/i40/rami#isCaseOf
+rami:isCaseOf rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/i40/rami#isConnectedTo
+rami:isConnectedTo rdf:type owl:ObjectProperty ;
+                   rdfs:domain rami:AdminShell ;
+                   rdfs:range rami:Dimension ;
+                   rdfs:comment "Connects the Admin Shell with the different RAMI4.0 Dimensions"@en ;
+                   rdfs:label "is Connected To"@en .
+
+
+###  https://w3id.org/i40/rami#mimeType
+rami:mimeType rdf:type owl:ObjectProperty ;
+              rdfs:comment """Mime type of the content of the BLOB.
+The mime type states which file extension the file has.
+Valid values are e.g. “application/json”, “application/xls”, ”image/jpg”
+The allowed values are defined as in RFC2046.
+
+or
+
+Mime type of the content of the File."""@en ;
+              rdfs:label "mimeType" ;
+              rdfs:seeAlso "http://uri4uri.net/vocab.html/#MimetypeDatatype" .
+
+
+###  https://w3id.org/i40/rami#object
+rami:object rdf:type owl:ObjectProperty ;
+            rdfs:comment "Element to which permission shall be assigned."@en ;
+            rdfs:label "has object" .
+
+
+###  https://w3id.org/i40/rami#objectAttribute
+rami:objectAttribute rdf:type owl:ObjectProperty ;
+                     rdfs:comment "A data element that further classifies an object."@en ;
+                     rdfs:label "objectAttribute" .
+
+
+###  https://w3id.org/i40/rami#out
+rami:out rdf:type owl:ObjectProperty ;
+         rdfs:comment "out is the output paramter of the Operation"@en ;
+         rdfs:label "out"@en .
+
+
+###  https://w3id.org/i40/rami#parent
+rami:parent rdf:type owl:ObjectProperty ;
+            rdfs:comment """Reference to the next referable parent element of the element. Constraint AASd-004: Add parent in case of non-identifiable elements.
+Note: This element is used to ease navigation in the model and thus it enables more performant"""@en ;
+            rdfs:label "parent"@en .
+
+
+###  https://w3id.org/i40/rami#preferredName
+rami:preferredName rdf:type owl:ObjectProperty ;
+                   rdfs:comment "This is the preferredName of a ConceptDescription object"@en ;
+                   rdfs:label "preferredName" .
+
+
+###  https://w3id.org/i40/rami#qualifierType
+rami:qualifierType rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/i40/rami#qualifierValue
+rami:qualifierValue rdf:type owl:ObjectProperty ;
+                    rdfs:comment """The qualifier value is the value of the qualifier.
+Constraint AASd-006: if both, the value and the valueId are present then the value needs to be identical to the short name of the referenced coded value in qualifierValueId."""@en .
+
+
+###  https://w3id.org/i40/rami#second
+rami:second rdf:type owl:ObjectProperty ;
+            rdfs:comment "Second element in the relationship taking the role of the object."@en ;
+            rdfs:label "second" .
+
+
+###  https://w3id.org/i40/rami#selectableEnvironmentAttributes
+rami:selectableEnvironmentAttributes rdf:type owl:ObjectProperty ;
+                                     rdfs:comment """Reference to a submodel defining which environment attributes can be accessed via the permission rules defined for the AAS, i.e. attributes that are not describing the asset itself.
+Default: reference to the submodel referenced via
+defaultEnvironmentAttributes"""@en ;
+                                     rdfs:label "selectableEnvironmentAttributes" .
+
+
+###  https://w3id.org/i40/rami#submodelElement
+rami:submodelElement rdf:type owl:ObjectProperty ;
+                     rdfs:range rami:SubmodelElement ;
+                     rdfs:comment """A submodel consists of zero or more
+submodel elements."""@en ;
+                     rdfs:label "has Submodel Element"@en .
+
+
+###  https://w3id.org/i40/rami#targetObjectAttributes
+rami:targetObjectAttributes rdf:type owl:ObjectProperty ;
+                            rdfs:comment "Target object attributes that need to be fulfilled so that the access permissions apply to the accessing subject."@en ;
+                            rdfs:label "targetObjectAttributes" .
+
+
+###  https://w3id.org/i40/rami#targetSubjectAttributes
+rami:targetSubjectAttributes rdf:type owl:ObjectProperty ;
+                             rdfs:comment "Target subject attributes that need to be fulfilled by the accessing subject to get the permissions defined by this rule."@en ;
+                             rdfs:label "targetSubjetAtrtibutes" .
+
+
+###  https://w3id.org/i40/rami#trustAnchor
+rami:trustAnchor rdf:type owl:ObjectProperty ;
+                 rdfs:comment "Trust anchor of AAS, typically certificates."@en ;
+                 rdfs:label "trustAnchor" .
+
+
+###  https://w3id.org/i40/rami#value
+rami:value rdf:type owl:ObjectProperty ;
+           rdfs:comment "The key value, for example an IRDI if the idType=IRDI."@en ;
+           rdfs:label "keyValue" .
+
+
+###  https://w3id.org/i40/sto#Standardizes
+sto:Standardizes rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdf:type owl:IrreflexiveProperty ;
+                 rdfs:domain sto:Standard ;
+                 rdfs:range [ rdf:type owl:Class ;
+                              owl:unionOf ( :Agent
+                                            :Process
+                                          )
+                            ] .
+
+
+###  https://w3id.org/i40/sto#alignesWith
+sto:alignesWith rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf DUL:associatedWith ;
+                rdf:type owl:SymmetricProperty ;
+                rdfs:domain sto:StandardClassification ;
+                rdfs:range sto:StandardClassification ;
+                rdfs:comment "indicates that some Standard Classification entity has a similar scope as another. This property most probably is symmetric but not transitive."@en ;
+                rdfs:label "alignes With"@en .
+
+
+###  https://w3id.org/i40/sto#belongsTo
+sto:belongsTo rdf:type owl:ObjectProperty ;
+              rdfs:domain sto:StandardOrganization ;
+              rdfs:range <http://dbpedia.org/ontology#Country> .
+
+
+###  https://w3id.org/i40/sto#frames
+sto:frames rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf DUL:associatedWith ;
+           rdfs:domain sto:Viewpoint ;
+           rdfs:range sto:Concern ;
+           rdfs:comment "A relation specifying that a vewpoint regards a Concern."@en ;
+           rdfs:label "frames"@en ;
+           sto:hasOfficialResource <http://www.iso-architecture.org/42010/> .
+
+
+###  https://w3id.org/i40/sto#hasAvailableLanguage
+sto:hasAvailableLanguage rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf terms:language ;
+                         rdfs:domain foaf:Document ;
+                         rdfs:range terms:LinguisticSystem .
+
+
+###  https://w3id.org/i40/sto#hasClassification
+sto:hasClassification rdf:type owl:ObjectProperty ;
+                      rdfs:domain sto:Standard ;
+                      rdfs:range sto:StandardClassification .
+
+
+###  https://w3id.org/i40/sto#hasDeveloper
+sto:hasDeveloper rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf foaf:maker ;
+                 rdfs:domain sto:Publication ;
+                 rdfs:range sto:StandardOrganization .
+
+
+###  https://w3id.org/i40/sto#hasDomain
+sto:hasDomain rdf:type owl:ObjectProperty ;
+              rdfs:domain sto:Publication ;
+              rdfs:range sto:Domain .
+
+
+###  https://w3id.org/i40/sto#hasFileSize
+sto:hasFileSize rdf:type owl:ObjectProperty ;
+                rdfs:domain foaf:Document ;
+                rdfs:range om-2:Measure .
+
+
+###  https://w3id.org/i40/sto#hasHeadquaterIn
+sto:hasHeadquaterIn rdf:type owl:ObjectProperty ;
+                    rdfs:domain sto:StandardOrganization ;
+                    rdfs:range <http://dbpedia.org/ontology#Place> .
+
+
+###  https://w3id.org/i40/sto#hasICS
+sto:hasICS rdf:type owl:ObjectProperty ;
+           rdfs:domain sto:Publication ;
+           rdfs:range sto:InternationalClassificationForStandards ;
+           rdfs:comment "Serves as a catalogue of International Classification For Standards"@en ;
+           rdfs:label "has ICS"@en .
+
+
+###  https://w3id.org/i40/sto#hasMotivation
+sto:hasMotivation rdf:type owl:ObjectProperty ;
+                  rdfs:domain sto:Publication ;
+                  rdfs:range <http://purl.org/spar/deo/Motivation> .
+
+
+###  https://w3id.org/i40/sto#hasPreviousVersion
+sto:hasPreviousVersion rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf sto:relatedTo ;
+                       rdfs:comment "Indicates the list of Standards that are previous versions of a Standard. For example,IEC 60038:2009 has IEC 60038:1983+AMD1:1994+AMD2:1997,IEC 60038:1983/AMD2:1997,IEC 60038:1983/AMD1:1994,IEC 60038:1983,IEC 60038:1975/AMD1:1977,IEC 60038:1975,IEC 60038:1967,IEC 60038:1954,IEC 60038:1938,IEC 60038:1927 as previous versions."@en ;
+                       rdfs:label "has Previous Version"@en .
+
+
+###  https://w3id.org/i40/sto#hasPublisher
+sto:hasPublisher rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf foaf:maker ;
+                 rdfs:domain sto:Publication ;
+                 rdfs:range sto:StandardOrganization .
+
+
+###  https://w3id.org/i40/sto#hasTechnicalCommittee
+sto:hasTechnicalCommittee rdf:type owl:ObjectProperty ;
+                          rdfs:domain sto:Publication ;
+                          rdfs:range sto:TechnicalCommittee ;
+                          rdfs:comment "Specifies the Technical Committee or a Sub-Committee that is responsible for creation and maintenance of a standard"@en ;
+                          rdfs:label "has Technical Committee"@en .
+
+
+###  https://w3id.org/i40/sto#isDescribedin
+sto:isDescribedin rdf:type owl:ObjectProperty ;
+                  rdfs:domain sto:StandardClassification ;
+                  rdfs:range sto:StandardizationFramework ;
+                  rdfs:comment "Links the Standarization Frameworks with the Classification of Standards"@en ;
+                  rdfs:label "is Described in"@en .
+
+
+###  https://w3id.org/i40/sto#isImplementationOf
+sto:isImplementationOf rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf sto:relatedTo ;
+                       rdfs:comment "Represent the relation that connects two standards when standard A is the implementation of standard B, e.g., B2MML isImplementationOf ISA-95."@en ;
+                       rdfs:label "is Implementation Of"@en .
+
+
+###  https://w3id.org/i40/sto#relatedTo
+sto:relatedTo rdf:type owl:ObjectProperty ,
+                       owl:SymmetricProperty ,
+                       owl:TransitiveProperty ;
+              rdfs:domain sto:Standard ;
+              rdfs:range sto:Standard ;
+              rdfs:comment "Represent any type of relation that connects two standards."@en ;
+              rdfs:label "related To"@en ;
+              skos:altLabel "has Associated Standard"@en .
+
+
+###  https://w3id.org/i40/sto#useStructureOf
+sto:useStructureOf rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf sto:relatedTo ;
+                   rdfs:comment "Standard A uses the structure of Standard B. For example, OPC UA uses Structure Of IEC_61804 (EDDL)"@en ;
+                   rdfs:label "use Structure Of"@en .
+
+
+###  https://w3id.org/i40/sto#uses
+sto:uses rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf sto:relatedTo ;
+         rdfs:comment "Defines that Standard A uses Standard B. For example, IEC_62714(AML) uses MathML."@en ;
+         rdfs:label "uses"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://creativecommons.org/ns#attributionName
+ns:attributionName rdf:type owl:DatatypeProperty .
+
+
+###  http://creativecommons.org/ns#attributionURL
+ns:attributionURL rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/hasVersion
+terms:hasVersion rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/identifier
+terms:identifier rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/issued
+terms:issued rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/modified
+terms:modified rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/title
+terms:title rdf:type owl:DatatypeProperty .
+
+
+###  http://www.ontology-of-units-of-measure.org/resource/om-2/hasNumericalValue
+om-2:hasNumericalValue rdf:type owl:DatatypeProperty ;
+                       rdfs:domain <http://org.semanticweb.owlapi/error#Error2> ;
+                       rdfs:label "has numerical value"@en .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#belongsToArchitectureLayer
+:belongsToArchitectureLayer rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf owl:topDataProperty ;
+                            rdfs:domain :Agent ;
+                            rdfs:range [ rdf:type rdfs:Datatype ;
+                                         owl:unionOf ( xsd:integer
+                                                       xsd:string
+                                                     )
+                                       ] .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#concernsTo
+:concernsTo rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain sto:Standard ;
+            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasAssociatedMemory
+:hasAssociatedMemory rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf owl:topDataProperty ;
+                     rdfs:domain :Variable ;
+                     rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasConstraint
+:hasConstraint rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :DynamicsModel ;
+               rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasContent
+:hasContent rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Data ;
+            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDBpediaResource
+:hasDBpediaResource rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain sto:Standard ;
+                    rdfs:range [ rdf:type rdfs:Datatype ;
+                                 owl:unionOf ( xsd:anyURI
+                                               xsd:string
+                                             )
+                               ] .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDataType
+:hasDataType rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdf:type owl:FunctionalProperty ;
+             rdfs:domain :Variable ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDescription
+:hasDescription rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :ModelElement ,
+                            [ rdf:type owl:Class ;
+                              owl:unionOf ( :ModelElement
+                                            :Service
+                                          )
+                            ] ;
+                rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasEmbeddingCapability
+:hasEmbeddingCapability rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf owl:topDataProperty ;
+                        rdf:type owl:FunctionalProperty ;
+                        rdfs:domain sto:Standard ;
+                        rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasFeature
+:hasFeature rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Agent ;
+            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasFile
+:hasFile rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain rami:AdminShell ;
+         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasIdentifier
+:hasIdentifier rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdf:type owl:FunctionalProperty ;
+               rdfs:domain :Agent ;
+               rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasInteroperabilityDegree
+:hasInteroperabilityDegree rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf owl:topDataProperty ;
+                           rdfs:domain :Agent ;
+                           rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNumberOfParameters
+:hasNumberOfParameters rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf owl:topDataProperty ;
+                       rdf:type owl:FunctionalProperty ;
+                       rdfs:domain :Function ;
+                       rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNumberOfStates
+:hasNumberOfStates rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdf:type owl:FunctionalProperty ;
+                   rdfs:domain :SetElement ;
+                   rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNumberOfTasks
+:hasNumberOfTasks rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdf:type owl:FunctionalProperty ;
+                  rdfs:domain :State ,
+                              :Transition ;
+                  rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNumberOfTransitions
+:hasNumberOfTransitions rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf owl:topDataProperty ;
+                        rdf:type owl:FunctionalProperty ;
+                        rdfs:domain :SetElement ;
+                        rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasOfficialResource
+:hasOfficialResource rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf owl:topDataProperty ;
+                     rdfs:domain sto:Standard ;
+                     rdfs:range [ rdf:type rdfs:Datatype ;
+                                  owl:unionOf ( xsd:anyURI
+                                                xsd:string
+                                              )
+                                ] .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasReceiver
+:hasReceiver rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Data ;
+             rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasRelatedOntology
+:hasRelatedOntology rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain owl:Thing ;
+                    rdfs:range [ rdf:type rdfs:Datatype ;
+                                 owl:unionOf ( xsd:anyURI
+                                               xsd:string
+                                             )
+                               ] .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasRequirement
+:hasRequirement rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :DynamicsModel ;
+                rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasReturnDataType
+:hasReturnDataType rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdf:type owl:FunctionalProperty ;
+                   rdfs:domain :Function ;
+                   rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasReturnValue
+:hasReturnValue rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdf:type owl:FunctionalProperty ;
+                rdfs:domain :Function .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasSoftwareContent
+:hasSoftwareContent rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain sto:Standard ;
+                    rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasTransmitter
+:hasTransmitter rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :Data ;
+                rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasURI
+:hasURI rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdfs:domain :Service ;
+        rdfs:range xsd:anyURI .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasValue
+:hasValue rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdf:type owl:FunctionalProperty ;
+          rdfs:domain :Variable .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isActive
+:isActive rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdf:type owl:FunctionalProperty ;
+          rdfs:domain :State ;
+          rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isContextStandard
+:isContextStandard rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdf:type owl:FunctionalProperty ;
+                   rdfs:domain sto:Standard ;
+                   rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isEnabled
+:isEnabled rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdf:type owl:FunctionalProperty ;
+           rdfs:domain :Transition ;
+           rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isParentSetElement
+:isParentSetElement rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdf:type owl:FunctionalProperty ;
+                    rdfs:domain :SetElement ;
+                    rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#supportsProtocol
+:supportsProtocol rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :Agent ;
+                  rdfs:range xsd:string .
+
+
+###  http://www.wurvoc.org/vocabularies/om-1.8/hasNumericalValue
+<http://www.wurvoc.org/vocabularies/om-1.8/hasNumericalValue> rdf:type owl:DatatypeProperty ;
+                                                              rdfs:domain <http://www.wurvoc.org/vocabularies/om-1.8/Measure> ;
+                                                              rdfs:label "has numerical value"@en .
+
+
+###  https://w3id.org/i40/rami#allowDuplicates
+rami:allowDuplicates rdf:type owl:DatatypeProperty ;
+                     rdfs:comment """If allowDuplicates=true then it is allowed that the collection contains the same element several times.
+Default = false"""@en ;
+                     skos:altLabel "allow duplicates" .
+
+
+###  https://w3id.org/i40/rami#assetId
+rami:assetId rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf terms:identifier ;
+             rdfs:domain rami:Asset ;
+             rdfs:comment "The unique identifier of an asset. Note the difference between the 'asset ID' idenitfier and the URIs for the resources."@en ;
+             rdfs:label "id"@en ;
+             owl:deprecated "true"^^xsd:boolean .
+
+
+###  https://w3id.org/i40/rami#creationDate
+rami:creationDate rdf:type owl:DatatypeProperty ;
+                  rdfs:domain rami:Submodel ;
+                  rdfs:range xsd:dateTime ;
+                  skos:definition "Date when an Agent(Person or Software) creates to the Entity/Object related data. It correspond to the Creator concept of OMM"@en ;
+                  skos:prefLabel "has Creator"@en .
+
+
+###  https://w3id.org/i40/rami#definition
+rami:definition rdf:type owl:DatatypeProperty ;
+                rdfs:label "This is the definition that is contained in the conceptDescription."@en ,
+                           "has definition" .
+
+
+###  https://w3id.org/i40/rami#description
+rami:description rdf:type owl:DatatypeProperty ;
+                 rdfs:domain rami:Asset .
+
+
+###  https://w3id.org/i40/rami#hasLocal
+rami:hasLocal rdf:type owl:DatatypeProperty ;
+              rdfs:comment "Denotes if the key references a model element of the same AAS (=true) or not (=false). In case of local = false the key may reference a model element of another AAS or an entity outside any AAS that has a global unique id."@en ;
+              rdfs:label "has local" .
+
+
+###  https://w3id.org/i40/rami#id
+rami:id rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf terms:identifier ;
+        rdfs:comment "A globally unique identifier which is NOT a URI."@en ;
+        rdfs:label "identification"@en .
+
+
+###  https://w3id.org/i40/rami#idShort
+rami:idShort rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf terms:identifier .
+
+
+###  https://w3id.org/i40/rami#isCaseOf
+rami:isCaseOf rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf terms:identifier .
+
+
+###  https://w3id.org/i40/rami#isDescribedWith
+rami:isDescribedWith rdf:type owl:DatatypeProperty ;
+                     rdfs:seeAlso rami:asset ;
+                     owl:deprecated "true"^^xsd:boolean ;
+                     skos:definition "Points to the Standard used to describe a given object"@en ;
+                     skos:prefLabel "Is Described With"@en .
+
+
+###  https://w3id.org/i40/rami#logs
+rami:logs rdf:type owl:DatatypeProperty ;
+          rdfs:range xsd:string ;
+          skos:prefLabel "logs"@en .
+
+
+###  https://w3id.org/i40/rami#ordered
+rami:ordered rdf:type owl:DatatypeProperty ;
+             rdfs:comment """If ordered=false then the elements in the property collection are not ordered. If ordered=true then the elements in the collection are ordered.
+Default = false"""@en ;
+             rdfs:label "ordered" .
+
+
+###  https://w3id.org/i40/rami#publishedURL
+rami:publishedURL rdf:type owl:DatatypeProperty .
+
+
+###  https://w3id.org/i40/rami#revision
+rami:revision rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf terms:hasVersion ;
+              rdfs:comment "Revision of the element. Constraint AASd-005: A revision requires a version. This means, if there is no version there is no revision neither."@en ;
+              rdfs:label "revision"@en .
+
+
+###  https://w3id.org/i40/rami#semanticId
+rami:semanticId rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf terms:identifier ;
+                rdfs:domain rami:Submodel .
+
+
+###  https://w3id.org/i40/rami#version
+rami:version rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf terms:hasVersion ;
+             rdfs:comment "Version of the element."@en ;
+             rdfs:label "version"@en .
+
+
+###  https://w3id.org/i40/sto#abbreviation
+sto:abbreviation rdf:type owl:DatatypeProperty ;
+                 rdfs:domain owl:Thing ;
+                 rdfs:range rdf:PlainLiteral ;
+                 rdfs:comment "Abbreviated  name of the thing."@en ;
+                 rdfs:label "has Abbreviated Name"@en .
+
+
+###  https://w3id.org/i40/sto#domainName
+sto:domainName rdf:type owl:DatatypeProperty ;
+               rdfs:domain sto:Domain ;
+               rdfs:range rdf:PlainLiteral ;
+               rdfs:comment "Points the Standard with the name of the Industrial Domain"@en ;
+               rdfs:label "has Domain Name"@en .
+
+
+###  https://w3id.org/i40/sto#formationDate
+sto:formationDate rdf:type owl:DatatypeProperty ,
+                           owl:FunctionalProperty ;
+                  rdfs:domain sto:StandardOrganization ;
+                  rdfs:range xsd:date ;
+                  rdfs:comment "Formation date of the Organization"@en ;
+                  rdfs:label "has Formation Date"@en .
+
+
+###  https://w3id.org/i40/sto#hasDBpediaResource
+sto:hasDBpediaResource rdf:type owl:DatatypeProperty .
+
+
+###  https://w3id.org/i40/sto#hasEdition
+sto:hasEdition rdf:type owl:DatatypeProperty ;
+               rdfs:domain foaf:Document ;
+               rdfs:range xsd:float ;
+               rdfs:comment "Indicates the current Edition/Version number of the document."@en ;
+               rdfs:label "has Edition"@en .
+
+
+###  https://w3id.org/i40/sto#hasImplementationFormat
+sto:hasImplementationFormat rdf:type owl:DatatypeProperty ;
+                            rdfs:domain sto:Publication ;
+                            rdfs:range rdfs:Literal ;
+                            rdfs:comment "Describes the name of the implementation or serialization format of the Publication, e.g., XML, Document, binary, batch"@en ;
+                            rdfs:label "has Implementation Format"@en .
+
+
+###  https://w3id.org/i40/sto#hasObjective
+sto:hasObjective rdf:type owl:DatatypeProperty ;
+                 rdfs:domain sto:ISA95Level ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Specifies the objectives for the different ISA 95 levels."@en ;
+                 rdfs:label "has Objective"@en .
+
+
+###  https://w3id.org/i40/sto#hasOfficialResource
+sto:hasOfficialResource rdf:type owl:DatatypeProperty ;
+                        rdfs:domain sto:Publication ;
+                        rdfs:range xsd:anyURI .
+
+
+###  https://w3id.org/i40/sto#hasOntology
+sto:hasOntology rdf:type owl:DatatypeProperty ;
+                rdfs:domain sto:Publication ;
+                rdfs:range xsd:anyURI ;
+                rdfs:comment "Point to the URL of a recognized Ontology representation of the Standard"@en ;
+                rdfs:label "has Ontology"@en .
+
+
+###  https://w3id.org/i40/sto#hasPages
+sto:hasPages rdf:type owl:DatatypeProperty ;
+             rdfs:domain foaf:Document ;
+             rdfs:range xsd:integer ;
+             rdfs:comment "Indicates the number of pages in the document."@en ;
+             rdfs:label "has Pages"@en .
+
+
+###  https://w3id.org/i40/sto#hasPublicationDate
+sto:hasPublicationDate rdf:type owl:DatatypeProperty ;
+                       rdfs:domain sto:Publication ;
+                       rdfs:range xsd:date ;
+                       rdfs:comment "Publication date of the Publication"@en ;
+                       rdfs:label "has Publication Date"@en .
+
+
+###  https://w3id.org/i40/sto#hasStabilityDate
+sto:hasStabilityDate rdf:type owl:DatatypeProperty ;
+                     rdfs:domain sto:Publication ;
+                     rdfs:range xsd:gYear ;
+                     rdfs:comment "Stability date of a publication. Publications are valid for a certain period, i.e., the Stability Period. This property defines the end of the stability period."@en ;
+                     rdfs:label "has Stability Date"@en ;
+                     rdfs:seeAlso <https://webstore.iec.ch/webstore/webstore.nsf/xpFAQ.xsp?Open&id=ADMN-7NALM5> ;
+                     skos:note "The data specified is not actually a Date but an Year" .
+
+
+###  https://w3id.org/i40/sto#hasStatus
+sto:hasStatus rdf:type owl:DatatypeProperty ;
+              rdfs:domain sto:Publication ;
+              rdfs:range rdfs:Literal ;
+              rdfs:comment "Publication status of the Standard, e.g., Valid, Revised, Published, under preparation, Released"@en ;
+              rdfs:label "has Status"@en .
+
+
+###  https://w3id.org/i40/sto#hasTag
+sto:hasTag rdf:type owl:DatatypeProperty ;
+           rdfs:range <http://purl.org/muto/core#Tag> ,
+                      rdfs:Literal ;
+           rdfs:comment "Points to the identification of the standards"@en ;
+           rdfs:label "has Tag"@en .
+
+
+###  https://w3id.org/i40/sto#hasTask
+sto:hasTask rdf:type owl:DatatypeProperty ;
+            rdfs:domain sto:ISA95Level ;
+            rdfs:range xsd:string ;
+            rdfs:comment "Specifies the tasks for the different ISA 95 levels."@en ;
+            rdfs:label "has Task"@en .
+
+
+###  https://w3id.org/i40/sto#hasWikipediaArticle
+sto:hasWikipediaArticle rdf:type owl:DatatypeProperty .
+
+
+###  https://w3id.org/i40/sto#orgName
+sto:orgName rdf:type owl:DatatypeProperty ;
+            rdfs:domain sto:StandardOrganization ;
+            rdfs:range rdf:PlainLiteral ;
+            rdfs:comment "Name of the Organization"@en ;
+            rdfs:label "Org Name"@en .
+
+
+###  https://w3id.org/i40/sto#stoPartName
+sto:stoPartName rdf:type owl:DatatypeProperty ;
+                rdfs:domain sto:StandardPart ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Name of the standard part."@en ;
+                rdfs:label "std Part Name"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://dbpedia.org/ontology#Country
+<http://dbpedia.org/ontology#Country> rdf:type owl:Class .
+
+
+###  http://dbpedia.org/ontology#Place
+<http://dbpedia.org/ontology#Place> rdf:type owl:Class .
+
+
+###  http://example.org/iira#CrosscuttingFunction
+<http://example.org/iira#CrosscuttingFunction> rdf:type owl:Class ;
+                                               rdfs:subClassOf sto:StandardClassification ;
+                                               terms:creator "sebastian"@en ;
+                                               rdfs:comment "Often these enabling functions, the so-called crosscutting functions, need to be made available across many of the system functional components. For Reference Architecture 6: Functional Viewpoint example, system functions need to be connected so they can interact with each other to complete functionality at the system level."@en ;
+                                               rdfs:label "IIRA Crosscutting Function"@en .
+
+
+###  http://example.org/iira#FunctionalDomain
+<http://example.org/iira#FunctionalDomain> rdf:type owl:Class ;
+                                           rdfs:subClassOf sto:StandardClassification ;
+                                           rdfs:label "IIRA Functional Domain"@en .
+
+
+###  http://example.org/iira#SystemCharacteristics
+<http://example.org/iira#SystemCharacteristics> rdf:type owl:Class ;
+                                                rdfs:subClassOf sto:StandardClassification ;
+                                                rdfs:label "IIRA System Characteristic"@en .
+
+
+###  http://org.semanticweb.owlapi/error#Error1
+<http://org.semanticweb.owlapi/error#Error1> rdf:type owl:Class .
+
+
+###  http://org.semanticweb.owlapi/error#Error2
+<http://org.semanticweb.owlapi/error#Error2> rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/LicenseDocument
+terms:LicenseDocument rdf:type owl:Class ;
+                      rdfs:comment "A legal document giving official permission to do something with a Resource."@en ;
+                      rdfs:isDefinedBy terms: ;
+                      rdfs:label "License Document"@en .
+
+
+###  http://purl.org/dc/terms/LinguisticSystem
+terms:LinguisticSystem rdf:type owl:Class .
+
+
+###  http://purl.org/spar/deo/Motivation
+<http://purl.org/spar/deo/Motivation> rdf:type owl:Class .
+
+
+###  http://w3id.org/ids/ram/Perspective
+<http://w3id.org/ids/ram/Perspective> rdf:type owl:Class ;
+                                      rdfs:subClassOf sto:StandardClassification ;
+                                      rdfs:label "IDS RAM Perspective"@en .
+
+
+###  http://www.ontology-of-units-of-measure.org/resource/om-2/Measure
+om-2:Measure rdf:type owl:Class .
+
+
+###  http://www.ontology-of-units-of-measure.org/resource/om-2/Unit
+om-2:Unit rdf:type owl:Class .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Collection
+DUL:Collection rdf:type owl:Class .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Entity
+DUL:Entity rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor
+:Actor rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent
+:Agent rdf:type owl:Class ;
+       rdfs:subClassOf :Actor .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#AnalogInput
+:AnalogInput rdf:type owl:Class ;
+             rdfs:subClassOf :AnalogVariable ,
+                             :Input .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#AnalogOutput
+:AnalogOutput rdf:type owl:Class ;
+              rdfs:subClassOf :AnalogVariable ,
+                              :Output .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#AnalogVariable
+:AnalogVariable rdf:type owl:Class ;
+                rdfs:subClassOf :Variable .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Architecture
+:Architecture rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ConcurrentState
+:ConcurrentState rdf:type owl:Class ;
+                 rdfs:subClassOf :State .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#CurrentState
+:CurrentState rdf:type owl:Class ;
+              rdfs:subClassOf :State .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data
+:Data rdf:type owl:Class ;
+      rdfs:subClassOf :Variable .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DataInput
+:DataInput rdf:type owl:Class ;
+           rdfs:subClassOf :Data ,
+                           :Input .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DataOutput
+:DataOutput rdf:type owl:Class ;
+            rdfs:subClassOf :Data ,
+                            :Output .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Device
+:Device rdf:type owl:Class ;
+        rdfs:subClassOf :Agent .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DigitalInput
+:DigitalInput rdf:type owl:Class ;
+              rdfs:subClassOf :DigitalVariable ,
+                              :Input .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DigitalOutput
+:DigitalOutput rdf:type owl:Class ;
+               rdfs:subClassOf :DigitalVariable ,
+                               :Output .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DigitalVariable
+:DigitalVariable rdf:type owl:Class ;
+                 rdfs:subClassOf :Variable .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DynamicsModel
+:DynamicsModel rdf:type owl:Class ;
+               owl:disjointWith :ModelElement .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ExecutionScope
+:ExecutionScope rdf:type owl:Class ;
+                rdfs:subClassOf :ModelElement .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#FinalState
+:FinalState rdf:type owl:Class ;
+            rdfs:subClassOf :State .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function
+:Function rdf:type owl:Class ;
+          rdfs:subClassOf :ModelElement .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#InitialState
+:InitialState rdf:type owl:Class ;
+              rdfs:subClassOf :State .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Input
+:Input rdf:type owl:Class ;
+       rdfs:subClassOf :Variable .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Loop
+:Loop rdf:type owl:Class ;
+      rdfs:subClassOf :SetElement .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ManyToManyTransition
+:ManyToManyTransition rdf:type owl:Class ;
+                      rdfs:subClassOf :Transition .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ManyToOneTransition
+:ManyToOneTransition rdf:type owl:Class ;
+                     rdfs:subClassOf :Transition .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement
+:ModelElement rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Network
+:Network rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#NextState
+:NextState rdf:type owl:Class ;
+           rdfs:subClassOf :State .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Object
+:Object rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#OneToManyTransition
+:OneToManyTransition rdf:type owl:Class ;
+                     rdfs:subClassOf :Transition .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#OneToOneTransition
+:OneToOneTransition rdf:type owl:Class ;
+                    rdfs:subClassOf :Transition .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Output
+:Output rdf:type owl:Class ;
+        rdfs:subClassOf :Variable .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#PreviousState
+:PreviousState rdf:type owl:Class ;
+               rdfs:subClassOf :State .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Process
+:Process rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#RequestFunction
+:RequestFunction rdf:type owl:Class ;
+                 rdfs:subClassOf :Function .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Resource-SharedState
+:Resource-SharedState rdf:type owl:Class ;
+                      rdfs:subClassOf :State .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Robot
+:Robot rdf:type owl:Class ;
+       rdfs:subClassOf :Agent .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Sequence
+:Sequence rdf:type owl:Class ;
+          rdfs:subClassOf :SetElement .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Service
+:Service rdf:type owl:Class ;
+         rdfs:subClassOf :Function .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SetElement
+:SetElement rdf:type owl:Class ;
+            rdfs:subClassOf :ModelElement .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SoftwareResource
+:SoftwareResource rdf:type owl:Class ;
+                  rdfs:subClassOf :Agent .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State
+:State rdf:type owl:Class ;
+       rdfs:subClassOf :ModelElement .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#StateFunction
+:StateFunction rdf:type owl:Class ;
+               rdfs:subClassOf :Function .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SynchronousState
+:SynchronousState rdf:type owl:Class ;
+                  rdfs:subClassOf :State .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Thing
+:Thing rdf:type owl:Class ;
+       rdfs:subClassOf :Agent .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition
+:Transition rdf:type owl:Class ;
+            rdfs:subClassOf :ModelElement .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#TransitionFunction
+:TransitionFunction rdf:type owl:Class ;
+                    rdfs:subClassOf :Function .
+
+
+###  http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable
+:Variable rdf:type owl:Class ;
+          rdfs:subClassOf :ModelElement .
+
+
+###  http://www.w3.org/2002/07/owl#class
+owl:class rdf:type owl:Class .
+
+
+###  http://www.w3.org/2002/07/owl#namedIndividial
+owl:namedIndividial rdf:type owl:Class .
+
+
+###  http://www.w3.org/2002/07/owl#property
+owl:property rdf:type owl:Class .
+
+
+###  http://www.wurvoc.org/vocabularies/om-1.8/Measure
+<http://www.wurvoc.org/vocabularies/om-1.8/Measure> rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Document
+foaf:Document rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Organization
+foaf:Organization rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+foaf:Person rdf:type owl:Class ;
+            rdfs:subClassOf :Actor .
+
+
+###  https://w3id.org/i40/rami#AccessControlPolicyPoints
+rami:AccessControlPolicyPoints rdf:type owl:Class ;
+                               rdfs:comment "Container for access control policy points."@en ;
+                               rdfs:label "Access ControlPolicy Points" .
+
+
+###  https://w3id.org/i40/rami#AdminShell
+rami:AdminShell rdf:type owl:Class ;
+                rdfs:subClassOf rami:HasDataSpecification ,
+                                rami:Identifiable ;
+                dc:source "This definition comprises material from RAMI4.0."@en ;
+                rdfs:label "Admin Shell"@en ;
+                skos:altLabel "Administration Shell"@en ,
+                              "Asset Administration Shell"@en ;
+                skos:definition "Describes the Administration Shell for Assets, Products, Components, e.g. Machines"@en ;
+                skos:prefLabel "Verwaltungsschale" .
+
+
+###  https://w3id.org/i40/rami#AdminShellSubmodel
+rami:AdminShellSubmodel rdf:type owl:Class ;
+                        rdfs:subClassOf sto:StandardClassification ;
+                        rdfs:comment "Describes the Administration Shell concept to organize/classify standards into submodels"@en ;
+                        rdfs:isDefinedBy <https://www.plattform-i40.de/I40/Redaktion/EN/Downloads/Publikation/structure-of-the-administration-shell.pdf?__blob=publicationFile&v=7> ;
+                        rdfs:label "Admin Shell Sub Model"@en .
+
+
+###  https://w3id.org/i40/rami#AdministrativeInformation
+rami:AdministrativeInformation rdf:type owl:Class ;
+                               rdfs:subClassOf rami:DataSpecification ;
+                               rdfs:comment """Every Identifiable may have administrative information. Administrative information includes for example
+ Information about the version of the element
+ Information about who created or who made the last change to the element
+ Information about the languages available in case the element contains text, for translating purposed also themmaster or default language may be defined
+In the first version of the AAS metamodel only version information as defined by IEC 61360 is defined. In later versions additional attributes may be added."""@en ;
+                               rdfs:label "Administrative Information" .
+
+
+###  https://w3id.org/i40/rami#Asset
+rami:Asset rdf:type owl:Class ;
+           rdfs:subClassOf rami:HasDataSpecification ,
+                           rami:HasKind ,
+                           rami:Identifiable ;
+           rdfs:comment """An Asset describes meta data of an asset that is represented by an AAS.
+The asset may either represent an asset type or an asset instance.
+The asset has a globally unique identifier plus – if needed – additional domain specific (proprietary) identifiers."""@en ;
+           rdfs:label "RAMI Asset Layer"@en ;
+           skos:altLabel "Entity"@en ,
+                         "Entität"@de ,
+                         "Object"@en ;
+           skos:definition "Clearly identifiable asset for the Administration Shell"@en ,
+                           "Eindeutig identifizierbarer Gegenstand, der aufgrund seiner Bedeutung in der Informationswelt verwaltet wird"@de ;
+           skos:note "Objects may be known in the form of a type or of an instance. An object in the planning phase is known as a type"@en ;
+           skos:prefLabel "Asset"@en .
+
+
+###  https://w3id.org/i40/rami#AssetKind
+rami:AssetKind rdf:type owl:Class ;
+               rdfs:subClassOf rami:Dimension ;
+               rdfs:comment """The RAMI4.0 model features one, generalized life-cycle axis, which was derived from IEC 62890. The basic idea is to distinguish for all assets within Industrie 4.0 between possible types and instance. This makes it possible to apply the type/instance distinction for all elements such as material type/material instance, product type/product instance, machine type/ machine instance and more. Business related information will be handled on the 'Business' layer of the
+RAMI4.0 model, as well, covering also order details and workflows, again with types/ instances."""@en ;
+               rdfs:label "Asset Kind"@en .
+
+
+###  https://w3id.org/i40/rami#Blob
+rami:Blob rdf:type owl:Class ;
+          rdfs:subClassOf rami:DataElement ;
+          rdfs:comment "A BLOB is a data element that represents a file that is contained with its source code in the value attribute."@en ;
+          rdfs:label "BlobDataElement"@en .
+
+
+###  https://w3id.org/i40/rami#ConceptDescription
+rami:ConceptDescription rdf:type owl:Class ;
+                        rdfs:subClassOf rami:HasDataSpecification ,
+                                        rami:Identifiable ;
+                        dc:description "\"The AAS itself can also define its own dictionary that contains semantic definitions of its submodel elements. These semantic definitions are called concept descriptions (ConceptDescription). It is optional whether an AAS defines its own concept dictionary (ConceptDictionary) or not.\""@en .
+
+
+###  https://w3id.org/i40/rami#ConceptDictionary
+rami:ConceptDictionary rdf:type owl:Class ;
+                       rdfs:subClassOf rami:Referable ;
+                       rdfs:comment "A dictionary contains elements that can be reused. The concept dictionary contains concept descriptions. Typically a concept description dictionary of an AAS contains only concept descriptions of elements used within submodels of the AAS."@en ;
+                       rdfs:label "Concept Dictionary" .
+
+
+###  https://w3id.org/i40/rami#DataElement
+rami:DataElement rdf:type owl:Class ;
+                 rdfs:subClassOf rami:SubmodelElement ;
+                 rdfs:comment "A data element is a submodel element that is not further composed out of other submodel elements. A data element is a submodel element that has a value. The type of value differs for different subtypes of data elements."@en ;
+                 rdfs:label "DataElement" ;
+                 skos:note "abstract" .
+
+
+###  https://w3id.org/i40/rami#DataSpecification
+rami:DataSpecification rdf:type owl:Class ;
+                       rdfs:comment "Element that can have data specification templates. A template defines the additional attributes an element may or shall have."@en ;
+                       rdfs:label "DataSpecification"@en ;
+                       skos:note "abstract"@en .
+
+
+###  https://w3id.org/i40/rami#Dimension
+rami:Dimension rdf:type owl:Class .
+
+
+###  https://w3id.org/i40/rami#File
+rami:File rdf:type owl:Class ;
+          rdfs:subClassOf rami:DataElement ;
+          rdfs:comment "A File is a data element that represents a file via its path description."@en ;
+          rdfs:label "FileDataElement"@en .
+
+
+###  https://w3id.org/i40/rami#Formula
+rami:Formula rdf:type owl:Class ;
+             dc:description "A formula is used to describe constraints by a logical expression."@en ;
+             rdfs:label "Formula"@en .
+
+
+###  https://w3id.org/i40/rami#HasDataSpecification
+rami:HasDataSpecification rdf:type owl:Class ;
+                          rdfs:comment "Element that can have data specification templates. A template defines the additional attributes an element may or shall have."@en ;
+                          rdfs:label "Has Data Specification"@en ;
+                          skos:prefLabel "Data Specification"@en .
+
+
+###  https://w3id.org/i40/rami#HasKind
+rami:HasKind rdf:type owl:Class ;
+             rdfs:comment "An element with a kind is an element that can either represent a type or an instance. Default for an element is that it is representing an instance."@en ;
+             rdfs:label "Has Kind"@en .
+
+
+###  https://w3id.org/i40/rami#Identifiable
+rami:Identifiable rdf:type owl:Class ;
+                  rdfs:subClassOf rami:Referable ;
+                  rdfs:comment "An element that has a globally unique identifier."@en ;
+                  rdfs:label "Identifiable"@en ;
+                  skos:note "abstract"@en .
+
+
+###  https://w3id.org/i40/rami#Key
+rami:Key rdf:type owl:Class ;
+         rdfs:comment "A key is a reference to an element by its id."@en ;
+         rdfs:label "Key" .
+
+
+###  https://w3id.org/i40/rami#ObjectAttributes
+rami:ObjectAttributes rdf:type owl:Class ;
+                      rdfs:comment "A set of data elements that describe object attributes. These attributes need to refer to a data element within an existing submodel."@en ;
+                      rdfs:label "Object Attributes" .
+
+
+###  https://w3id.org/i40/rami#Operation
+rami:Operation rdf:type owl:Class ;
+               rdfs:subClassOf rami:SubmodelElement ;
+               rdfs:comment "An operation is a submodel element with input and output variables."@en ;
+               rdfs:label "Operation"@en .
+
+
+###  https://w3id.org/i40/rami#OperationVariable
+rami:OperationVariable rdf:type owl:Class ;
+                       rdfs:subClassOf rami:SubmodelElement ;
+                       dc:description "An operation variable is a submodel element that is used as input or output variable of an operation."@en ;
+                       rdfs:label "Operation Variable" .
+
+
+###  https://w3id.org/i40/rami#Order
+rami:Order rdf:type owl:Class ;
+           skos:definition "Each order for manufacturing runs through a life cycle and its specifics necessarily have an impact on the production facility during performance of the order"@en ;
+           skos:note "TODO: Delete?" ;
+           skos:prefLabel "Order"@en .
+
+
+###  https://w3id.org/i40/rami#Property
+rami:Property rdf:type owl:Class ;
+              rdfs:comment "A property is a data element that has a single value."@en ;
+              rdfs:label "Property"@en ;
+              skos:note "TODO: delete?" .
+
+
+###  https://w3id.org/i40/rami#PropertyValueType
+rami:PropertyValueType rdf:type owl:Class ;
+                       dc:description """The qualifier value is the value of the qualifier.
+Constraint AASd-006: if both, the value and the valueId are present then the value needs to be identical to the short name of the referenced coded value in qualifierValueId."""@en .
+
+
+###  https://w3id.org/i40/rami#Qualifier
+rami:Qualifier rdf:type owl:Class ;
+               dc:description "A qualifier is a type-value pair that makes additional statements w.r.t. the value of the element."@en ;
+               rdfs:label "Qualifier"@en .
+
+
+###  https://w3id.org/i40/rami#RAMIHierarchyLevel
+rami:RAMIHierarchyLevel rdf:type owl:Class ;
+                        rdfs:subClassOf sto:StandardClassification ;
+                        rdfs:label "RAMI Hierarchy Level"@en .
+
+
+###  https://w3id.org/i40/rami#RAMIITLayer
+rami:RAMIITLayer rdf:type owl:Class ;
+                 rdfs:subClassOf sto:StandardClassification ;
+                 rdfs:label "RAMI IT Layer"@en .
+
+
+###  https://w3id.org/i40/rami#RAMILifeCycleLayer
+rami:RAMILifeCycleLayer rdf:type owl:Class ;
+                        rdfs:subClassOf sto:StandardClassification ;
+                        rdfs:label "RAMI Life Cycle Layer"@en ;
+                        rdfs:seeAlso "http://www.zvei.org/en/subjects/Industry-40/Pages/The-Reference-Architectural-Model-RAMI-40-and-the-Industrie-40-Component.aspx" ;
+                        skos:definition "It describes the different Life Cycle and Value Stream layers for the RAMI model according to the IEC 62890 Standard."@en ;
+                        skos:prefLabel "RAMI Life Cycle Layer"@en .
+
+
+###  https://w3id.org/i40/rami#Referable
+rami:Referable rdf:type owl:Class ;
+               rdfs:comment "An element that is referable by its idShort. This id is not globally unique. This id is unique within the name space of the element."@en ;
+               rdfs:label "Referable"@en ;
+               skos:note "abstract" .
+
+
+###  https://w3id.org/i40/rami#Reference
+rami:Reference rdf:type owl:Class ;
+               rdfs:comment """Reference to either a model element of the same or another AAs or to an external entity.
+A reference is an ordered list of keys, each key referencing an element. The complete list of keys may for example be concatenated to a path that then gives unique access to an element or entity."""@en ;
+               rdfs:label "Reference" .
+
+
+###  https://w3id.org/i40/rami#ReferenceElement
+rami:ReferenceElement rdf:type owl:Class ;
+                      dc:description "A reference element is a data element that defines a reference to another element within the same or another AAS or a reference to an external object or entity."@en ;
+                      rdfs:label "Reference Element" .
+
+
+###  https://w3id.org/i40/rami#RelationshipElement
+rami:RelationshipElement rdf:type owl:Class ;
+                         rdfs:subClassOf rami:SubmodelElement ;
+                         dc:description "A relationship element is used to define a relationship between two referable elements."@en ;
+                         rdfs:label "RelationshipElement"@en .
+
+
+###  https://w3id.org/i40/rami#Security
+rami:Security rdf:type owl:Class ;
+              rdfs:comment "Container for security relevant information of the AAS."@en ;
+              rdfs:label "RAMI Security"@en ,
+                         "Security" .
+
+
+###  https://w3id.org/i40/rami#Submodel
+rami:Submodel rdf:type owl:Class ;
+              rdfs:subClassOf rami:HasDataSpecification ,
+                              rami:HasKind ,
+                              rami:Identifiable ;
+              rdfs:comment """A Submodel defines a specific aspect of the asset represented by the AAS.
+A submodel is used to structure the virtual representation and technical functionality of an Administration Shell into distinguishable parts. Each submodel refers to a well-defined domain or subject matter.
+Submodels can become standardized and thus become submodels types. Submodels can have different life-cycles."""@en ,
+                           "Describe the different types of Data related to the I4.0 Asset"@en ;
+              rdfs:label "Submodel"@en .
+
+
+###  https://w3id.org/i40/rami#SubmodelElement
+rami:SubmodelElement rdf:type owl:Class ;
+                     rdfs:subClassOf rami:HasDataSpecification ,
+                                     rami:HasKind ,
+                                     rami:Identifiable ;
+                     rdfs:comment "A submodel element is an element suitable for the description and differentiation of assets."@en ;
+                     rdfs:label "Submodel Element" ;
+                     skos:note "abstract"@en .
+
+
+###  https://w3id.org/i40/rami#SubmodelElementCollection
+rami:SubmodelElementCollection rdf:type owl:Class ;
+                               rdfs:subClassOf rami:SubmodelElement ;
+                               rdfs:comment "A submodel element collection is a set or list of submodel elements."@en ;
+                               rdfs:label "SubmodelElementCollection"@en .
+
+
+###  https://w3id.org/i40/rami#Value
+rami:Value rdf:type owl:Class ;
+           rdfs:comment """Current value that can be specified through an instanced submodel (for
+instance in station 2) or through the asset, for example."""@en ;
+           rdfs:label "Value"@en ;
+           skos:note "maybe 'containedElement'?"@en .
+
+
+###  https://w3id.org/i40/rami#View
+rami:View rdf:type owl:Class ;
+          rdfs:subClassOf rami:HasDataSpecification ,
+                          rami:Referable ;
+          rdfs:comment "Different views associated to the Administration Shell via the Submodels"@en ;
+          rdfs:isDefinedBy "https://www.plattform-i40.de/I40/Redaktion/DE/Downloads/Publikation/hm-2018-trilaterale-coop.html"@de ;
+          rdfs:label "Sicht"@de ,
+                     "View"@en .
+
+
+###  https://w3id.org/i40/sto#ArchitectureDescription
+sto:ArchitectureDescription rdf:type owl:Class ;
+                            rdfs:subClassOf sto:StandardizationFramework ;
+                            rdfs:comment """A Reference Architecture describes the structure of a system with its element types and their structures, as well as their interaction types, among each other and with their environment. Describing this, a Reference Architecture defines restrictions for an instantiation (concrete architecture). Through abstraction from individual details, a Reference Architecture is universally valid within a specific domain. Further architectures with the same functional requirements can be constructed based on the reference architecture. Along with reference architectures comes a recommendation, based on experiences from existing developments as well as from a wide acceptance and recognition by its users or per definition. [ISO/IEC42010]
+
+Note: It is important to distinguish the Reference Architecture from a Reference Architecture Description. While the first refers to a mental model or shared concept, the second is potentially only one of several different documents describing this model."""@en ,
+                                         "ISO 42010 definition of an Architecture Description"@en ;
+                            rdfs:label "Architecture Description" ;
+                            rdfs:seeAlso "https://www.iso.org/standard/50508.html" .
+
+
+###  https://w3id.org/i40/sto#BdvaConcern
+sto:BdvaConcern rdf:type owl:Class ;
+                rdfs:subClassOf sto:StandardClassification ;
+                terms:creator "sebastian"@en ;
+                rdfs:comment """The BDV Reference Model distinguishes between two different elements. On the one hand, it describes the elements that are at the core of the BDVA; on the other, it outlines the features that are developed in strong collaboration with related European activities. The BDV Reference Model is structured into horizontal and vertical concerns.
+Horizontal concerns cover specific aspects along the data processing Vertical concerns address cross-cutting issues, which may affect all the horizontal concerns. In addition, vertical concerns may also involve non-technical aspects."""@en ;
+                rdfs:label "BDVA Concern"@en ;
+                sto:hasOfficialResource <http://www.bdva.eu/sites/default/files/BDVA_SRIA_v4_Ed1.1.pdf> .
+
+
+###  https://w3id.org/i40/sto#BusinessCycleSCM
+sto:BusinessCycleSCM rdf:type owl:Class ;
+                     rdfs:subClassOf sto:StandardClassification ;
+                     rdfs:comment "Suply Chain Management Business Cycle."@en ;
+                     rdfs:isDefinedBy <http://nvlpubs.nist.gov/nistpubs/ir/2016/NIST.IR.8107.pdf> ;
+                     rdfs:label "Business Cycle SCM"@en ;
+                     rdfs:seeAlso "https://en.wikipedia.org/wiki/Supply_chain_management" .
+
+
+###  https://w3id.org/i40/sto#Concern
+sto:Concern rdf:type owl:Class ;
+            terms:creator "sebastian"@en ;
+            rdfs:comment "A concern regards a specific challenge or topic as defined by ISO42010. Each concern should at least be regarded by one view of an architecture."@en ;
+            rdfs:label "Concern" ;
+            sto:hasDBpediaResource <http://dbpedia.org/resource/ISO/IEC_42010> ;
+            sto:hasOfficialResource <http://www.iso-architecture.org/42010/> ;
+            sto:hasWikipediaArticle <https://en.wikipedia.org/wiki/ISO/IEC_42010#Conceptual_Model_-_Concern> .
+
+
+###  https://w3id.org/i40/sto#ConnectivityLayer
+sto:ConnectivityLayer rdf:type owl:Class ;
+                      rdfs:subClassOf sto:StandardClassification ;
+                      rdfs:comment "Connectivity Layer of the Internet Connectivity Framework"@en ;
+                      rdfs:isDefinedBy <https://www.iiconsortium.org/pdf/IIC_PUB_G5_V1.01_PB_20180228.pdf> ;
+                      rdfs:label "Connectivity Layer"@en .
+
+
+###  https://w3id.org/i40/sto#Domain
+sto:Domain rdf:type owl:Class ;
+           rdfs:comment "Represents the Domains in which the Standards can be used"@en ;
+           rdfs:label "Domain"@en .
+
+
+###  https://w3id.org/i40/sto#FiwareChapter
+sto:FiwareChapter rdf:type owl:Class ;
+                  rdfs:subClassOf sto:StandardClassification ;
+                  terms:creator "sebastian"@en ;
+                  rdfs:comment "Following is a description of the Reference Architecture linked to the different chapters of FIWARE. A description of FIWARE Generic Enablers (GEs) being supported in each chapter is provided, including the high-level description of the APIs that each FIWARE Generic Enabler (GE) exposes to application developers or it uses to connect to another FIWARE GEs."@en ;
+                  rdfs:label "Fiware Chapter"@en .
+
+
+###  https://w3id.org/i40/sto#IIoTConsortium
+sto:IIoTConsortium rdf:type owl:Class ;
+                   rdfs:subClassOf foaf:Organization ;
+                   terms:creator "sebastian" .
+
+
+###  https://w3id.org/i40/sto#ISA95Level
+sto:ISA95Level rdf:type owl:Class ;
+               rdfs:subClassOf sto:StandardClassification ;
+               rdfs:comment "Describes the ISA95 levels to classify the industry Standards according to those levels. Eg., Device, SCADA, etc. It has strong relation to the RAMI Hierarchy levels"@en ;
+               rdfs:label "ISA 95 Level"@en .
+
+
+###  https://w3id.org/i40/sto#InternationalClassificationForStandards
+sto:InternationalClassificationForStandards rdf:type owl:Class ;
+                                            rdfs:comment "Serves as a structure for catalogues of international, regional and national standards and other normative documents, and as a basis for standing-order systems."@en ;
+                                            rdfs:label "International Classification For Standards"@en ;
+                                            rdfs:seeAlso <https://www.iso.org/publication/PUB100033.html> ;
+                                            sto:hasOfficialResource <https://www.iso.org/publication/PUB100033.html> .
+
+
+###  https://w3id.org/i40/sto#ProductDevelopmentLifeCycle
+sto:ProductDevelopmentLifeCycle rdf:type owl:Class ;
+                                rdfs:subClassOf sto:StandardClassification ;
+                                rdfs:comment "PLM is the process of managing the entire lifecycle of a product from inception, through engineering design and manufacture, to service and disposal of manufactured products. Related areas are PLMManagement, Modeling Practice, Product Model Data exchange, Manufacturing Model Data, Product Catalog Data."@en ,
+                                             "Product Development Life-Cycle Phase"@en ;
+                                rdfs:isDefinedBy "https://en.wikipedia.org/wiki/Product_lifecycle" ;
+                                rdfs:label "Product Development Life Cycle"@en .
+
+
+###  https://w3id.org/i40/sto#ProductionSystemLifeCycle
+sto:ProductionSystemLifeCycle rdf:type owl:Class ;
+                              rdfs:subClassOf sto:StandardClassification ;
+                              rdfs:comment "Collections of machines, equipment, and auxiliary systems organized to create goods and services from various resources."@en ;
+                              rdfs:isDefinedBy <http://nvlpubs.nist.gov/nistpubs/ir/2016/NIST.IR.8107.pdf> ;
+                              rdfs:label "Production System Life Cycle"@en .
+
+
+###  https://w3id.org/i40/sto#Publication
+sto:Publication rdf:type owl:Class ;
+                rdfs:subClassOf foaf:Document ;
+                rdfs:comment """Specifies a Publication. E.g., International Standards,Technical Specifications,Publicly Available Specifications,Amendments
+                Technical Corrigenda,Interpretation Sheets,Technical Reports,Guides"""@en ;
+                rdfs:isDefinedBy sto:IEC ;
+                rdfs:label "Publication"@en ;
+                rdfs:seeAlso <http://www.iec.ch/standardsdev/publications/> .
+
+
+###  https://w3id.org/i40/sto#Standard
+sto:Standard rdf:type owl:Class ;
+             rdfs:subClassOf sto:Publication ;
+             ns:attributionURL <http://www.iec.ch> ;
+             rdfs:comment "A document, established by consensus and approved by a recognized body, that provides, for common and repeated use, rules, guidelines or characteristics for activities or their results, aimed at the achievement of the optimum degree of order in a given context."@en ;
+             rdfs:isDefinedBy sto:IEC ;
+             rdfs:label "Standard"@en ;
+             rdfs:seeAlso <http://www.iec.ch/standardsdev/publications/is.htm> .
+
+
+###  https://w3id.org/i40/sto#StandardClassification
+sto:StandardClassification rdf:type owl:Class ;
+                           rdfs:comment "Describes categorization areas that the different Standardizations Initiatives use to category Standards."@en ;
+                           rdfs:label "Standard Classification"@en .
+
+
+###  https://w3id.org/i40/sto#StandardOrganization
+sto:StandardOrganization rdf:type owl:Class ;
+                         rdfs:subClassOf foaf:Organization ;
+                         rdfs:comment "Define the standards organizations that develop and publish industry standards"@en ;
+                         rdfs:label "StandardOrganization"@en .
+
+
+###  https://w3id.org/i40/sto#StandardPart
+sto:StandardPart rdf:type owl:Class ;
+                 rdfs:subClassOf sto:Publication ;
+                 rdfs:comment "Typically Standards are divided into parts. E.g., ISA 95 has part Part 1: Models and Terminology, Part 2: Object Model Attributes, etc."@en ;
+                 rdfs:label "StandardPart" .
+
+
+###  https://w3id.org/i40/sto#StandardizationFramework
+sto:StandardizationFramework rdf:type owl:Class ;
+                             rdfs:comment "Describes existings Standardizations Initiatives, e.g, RAMI, NIST."@en ;
+                             rdfs:label "Standarization Framework"@en ;
+                             skos:altLabel "Reference Architecture"@en .
+
+
+###  https://w3id.org/i40/sto#TechnicalCommittee
+sto:TechnicalCommittee rdf:type owl:Class ;
+                       rdfs:comment "Specifies the representitive code name of the Technical Committee that covers a Standard for e.g, TC 1, SC 3C. Many thousand experts carry out standardization work in the IEC in TCs (technical committees) and SCs (subcommittees), in hundreds of working groups, project and maintenance teams. They represent the national electrotechnical needs of IEC Member countries and of many Affiliates at the global level in the IEC. These technical experts are sent by industry, governments, test and research laboratories, academia and even consumer groups to work on the global, neutral and independent platform of the IEC. That's where they develop globally relevant, voluntary, consensus based IEC International Standards."@en ;
+                       rdfs:isDefinedBy sto:IEC ;
+                       rdfs:label "Technical Committee"@en ;
+                       rdfs:seeAlso <http://www.iec.ch/dyn/www/f?p=103:62:9979528650478:::62:FSP_ORG_ID,FSP_LANG_ID:,25> ;
+                       skos:note "1.sto:       a property explaining that TC and SC are managed by SMB (Standardization Management Board) needs to be added" .
+
+
+###  https://w3id.org/i40/sto#TechnicalReport
+sto:TechnicalReport rdf:type owl:Class ;
+                    rdfs:subClassOf sto:Publication ;
+                    rdfs:comment "Specifies that a given Publication is a Technical Report"@en ,
+                                 "Technical Reports contain collected data of a kind different from that normally published as an International Standard, for example data obtained from a survey carried out among national committees, data of work in other international organizations or data on \"the state of the art\" in relation to standards of national committees on a particular subject.Technical Reports are entirely informative in nature and shall not contain matter implying that they are normative"@en ;
+                    rdfs:isDefinedBy sto:IEC ;
+                    rdfs:label "Technical Report"@en ;
+                    rdfs:seeAlso <http://www.iec.ch/standardsdev/publications/tr.htm> .
+
+
+###  https://w3id.org/i40/sto#TechnicalSpecification
+sto:TechnicalSpecification rdf:type owl:Class ;
+                           rdfs:subClassOf sto:Publication ;
+                           rdfs:comment "Specifies that a given Publication is a Technical Specification"@en ,
+                                        "Technical Specifications are often published when the subject under question is still under development or when insufficient consensus for approval of an International Standard is available.Technical Specifications approach International Standards in terms of detail and completeness, but have not yet passed through all approval stages either because consensus has not been reached or because standardization is seen to be premature."@en ;
+                           rdfs:isDefinedBy sto:IEC ;
+                           rdfs:label "Technical Specification"@en ;
+                           rdfs:seeAlso <http://www.iec.ch/standardsdev/publications/ts.htm> .
+
+
+###  https://w3id.org/i40/sto#Technology
+sto:Technology rdf:type owl:Class ;
+               terms:creator "sebastian"@en ;
+               rdfs:comment "A Technology is an implementation of one or many standards in order to achieve a goal."@en ;
+               rdfs:label "Technology"@en .
+
+
+###  https://w3id.org/i40/sto#Viewpoint
+sto:Viewpoint rdf:type owl:Class ;
+              rdfs:subClassOf sto:StandardClassification ;
+              terms:creator "sebastian" ;
+              rdfs:comment "ISO 42010 definition of a Viewpoint"@en ;
+              rdfs:label "Viewpoint" ;
+              rdfs:seeAlso <https://www.iso.org/standard/50508.html> ;
+              sto:hasDBpediaResource <http://dbpedia.org/resource/ISO/IEC_42010> ;
+              sto:hasOfficialResource <http://www.iso-architecture.org/42010/> ;
+              sto:hasWikipediaArticle <https://en.wikipedia.org/wiki/ISO/IEC_42010#Conceptual_Model_-_Architecture_Viewpoint> .
+
+
+###  https://w3id.org/ids/ram/Layer
+<https://w3id.org/ids/ram/Layer> rdf:type owl:Class ;
+                                 rdfs:subClassOf sto:StandardClassification ;
+                                 rdfs:label "IDS RAM Layer"@en .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+terms:creator terms:description "Examples of a Creator include a person, an organization, or a service."@en ;
+              terms:hasVersion <http://dublincore.org/usage/terms/history/#creatorT-002> ;
+              terms:issued "2008-01-14"^^xsd:date ;
+              terms:modified "2010-10-11"^^xsd:date ;
+              rdfs:comment "An entity primarily responsible for making the resource."@en ;
+              rdfs:isDefinedBy terms: ;
+              rdfs:label "Creator"@en .
+
+
+terms:hasVersion terms:hasVersion <http://dublincore.org/usage/terms/history/#hasVersion-003> ;
+                 terms:issued "2000-07-11"^^xsd:date ;
+                 terms:modified "2008-01-14"^^xsd:date ;
+                 rdfs:comment "A related resource that is a version, edition, or adaptation of the described resource."@en ;
+                 rdfs:isDefinedBy terms: ;
+                 rdfs:label "Has Version"@en ;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en .
+
+
+terms:issued terms:hasVersion <http://dublincore.org/usage/terms/history/#issued-003> ;
+             terms:issued "2000-07-11"^^xsd:date ;
+             terms:modified "2008-01-14"^^xsd:date ;
+             rdfs:comment "Date of formal issuance (e.g., publication) of the resource."@en ;
+             rdfs:isDefinedBy terms: ;
+             rdfs:label "Date Issued"@en .
+
+
+terms:modified terms:hasVersion <http://dublincore.org/usage/terms/history/#modified-003> ;
+               terms:issued "2000-07-11"^^xsd:date ;
+               terms:modified "2008-01-14"^^xsd:date ;
+               rdfs:comment "Date on which the resource was changed."@en ;
+               rdfs:isDefinedBy terms: ;
+               rdfs:label "Date Modified"@en .
+
+
+terms:title terms:hasVersion <http://dublincore.org/usage/terms/history/#titleT-002> ;
+            terms:issued "2008-01-14"^^xsd:date ;
+            terms:modified "2010-10-11"^^xsd:date ;
+            rdfs:comment "A name given to the resource."@en ;
+            rdfs:isDefinedBy terms: ;
+            rdfs:label "Title"@en .
+
+
+rami:description rdfs:comment "Description or comments on the element. The description can be provided in several languages."@en ;
+                 skos:prefLabel "has Description"@en .
+
+
+rami:idShort rdfs:label "idShort"@en ;
+             owl:deprecated "true"^^xsd:boolean .
+
+
+rami:semanticId rdfs:comment "Points to the Expression Semantic of the Submodels"@en ,
+                             "The semantic id might refer to an external information source, which explains the formulation of the submodel (for example an PDF if a standard)"@en ;
+                rdfs:label "semanticId"@en ;
+                skos:altLabel "has Semantic Expression"@en ;
+                skos:prefLabel "has semantic ID"@en .
+
+
+sto:hasDBpediaResource rdfs:comment "Instance's DBpedia Resource"@en ;
+                       rdfs:label "has DBpedia Resource"@en .
+
+
+sto:hasOfficialResource rdfs:comment "Points to the URL of the official websilte from which published the document"@en ,
+                                     "Standard Official Website"@en ;
+                        rdfs:label "has Official Resource"@en .
+
+
+sto:hasWikipediaArticle rdfs:comment "Wikipedia Article about the Standard"@en ;
+                        rdfs:label "has Wikipedia Article"@en .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ owl:intersectionOf ( :Actor
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasFeature ;
+                         owl:hasValue "Device"
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Device
+] .
+
+
+[ owl:intersectionOf ( :Actor
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasFeature ;
+                         owl:hasValue "Person"
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf foaf:Person
+] .
+
+
+[ owl:intersectionOf ( :Actor
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasFeature ;
+                         owl:hasValue "SoftwareResource"
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :SoftwareResource
+] .
+
+
+[ owl:intersectionOf ( :Actor
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasFeature ;
+                         owl:hasValue "Thing"
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Thing
+] .
+
+
+[ owl:intersectionOf ( :CurrentState
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :isActive ;
+                         owl:hasValue "true"^^xsd:boolean
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :ConcurrentState
+] .
+
+
+[ owl:intersectionOf ( :Function
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :callsAService ;
+                         owl:someValuesFrom :Service
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :RequestFunction
+] .
+
+
+[ owl:intersectionOf ( :State
+                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                owl:onProperty :finalizesSequence ;
+                                                owl:someValuesFrom :Sequence
+                                              ]
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :isParentSetElement ;
+                                                owl:hasValue "true"^^xsd:boolean
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :FinalState
+] .
+
+
+[ owl:intersectionOf ( :State
+                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                owl:onProperty :initializesSequence ;
+                                                owl:someValuesFrom :Sequence
+                                              ]
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :isParentSetElement ;
+                                                owl:hasValue "true"^^xsd:boolean
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :InitialState
+] .
+
+
+[ owl:intersectionOf ( :State
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasNextState ;
+                         owl:someValuesFrom :CurrentState
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :PreviousState
+] .
+
+
+[ owl:intersectionOf ( :State
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasPreviousState ;
+                         owl:someValuesFrom :CurrentState
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :NextState
+] .
+
+
+[ owl:intersectionOf ( :State
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :isActive ;
+                         owl:hasValue "true"^^xsd:boolean
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :CurrentState
+] .
+
+
+[ owl:intersectionOf ( :Variable
+                       [ rdf:type owl:Class ;
+                         owl:unionOf ( [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasDataType ;
+                                         owl:hasValue "array"
+                                       ]
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasDataType ;
+                                         owl:hasValue "string"
+                                       ]
+                                     )
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Data
+] .
+
+
+[ owl:intersectionOf ( :Variable
+                       [ rdf:type owl:Class ;
+                         owl:unionOf ( [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasDataType ;
+                                         owl:hasValue "double"
+                                       ]
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasDataType ;
+                                         owl:hasValue "float"
+                                       ]
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasDataType ;
+                                         owl:hasValue "integer"
+                                       ]
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasDataType ;
+                                         owl:hasValue "long"
+                                       ]
+                                     )
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :AnalogVariable
+] .
+
+
+[ owl:intersectionOf ( :Variable
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :actsOver ;
+                         owl:someValuesFrom :Object
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Output
+] .
+
+
+[ owl:intersectionOf ( :Variable
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :monitors ;
+                         owl:someValuesFrom :Object
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :Input
+] .
+
+
+[ owl:intersectionOf ( :Variable
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasDataType ;
+                         owl:hasValue "boolean"
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf :DigitalVariable
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :isParentSetElement ;
+  owl:hasValue "true"^^xsd:boolean ;
+  rdfs:subClassOf :Sequence
+] .

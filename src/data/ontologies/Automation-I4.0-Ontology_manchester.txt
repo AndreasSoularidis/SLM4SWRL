@@ -1,0 +1,3675 @@
+Prefix: : <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology>
+Prefix: DUL: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: doap: <http://usefulinc.com/ns/doap#>
+Prefix: foaf: <http://xmlns.com/foaf/0.1/>
+Prefix: i40: <https://w3id.org/i40/>
+Prefix: ns: <http://creativecommons.org/ns#>
+Prefix: om-2: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: prov: <http://www.w3.org/ns/prov#>
+Prefix: rami: <https://w3id.org/i40/rami#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: skos: <http://www.w3.org/2004/02/skos/core#>
+Prefix: sto: <https://w3id.org/i40/sto#>
+Prefix: swrl: <http://www.w3.org/2003/11/swrl#>
+Prefix: swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#>
+Prefix: swrlb: <http://www.w3.org/2003/11/swrlb#>
+Prefix: terms: <http://purl.org/dc/terms/>
+Prefix: vann: <http://purl.org/vocab/vann/>
+Prefix: void: <http://rdfs.org/ns/void#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+
+Ontology: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology>
+<http://www.semanticweb.org/santiago/Automation-I4.0-Ontology/2.0.0>
+
+Annotations: 
+    terms:contributor <https://www.linkedin.com/in/sebastianrbader/>,
+    terms:created "2017-01-25"^^xsd:date,
+    terms:created "2018-10-31"^^xsd:date,
+    terms:modified "2017-09-08"^^xsd:date,
+    terms:publisher <http://de.dbpedia.org/resource/Fraunhofer-Gesellschaft>,
+    terms:publisher <https://github.com/sagilar>,
+    terms:rights "This work is distributed under a Creative Commons Attribution License (http://creativecommons.org/licenses/by/3.0/)."@en,
+    terms:rights "This work is distributed under an Apache License 2.0 (http://www.apache.org/licenses/)."@en,
+    terms:title "Standards Ontology"@en,
+    vann:preferredNamespacePrefix "Automation-I4.0-Core-Ontology",
+    vann:preferredNamespacePrefix "ddo",
+    vann:preferredNamespacePrefix "minified-sto",
+    vann:preferredNamespacePrefix "rami",
+    vann:preferredNamespacePrefix "sto",
+    vann:preferredNamespaceUri "https://w3id.org/i40/rami#",
+    vann:preferredNamespaceUri "https://w3id.org/i40/sto#",
+    void:vocabulary <http://purl.org/dc/elements/1.1/>,
+    void:vocabulary <http://www.w3.org/2000/01/rdf-schema#>,
+    void:vocabulary <http://www.w3.org/2001/XMLSchema#>,
+    void:vocabulary <http://www.w3.org/2004/02/skos/core#>,
+    doap:repository <https://github.com/sagilar>,
+    doap:repository <https://github.com/i40-Tools/StandardsOntology>,
+    rdfs:comment "An ontology to describe standards related to Industry 4.0 and Smart Manufacturing"@en,
+    rdfs:comment "The core ontology for automation systems related to the Industry 4.0 and Smart Manufacturing"@en,
+    rdfs:comment "The ontology to represent a minified version of standards to integrate the ontology for automation systems in I4.0 and the STO by Grangel et al"@en,
+    rdfs:comment "The ontology to represent discrete dynamics in automation systems related to the Industry 4.0 and Smart Manufacturing"@en,
+    rdfs:comment "Update implementing the specifiations coming from 'Details of the Asset Administration Shell - Part 1: The exchange of information between partners in the value chain of Industrie 4.0 (Version 1.0)'",
+    rdfs:isDefinedBy <https://w3id.org/i40/rami#>,
+    owl:versionInfo "0.3",
+    owl:versionInfo 0.4,
+    owl:versionInfo 2.0,
+    skos:definition "An Ontology to represents the Reference Architecture Model for Industry 4.0 (RAMI), including the concept of the Administration Shell I4.0 Component."@en,
+    skos:prefLabel "rami"@en,
+    sto:hasOfficialResource <https://webstore.iec.ch/publication/153>
+
+AnnotationProperty: dc:creator
+
+    
+AnnotationProperty: dc:date
+
+    
+AnnotationProperty: dc:description
+
+    Annotations: 
+        terms:description "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en,
+        terms:hasVersion <http://dublincore.org/usage/terms/history/#description-006>,
+        terms:issued "1999-07-02"^^xsd:date,
+        terms:modified "2008-01-14"^^xsd:date,
+        rdfs:comment "An account of the resource."@en,
+        rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/>,
+        rdfs:label "Description"@en,
+        skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en
+    
+    
+AnnotationProperty: dc:format
+
+    
+AnnotationProperty: dc:identifier
+
+    
+AnnotationProperty: dc:language
+
+    
+AnnotationProperty: dc:relation
+
+    
+AnnotationProperty: dc:source
+
+    
+AnnotationProperty: dc:title
+
+    Annotations: 
+        terms:hasVersion <http://dublincore.org/usage/terms/history/#title-006>,
+        terms:issued "1999-07-02"^^xsd:date,
+        terms:modified "2008-01-14"^^xsd:date,
+        rdfs:comment "A name given to the resource."@en,
+        rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/>,
+        rdfs:label "Title"@en,
+        skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en
+    
+    
+AnnotationProperty: doap:repository
+
+    
+AnnotationProperty: foaf:familyName
+
+    Annotations: 
+        rdfs:label "Family Name"@en
+    
+    Domain: 
+        <http://xmlns.com/foaf/0.1/person>
+    
+    
+AnnotationProperty: foaf:name
+
+    Annotations: 
+        rdfs:label "name"@en
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Thing>
+    
+    
+AnnotationProperty: ns:attributionURL
+
+    
+AnnotationProperty: owl:deprecated
+
+    
+AnnotationProperty: owl:versionInfo
+
+    
+AnnotationProperty: rami:description
+
+    Annotations: 
+        rdfs:comment "Description or comments on the element. The description can be provided in several languages."@en,
+        skos:prefLabel "has Description"@en
+    
+    SubPropertyOf: 
+        rdfs:comment
+    
+    Range: 
+        <http://www.w3.org/2001/XMLSchema#string>
+    
+    
+AnnotationProperty: rami:display
+
+    
+AnnotationProperty: rami:idShort
+
+    Annotations: 
+        rdfs:label "idShort"@en,
+        owl:deprecated true
+    
+    
+AnnotationProperty: rami:semanticId
+
+    Annotations: 
+        rdfs:comment "Points to the Expression Semantic of the Submodels"@en,
+        rdfs:comment "The semantic id might refer to an external information source, which explains the formulation of the submodel (for example an PDF if a standard)"@en,
+        rdfs:label "semanticId"@en,
+        skos:altLabel "has Semantic Expression"@en,
+        skos:prefLabel "has semantic ID"@en
+    
+    SubPropertyOf: 
+        rdfs:seeAlso
+    
+    Range: 
+        <https://w3id.org/i40/rami#ExpressionSemantic>
+    
+    
+AnnotationProperty: rdfs:comment
+
+    
+AnnotationProperty: rdfs:isDefinedBy
+
+    
+AnnotationProperty: rdfs:label
+
+    
+AnnotationProperty: rdfs:seeAlso
+
+    
+AnnotationProperty: skos:altLabel
+
+    Annotations: 
+        rdfs:label "alternative label"@en
+    
+    
+AnnotationProperty: skos:definition
+
+    Annotations: 
+        rdfs:label "definition"@en
+    
+    
+AnnotationProperty: skos:note
+
+    Annotations: 
+        rdfs:label "note"@en
+    
+    
+AnnotationProperty: skos:prefLabel
+
+    Annotations: 
+        rdfs:label "preferred label"@en
+    
+    
+AnnotationProperty: sto:hasDBpediaResource
+
+    Annotations: 
+        rdfs:comment "Instance's DBpedia Resource"@en,
+        rdfs:label "has DBpedia Resource"@en
+    
+    
+AnnotationProperty: sto:hasOfficialResource
+
+    Annotations: 
+        rdfs:comment "Points to the URL of the official websilte from which published the document"@en,
+        rdfs:comment "Standard Official Website"@en,
+        rdfs:label "has Official Resource"@en
+    
+    
+AnnotationProperty: sto:hasWikipediaArticle
+
+    Annotations: 
+        rdfs:comment "Wikipedia Article about the Standard"@en,
+        rdfs:label "has Wikipedia Article"@en
+    
+    
+AnnotationProperty: sto:publisher
+
+    
+AnnotationProperty: swrla:isRuleEnabled
+
+    
+AnnotationProperty: terms:contributor
+
+    
+AnnotationProperty: terms:created
+
+    
+AnnotationProperty: terms:creator
+
+    Annotations: 
+        terms:description "Examples of a Creator include a person, an organization, or a service."@en,
+        terms:hasVersion <http://dublincore.org/usage/terms/history/#creatorT-002>,
+        terms:issued "2008-01-14"^^xsd:date,
+        terms:modified "2010-10-11"^^xsd:date,
+        rdfs:comment "An entity primarily responsible for making the resource."@en,
+        rdfs:isDefinedBy <http://purl.org/dc/terms/>,
+        rdfs:label "Creator"@en
+    
+    SubPropertyOf: 
+        dc:creator,
+        terms:contributor
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent>
+    
+    
+AnnotationProperty: terms:date
+
+    
+AnnotationProperty: terms:description
+
+    Annotations: 
+        terms:description "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en,
+        terms:hasVersion <http://dublincore.org/usage/terms/history/#descriptionT-001>,
+        terms:issued "2008-01-14"^^xsd:date,
+        terms:modified "2008-01-14"^^xsd:date,
+        rdfs:comment "An account of the resource."@en,
+        rdfs:isDefinedBy <http://purl.org/dc/terms/>,
+        rdfs:label "Description"@en
+    
+    SubPropertyOf: 
+        dc:description
+    
+    
+AnnotationProperty: terms:hasVersion
+
+    Annotations: 
+        terms:hasVersion <http://dublincore.org/usage/terms/history/#hasVersion-003>,
+        terms:issued "2000-07-11"^^xsd:date,
+        terms:modified "2008-01-14"^^xsd:date,
+        rdfs:comment "A related resource that is a version, edition, or adaptation of the described resource."@en,
+        rdfs:isDefinedBy <http://purl.org/dc/terms/>,
+        rdfs:label "Has Version"@en,
+        skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en
+    
+    SubPropertyOf: 
+        dc:relation,
+        terms:relation
+    
+    
+AnnotationProperty: terms:identifier
+
+    SubPropertyOf: 
+        dc:identifier
+    
+    Range: 
+        <http://www.w3.org/2000/01/rdf-schema#Literal>
+    
+    
+AnnotationProperty: terms:issued
+
+    Annotations: 
+        terms:hasVersion <http://dublincore.org/usage/terms/history/#issued-003>,
+        terms:issued "2000-07-11"^^xsd:date,
+        terms:modified "2008-01-14"^^xsd:date,
+        rdfs:comment "Date of formal issuance (e.g., publication) of the resource."@en,
+        rdfs:isDefinedBy <http://purl.org/dc/terms/>,
+        rdfs:label "Date Issued"@en
+    
+    SubPropertyOf: 
+        dc:date,
+        terms:date
+    
+    Range: 
+        <http://www.w3.org/2000/01/rdf-schema#Literal>
+    
+    
+AnnotationProperty: terms:license
+
+    Annotations: 
+        terms:hasVersion <http://dublincore.org/usage/terms/history/#license-002>,
+        terms:issued "2004-06-14"^^xsd:date,
+        terms:modified "2017-12-19"^^xsd:date,
+        rdfs:comment "A legal document giving official permission to do something with the resource."@en,
+        rdfs:comment "A legal document giving official permission to do something with the resource. In this ontology denotes the license of a Standard."@en,
+        rdfs:comment "Represent the license document for a given Standard"@en,
+        rdfs:isDefinedBy <http://purl.org/dc/terms/>,
+        rdfs:label "has License"@en
+    
+    
+AnnotationProperty: terms:modified
+
+    Annotations: 
+        terms:hasVersion <http://dublincore.org/usage/terms/history/#modified-003>,
+        terms:issued "2000-07-11"^^xsd:date,
+        terms:modified "2008-01-14"^^xsd:date,
+        rdfs:comment "Date on which the resource was changed."@en,
+        rdfs:isDefinedBy <http://purl.org/dc/terms/>,
+        rdfs:label "Date Modified"@en
+    
+    SubPropertyOf: 
+        dc:date,
+        terms:date
+    
+    Range: 
+        <http://www.w3.org/2000/01/rdf-schema#Literal>
+    
+    
+AnnotationProperty: terms:publisher
+
+    
+AnnotationProperty: terms:relation
+
+    
+AnnotationProperty: terms:rights
+
+    
+AnnotationProperty: terms:title
+
+    Annotations: 
+        terms:hasVersion <http://dublincore.org/usage/terms/history/#titleT-002>,
+        terms:issued "2008-01-14"^^xsd:date,
+        terms:modified "2010-10-11"^^xsd:date,
+        rdfs:comment "A name given to the resource."@en,
+        rdfs:isDefinedBy <http://purl.org/dc/terms/>,
+        rdfs:label "Title"@en
+    
+    SubPropertyOf: 
+        dc:title
+    
+    Range: 
+        <http://www.w3.org/2000/01/rdf-schema#Literal>
+    
+    
+AnnotationProperty: vann:preferredNamespacePrefix
+
+    
+AnnotationProperty: vann:preferredNamespaceUri
+
+    
+AnnotationProperty: void:vocabulary
+
+    
+Datatype: <http://purl.org/muto/core#Tag>
+
+    
+Datatype: rami:IRDI
+
+    Annotations: 
+        rdfs:comment "IRDI - ISO29002-5, ISO IEC 6523 and ISO IEC 11179-6 [20] as an Identifier scheme for properties and classifications. They are created in a process of consortium-wise specification or international standardisation.
+To this end, users sit down together and feed their ideas into the consortia or standardisation bodies. Properties in ISO, IEC help to safeguard key commercial interests. Repositories like eCl@ss and others make it possible to standardise a relatively large number of Identifiers in an appropriately short time."@en
+    
+    
+Datatype: rami:blob
+
+    Annotations: 
+        rdfs:comment "A BLOB is a data element that represents a file that is contained with its source code in the value attribute."@en,
+        rdfs:label "rami:blob"
+    
+    
+Datatype: rami:file
+
+    Annotations: 
+        rdfs:comment "A File is a data element that represents a file via its path description."@en,
+        rdfs:label "rami:file"
+    
+    
+Datatype: rdf:PlainLiteral
+
+    
+Datatype: rdfs:Literal
+
+    
+Datatype: xsd:anyURI
+
+    
+Datatype: xsd:boolean
+
+    
+Datatype: xsd:date
+
+    
+Datatype: xsd:dateTime
+
+    
+Datatype: xsd:decimal
+
+    
+Datatype: xsd:float
+
+    
+Datatype: xsd:gYear
+
+    
+Datatype: xsd:integer
+
+    
+Datatype: xsd:string
+
+    
+ObjectProperty: <http://www.loa-cnr.it/ontologies/DUL.owl#isPartOf>
+
+    Annotations: 
+        rdfs:comment "A relation between any entities, in this case, the Asset can be part of other Asset(s).",
+        rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl>,
+        rdfs:label "is Part Of"@en
+    
+    Characteristics: 
+        Transitive
+    
+    Domain: 
+        rami:Asset
+    
+    Range: 
+        rami:Asset
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#actsOver>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Output>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Object>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#belongsToSequence>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State> or <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Sequence>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#belongsToSubdomain>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Process>
+    
+    Range: 
+        sto:Domain
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#callsAService>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#RequestFunction>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Service>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#contains>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ExecutionScope>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#defines>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DynamicsModel>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Architecture>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#executes>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function>
+    
+    InverseOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isExecutedBy>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#finalizesLoop>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Loop>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#finalizesSequence>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#FinalState>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Sequence>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#generates>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasAssociatedModel>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Process>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DynamicsModel>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDomain>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        sto:Standard
+    
+    Range: 
+        sto:Domain
+    
+    InverseOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isStandardizedBy>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasModelElement>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        InverseFunctional,
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DynamicsModel>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNextState>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    InverseOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasPreviousState>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasPreviousState>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    InverseOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNextState>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasStateFunction>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#StateFunction>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasTransitionFunction>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#TransitionFunction>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#initializesLoop>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Loop>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#initializesSequence>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#InitialState>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Sequence>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#interactsWith>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isCarriedOutIn>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        rami:Asset
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Process>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isComposedOf>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Architecture>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isConnectedToState>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    InverseOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isConnectedToTransition>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isConnectedToTransition>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition>
+    
+    InverseOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isConnectedToState>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isContextVariableOf>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ExecutionScope>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isDeployedThrough>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Architecture>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Network>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isExecutedBy>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent>
+    
+    InverseOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#executes>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isStandardizedBy>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        sto:Domain
+    
+    Range: 
+        sto:Standard
+    
+    InverseOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDomain>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isVirtualizedIn>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent> or rami:Asset
+    
+    Range: 
+        rami:AdminShell
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#monitors>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Input>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Object>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#offers>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Service>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#receives>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#receivesExecutionScope>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ExecutionScope>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#receivesParameter>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#spreads>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Network>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Service>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#transmits>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Network>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data>
+    
+    
+ObjectProperty: <http://www.w3.org/TR/2013/REC-prov-o-20130430/#wasDerivedFrom>
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    
+ObjectProperty: DUL:associatedWith
+
+    
+ObjectProperty: DUL:isComponentOf
+
+    Annotations: 
+        rdfs:comment "Represents Standards that are component of other Standards. This relation is not transitive"@en,
+        rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl>,
+        rdfs:label "is Component Of"@en
+    
+    SubPropertyOf: 
+        sto:relatedTo
+    
+    Domain: 
+        sto:Standard
+    
+    Range: 
+        sto:Standard or sto:StandardPart
+    
+    
+ObjectProperty: DUL:isMemberOf
+
+    Annotations: 
+        rdfs:comment "A relation between collections and entities, e.g. 'the Night Watch by Rembrandt is in the Rijksmuseum collection'; 'Davide is member of the Pen Club', 'Igor is one the subjects chosen for the experiment'."@en,
+        rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl>,
+        rdfs:label "is member of"@en,
+        rdfs:label "è membro di"@it
+    
+    SubPropertyOf: 
+        DUL:associatedWith
+    
+    Domain: 
+        DUL:Entity
+    
+    Range: 
+        DUL:Collection
+    
+    
+ObjectProperty: foaf:maker
+
+    EquivalentTo: 
+        terms:creator
+    
+    
+ObjectProperty: foaf:mbox
+
+    Annotations: 
+        rdfs:label "mbox"@en
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent>
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Thing>
+    
+    
+ObjectProperty: i40:hasTargetConcern
+
+    Annotations: 
+        rdfs:comment "The relation declaring that a standard is relevant or targets a certain concern."@en,
+        rdfs:label "has Target Concern"@en
+    
+    SubPropertyOf: 
+        DUL:associatedWith
+    
+    Domain: 
+        sto:Standard
+    
+    Range: 
+        sto:Concern
+    
+    
+ObjectProperty: om-2:hasUnit
+
+    Annotations: 
+        rdfs:label "has unit"@en
+    
+    Domain: 
+        <http://org.semanticweb.owlapi/error#Error1>
+    
+    Range: 
+        om-2:Unit
+    
+    
+ObjectProperty: owl:topObjectProperty
+
+    Range: 
+        sto:Domain
+    
+    
+ObjectProperty: prov:wasGeneratedBy
+
+    Annotations: 
+        rdfs:comment "Standard A has influences in Standard B. For example, IEC_61499 hasInfluenceIn IEC_61804-2(EDDL)"@en,
+        rdfs:isDefinedBy "https://www.w3.org/TR/prov-o/#wasGeneratedBy"@en,
+        rdfs:label "was Generated By"@en
+    
+    SubPropertyOf: 
+        sto:relatedTo
+    
+    
+ObjectProperty: rami:administration
+
+    Annotations: 
+        rdfs:comment "Administrative information of an identifiable element.
+Note: Some of the administrative information like the version number might
+need to be part of the identification."@en,
+        rdfs:label "has administration"@en
+    
+    
+ObjectProperty: rami:asset
+
+    Annotations: 
+        rdfs:comment "The asset the AAS is representing."@en,
+        rdfs:label "asset"@en
+    
+    Domain: 
+        rami:AdminShell
+    
+    Range: 
+        rami:Asset
+    
+    
+ObjectProperty: rami:assetIdentificationModel
+
+    Annotations: 
+        rdfs:comment "A reference to a Submodel that defines the handling of
+additional domain specific (proprietary) Identifiers for
+the asset like e.g. serial number etc."@en,
+        rdfs:label "has Asset Identification Model"
+    
+    SubPropertyOf: 
+        rami:hasSubmodel
+    
+    Domain: 
+        rami:Asset
+    
+    Range: 
+        rami:Submodel
+    
+    
+ObjectProperty: rami:conceptDictionary
+
+    Annotations: 
+        rdfs:comment "An AAS max have one or more concept dictionaries assigned to it. The concept dictionaries typically contain only descriptions for elements that are also used within the AAS (via HasSemantics)."@en,
+        rdfs:label "has concept dictionary"
+    
+    Domain: 
+        rami:AdminShell
+    
+    Range: 
+        rami:ConceptDictionary
+    
+    
+ObjectProperty: rami:containedElement
+
+    Annotations: 
+        rdfs:comment "Referable elements that are contained in the view."@en,
+        rdfs:label "containedElement"
+    
+    
+ObjectProperty: rami:contributes
+
+    Annotations: 
+        skos:definition "Agent(Person or Software) that contributes to the Entity/Object related data. It correspond to the Contributor concept of OMM"@en,
+        skos:prefLabel "has Type Description"@en
+    
+    Domain: 
+        rami:Submodel
+    
+    
+ObjectProperty: rami:dataElement
+
+    Annotations: 
+        rdfs:comment "A data element is a submodel element that is not further composed out of other submodel elements.
+A data element is a submodel element that has a value. The type of value differs for different subtypes of data elements."@en,
+        rdfs:label "dataElement"@en
+    
+    
+ObjectProperty: rami:defaultEnvironmentAttributes
+
+    Annotations: 
+        rdfs:comment "Reference to a submodel defining default environment attributes, i.e. attributes that are not describing the asset itself.
+The submodel is of kind=Type.
+At the same type the values of these environment attributes need to be accessible when evaluating the access permission rules. This is realized as a policy information point."@en,
+        rdfs:label "defaultEnvironmentAttributes"
+    
+    
+ObjectProperty: rami:defaultPermissions
+
+    Annotations: 
+        rdfs:comment "Reference to a submodel defining the default permissions for the AAS."@en,
+        rdfs:label "defaultPermissions"
+    
+    
+ObjectProperty: rami:defaultSubjectAttributes
+
+    Annotations: 
+        rdfs:comment "Reference to a submodel defining the default subjects attributes for the AAS that can be used to describe access permission rules.
+The submodel is of kind=Type."@en,
+        rdfs:label "defaultSubjectAttributes"
+    
+    
+ObjectProperty: rami:dependsOn
+
+    Annotations: 
+        rdfs:comment "A formula may depend on referable or even external global elements - assumed that can be referenced and their value may be evaluated - that are used in the logical expression."@en,
+        rdfs:label "dependsOn"@en
+    
+    
+ObjectProperty: rami:derivedFrom
+
+    Annotations: 
+        rdfs:comment "This relation connects instances of AAS with their respective types. Refer to Asset Kind for further information of instance and type kinds."@en,
+        rdfs:label "derived from"
+    
+    SubPropertyOf: 
+        <http://www.w3.org/TR/2013/REC-prov-o-20130430/#wasDerivedFrom>
+    
+    Domain: 
+        rami:AdminShell
+    
+    Range: 
+        rami:AdminShell
+    
+    
+ObjectProperty: rami:describes
+
+    Annotations: 
+        rdfs:comment "Connect the Asset with the Administration Shell"@en,
+        skos:altLabel "describes"@en
+    
+    Domain: 
+        rami:AdminShell
+    
+    Range: 
+        rami:Asset
+    
+    
+ObjectProperty: rami:first
+
+    Annotations: 
+        rdfs:comment "First element in the relationship taking the role of the subject."@en,
+        rdfs:label "first"
+    
+    
+ObjectProperty: rami:hasConceptDescription
+
+    Annotations: 
+        rdfs:comment "The semantics of a property or other elements that may have a semantic description is defined by a concept description.
+The description of the concept should follow a standardized schema (realized as data specification template)."@en,
+        rdfs:label "has ConceptDescription"@en
+    
+    
+ObjectProperty: rami:hasDataSpecification
+
+    Annotations: 
+        rdfs:comment "Global reference to the data specification template used by the element."@en,
+        rdfs:label "has Data Specification"@en
+    
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    
+ObjectProperty: rami:hasDatatype
+
+    Annotations: 
+        rdfs:comment "Points to the datatypes of the Submodels"@en,
+        rdfs:label "has Datatype"@en
+    
+    Domain: 
+        rami:Submodel
+    
+    
+ObjectProperty: rami:hasIdType
+
+    Annotations: 
+        rdfs:comment "Type of the key value.
+In case of idType = idShort local shall be true.
+In case type=GlobalReference idType shall not be IdShort."@en,
+        rdfs:label "has idType"@en
+    
+    
+ObjectProperty: rami:hasKey
+
+    Annotations: 
+        rdfs:comment "Unique reference in its name space."@en,
+        rdfs:label "has Key"
+    
+    
+ObjectProperty: rami:hasKind
+
+    Annotations: 
+        rdfs:label "has kind"@en
+    
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Domain: 
+        rami:AdminShell
+    
+    Range: 
+        rami:AssetKind
+    
+    
+ObjectProperty: rami:hasReference
+
+    Annotations: 
+        rdfs:label "has Reference"@en
+    
+    Domain: 
+        rami:Submodel
+    
+    
+ObjectProperty: rami:hasSubjectAttribute
+
+    Annotations: 
+        rdfs:comment "A data element that further classifies a specific subject."@en,
+        rdfs:label "has subjectAttribute"
+    
+    
+ObjectProperty: rami:hasSubmodel
+
+    Annotations: 
+        rdfs:comment "Points to the Admin Shell to the Submodels that describe the Admin Shell of a given Asset"@en,
+        rdfs:label "has Submodel"@en,
+        skos:altLabel "assetIdentificationModel"@en
+    
+    Domain: 
+        rami:Asset
+    
+    Range: 
+        rami:Submodel
+    
+    
+ObjectProperty: rami:hasValue
+
+    Domain: 
+        rami:Submodel
+    
+    Range: 
+        rami:Value
+    
+    
+ObjectProperty: rami:hasView
+
+    Annotations: 
+        rdfs:comment "Points to the differents views associated to the Administration Shell via the Submodels."@en,
+        rdfs:label "has View"@en,
+        skos:prefLabel "view"@en
+    
+    Domain: 
+        rami:AdminShell
+    
+    Range: 
+        rami:View
+    
+    
+ObjectProperty: rami:in
+
+    Annotations: 
+        rdfs:comment "the rami:in attribute of rami:operation is the input parameter"@en
+    
+    
+ObjectProperty: rami:inAccordanceWith
+
+    Annotations: 
+        rdfs:comment "The Submodel is in accordance with a given standard specified in the STO ontology"@en,
+        rdfs:label "in Accordance With"@en
+    
+    Domain: 
+        rami:Submodel
+    
+    
+ObjectProperty: rami:isCaseOf
+
+    
+ObjectProperty: rami:isConnectedTo
+
+    Annotations: 
+        rdfs:comment "Connects the Admin Shell with the different RAMI4.0 Dimensions"@en,
+        rdfs:label "is Connected To"@en
+    
+    Domain: 
+        rami:AdminShell
+    
+    Range: 
+        rami:Dimension
+    
+    
+ObjectProperty: rami:mimeType
+
+    Annotations: 
+        rdfs:comment "Mime type of the content of the BLOB.
+The mime type states which file extension the file has.
+Valid values are e.g. “application/json”, “application/xls”, ”image/jpg”
+The allowed values are defined as in RFC2046.
+
+or
+
+Mime type of the content of the File."@en,
+        rdfs:label "mimeType",
+        rdfs:seeAlso "http://uri4uri.net/vocab.html/#MimetypeDatatype"
+    
+    
+ObjectProperty: rami:object
+
+    Annotations: 
+        rdfs:comment "Element to which permission shall be assigned."@en,
+        rdfs:label "has object"
+    
+    
+ObjectProperty: rami:objectAttribute
+
+    Annotations: 
+        rdfs:comment "A data element that further classifies an object."@en,
+        rdfs:label "objectAttribute"
+    
+    
+ObjectProperty: rami:out
+
+    Annotations: 
+        rdfs:comment "out is the output paramter of the Operation"@en,
+        rdfs:label "out"@en
+    
+    
+ObjectProperty: rami:parent
+
+    Annotations: 
+        rdfs:comment "Reference to the next referable parent element of the element. Constraint AASd-004: Add parent in case of non-identifiable elements.
+Note: This element is used to ease navigation in the model and thus it enables more performant"@en,
+        rdfs:label "parent"@en
+    
+    
+ObjectProperty: rami:preferredName
+
+    Annotations: 
+        rdfs:comment "This is the preferredName of a ConceptDescription object"@en,
+        rdfs:label "preferredName"
+    
+    
+ObjectProperty: rami:qualifierType
+
+    
+ObjectProperty: rami:qualifierValue
+
+    Annotations: 
+        rdfs:comment "The qualifier value is the value of the qualifier.
+Constraint AASd-006: if both, the value and the valueId are present then the value needs to be identical to the short name of the referenced coded value in qualifierValueId."@en
+    
+    
+ObjectProperty: rami:second
+
+    Annotations: 
+        rdfs:comment "Second element in the relationship taking the role of the object."@en,
+        rdfs:label "second"
+    
+    
+ObjectProperty: rami:selectableEnvironmentAttributes
+
+    Annotations: 
+        rdfs:comment "Reference to a submodel defining which environment attributes can be accessed via the permission rules defined for the AAS, i.e. attributes that are not describing the asset itself.
+Default: reference to the submodel referenced via
+defaultEnvironmentAttributes"@en,
+        rdfs:label "selectableEnvironmentAttributes"
+    
+    
+ObjectProperty: rami:submodelElement
+
+    Annotations: 
+        rdfs:comment "A submodel consists of zero or more
+submodel elements."@en,
+        rdfs:label "has Submodel Element"@en
+    
+    Range: 
+        rami:SubmodelElement
+    
+    
+ObjectProperty: rami:targetObjectAttributes
+
+    Annotations: 
+        rdfs:comment "Target object attributes that need to be fulfilled so that the access permissions apply to the accessing subject."@en,
+        rdfs:label "targetObjectAttributes"
+    
+    
+ObjectProperty: rami:targetSubjectAttributes
+
+    Annotations: 
+        rdfs:comment "Target subject attributes that need to be fulfilled by the accessing subject to get the permissions defined by this rule."@en,
+        rdfs:label "targetSubjetAtrtibutes"
+    
+    
+ObjectProperty: rami:trustAnchor
+
+    Annotations: 
+        rdfs:comment "Trust anchor of AAS, typically certificates."@en,
+        rdfs:label "trustAnchor"
+    
+    
+ObjectProperty: rami:value
+
+    Annotations: 
+        rdfs:comment "The key value, for example an IRDI if the idType=IRDI."@en,
+        rdfs:label "keyValue"
+    
+    
+ObjectProperty: sto:Standardizes
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Characteristics: 
+        Irreflexive
+    
+    Domain: 
+        sto:Standard
+    
+    Range: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent> or <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Process>
+    
+    
+ObjectProperty: sto:alignesWith
+
+    Annotations: 
+        rdfs:comment "indicates that some Standard Classification entity has a similar scope as another. This property most probably is symmetric but not transitive."@en,
+        rdfs:label "alignes With"@en
+    
+    SubPropertyOf: 
+        DUL:associatedWith
+    
+    Characteristics: 
+        Symmetric
+    
+    Domain: 
+        sto:StandardClassification
+    
+    Range: 
+        sto:StandardClassification
+    
+    
+ObjectProperty: sto:belongsTo
+
+    Domain: 
+        sto:StandardOrganization
+    
+    Range: 
+        <http://dbpedia.org/ontology#Country>
+    
+    
+ObjectProperty: sto:frames
+
+    Annotations: 
+        rdfs:comment "A relation specifying that a vewpoint regards a Concern."@en,
+        rdfs:label "frames"@en,
+        sto:hasOfficialResource <http://www.iso-architecture.org/42010/>
+    
+    SubPropertyOf: 
+        DUL:associatedWith
+    
+    Domain: 
+        sto:Viewpoint
+    
+    Range: 
+        sto:Concern
+    
+    
+ObjectProperty: sto:hasAvailableLanguage
+
+    SubPropertyOf: 
+        terms:language
+    
+    Domain: 
+        foaf:Document
+    
+    Range: 
+        terms:LinguisticSystem
+    
+    
+ObjectProperty: sto:hasClassification
+
+    Domain: 
+        sto:Standard
+    
+    Range: 
+        sto:StandardClassification
+    
+    
+ObjectProperty: sto:hasDeveloper
+
+    SubPropertyOf: 
+        foaf:maker
+    
+    Domain: 
+        sto:Publication
+    
+    Range: 
+        sto:StandardOrganization
+    
+    
+ObjectProperty: sto:hasDomain
+
+    Domain: 
+        sto:Publication
+    
+    Range: 
+        sto:Domain
+    
+    
+ObjectProperty: sto:hasFileSize
+
+    Domain: 
+        foaf:Document
+    
+    Range: 
+        om-2:Measure
+    
+    
+ObjectProperty: sto:hasHeadquaterIn
+
+    Domain: 
+        sto:StandardOrganization
+    
+    Range: 
+        <http://dbpedia.org/ontology#Place>
+    
+    
+ObjectProperty: sto:hasICS
+
+    Annotations: 
+        rdfs:comment "Serves as a catalogue of International Classification For Standards"@en,
+        rdfs:label "has ICS"@en
+    
+    Domain: 
+        sto:Publication
+    
+    Range: 
+        sto:InternationalClassificationForStandards
+    
+    
+ObjectProperty: sto:hasMotivation
+
+    Domain: 
+        sto:Publication
+    
+    Range: 
+        <http://purl.org/spar/deo/Motivation>
+    
+    
+ObjectProperty: sto:hasPreviousVersion
+
+    Annotations: 
+        rdfs:comment "Indicates the list of Standards that are previous versions of a Standard. For example,IEC 60038:2009 has IEC 60038:1983+AMD1:1994+AMD2:1997,IEC 60038:1983/AMD2:1997,IEC 60038:1983/AMD1:1994,IEC 60038:1983,IEC 60038:1975/AMD1:1977,IEC 60038:1975,IEC 60038:1967,IEC 60038:1954,IEC 60038:1938,IEC 60038:1927 as previous versions."@en,
+        rdfs:label "has Previous Version"@en
+    
+    SubPropertyOf: 
+        sto:relatedTo
+    
+    
+ObjectProperty: sto:hasPublisher
+
+    SubPropertyOf: 
+        foaf:maker
+    
+    Domain: 
+        sto:Publication
+    
+    Range: 
+        sto:StandardOrganization
+    
+    
+ObjectProperty: sto:hasTechnicalCommittee
+
+    Annotations: 
+        rdfs:comment "Specifies the Technical Committee or a Sub-Committee that is responsible for creation and maintenance of a standard"@en,
+        rdfs:label "has Technical Committee"@en
+    
+    Domain: 
+        sto:Publication
+    
+    Range: 
+        sto:TechnicalCommittee
+    
+    
+ObjectProperty: sto:isDescribedin
+
+    Annotations: 
+        rdfs:comment "Links the Standarization Frameworks with the Classification of Standards"@en,
+        rdfs:label "is Described in"@en
+    
+    Domain: 
+        sto:StandardClassification
+    
+    Range: 
+        sto:StandardizationFramework
+    
+    
+ObjectProperty: sto:isImplementationOf
+
+    Annotations: 
+        rdfs:comment "Represent the relation that connects two standards when standard A is the implementation of standard B, e.g., B2MML isImplementationOf ISA-95."@en,
+        rdfs:label "is Implementation Of"@en
+    
+    SubPropertyOf: 
+        sto:relatedTo
+    
+    
+ObjectProperty: sto:relatedTo
+
+    Annotations: 
+        rdfs:comment "Represent any type of relation that connects two standards."@en,
+        rdfs:label "related To"@en,
+        skos:altLabel "has Associated Standard"@en
+    
+    Characteristics: 
+        Symmetric,
+        Transitive
+    
+    Domain: 
+        sto:Standard
+    
+    Range: 
+        sto:Standard
+    
+    
+ObjectProperty: sto:useStructureOf
+
+    Annotations: 
+        rdfs:comment "Standard A uses the structure of Standard B. For example, OPC UA uses Structure Of IEC_61804 (EDDL)"@en,
+        rdfs:label "use Structure Of"@en
+    
+    SubPropertyOf: 
+        sto:relatedTo
+    
+    
+ObjectProperty: sto:uses
+
+    Annotations: 
+        rdfs:comment "Defines that Standard A uses Standard B. For example, IEC_62714(AML) uses MathML."@en,
+        rdfs:label "uses"@en
+    
+    SubPropertyOf: 
+        sto:relatedTo
+    
+    
+ObjectProperty: terms:creator
+
+    Annotations: 
+        terms:description "Examples of a Creator include a person, an organization, or a service."@en,
+        terms:hasVersion <http://dublincore.org/usage/terms/history/#creatorT-002>,
+        terms:issued "2008-01-14"^^xsd:date,
+        terms:modified "2010-10-11"^^xsd:date,
+        rdfs:comment "An entity primarily responsible for making the resource."@en,
+        rdfs:isDefinedBy <http://purl.org/dc/terms/>,
+        rdfs:label "Creator"@en
+    
+    EquivalentTo: 
+        foaf:maker
+    
+    
+ObjectProperty: terms:language
+
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#belongsToArchitectureLayer>
+
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent>
+    
+    Range: 
+        (xsd:integer or xsd:string)
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#concernsTo>
+
+    Domain: 
+        sto:Standard
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasAssociatedMemory>
+
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable>
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasConstraint>
+
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DynamicsModel>
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasContent>
+
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data>
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDBpediaResource>
+
+    Domain: 
+        sto:Standard
+    
+    Range: 
+        (xsd:anyURI or xsd:string)
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDataType>
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable>
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasDescription>
+
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement>,
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement> or <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Service>
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasEmbeddingCapability>
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        sto:Standard
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasFeature>
+
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent>
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasFile>
+
+    Domain: 
+        rami:AdminShell
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasIdentifier>
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent>
+    
+    Range: 
+        xsd:integer
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasInteroperabilityDegree>
+
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent>
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNumberOfParameters>
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function>
+    
+    Range: 
+        xsd:integer
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNumberOfStates>
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SetElement>
+    
+    Range: 
+        xsd:integer
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNumberOfTasks>
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>,
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition>
+    
+    Range: 
+        xsd:integer
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasNumberOfTransitions>
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SetElement>
+    
+    Range: 
+        xsd:integer
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasOfficialResource>
+
+    Domain: 
+        sto:Standard
+    
+    Range: 
+        (xsd:anyURI or xsd:string)
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasReceiver>
+
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data>
+    
+    Range: 
+        xsd:integer
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasRelatedOntology>
+
+    Domain: 
+        owl:Thing
+    
+    Range: 
+        (xsd:anyURI or xsd:string)
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasRequirement>
+
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DynamicsModel>
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasReturnDataType>
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function>
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasReturnValue>
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function>
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasSoftwareContent>
+
+    Domain: 
+        sto:Standard
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasTransmitter>
+
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data>
+    
+    Range: 
+        xsd:integer
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasURI>
+
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Service>
+    
+    Range: 
+        xsd:anyURI
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#hasValue>
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable>
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isActive>
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isContextStandard>
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        sto:Standard
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isEnabled>
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition>
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#isParentSetElement>
+
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SetElement>
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#supportsProtocol>
+
+    Domain: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent>
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        owl:topDataProperty
+    
+    
+DataProperty: <http://www.wurvoc.org/vocabularies/om-1.8/hasNumericalValue>
+
+    Annotations: 
+        rdfs:label "has numerical value"@en
+    
+    Domain: 
+        <http://www.wurvoc.org/vocabularies/om-1.8/Measure>
+    
+    
+DataProperty: ns:attributionName
+
+    
+DataProperty: ns:attributionURL
+
+    
+DataProperty: om-2:hasNumericalValue
+
+    Annotations: 
+        rdfs:label "has numerical value"@en
+    
+    Domain: 
+        <http://org.semanticweb.owlapi/error#Error2>
+    
+    
+DataProperty: owl:topDataProperty
+
+    
+DataProperty: rami:allowDuplicates
+
+    Annotations: 
+        rdfs:comment "If allowDuplicates=true then it is allowed that the collection contains the same element several times.
+Default = false"@en,
+        skos:altLabel "allow duplicates"
+    
+    
+DataProperty: rami:assetId
+
+    Annotations: 
+        rdfs:comment "The unique identifier of an asset. Note the difference between the 'asset ID' idenitfier and the URIs for the resources."@en,
+        rdfs:label "id"@en,
+        owl:deprecated true
+    
+    Domain: 
+        rami:Asset
+    
+    SubPropertyOf: 
+        terms:identifier
+    
+    
+DataProperty: rami:creationDate
+
+    Annotations: 
+        skos:definition "Date when an Agent(Person or Software) creates to the Entity/Object related data. It correspond to the Creator concept of OMM"@en,
+        skos:prefLabel "has Creator"@en
+    
+    Domain: 
+        rami:Submodel
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: rami:definition
+
+    Annotations: 
+        rdfs:label "This is the definition that is contained in the conceptDescription."@en,
+        rdfs:label "has definition"
+    
+    
+DataProperty: rami:description
+
+    Annotations: 
+        rdfs:comment "Description or comments on the element. The description can be provided in several languages."@en,
+        skos:prefLabel "has Description"@en
+    
+    Domain: 
+        rami:Asset
+    
+    
+DataProperty: rami:hasLocal
+
+    Annotations: 
+        rdfs:comment "Denotes if the key references a model element of the same AAS (=true) or not (=false). In case of local = false the key may reference a model element of another AAS or an entity outside any AAS that has a global unique id."@en,
+        rdfs:label "has local"
+    
+    
+DataProperty: rami:id
+
+    Annotations: 
+        rdfs:comment "A globally unique identifier which is NOT a URI."@en,
+        rdfs:label "identification"@en
+    
+    SubPropertyOf: 
+        terms:identifier
+    
+    
+DataProperty: rami:idShort
+
+    Annotations: 
+        rdfs:label "idShort"@en,
+        owl:deprecated true
+    
+    SubPropertyOf: 
+        terms:identifier
+    
+    
+DataProperty: rami:isCaseOf
+
+    SubPropertyOf: 
+        terms:identifier
+    
+    
+DataProperty: rami:isDescribedWith
+
+    Annotations: 
+        rdfs:seeAlso <https://w3id.org/i40/rami#asset>,
+        owl:deprecated true,
+        skos:definition "Points to the Standard used to describe a given object"@en,
+        skos:prefLabel "Is Described With"@en
+    
+    
+DataProperty: rami:logs
+
+    Annotations: 
+        skos:prefLabel "logs"@en
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: rami:ordered
+
+    Annotations: 
+        rdfs:comment "If ordered=false then the elements in the property collection are not ordered. If ordered=true then the elements in the collection are ordered.
+Default = false"@en,
+        rdfs:label "ordered"
+    
+    
+DataProperty: rami:publishedURL
+
+    
+DataProperty: rami:revision
+
+    Annotations: 
+        rdfs:comment "Revision of the element. Constraint AASd-005: A revision requires a version. This means, if there is no version there is no revision neither."@en,
+        rdfs:label "revision"@en
+    
+    SubPropertyOf: 
+        terms:hasVersion
+    
+    
+DataProperty: rami:semanticId
+
+    Annotations: 
+        rdfs:comment "Points to the Expression Semantic of the Submodels"@en,
+        rdfs:comment "The semantic id might refer to an external information source, which explains the formulation of the submodel (for example an PDF if a standard)"@en,
+        rdfs:label "semanticId"@en,
+        skos:altLabel "has Semantic Expression"@en,
+        skos:prefLabel "has semantic ID"@en
+    
+    Domain: 
+        rami:Submodel
+    
+    SubPropertyOf: 
+        terms:identifier
+    
+    
+DataProperty: rami:version
+
+    Annotations: 
+        rdfs:comment "Version of the element."@en,
+        rdfs:label "version"@en
+    
+    SubPropertyOf: 
+        terms:hasVersion
+    
+    
+DataProperty: sto:abbreviation
+
+    Annotations: 
+        rdfs:comment "Abbreviated  name of the thing."@en,
+        rdfs:label "has Abbreviated Name"@en
+    
+    Domain: 
+        owl:Thing
+    
+    Range: 
+        rdf:PlainLiteral
+    
+    
+DataProperty: sto:domainName
+
+    Annotations: 
+        rdfs:comment "Points the Standard with the name of the Industrial Domain"@en,
+        rdfs:label "has Domain Name"@en
+    
+    Domain: 
+        sto:Domain
+    
+    Range: 
+        rdf:PlainLiteral
+    
+    
+DataProperty: sto:formationDate
+
+    Annotations: 
+        rdfs:comment "Formation date of the Organization"@en,
+        rdfs:label "has Formation Date"@en
+    
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        sto:StandardOrganization
+    
+    Range: 
+        xsd:date
+    
+    
+DataProperty: sto:hasDBpediaResource
+
+    Annotations: 
+        rdfs:comment "Instance's DBpedia Resource"@en,
+        rdfs:label "has DBpedia Resource"@en
+    
+    
+DataProperty: sto:hasEdition
+
+    Annotations: 
+        rdfs:comment "Indicates the current Edition/Version number of the document."@en,
+        rdfs:label "has Edition"@en
+    
+    Domain: 
+        foaf:Document
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: sto:hasImplementationFormat
+
+    Annotations: 
+        rdfs:comment "Describes the name of the implementation or serialization format of the Publication, e.g., XML, Document, binary, batch"@en,
+        rdfs:label "has Implementation Format"@en
+    
+    Domain: 
+        sto:Publication
+    
+    Range: 
+        rdfs:Literal
+    
+    
+DataProperty: sto:hasObjective
+
+    Annotations: 
+        rdfs:comment "Specifies the objectives for the different ISA 95 levels."@en,
+        rdfs:label "has Objective"@en
+    
+    Domain: 
+        sto:ISA95Level
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: sto:hasOfficialResource
+
+    Annotations: 
+        rdfs:comment "Points to the URL of the official websilte from which published the document"@en,
+        rdfs:comment "Standard Official Website"@en,
+        rdfs:label "has Official Resource"@en
+    
+    Domain: 
+        sto:Publication
+    
+    Range: 
+        xsd:anyURI
+    
+    
+DataProperty: sto:hasOntology
+
+    Annotations: 
+        rdfs:comment "Point to the URL of a recognized Ontology representation of the Standard"@en,
+        rdfs:label "has Ontology"@en
+    
+    Domain: 
+        sto:Publication
+    
+    Range: 
+        xsd:anyURI
+    
+    
+DataProperty: sto:hasPages
+
+    Annotations: 
+        rdfs:comment "Indicates the number of pages in the document."@en,
+        rdfs:label "has Pages"@en
+    
+    Domain: 
+        foaf:Document
+    
+    Range: 
+        xsd:integer
+    
+    
+DataProperty: sto:hasPublicationDate
+
+    Annotations: 
+        rdfs:comment "Publication date of the Publication"@en,
+        rdfs:label "has Publication Date"@en
+    
+    Domain: 
+        sto:Publication
+    
+    Range: 
+        xsd:date
+    
+    
+DataProperty: sto:hasStabilityDate
+
+    Annotations: 
+        rdfs:comment "Stability date of a publication. Publications are valid for a certain period, i.e., the Stability Period. This property defines the end of the stability period."@en,
+        rdfs:label "has Stability Date"@en,
+        rdfs:seeAlso <https://webstore.iec.ch/webstore/webstore.nsf/xpFAQ.xsp?Open&id=ADMN-7NALM5>,
+        skos:note "The data specified is not actually a Date but an Year"
+    
+    Domain: 
+        sto:Publication
+    
+    Range: 
+        xsd:gYear
+    
+    
+DataProperty: sto:hasStatus
+
+    Annotations: 
+        rdfs:comment "Publication status of the Standard, e.g., Valid, Revised, Published, under preparation, Released"@en,
+        rdfs:label "has Status"@en
+    
+    Domain: 
+        sto:Publication
+    
+    Range: 
+        rdfs:Literal
+    
+    
+DataProperty: sto:hasTag
+
+    Annotations: 
+        rdfs:comment "Points to the identification of the standards"@en,
+        rdfs:label "has Tag"@en
+    
+    Range: 
+        <http://purl.org/muto/core#Tag>,
+        rdfs:Literal
+    
+    
+DataProperty: sto:hasTask
+
+    Annotations: 
+        rdfs:comment "Specifies the tasks for the different ISA 95 levels."@en,
+        rdfs:label "has Task"@en
+    
+    Domain: 
+        sto:ISA95Level
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: sto:hasWikipediaArticle
+
+    Annotations: 
+        rdfs:comment "Wikipedia Article about the Standard"@en,
+        rdfs:label "has Wikipedia Article"@en
+    
+    
+DataProperty: sto:orgName
+
+    Annotations: 
+        rdfs:comment "Name of the Organization"@en,
+        rdfs:label "Org Name"@en
+    
+    Domain: 
+        sto:StandardOrganization
+    
+    Range: 
+        rdf:PlainLiteral
+    
+    
+DataProperty: sto:stoPartName
+
+    Annotations: 
+        rdfs:comment "Name of the standard part."@en,
+        rdfs:label "std Part Name"@en
+    
+    Domain: 
+        sto:StandardPart
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: terms:hasVersion
+
+    Annotations: 
+        terms:hasVersion <http://dublincore.org/usage/terms/history/#hasVersion-003>,
+        terms:issued "2000-07-11"^^xsd:date,
+        terms:modified "2008-01-14"^^xsd:date,
+        rdfs:comment "A related resource that is a version, edition, or adaptation of the described resource."@en,
+        rdfs:isDefinedBy <http://purl.org/dc/terms/>,
+        rdfs:label "Has Version"@en,
+        skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en
+    
+    
+DataProperty: terms:identifier
+
+    
+DataProperty: terms:issued
+
+    Annotations: 
+        terms:hasVersion <http://dublincore.org/usage/terms/history/#issued-003>,
+        terms:issued "2000-07-11"^^xsd:date,
+        terms:modified "2008-01-14"^^xsd:date,
+        rdfs:comment "Date of formal issuance (e.g., publication) of the resource."@en,
+        rdfs:isDefinedBy <http://purl.org/dc/terms/>,
+        rdfs:label "Date Issued"@en
+    
+    
+DataProperty: terms:modified
+
+    Annotations: 
+        terms:hasVersion <http://dublincore.org/usage/terms/history/#modified-003>,
+        terms:issued "2000-07-11"^^xsd:date,
+        terms:modified "2008-01-14"^^xsd:date,
+        rdfs:comment "Date on which the resource was changed."@en,
+        rdfs:isDefinedBy <http://purl.org/dc/terms/>,
+        rdfs:label "Date Modified"@en
+    
+    
+DataProperty: terms:title
+
+    Annotations: 
+        terms:hasVersion <http://dublincore.org/usage/terms/history/#titleT-002>,
+        terms:issued "2008-01-14"^^xsd:date,
+        terms:modified "2010-10-11"^^xsd:date,
+        rdfs:comment "A name given to the resource."@en,
+        rdfs:isDefinedBy <http://purl.org/dc/terms/>,
+        rdfs:label "Title"@en
+    
+    
+Class: <http://dbpedia.org/ontology#Country>
+
+    
+Class: <http://dbpedia.org/ontology#Place>
+
+    
+Class: <http://example.org/iira#CrosscuttingFunction>
+
+    Annotations: 
+        terms:creator "sebastian"@en,
+        rdfs:comment "Often these enabling functions, the so-called crosscutting functions, need to be made available across many of the system functional components. For Reference Architecture 6: Functional Viewpoint example, system functions need to be connected so they can interact with each other to complete functionality at the system level."@en,
+        rdfs:label "IIRA Crosscutting Function"@en
+    
+    SubClassOf: 
+        sto:StandardClassification
+    
+    
+Class: <http://example.org/iira#FunctionalDomain>
+
+    Annotations: 
+        rdfs:label "IIRA Functional Domain"@en
+    
+    SubClassOf: 
+        sto:StandardClassification
+    
+    
+Class: <http://example.org/iira#SystemCharacteristics>
+
+    Annotations: 
+        rdfs:label "IIRA System Characteristic"@en
+    
+    SubClassOf: 
+        sto:StandardClassification
+    
+    
+Class: <http://org.semanticweb.owlapi/error#Error1>
+
+    
+Class: <http://org.semanticweb.owlapi/error#Error2>
+
+    
+Class: <http://purl.org/spar/deo/Motivation>
+
+    
+Class: <http://w3id.org/ids/ram/Perspective>
+
+    Annotations: 
+        rdfs:label "IDS RAM Perspective"@en
+    
+    SubClassOf: 
+        sto:StandardClassification
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor>
+
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#AnalogInput>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#AnalogVariable>,
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Input>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#AnalogOutput>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#AnalogVariable>,
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Output>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#AnalogVariable>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Architecture>
+
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ConcurrentState>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#CurrentState>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DataInput>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data>,
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Input>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DataOutput>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Data>,
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Output>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Device>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DigitalInput>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DigitalVariable>,
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Input>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DigitalOutput>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DigitalVariable>,
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Output>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DigitalVariable>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DynamicsModel>
+
+    DisjointWith: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ExecutionScope>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#FinalState>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#InitialState>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Input>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Loop>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SetElement>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ManyToManyTransition>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ManyToOneTransition>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement>
+
+    DisjointWith: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#DynamicsModel>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Network>
+
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#NextState>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Object>
+
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#OneToManyTransition>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#OneToOneTransition>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Output>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#PreviousState>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Process>
+
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#RequestFunction>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Resource-SharedState>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Robot>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Sequence>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SetElement>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Service>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SetElement>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SoftwareResource>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#StateFunction>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#SynchronousState>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#State>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Thing>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Agent>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Transition>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#TransitionFunction>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Function>
+    
+    
+Class: <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Variable>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#ModelElement>
+    
+    
+Class: <http://www.wurvoc.org/vocabularies/om-1.8/Measure>
+
+    
+Class: <https://w3id.org/ids/ram/Layer>
+
+    Annotations: 
+        rdfs:label "IDS RAM Layer"@en
+    
+    SubClassOf: 
+        sto:StandardClassification
+    
+    
+Class: DUL:Collection
+
+    
+Class: DUL:Entity
+
+    
+Class: foaf:Document
+
+    
+Class: foaf:Organization
+
+    
+Class: foaf:Person
+
+    SubClassOf: 
+        <http://www.semanticweb.org/santiago/Automation-I4.0-Ontology#Actor>
+    
+    
+Class: om-2:Measure
+
+    
+Class: om-2:Unit
+
+    
+Class: owl:Thing
+
+    
+Class: owl:class
+
+    
+Class: owl:namedIndividial
+
+    
+Class: owl:property
+
+    
+Class: rami:AccessControlPolicyPoints
+
+    Annotations: 
+        rdfs:comment "Container for access control policy points."@en,
+        rdfs:label "Access ControlPolicy Points"
+    
+    
+Class: rami:AdminShell
+
+    Annotations: 
+        dc:source "This definition comprises material from RAMI4.0."@en,
+        rdfs:label "Admin Shell"@en,
+        skos:altLabel "Administration Shell"@en,
+        skos:altLabel "Asset Administration Shell"@en,
+        skos:definition "Describes the Administration Shell for Assets, Products, Components, e.g. Machines"@en,
+        skos:prefLabel "Verwaltungsschale"
+    
+    SubClassOf: 
+        rami:HasDataSpecification,
+        rami:Identifiable
+    
+    
+Class: rami:AdminShellSubmodel
+
+    Annotations: 
+        rdfs:comment "Describes the Administration Shell concept to organize/classify standards into submodels"@en,
+        rdfs:isDefinedBy <https://www.plattform-i40.de/I40/Redaktion/EN/Downloads/Publikation/structure-of-the-administration-shell.pdf?__blob=publicationFile&v=7>,
+        rdfs:label "Admin Shell Sub Model"@en
+    
+    SubClassOf: 
+        sto:StandardClassification
+    
+    
+Class: rami:AdministrativeInformation
+
+    Annotations: 
+        rdfs:comment "Every Identifiable may have administrative information. Administrative information includes for example
+ Information about the version of the element
+ Information about who created or who made the last change to the element
+ Information about the languages available in case the element contains text, for translating purposed also themmaster or default language may be defined
+In the first version of the AAS metamodel only version information as defined by IEC 61360 is defined. In later versions additional attributes may be added."@en,
+        rdfs:label "Administrative Information"
+    
+    SubClassOf: 
+        rami:DataSpecification
+    
+    
+Class: rami:Asset
+
+    Annotations: 
+        rdfs:comment "An Asset describes meta data of an asset that is represented by an AAS.
+The asset may either represent an asset type or an asset instance.
+The asset has a globally unique identifier plus – if needed – additional domain specific (proprietary) identifiers."@en,
+        rdfs:label "RAMI Asset Layer"@en,
+        skos:altLabel "Entity"@en,
+        skos:altLabel "Entität"@de,
+        skos:altLabel "Object"@en,
+        skos:definition "Clearly identifiable asset for the Administration Shell"@en,
+        skos:definition "Eindeutig identifizierbarer Gegenstand, der aufgrund seiner Bedeutung in der Informationswelt verwaltet wird"@de,
+        skos:note "Objects may be known in the form of a type or of an instance. An object in the planning phase is known as a type"@en,
+        skos:prefLabel "Asset"@en
+    
+    SubClassOf: 
+        rami:HasDataSpecification,
+        rami:HasKind,
+        rami:Identifiable
+    
+    
+Class: rami:AssetKind
+
+    Annotations: 
+        rdfs:comment "The RAMI4.0 model features one, generalized life-cycle axis, which was derived from IEC 62890. The basic idea is to distinguish for all assets within Industrie 4.0 between possible types and instance. This makes it possible to apply the type/instance distinction for all elements such as material type/material instance, product type/product instance, machine type/ machine instance and more. Business related information will be handled on the 'Business' layer of the
+RAMI4.0 model, as well, covering also order details and workflows, again with types/ instances."@en,
+        rdfs:label "Asset Kind"@en
+    
+    SubClassOf: 
+        rami:Dimension
+    
+    
+Class: rami:Blob
+
+    Annotations: 
+        rdfs:comment "A BLOB is a data element that represents a file that is contained with its source code in the value attribute."@en,
+        rdfs:label "BlobDataElement"@en
+    
+    SubClassOf: 
+        rami:DataElement
+    
+    
+Class: rami:ConceptDescription
+
+    Annotations: 
+        dc:description "\"The AAS itself can also define its own dictionary that contains semantic definitions of its submodel elements. These semantic definitions are called concept descriptions (ConceptDescription). It is optional whether an AAS defines its own concept dictionary (ConceptDictionary) or not.\""@en
+    
+    SubClassOf: 
+        rami:HasDataSpecification,
+        rami:Identifiable
+    
+    
+Class: rami:ConceptDictionary
+
+    Annotations: 
+        rdfs:comment "A dictionary contains elements that can be reused. The concept dictionary contains concept descriptions. Typically a concept description dictionary of an AAS contains only concept descriptions of elements used within submodels of the AAS."@en,
+        rdfs:label "Concept Dictionary"
+    
+    SubClassOf: 
+        rami:Referable
+    
+    
+Class: rami:DataElement
+
+    Annotations: 
+        rdfs:comment "A data element is a submodel element that is not further composed out of other submodel elements. A data element is a submodel element that has a value. The type of value differs for different subtypes of data elements."@en,
+        rdfs:label "DataElement",
+        skos:note "abstract"
+    
+    SubClassOf: 
+        rami:SubmodelElement
+    
+    
+Class: rami:DataSpecification
+
+    Annotations: 
+        rdfs:comment "Element that can have data specification templates. A template defines the additional attributes an element may or shall have."@en,
+        rdfs:label "DataSpecification"@en,
+        skos:note "abstract"@en
+    
+    
+Class: rami:Dimension
+
+    
+Class: rami:File
+
+    Annotations: 
+        rdfs:comment "A File is a data element that represents a file via its path description."@en,
+        rdfs:label "FileDataElement"@en
+    
+    SubClassOf: 
+        rami:DataElement
+    
+    
+Class: rami:Formula
+
+    Annotations: 
+        dc:description "A formula is used to describe constraints by a logical expression."@en,
+        rdfs:label "Formula"@en
+    
+    
+Class: rami:HasDataSpecification
+
+    Annotations: 
+        rdfs:comment "Element that can have data specification templates. A template defines the additional attributes an element may or shall have."@en,
+        rdfs:label "Has Data Specification"@en,
+        skos:prefLabel "Data Specification"@en
+    
+    
+Class: rami:HasKind
+
+    Annotations: 
+        rdfs:comment "An element with a kind is an element that can either represent a type or an instance. Default for an element is that it is representing an instance."@en,
+        rdfs:label "Has Kind"@en
+    
+    
+Class: rami:Identifiable
+
+    Annotations: 
+        rdfs:comment "An element that has a globally unique identifier."@en,
+        rdfs:label "Identifiable"@en,
+        skos:note "abstract"@en
+    
+    SubClassOf: 
+        rami:Referable
+    
+    
+Class: rami:Key
+
+    Annotations: 
+        rdfs:comment "A key is a reference to an element by its id."@en,
+        rdfs:label "Key"
+    
+    
+Class: rami:ObjectAttributes
+
+    Annotations: 
+        rdfs:comment "A set of data elements that describe object attributes. These attributes need to refer to a data element within an existing submodel."@en,
+        rdfs:label "Object Attributes"
+    
+    
+Class: rami:Operation
+
+    Annotations: 
+        rdfs:comment "An operation is a submodel element with input and output variables."@en,
+        rdfs:label "Operation"@en
+    
+    SubClassOf: 
+        rami:SubmodelElement
+    
+    
+Class: rami:OperationVariable
+
+    Annotations: 
+        dc:description "An operation variable is a submodel element that is used as input or output variable of an operation."@en,
+        rdfs:label "Operation Variable"
+    
+    SubClassOf: 
+        rami:SubmodelElement
+    
+    
+Class: rami:Order
+
+    Annotations: 
+        skos:definition "Each order for manufacturing runs through a life cycle and its specifics necessarily have an impact on the production facility during performance of the order"@en,
+        skos:note "TODO: Delete?",
+        skos:prefLabel "Order"@en
+    
+    
+Class: rami:Property
+
+    Annotations: 
+        rdfs:comment "A property is a data element that has a single value."@en,
+        rdfs:label "Property"@en,
+        skos:note "TODO: delete?"
+    
+    
+Class: rami:PropertyValueType
+
+    Annotations: 
+        dc:description "The qualifier value is the value of the qualifier.
+Constraint AASd-006: if both, the value and the valueId are present then the value needs to be identical to the short name of the referenced coded value in qualifierValueId."@en
+    
+    
+Class: rami:Qualifier
+
+    Annotations: 
+        dc:description "A qualifier is a type-value pair that makes additional statements w.r.t. the value of the element."@en,
+        rdfs:label "Qualifier"@en
+    
+    
+Class: rami:RAMIHierarchyLevel
+
+    Annotations: 
+        rdfs:label "RAMI Hierarchy Level"@en
+    
+    SubClassOf: 
+        sto:StandardClassification
+    
+    
+Class: rami:RAMIITLayer
+
+    Annotations: 
+        rdfs:label "RAMI IT Layer"@en
+    
+    SubClassOf: 
+        sto:StandardClassification
+    
+    
+Class: rami:RAMILifeCycleLayer
+
+    Annotations: 
+        rdfs:label "RAMI Life Cycle Layer"@en,
+        rdfs:seeAlso "http://www.zvei.org/en/subjects/Industry-40/Pages/The-Reference-Architectural-Model-RAMI-40-and-the-Industrie-40-Component.aspx",
+        skos:definition "It describes the different Life Cycle and Value Stream layers for the RAMI model according to the IEC 62890 Standard."@en,
+        skos:prefLabel "RAMI Life Cycle Layer"@en
+    
+    SubClassOf: 
+        sto:StandardClassification
+    
+    
+Class: rami:Referable
+
+    Annotations: 
+        rdfs:comment "An element that is referable by its idShort. This id is not globally unique. This id is unique within the name space of the element."@en,
+        rdfs:label "Referable"@en,
+        skos:note "abstract"
+    
+    
+Class: rami:Reference
+
+    Annotations: 
+        rdfs:comment "Reference to either a model element of the same or another AAs or to an external entity.
+A reference is an ordered list of keys, each key referencing an element. The complete list of keys may for example be concatenated to a path that then gives unique access to an element or entity."@en,
+        rdfs:label "Reference"
+    
+    
+Class: rami:ReferenceElement
+
+    Annotations: 
+        dc:description "A reference element is a data element that defines a reference to another element within the same or another AAS or a reference to an external object or entity."@en,
+        rdfs:label "Reference Element"
+    
+    
+Class: rami:RelationshipElement
+
+    Annotations: 
+        dc:description "A relationship element is used to define a relationship between two referable elements."@en,
+        rdfs:label "RelationshipElement"@en
+    
+    SubClassOf: 
+        rami:SubmodelElement
+    
+    
+Class: rami:Security
+
+    Annotations: 
+        rdfs:comment "Container for security relevant information of the AAS."@en,
+        rdfs:label "RAMI Security"@en,
+        rdfs:label "Security"
+    
+    
+Class: rami:Submodel
+
+    Annotations: 
+        rdfs:comment "A Submodel defines a specific aspect of the asset represented by the AAS.
+A submodel is used to structure the virtual representation and technical functionality of an Administration Shell into distinguishable parts. Each submodel refers to a well-defined domain or subject matter.
+Submodels can become standardized and thus become submodels types. Submodels can have different life-cycles."@en,
+        rdfs:comment "Describe the different types of Data related to the I4.0 Asset"@en,
+        rdfs:label "Submodel"@en
+    
+    SubClassOf: 
+        rami:HasDataSpecification,
+        rami:HasKind,
+        rami:Identifiable
+    
+    
+Class: rami:SubmodelElement
+
+    Annotations: 
+        rdfs:comment "A submodel element is an element suitable for the description and differentiation of assets."@en,
+        rdfs:label "Submodel Element",
+        skos:note "abstract"@en
+    
+    SubClassOf: 
+        rami:HasDataSpecification,
+        rami:HasKind,
+        rami:Identifiable
+    
+    
+Class: rami:SubmodelElementCollection
+
+    Annotations: 
+        rdfs:comment "A submodel element collection is a set or list of submodel elements."@en,
+        rdfs:label "SubmodelElementCollection"@en
+    
+    SubClassOf: 
+        rami:SubmodelElement
+    
+    
+Class: rami:Value
+
+    Annotations: 
+        rdfs:comment "Current value that can be specified through an instanced submodel (for
+instance in station 2) or through the asset, for example."@en,
+        rdfs:label "Value"@en,
+        skos:note "maybe 'containedElement'?"@en
+    
+    
+Class: rami:View
+
+    Annotations: 
+        rdfs:comment "Different views associated to the Administration Shell via the Submodels"@en,
+        rdfs:isDefinedBy "https://www.plattform-i40.de/I40/Redaktion/DE/Downloads/Publikation/hm-2018-trilaterale-coop.html"@de,
+        rdfs:label "Sicht"@de,
+        rdfs:label "View"@en
+    
+    SubClassOf: 
+        rami:HasDataSpecification,
+        rami:Referable
+    
+    
+Class: sto:ArchitectureDescription
+
+    Annotations: 
+        rdfs:comment "A Reference Architecture describes the structure of a system with its element types and their structures, as well as their interaction types, among each other and with their environment. Describing this, a Reference Architecture defines restrictions for an instantiation (concrete architecture). Through abstraction from individual details, a Reference Architecture is universally valid within a specific domain. Further architectures with the same functional requirements can be constructed based on the reference architecture. Along with reference architectures comes a recommendation, based on experiences from existing developments as well as from a wide acceptance and recognition by its users or per definition. [ISO/IEC42010]
+
+Note: It is important to distinguish the Reference Architecture from a Reference Architecture Description. While the first refers to a mental model or shared concept, the second is potentially only one of several different documents describing this model."@en,
+        rdfs:comment "ISO 42010 definition of an Architecture Description"@en,
+        rdfs:label "Architecture Description",
+        rdfs:seeAlso "https://www.iso.org/standard/50508.html"
+    
+    SubClassOf: 
+        sto:StandardizationFramework
+    
+    
+Class: sto:BdvaConcern
+
+    Annotations: 
+        terms:creator "sebastian"@en,
+        rdfs:comment "The BDV Reference Model distinguishes between two different elements. On the one hand, it describes the elements that are at the core of the BDVA; on the other, it outlines the features that are developed in strong collaboration with related European activities. The BDV Reference Model is structured into horizontal and vertical concerns.
+Horizontal concerns cover specific aspects along the data processing Vertical concerns address cross-cutting issues, which may affect all the horizontal concerns. In addition, vertical concerns may also involve non-technical aspects."@en,
+        rdfs:label "BDVA Concern"@en,
+        sto:hasOfficialResource <http://www.bdva.eu/sites/default/files/BDVA_SRIA_v4_Ed1.1.pdf>
+    
+    SubClassOf: 
+        sto:StandardClassification
+    
+    
+Class: sto:BusinessCycleSCM
+
+    Annotations: 
+        rdfs:comment "Suply Chain Management Business Cycle."@en,
+        rdfs:isDefinedBy <http://nvlpubs.nist.gov/nistpubs/ir/2016/NIST.IR.8107.pdf>,
+        rdfs:label "Business Cycle SCM"@en,
+        rdfs:seeAlso "https://en.wikipedia.org/wiki/Supply_chain_management"
+    
+    SubClassOf: 
+        sto:StandardClassification
+    
+    
+Class: sto:Concern
+
+    Annotations: 
+        terms:creator "sebastian"@en,
+        rdfs:comment "A concern regards a specific challenge or topic as defined by ISO42010. Each concern should at least be regarded by one view of an architecture."@en,
+        rdfs:label "Concern",
+        sto:hasDBpediaResource <http://dbpedia.org/resource/ISO/IEC_42010>,
+        sto:hasOfficialResource <http://www.iso-architecture.org/42010/>,
+        sto:hasWikipediaArticle <https://en.wikipedia.org/wiki/ISO/IEC_42010#Conceptual_Model_-_Concern>
+    
+    
+Class: sto:ConnectivityLayer
+
+    Annotations: 
+        rdfs:comment "Connectivity Layer of the Internet Connectivity Framework"@en,
+        rdfs:isDefinedBy <https://www.iiconsortium.org/pdf/IIC_PUB_G5_V1.01_PB_20180228.pdf>,
+        rdfs:label "Connectivity Layer"@en
+    
+    SubClassOf: 
+        sto:StandardClassification
+    
+    
+Class: sto:Domain
+
+    Annotations: 
+        rdfs:comment "Represents the Domains in which the Standards can be used"@en,
+        rdfs:label "Domain"@en
+    
+    
+Class: sto:FiwareChapter
+
+    Annotations: 
+        terms:creator "sebastian"@en,
+        rdfs:comment "Following is a description of the Reference Architecture linked to the different chapters of FIWARE. A description of FIWARE Generic Enablers (GEs) being supported in each chapter is provided, including the high-level description of the APIs that each FIWARE Generic Enabler (GE) exposes to application developers or it uses to connect to another FIWARE GEs."@en,
+        rdfs:label "Fiware Chapter"@en
+    
+    SubClassOf: 
+        sto:StandardClassification
+    
+    
+Class: sto:IIoTConsortium
+
+    Annotations: 
+        terms:creator "sebastian"
+    
+    SubClassOf: 
+        foaf:Organization
+    
+    
+Class: sto:ISA95Level
+
+    Annotations: 
+        rdfs:comment "Describes the ISA95 levels to classify the industry Standards according to those levels. Eg., Device, SCADA, etc. It has strong relation to the RAMI Hierarchy levels"@en,
+        rdfs:label "ISA 95 Level"@en
+    
+    SubClassOf: 
+        sto:StandardClassification
+    
+    
+Class: sto:InternationalClassificationForStandards
+
+    Annotations: 
+        rdfs:comment "Serves as a structure for catalogues of international, regional and national standards and other normative documents, and as a basis for standing-order systems."@en,
+        rdfs:label "International Classification For Standards"@en,
+        rdfs:seeAlso <https://www.iso.org/publication/PUB100033.html>,
+        sto:hasOfficialResource <https://www.iso.org/publication/PUB100033.html>
+    
+    
+Class: sto:ProductDevelopmentLifeCycle
+
+    Annotations: 
+        rdfs:comment "PLM is the process of managing the entire lifecycle of a product from inception, through engineering design and manufacture, to service and disposal of manufactured products. Related areas are PLMManagement, Modeling Practice, Product Model Data exchange, Manufacturing Model Data, Product Catalog Data."@en,
+        rdfs:comment "Product Development Life-Cycle Phase"@en,
+        rdfs:isDefinedBy "https://en.wikipedia.org/wiki/Product_lifecycle",
+        rdfs:label "Product Development Life Cycle"@en
+    
+    SubClassOf: 
+        sto:StandardClassification
+    
+    
+Class: sto:ProductionSystemLifeCycle
+
+    Annotations: 
+        rdfs:comment "Collections of machines, equipment, and auxiliary systems organized to create goods and services from various resources."@en,
+        rdfs:isDefinedBy <http://nvlpubs.nist.gov/nistpubs/ir/2016/NIST.IR.8107.pdf>,
+        rdfs:label "Production System Life Cycle"@en
+    
+    SubClassOf: 
+        sto:StandardClassification
+    
+    
+Class: sto:Publication
+
+    Annotations: 
+        rdfs:comment "Specifies a Publication. E.g., International Standards,Technical Specifications,Publicly Available Specifications,Amendments
+                Technical Corrigenda,Interpretation Sheets,Technical Reports,Guides"@en,
+        rdfs:isDefinedBy <https://w3id.org/i40/sto#IEC>,
+        rdfs:label "Publication"@en,
+        rdfs:seeAlso <http://www.iec.ch/standardsdev/publications/>
+    
+    SubClassOf: 
+        foaf:Document
+    
+    
+Class: sto:Standard
+
+    Annotations: 
+        ns:attributionURL <http://www.iec.ch>,
+        rdfs:comment "A document, established by consensus and approved by a recognized body, that provides, for common and repeated use, rules, guidelines or characteristics for activities or their results, aimed at the achievement of the optimum degree of order in a given context."@en,
+        rdfs:isDefinedBy <https://w3id.org/i40/sto#IEC>,
+        rdfs:label "Standard"@en,
+        rdfs:seeAlso <http://www.iec.ch/standardsdev/publications/is.htm>
+    
+    SubClassOf: 
+        sto:Publication
+    
+    
+Class: sto:StandardClassification
+
+    Annotations: 
+        rdfs:comment "Describes categorization areas that the different Standardizations Initiatives use to category Standards."@en,
+        rdfs:label "Standard Classification"@en
+    
+    
+Class: sto:StandardOrganization
+
+    Annotations: 
+        rdfs:comment "Define the standards organizations that develop and publish industry standards"@en,
+        rdfs:label "StandardOrganization"@en
+    
+    SubClassOf: 
+        foaf:Organization
+    
+    
+Class: sto:StandardPart
+
+    Annotations: 
+        rdfs:comment "Typically Standards are divided into parts. E.g., ISA 95 has part Part 1: Models and Terminology, Part 2: Object Model Attributes, etc."@en,
+        rdfs:label "StandardPart"
+    
+    SubClassOf: 
+        sto:Publication
+    
+    
+Class: sto:StandardizationFramework
+
+    Annotations: 
+        rdfs:comment "Describes existings Standardizations Initiatives, e.g, RAMI, NIST."@en,
+        rdfs:label "Standarization Framework"@en,
+        skos:altLabel "Reference Architecture"@en
+    
+    
+Class: sto:TechnicalCommittee
+
+    Annotations: 
+        rdfs:comment "Specifies the representitive code name of the Technical Committee that covers a Standard for e.g, TC 1, SC 3C. Many thousand experts carry out standardization work in the IEC in TCs (technical committees) and SCs (subcommittees), in hundreds of working groups, project and maintenance teams. They represent the national electrotechnical needs of IEC Member countries and of many Affiliates at the global level in the IEC. These technical experts are sent by industry, governments, test and research laboratories, academia and even consumer groups to work on the global, neutral and independent platform of the IEC. That's where they develop globally relevant, voluntary, consensus based IEC International Standards."@en,
+        rdfs:isDefinedBy <https://w3id.org/i40/sto#IEC>,
+        rdfs:label "Technical Committee"@en,
+        rdfs:seeAlso <http://www.iec.ch/dyn/www/f?p=103:62:9979528650478:::62:FSP_ORG_ID,FSP_LANG_ID:,25>,
+        skos:note "1.sto:       a property explaining that TC and SC are managed by SMB (Standardization Management Board) needs to be added"
+    
+    
+Class: sto:TechnicalReport
+
+    Annotations: 
+        rdfs:comment "Specifies that a given Publication is a Technical Report"@en,
+        rdfs:comment "Technical Reports contain collected data of a kind different from that normally published as an International Standard, for example data obtained from a survey carried out among national committees, data of work in other international organizations or data on \"the state of the art\" in relation to standards of national committees on a particular subject.Technical Reports are entirely informative in nature and shall not contain matter implying that they are normative"@en,
+        rdfs:isDefinedBy <https://w3id.org/i40/sto#IEC>,
+        rdfs:label "Technical Report"@en,
+        rdfs:seeAlso <http://www.iec.ch/standardsdev/publications/tr.htm>
+    
+    SubClassOf: 
+        sto:Publication
+    
+    
+Class: sto:TechnicalSpecification
+
+    Annotations: 
+        rdfs:comment "Specifies that a given Publication is a Technical Specification"@en,
+        rdfs:comment "Technical Specifications are often published when the subject under question is still under development or when insufficient consensus for approval of an International Standard is available.Technical Specifications approach International Standards in terms of detail and completeness, but have not yet passed through all approval stages either because consensus has not been reached or because standardization is seen to be premature."@en,
+        rdfs:isDefinedBy <https://w3id.org/i40/sto#IEC>,
+        rdfs:label "Technical Specification"@en,
+        rdfs:seeAlso <http://www.iec.ch/standardsdev/publications/ts.htm>
+    
+    SubClassOf: 
+        sto:Publication
+    
+    
+Class: sto:Technology
+
+    Annotations: 
+        terms:creator "sebastian"@en,
+        rdfs:comment "A Technology is an implementation of one or many standards in order to achieve a goal."@en,
+        rdfs:label "Technology"@en
+    
+    
+Class: sto:Viewpoint
+
+    Annotations: 
+        terms:creator "sebastian",
+        rdfs:comment "ISO 42010 definition of a Viewpoint"@en,
+        rdfs:label "Viewpoint",
+        rdfs:seeAlso <https://www.iso.org/standard/50508.html>,
+        sto:hasDBpediaResource <http://dbpedia.org/resource/ISO/IEC_42010>,
+        sto:hasOfficialResource <http://www.iso-architecture.org/42010/>,
+        sto:hasWikipediaArticle <https://en.wikipedia.org/wiki/ISO/IEC_42010#Conceptual_Model_-_Architecture_Viewpoint>
+    
+    SubClassOf: 
+        sto:StandardClassification
+    
+    
+Class: terms:LicenseDocument
+
+    Annotations: 
+        rdfs:comment "A legal document giving official permission to do something with a Resource."@en,
+        rdfs:isDefinedBy <http://purl.org/dc/terms/>,
+        rdfs:label "License Document"@en
+    
+    
+Class: terms:LinguisticSystem
