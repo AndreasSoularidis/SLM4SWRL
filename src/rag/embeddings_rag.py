@@ -5,24 +5,33 @@ from rag.graph_rag import RAGEngineInterface
 
 class EmbeddingsRAG(RAGEngineInterface):
   def __init__(self, 
-               documents,
+               ontology_path,
+               domain,
                embeddings_model,
+               serialization,
                chunk_size=1000,
                chunk_overlap=200,
                search_type="similarity",
                k=5):
-    self.documents = documents
+    self.ontology_path = ontology_path
+    self.domain = domain
     self.embeddings_model = embeddings_model
     self.chunk_size = chunk_size
     self.chunk_overlap = chunk_overlap
     self.search_type = search_type
+    self.serialization = serialization
     self.k = k
     self.vector_store = self.create_vectorstore()
 
 
   def create_vectorstore(self):
-    # docs = FileLoader.get_txt_loader(self.documents)
-    with open(self.documents, "r", encoding="utf-8") as f:
+    match self.domain:
+      case "PARKINSON":
+        ontology_name = "Wear4PDmoveOnto"
+      case "SAR":
+        ontology_name = "beAWARE"
+
+    with open(f"{self.ontology_path}/{ontology_name}_{self.serialization}.txt", "r", encoding="utf-8") as f:
       docs = f.read()
 
     text_splitter = RecursiveCharacterTextSplitter(
@@ -41,7 +50,7 @@ class EmbeddingsRAG(RAGEngineInterface):
       chunk_size=self.chunk_size,
       chunk_overlap=self.chunk_overlap
     )
-    docs = [Document(page_content=docs, metadata={"source": self.documents})]
+    docs = [Document(page_content=docs, metadata={"source": f"{self.ontology_path}/{ontology_name}_{self.serialization}.txt"})]
     splits = text_splitter.split_documents(docs)
     vectorstore = Chroma.from_documents(documents=splits, embedding=self.embeddings_model)
     return vectorstore
