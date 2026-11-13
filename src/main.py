@@ -34,6 +34,23 @@ SERIALIZATION = ARGS.serialization
 DOMAIN = ARGS.domain
 ITERATIONS =  int(ARGS.iterations)
 
+def get_ontology_file_for_domain(ontology_dir: str, domain: str) -> str:
+  """Get the ontology file path based on domain"""
+  match domain:
+    case "PARKINSON":
+      ontology_name = "Wear4PDmoveOnto"
+    case "SAR":
+      ontology_name = "beAWARE"
+    case "FWP":
+      ontology_name = "fwp_ontology"
+    case "AUTOMATION":
+      ontology_name = "Automation-I4.0-Ontology"
+    case _:
+      raise ValueError(f"Unknown domain: {domain}")
+  
+  return os.path.join(ontology_dir, f"{ontology_name}.owl")
+
+
 def setup_rag_engine(config: TranslatorConfig) -> RAGEngineInterface:
   """Setup the appropriate RAG engine based on configuration"""
   
@@ -80,7 +97,8 @@ def main():
   # Setup ontology analyzer (only if needed)
   ontology_analyzer = None
   if RAG_TYPE == "graph" and config.ontology_path:
-    ontology_analyzer = OntologyAnalyzer(config.ontology_path)
+    ontology_file = get_ontology_file_for_domain(config.ontology_path, DOMAIN)
+    ontology_analyzer = OntologyAnalyzer(ontology_file)
   
   # Create translator using factory
   translator = SWRLTranslatorFactory.create(
